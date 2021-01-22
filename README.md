@@ -1,10 +1,14 @@
 # AgileDevelopment_templateCWRepo
-AC31007/AC51003 Agile Software Engineering - Group Number [x]
+AC31007/AC51003 Agile Software Engineering - Group Number 4
 
 Group Members:
-- Member Beth Ogilvy (i dont remember)
-- Member 2 (Matriculation Number)
-- Member X (Matriculation Number)
+- Beth Ogilvy (i dont remember)
+- Holly Groves
+- Adam Simpson
+- Adam Shepherd
+- Scott Fulton
+- Craig Ritchie
+- Euan Taylor
 
 ## Hints:
 - You may wish to change the issue tags that are in GitHub to map to different activities that you are carrying out:
