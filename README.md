@@ -11,7 +11,7 @@ Group Members:
 - Euan Taylor
 
 ## Useful Links:
-- Possible mySql Hosting
+Possible mySql Hosting
  - https://cloud.ametnes.com/
   
 
