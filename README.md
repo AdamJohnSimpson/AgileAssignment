@@ -1,14 +1,14 @@
-# AgileDevelopment_templateCWRepo
+# AgileDevelopment
 AC31007/AC51003 Agile Software Engineering - Group Number 4
 
 Group Members:
-- Beth Ogilvy (170006311)
-- Holly Groves
+- Beth Ogilvy: (170006311)
+- Holly Groves:
 - Adam Simpson : 0
 - Adam Shepherd : 180008088
-- Scott Fulton
-- Craig Ritchie
-- Euan Taylor
+- Scott Fulton:
+- Craig Ritchie:
+- Euan Taylor:
 
 ## Useful Links:
 Possible mySql Hosting:
