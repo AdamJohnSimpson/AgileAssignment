@@ -2,7 +2,7 @@
 AC31007/AC51003 Agile Software Engineering - Group Number 4
 
 Group Members:
-- Beth Ogilvy (i dont remember)
+- Beth Ogilvy (170006311)
 - Holly Groves
 - Adam Simpson
 - Adam Shepherd : 180008088
