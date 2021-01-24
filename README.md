@@ -11,8 +11,11 @@ Group Members:
 - Euan Taylor
 
 ## Useful Links:
-Possible mySql Hosting
+Possible mySql Hosting:
  - https://cloud.ametnes.com/
+ 
+ Possible way to export to CSV:
+ - https://stackoverflow.com/questions/125113/php-code-to-convert-a-mysql-query-to-csv
   
 
 ## Hints:
