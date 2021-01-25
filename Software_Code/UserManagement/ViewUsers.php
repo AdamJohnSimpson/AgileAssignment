@@ -5,7 +5,7 @@
 		<h1> Manage Users </h1>
 		
 		<div>
-			<button onclick="window.location.href='https://www.google.com';" type="button">Create Account</button>
+			<button onclick="location.href='CreateUser.php';" type="button">Create Account</button>
 			
 			<table>
 				<tr>
@@ -13,7 +13,7 @@
 				</tr>
 				<tr>
 					<td>Bob</td>
-					<td><button onclick="window.location.href='https://www.google.com';" type="button">Manage</button></td>
+					<td><button onclick="location.href='ManageUser.php';" type="button">Manage</button></td>
 				</tr>
 			</table>
 		</div>
