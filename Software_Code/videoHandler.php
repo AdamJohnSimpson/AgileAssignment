@@ -1,16 +1,11 @@
-
 <?php
-
 $allowedExts = array(
     "jpg",
     "jpeg",
     "gif",
-    "png",
-    "mp4"
+    "png"
 );
-
 $extension   = end(explode(".", $_FILES["file"]["name"]));
-
 if ((($_FILES["file"]["type"] == "image/gif") ||
 ($_FILES["file"]["type"] == "image/jpeg") ||
 ($_FILES["file"]["type"] == "image/pjpeg")) &&
@@ -33,4 +28,4 @@ if ((($_FILES["file"]["type"] == "image/gif") ||
 } else {
     echo "Invalid file";
 }
-?>
+?> 
