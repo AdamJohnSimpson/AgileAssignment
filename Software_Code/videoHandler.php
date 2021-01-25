@@ -2,8 +2,8 @@
 
 $allowedExts = array("jpg", "jpeg", "gif", "png", "mp3", "mp4", "wma");
 
-$path_parts = explode(".", $_FILES["file"]["name"]);
-$extension = $path_parts['extension'];
+$extension = end(explode(".", $_FILES["file"]["name"]));
+// $extension = $path_parts['extension'];
 
 echo "File name: " . $_FILES["file"]["name"] . "\n";
 echo "Extension: " . $extension . "\n";
