@@ -17,7 +17,10 @@ n/a
 n/a
 
 ### Summary of Conversation:
-We completed the sprint planning and assigned roles to the first user stories we will be working on. We also set up a discord server to have voice calls so we can work together in smaller groups. Sprint 1 will begin at 1pm on 25/01/2021
+We completed the sprint planning and assigned roles to the first user stories we will be working on. We also set up a discord server to have voice calls so we can work together in smaller groups. Sprint 1 will begin at 1pm on 25/01/2021.
+Holly, Scott, Adam Simpson and Beth - working on creating the questionnaires
+Adam Shepherd - working on setting up the database
+Craig and Euan - working on setting up the abiltiy to add and create accounts
 
 
 ## Day [X] - Scrum Meeting summary
