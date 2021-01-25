@@ -1,4 +1,4 @@
-<?php include $_SERVER[ 'DOCUMENT_ROOT' ] ."/includes/db.inc.php";?>
+<?php include "../Includes/db.inc.php";?>
 <html>
 	<title>User Management</title>
 	<body>
