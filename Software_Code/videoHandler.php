@@ -1,7 +1,10 @@
 <?php
 
 $allowedExts = array("jpg", "jpeg", "gif", "png", "mp3", "mp4", "wma");
-$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+$path_parts = pathinfo('/www/htdocs/inc/lib.inc.php');
+$extension = $path_parts['extension'];
+// $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
 if ((($_FILES["file"]["type"] == "video/mp4")
 || ($_FILES["file"]["type"] == "audio/mp3")
