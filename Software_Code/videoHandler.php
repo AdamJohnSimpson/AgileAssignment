@@ -2,7 +2,7 @@
 
 $allowedExts = array("jpg", "jpeg", "gif", "png", "mp3", "mp4", "wma");
 
-$path_parts = pathinfo('/www/htdocs/inc/lib.inc.php');
+$path_parts = end(explode(".", $_FILES["file"]["name"]));
 $extension = $path_parts['extension'];
 
 echo "Extension: " . $extension;
@@ -19,7 +19,6 @@ if ((($_FILES["file"]["type"] == "video/mp4")
 
 && ($_FILES["file"]["size"] < 500000)
 && in_array($extension, $allowedExts))
-
   {
   if ($_FILES["file"]["error"] > 0)
     {
