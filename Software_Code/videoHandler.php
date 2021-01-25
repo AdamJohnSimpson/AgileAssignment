@@ -5,9 +5,9 @@ $allowedExts = array("jpg", "jpeg", "gif", "png", "mp3", "mp4", "wma");
 $path_parts = end(explode(".", $_FILES["file"]["name"]));
 $extension = $path_parts['extension'];
 
-echo "Extension: " . $extension;
-
-echo "File Type: " . $_FILES["file"]["type"];
+echo "File name: " . $_FILES["file"]["name"] . "\n";
+echo "Extension: " . $extension . "\n";
+echo "File Type: " . $_FILES["file"]["type"] . "\n";
 // $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
 if ((($_FILES["file"]["type"] == "video/mp4")
