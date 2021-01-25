@@ -7,7 +7,7 @@ Group Members:
 - Adam Simpson : 0
 - Adam Shepherd : 180008088
 - Scott Fulton:
-- Craig Ritchie:
+- Craig Ritchie: 180009196
 - Euan Taylor: 180007209
 
 ## Useful Links:
