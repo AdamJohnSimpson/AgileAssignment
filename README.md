@@ -7,8 +7,8 @@ Group Members:
 - Adam Simpson : 0
 - Adam Shepherd : 180008088
 - Scott Fulton:
-- Craig Ritchie:
-- Euan Taylor:
+- Craig Ritchie: 180009196
+- Euan Taylor: 180007209
 
 ## Useful Links:
 Possible mySql Hosting:
