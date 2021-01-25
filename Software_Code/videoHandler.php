@@ -12,7 +12,7 @@ $allowedExts = array(
 $extension   = end(explode(".", $_FILES["file"]["name"]));
 
 if ((($_FILES["file"]["type"] == "image/gif") ||
-($_FILES["file"]["type"] == "image/jpeg") ||
+($_FILES["file"]["type"] == "jpeg") ||
 ($_FILES["file"]["type"] == "video/mp4") ||
 ($_FILES["file"]["type"] == "image/pjpeg")) &&
 ($_FILES["file"]["size"] < 20000) && in_array($extension, $allowedExts)) {
