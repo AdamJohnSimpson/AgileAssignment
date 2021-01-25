@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html>
 
 <?php
+
 $allowedExts = array(
     "jpg",
     "jpeg",
@@ -9,11 +8,11 @@ $allowedExts = array(
     "png",
     "mp4"
 );
+
 $extension   = end(explode(".", $_FILES["file"]["name"]));
 
 if ((($_FILES["file"]["type"] == "image/gif") ||
-($_FILES["file"]["type"] == "jpeg") ||
-($_FILES["file"]["type"] == "video/mp4") ||
+($_FILES["file"]["type"] == "image/jpeg") ||
 ($_FILES["file"]["type"] == "image/pjpeg")) &&
 ($_FILES["file"]["size"] < 20000) && in_array($extension, $allowedExts)) {
     if ($_FILES["file"]["error"] > 0) {
@@ -35,5 +34,3 @@ if ((($_FILES["file"]["type"] == "image/gif") ||
     echo "Invalid file";
 }
 ?>
-
-</html>
