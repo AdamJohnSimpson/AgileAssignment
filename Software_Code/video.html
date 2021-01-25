@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Video Upload Test</title>
-</head>
+  <head>
+    <title>Video Upload Test</title>
+  </head>
 
-<body>
-<h1> Video Upload Test Page </h1>
-</body>
+  <body>
+    <h1> Video Upload Test Page </h1>
+
+    <form action="videoHandler.php" method="post"   enctype="multipart/form-data">
+      <label for="file">Filename:</label>
+      <input type="file" name="file" id="file" />
+      <br />
+      <input type="submit" name="submit" value="Submit" />
+    </form>
+
+
+  </body>
 
 </html>
