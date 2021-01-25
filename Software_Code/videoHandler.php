@@ -6,7 +6,8 @@ $allowedExts = array(
     "jpg",
     "jpeg",
     "gif",
-    "png"
+    "png",
+    "mp4"
 );
 $extension   = end(explode(".", $_FILES["file"]["name"]));
 if ((($_FILES["file"]["type"] == "image/gif") ||
