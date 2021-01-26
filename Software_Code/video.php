@@ -14,7 +14,7 @@
     <!-- <select id="experiments" name="experiments"> -->
 
       <?php
-      include "../Includes/db.inc.php";
+      include "Includes/db.inc.php";
       $query = "SELECT experimentname FROM experiments";
       $result = mysqli_query($conn, $query);
 
