@@ -11,27 +11,27 @@
     <label for="file"><span>Filename:</span></label>
     <input type="file" name="file" id="file" />
 
-    <!-- <select id="experiments" name="experiments"> -->
+
 
       <?php
       include "Includes/db.inc.php";
       $query = "SELECT experimentname FROM experiments";
       $result = mysqli_query($conn, $query);
 
-      echo "<table>
-				<tr>
-					<th>Experiments</th>
-				</tr>";
+      // echo "<table>
+			// 	<tr>
+			// 		<th>Experiments</th>
+			// 	</tr>";
+
+      echo "<select id='experiments' name='experiments'>";
 
       while($row = mysqli_fetch_array($result)){
-
-        echo "<tr>";
-
-        echo "<td>" . $row['experimentname'] . "</td>";
-
-        echo "</tr></table>";
-
+        echo "<option value='$row['experimentname']'>Audi</option>";
+        // echo "<td>" . $row['experimentname'] . "</td>";
       }
+
+      echo "</select>";
+      // echo "</table>";
 
       ?>
 
