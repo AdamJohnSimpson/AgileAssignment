@@ -3,7 +3,7 @@
 <html>
 	<title>Manage User</title>
 	<body>
-		<h1> Manage User </h1>
+		<h1> Manage User <?php echo $userID; ?> </h1>
 		
 	</body>
 
