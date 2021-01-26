@@ -1,13 +1,13 @@
 <?php
 
-$servername_db = "mysql80-afe9.euw2.cloud.ametnes.com";
-$username_db = "KTWomToCcQ";
-$password_db = "OFCREfcS96DmPrNOBSpu";
-$name_db = "2191101310";
-$port = 3316;
+$servername_db = 'localhost';
+$username_db = 'root';
+$password_db = 'password123';
+$name_db = 'localdb';
+$port = '3316';
 
 // Create connection
-$conn = new mysqli($servername_db, $username_db, $password_db, $name_db, $port);
+$conn = new mysqli($servername_db, $username_db, $password_db, $name_db);
 
 // Check connection
 if ($conn->connect_error) {
