@@ -24,10 +24,17 @@
   //   //table exsists
   // } else {
     //table does not exsist, create table
-    $sql = "CREATE TABLE $experimentID (
-                QuestionNo INT(2) PRIMARY KEY,
-                UserID INT(4),
-                Question VARCHAR(255) NOT NULL,
+    // CREATE TABLE $experimentID (
+    //             QuestionNo INT(2) PRIMARY KEY,
+    //             UserID INT(4),
+    //             Question VARCHAR(255) NOT NULL,
+    // )
+    $sql = "CREATE TABLE MyGuests (
+      id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      firstname VARCHAR(30) NOT NULL,
+      lastname VARCHAR(30) NOT NULL,
+      email VARCHAR(50),
+      reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
     if (mysqli_query($conn, $sql)) {
       echo "<p> 'Table MyGuests created successfully' </p>";
