@@ -27,6 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
+        session_start();
         include "Includes/db.inc.php";
 
         //displays an error if user cannot connect to database
@@ -58,7 +59,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         if(isset($_POST['select'])){
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
-          header("Location:makeQuestionnaires.php");
+          echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
+          //header("Location:makeQuestionnaires.php");
           exit();
         }
 
