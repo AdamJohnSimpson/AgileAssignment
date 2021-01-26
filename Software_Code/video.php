@@ -26,15 +26,13 @@
           include "Includes/db.inc.php";
           $query = "SELECT experimentname FROM experiments";
           $result = mysqli_query($conn, $query);
-
+          echo "</br>";
+          echo "<label for='experiments'> Which experiment is this video part of? </label>";
           echo "<select id='experiments' name='experiments'>";
-
           while($row = mysqli_fetch_array($result)){
             echo '<option value=' . $row['experimentname'] . '> ' . $row['experimentname'] . ' </option>';
           }
-
           echo "</select>";
-
           ?>
 
         </select>
