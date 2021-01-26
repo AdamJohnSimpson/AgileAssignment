@@ -7,7 +7,8 @@ $allowedExts = array("mp4", "mov", "wmv", "avi");
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
 
-echo $_POST['experiments'];
+$test = $_POST['experiments'];
+echo "experiment name: " . $test;
 
 if ((($_FILES["file"]["type"] == "video/mp4")
 || ($_FILES["file"]["type"] == "video/mov")
