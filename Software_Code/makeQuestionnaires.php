@@ -91,7 +91,7 @@
     unset($_SESSION['experimentID']);
     header("location: experimentList.php");
     exit;
-}
+  }
 ?>
 
 
@@ -115,12 +115,14 @@
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
         <h2 class="text-center">Questionnaire name is:
-        <?php echo "<h2>".$_SESSION['experimentName']."</h2>" ?></h2>
+        <?php echo "<h2>".$_SESSION['experimentName']."</h2>"; ?></h2>
           <form method="POST">
             <div class="form-group">
               <label>Please enter the name of the questionnaire you are creating : </label>
               <input type="text" name="questionnaireName"><br><br>
-              <input type="submit" value="addname" name="addname">
+              <input type="submit" value="Add questionnaire name" name="addname">
+              <input type="submit" value="quit" name="quit">
+
           </form>
           <br></br>
         </div>
