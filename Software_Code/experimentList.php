@@ -57,7 +57,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
            {
                    $_SESSION["experimentID"] = $row['experimentid'];
                    $_SESSION["experimentName"] = $row['experimentname'];
-                   header("location createQuestionnaires.php");
+                   header("location:createQuestionnaires.php");
            }
 
         //closes the connection to the database
