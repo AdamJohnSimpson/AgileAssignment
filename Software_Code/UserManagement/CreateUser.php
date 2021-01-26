@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
       }
-
+}
     //if both passwords are not the same
     if ($password != $confirm_password){
       echo "Passwords entered do not match";
@@ -53,6 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        $result = mysqli_query($conn, $sql);
        echo "Successfully added user.";
     }
+  }
 
 ?>
 
