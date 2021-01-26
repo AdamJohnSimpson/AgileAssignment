@@ -4,12 +4,12 @@
 // https://stackoverflow.com/questions/18217964/upload-video-files-via-php-and-save-them-in-appropriate-folder-and-have-a-databa/18219669
 //===========================================================================================================================================
 $allowedExts = array("mp4", "mov", "wmv", "avi");
-// 
+//
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
 
-// $test = $_POST['experiments'];
-// echo "experiment name: " . $test;
+$test = $_POST['experiments'];
+echo "experiment name: " . $test;
 
 if ((($_FILES["file"]["type"] == "video/mp4")
 || ($_FILES["file"]["type"] == "video/mov")
