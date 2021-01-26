@@ -25,15 +25,25 @@
   // } else {
     try{
     //table does not exsist, create table
-    $query = "CREATE TABLE  $experimentID (
-                UserID int,
-                Question VARCHAR(255),
+    $sql = "CREATE TABLE $experimentID (
+                QuestionNo INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                UserID INT(4) UNSIGNED,
+                Question VARCHAR(255) NOT NULL,
     )";
-    $mysql->exec($query);
-  } catch (PDOException $e) {
-    echo $e->getMessage();
+    if (mysqli_query($conn, $sql)) {
+  echo "<p> 'Table MyGuests created successfully' </p>";
+  } else {
+  echo "Error creating table: " . mysqli_error($conn);
   }
+  //   $mysql->exec($query);
+  // } catch (PDOException $e) {
+  //   echo $e->getMessage();
+  // }
   //}
+
+
+
+
 
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
