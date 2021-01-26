@@ -3,8 +3,8 @@
 // Code to upload and store a file adapted from the following stack overflow page:
 // https://stackoverflow.com/questions/18217964/upload-video-files-via-php-and-save-them-in-appropriate-folder-and-have-a-databa/18219669
 //===========================================================================================================================================
-$allowedExts = array("mp4");
-// , "mov", "wmv", "avi"
+$allowedExts = array("mp4", "mov", "wmv", "avi");
+// 
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
 
@@ -12,9 +12,9 @@ $extension = end(explode(".", $_FILES["file"]["name"]));
 // echo "experiment name: " . $test;
 
 if ((($_FILES["file"]["type"] == "video/mp4")
-// || ($_FILES["file"]["type"] == "video/mov")
-// || ($_FILES["file"]["type"] == "video/wmv")
-// || ($_FILES["file"]["type"] == "video/avi")
+|| ($_FILES["file"]["type"] == "video/mov")
+|| ($_FILES["file"]["type"] == "video/wmv")
+|| ($_FILES["file"]["type"] == "video/avi"))
 // Limiting video upload to 50 MB
 && ($_FILES["file"]["size"] < 20000)
 && in_array($extension, $allowedExts))
