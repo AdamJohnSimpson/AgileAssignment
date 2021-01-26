@@ -23,6 +23,7 @@
 						echo "<h4>Password: " . $row['Password'] . "</h4>";
 					}
 				}
+			?>
 		</div>
 	</body>
 
