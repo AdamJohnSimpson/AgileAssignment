@@ -1,10 +1,11 @@
+<?php include 'includes/header.php'?>
 <?php
 //checks if user logged in, if not returns to login page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: login.php");
-  exit;
-}
-?>
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//   header("location: login.php");
+//   exit;
+// }
+ ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -27,7 +28,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
-        session_start();
         include "Includes/db.inc.php";
 
         //displays an error if user cannot connect to database
