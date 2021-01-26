@@ -11,8 +11,6 @@
     <label for="file"><span>Filename:</span></label>
     <input type="file" name="file" id="file" />
 
-
-
       <?php
       include "Includes/db.inc.php";
       $query = "SELECT experimentname FROM experiments";
@@ -26,7 +24,7 @@
       echo "<select id='experiments' name='experiments'>";
 
       while($row = mysqli_fetch_array($result)){
-        echo "<option value='$row[\"experimentname\"]'>$row['experimentname'] </option>";
+        echo '<option value="$row[\'experimentname\']"> $row['experimentname'] </option>';
         // echo "<td>" . $row['experimentname'] . "</td>";
       }
 
@@ -39,8 +37,6 @@
     <br />
     <input type="submit" name="submit" value="Submit" />
     </form>
-
-
   </body>
 
 </html>
