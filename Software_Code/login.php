@@ -1,4 +1,4 @@
-//code adapted from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php //
+<!-- code adapted from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php  -->
 <?php
 // Initialize the session
 session_start();
@@ -107,14 +107,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
 
-                // username form to recieve input
+                 <!-- username form to recieve input -->
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
 
-                // password form to recieve input
+                 <!-- password form to recieve input -->
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
                 <span class="help-block"><?php echo $password_err; ?></span>
