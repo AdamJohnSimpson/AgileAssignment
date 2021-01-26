@@ -1,9 +1,9 @@
 <?php
 //checks if user logged in, if not returns to login page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: login.php");
-  exit;
-}
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//   header("location: login.php");
+//   exit;
+// }
 ?>
 
 <!DOCTYPE html>
@@ -46,24 +46,36 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
+               <form method="POST">
                <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+               <input type="submit" value="Create questionnaire" name="select">
+               </form>
              </div>
            </div>";
-
+        //<a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
         }
 
-        if(isset($_GET['i']) && isset($_GET['n']))
-        {
-            func($_GET['i'], $_GET['n']);
-        }
-        function func($experimentid, $experimentname)
-        {
+        if(isset($_POST['submit'])){
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
           header("Location:makeQuestionnaires.php");
-          exit();
-        }
+          exit();}
+
+
+
+
+        // if(isset($_GET['i']) && isset($_GET['n']))
+        // {
+        //     func($_GET['i'], $_GET['n']);
+        // }
+        // function func($experimentid, $experimentname)
+        // {
+        //
+        //   $_SESSION['experimentID'] = $experimentid;
+        //   $_SESSION['experimentName'] = $experimentname;
+        //   header("Location:makeQuestionnaires.php");
+        //   exit();
+        // }
 
         //closes the connection to the database
         mysqli_close($conn);
