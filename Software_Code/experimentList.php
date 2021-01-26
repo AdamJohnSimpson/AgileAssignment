@@ -11,7 +11,8 @@ if(isset($_POST["create_questionnaire"]))
      echo "<p> hello there </p>";
      $_SESSION["experimentID"] = $row['experimentid'];
      $_SESSION["experimentName"] = $row['experimentname'];
-     header("location:makeQuestionnaires.php");
+     header("location: makeQuestionnaires.php");
+     exit();
    }
 
 ?>
@@ -58,7 +59,7 @@ if(isset($_POST["create_questionnaire"]))
              <div class='card-body'>
                <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
                <form>
-                 <button name='create_questionnaire' type='submit' class='btn btn-outline-success'>Create questionnaire</button>
+                 <input type='submit' value='create_questionnaire' name='Create Questionnaire'>
                  </form>
              </div>
            </div>";
