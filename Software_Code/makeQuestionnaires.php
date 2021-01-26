@@ -4,13 +4,13 @@
   //   header("location: login.php");
   //   exit;
   // }
-  if(isset($_SESSION["experimentID"])){
-    $experimentID = $_SESSION["experimentID"];
-  } else {
-    //If an experiment hasn't been selected redirect to relevant page
-    header("location: experimentList.php");
-    exit;
-  }
+  // if(isset($_SESSION["experimentID"])){
+  //   $experimentID = $_SESSION["experimentID"];
+  // } else {
+  //   //If an experiment hasn't been selected redirect to relevant page
+  //   header("location: experimentList.php");
+  //   exit;
+  // }
 
   //gets db connection
   include "Includes/db.inc.php";
