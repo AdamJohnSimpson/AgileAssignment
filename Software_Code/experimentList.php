@@ -48,7 +48,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
              <div class='card-body'>
                <form method="POST">
                <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-               <input type="submit" value="Create questionnaire" name="select">
+               <input type='submit' value='Create questionnaire' name='select'>
                </form>
              </div>
            </div>";
