@@ -27,6 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
+        session_start();
         include "Includes/db.inc.php";
 
         //displays an error if user cannot connect to database
@@ -46,24 +47,38 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
+               <form method=\"POST\">
                <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+               <input type=\"submit\" value=\"Create questionnaire\" name=\"select\">
+               </form>
              </div>
            </div>";
-
+        //<a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
         }
 
-        if(isset($_GET['i']) && isset($_GET['n']))
-        {
-            func($_GET['i'], $_GET['n']);
-        }
-        function func($experimentid, $experimentname)
-        {
-          array_push($_SESSION['experimentID'], $experimentid);
-          array_push($_SESSION['experimentName'], $experimentname);
+        if(isset($_POST['select'])){
+          $_SESSION['experimentID'] = $experimentid;
+          $_SESSION['experimentName'] = $experimentname;
+          //echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
           header("Location:makeQuestionnaires.php");
           exit();
         }
+
+
+
+
+        // if(isset($_GET['i']) && isset($_GET['n']))
+        // {
+        //     func($_GET['i'], $_GET['n']);
+        // }
+        // function func($experimentid, $experimentname)
+        // {
+        //
+        //   $_SESSION['experimentID'] = $experimentid;
+        //   $_SESSION['experimentName'] = $experimentname;
+        //   header("Location:makeQuestionnaires.php");
+        //   exit();
+        // }
 
         //closes the connection to the database
         mysqli_close($conn);
