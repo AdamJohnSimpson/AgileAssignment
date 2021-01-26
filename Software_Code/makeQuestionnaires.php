@@ -4,8 +4,8 @@
     header("location: login.php");
     exit;
   }
-  if(isset($_SESSION["experiment"])){
-    $experimentID = $_SESSION["experiment"];
+  if(isset($_SESSION["experimentID"])){
+    $experimentID = $_SESSION["experimentID"];
   } else {
     //If an experiment hasn't been selected redirect to relevant page
     header("location: experimentList.php");
@@ -23,7 +23,7 @@
   } else {
     try{
     //table does not exsist, create table
-    $query = "CREATE TABLE  mysql_real_escape_string($_SESSION['experimentName']) (
+    $query = "CREATE TABLE  $experimentID (
                 UserID int,
                 Question VARCHAR(255),
     )";
