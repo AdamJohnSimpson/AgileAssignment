@@ -24,7 +24,7 @@
       echo "<select id='experiments' name='experiments'>";
 
       while($row = mysqli_fetch_array($result)){
-        echo '<option value="$row[\'experimentname\']"> $row["experimentname"] </option>';
+        echo '<option value=' . $row['experimentname'] . '> ' . $row['experimentname'] . ' </option>';
         // echo "<td>" . $row['experimentname'] . "</td>";
       }
 
