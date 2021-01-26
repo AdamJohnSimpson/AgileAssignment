@@ -3,7 +3,7 @@
 $servername_db = 'localhost';
 $username_db = 'testuser';
 $password_db = 'password123';
-$name_db = 'localdb';
+$name_db = 'testdb';
 $port = 56570;
 
 // Create connection
