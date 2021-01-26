@@ -20,7 +20,7 @@
 						echo "<h4>Surname: " . $row['Surname'] . "</h4>";
 						echo "<h4>Email: " . $row['EmailAddress'] . "</h4>";
 						echo "<h4>Role: " . $row['Role'] . "</h4>";
-						echo "<h4>Password: " . $row['Password'] . "</h4>";
+						echo '<h4>Password: ' . $row["Password"] . ' <button onclick="location.href=\'../Includes/reset.inc.php?id=' .$row['UserID'] .'\';" type="button">Reset</button></h4>';
 					}
 				}
 			?>
