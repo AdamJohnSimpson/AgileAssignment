@@ -47,7 +47,8 @@
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+              <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
         //
@@ -73,8 +74,7 @@
         {
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
-          echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
-          //header("Location:makeQuestionnaires.php");
+          header("Location:makeQuestionnaires.php");
           exit();
         }
 
