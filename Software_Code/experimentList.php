@@ -59,8 +59,8 @@
         if(isset($_POST['select'])){
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
-          //echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
-          header("Location:makeQuestionnaires.php");
+          echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
+          //header("Location:makeQuestionnaires.php");
           exit();
         }
 
