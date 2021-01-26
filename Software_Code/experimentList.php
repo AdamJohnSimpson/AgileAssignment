@@ -27,7 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
-        require_once "Includes/db.inc.php";
+        include "Includes/db.inc.php";
 
         //displays an error if user cannot connect to database
          if (!$conn) {
@@ -35,7 +35,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         }
 
         //retrieve all experiments tied to the user
-        $sql = SELECT * FROM experiments WHERE userID = $_SESSION["id"];
+        // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
+        $sql = "SELECT * FROM experiments WHERE primaryresearcher = 1";
         $result = mysqli_query($conn, $sql);
 
         //displays all experiments fetched along with an option to create a questionnaire
@@ -43,10 +44,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
            echo "<div class='row'>
              <div class='card-body'>
-               <h5 class='card-text mt-2'>"$row['name']"</h6>
-                 <button name="create_questionnaire" type="submit">Create questionnaire</button>
+               <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
+                 <button name='create_questionnaire' type='submit' class='btn btn-outline-success'>Create questionnaire</button>
              </div>
-           </div>"
+           </div>";
 
         }
 
@@ -54,9 +55,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         page when they click the "Create Questionnaire" button*/
         if(isset($_POST["create_questionnaire"]))
            {
-                   $_SESSION["experimentID"] = $row['ID'];
-                   $_SESSION["experimentName"] = $row['name']
-                   header("location createQuestionnaires.php")
+                   $_SESSION["experimentID"] = $row['experimentid'];
+                   $_SESSION["experimentName"] = $row['experimentname'];
+                   header("location:createQuestionnaires.php");
            }
 
         //closes the connection to the database
