@@ -17,30 +17,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Please enter a username.";
     } else{
         $username = trim($_POST["username"]);
     }
 
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Please enter a password.";
     } else{
         $password = trim($_POST["password"]);
     }
 
     if(empty($username_err) && empty($password_err)){
 
-      //checks to see if user already exists
-      $sql = "SELECT * FROM User WHERE UserName = '$username'";
-      $result = mysqli_query($conn, $sql);
-      if ($result){
-        if ($result['username'] === $username){
-          echo "Username already exists";
-        }
-
-      }
-}
+		//checks to see if user already exists
+		$sql = "SELECT * FROM User WHERE UserName = '$username'";
+		$result = mysqli_query($conn, $sql);
+		if ($result){
+			$row = mysqli_fetch_array($result);
+			if($row && $row['UserName'] === $username){
+				echo "Username already exists";
+			}
+		}
+	}
     //if both passwords are not the same
     if ($password != $confirm_password){
       echo "Passwords entered do not match";
@@ -51,7 +51,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       // Prepare an insert statement
        $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES ($firstname, $surname, $email, $role, $username, $password)";
        $result = mysqli_query($conn, $sql);
-       echo "Successfully added user.";
+       if ($result){
+          echo "Successfully added user.";
+       }
+
     }
   }
 
@@ -121,7 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Submit">
-                    
+
                 </div>
       </body>
     </html>

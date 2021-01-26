@@ -4,24 +4,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
   header("location: login.php");
   exit;
 }
-/*stores session information and directs user to the 'create questionnaire'
-page when they click the "Create Questionnaire" button*/
-if(isset($_POST["create_questionnaire"]))
-   {
-     echo "<p> hello there </p>";
-     $_SESSION["experimentID"] = $row['experimentid'];
-     $_SESSION["experimentName"] = $row['experimentname'];
-     header("location: https://agile-assignment-group-4.azurewebsites.net/makeQuestionnaires.php");
-     exit();
-   }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>List of experiments</title>
+    <title>List of experiments</title
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -53,17 +42,27 @@ if(isset($_POST["create_questionnaire"]))
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 
-//<a href = \"makeQuestionnaires.php\">  </a>
-
+          $experimentid = $row['experimentid'];
+          $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-               <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
-               <form>
-                 <input type='submit' name='create_questionnaire' value='Create Questionnaire'>
-                </form>
+               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
 
+        }
+
+        if(isset($_GET['i']) && isset($_GET['n']))
+        {
+            func($_GET['i'], $_GET['n']);
+        }
+        function func($experimentid, $experimentname)
+        {
+          array_push($_SESSION['experimentID'], $experimentid);
+          array_push($_SESSION['experimentName'], $experimentname);
+          header("Location:makeQuestionnaires.php");
+          exit();
         }
 
         //closes the connection to the database
