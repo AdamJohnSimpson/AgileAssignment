@@ -16,22 +16,24 @@
   include "Includes/db.inc.php";
   //when clicked the submit button while post the question value
 
-  //check it table exsits for questionnaie, if not create the mysql_list_table
-  // $exists = mysql_query("SELECT 1 from {$experimentID}");
-  // if ($exists !== FALSE) {
-  //   //table exsists
-  // } else {
-  //   try{
-  //   //table does not exsist, create table
-  //   $query = "CREATE TABLE  $experimentID (
-  //               UserID int,
-  //               Question VARCHAR(255),
-  //   )";
-  //   $mysql->exec($query);
-  // } catch (PDOException $e) {
-  //   echo $e->getMessage();
-  // }
-  // }
+//  check it table exsits for questionnaie, if not create the mysql_list_table
+  $experimentID ="1";
+  $experimentName ="Test Experiment One";
+  $exists = mysql_query("SELECT 1 from {$experimentID}");
+  if ($exists !== FALSE) {
+    //table exsists
+  } else {
+    try{
+    //table does not exsist, create table
+    $query = "CREATE TABLE  $experimentID (
+                UserID int,
+                Question VARCHAR(255),
+    )";
+    $mysql->exec($query);
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+  }
 
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
