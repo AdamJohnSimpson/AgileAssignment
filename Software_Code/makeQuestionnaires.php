@@ -35,8 +35,9 @@
 
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['Add Question']);{
+    if(isset($_POST['Add Question'])){
       $question = $_POST['question'];
+    }
   if (empty($question)) {
       echo "A question can't be empty!";
       //refresh page or whatever
@@ -53,9 +54,9 @@
 }
 }
   //if the exit button is clicked then ends experiment choice session and returns to expereiment list
-  if(isset($_POST['quit']) {
-    unset($_SESSION['experimentName'])
-    unset($_SESSION['experimentID'])
+  if(isset($_POST['quit'])) {
+    unset($_SESSION['experimentName']);
+    unset($_SESSION['experimentID']);
     header("location: experimentList.php");
     exit;
 }
