@@ -13,8 +13,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 require_once "Includes/db.inc.php";
 
 // Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
+// $username = $password = "";
+// $username_err = $password_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
