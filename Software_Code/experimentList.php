@@ -45,7 +45,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
            echo "<div class='row'>
              <div class='card-body'>
                <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
-                 <a href = \"createQuestionnaires.php\"> <button name='create_questionnaire' type='submit' class='btn btn-outline-success'>Create questionnaire</button> </a>
+                 <a href = \"makeQuestionnaires.php\"> <button name='create_questionnaire' type='submit' class='btn btn-outline-success'>Create questionnaire</button> </a>
              </div>
            </div>";
 
@@ -55,9 +55,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         page when they click the "Create Questionnaire" button*/
         if(isset($_POST["create_questionnaire"]))
            {
+             echo "<p> hello there </p>";
                    $_SESSION["experimentID"] = $row['experimentid'];
                    $_SESSION["experimentName"] = $row['experimentname'];
-                   header("location:createQuestionnaires.php");
+                   header("location:makeQuestionnaires.php");
            }
 
         //closes the connection to the database
