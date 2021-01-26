@@ -4,6 +4,16 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
   header("location: login.php");
   exit;
 }
+/*stores session information and directs user to the 'create questionnaire'
+page when they click the "Create Questionnaire" button*/
+if(isset($_POST["create_questionnaire"]))
+   {
+     echo "<p> hello there </p>";
+     $_SESSION["experimentID"] = $row['experimentid'];
+     $_SESSION["experimentName"] = $row['experimentname'];
+     header("location:makeQuestionnaires.php");
+   }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,23 +52,18 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 
+//<a href = \"makeQuestionnaires.php\">  </a>
+
            echo "<div class='row'>
              <div class='card-body'>
                <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
+               <form>
                  <button name='create_questionnaire' type='submit' class='btn btn-outline-success'>Create questionnaire</button>
+                 </form>
              </div>
            </div>";
 
         }
-
-        /*stores session information and directs user to the 'create questionnaire'
-        page when they click the "Create Questionnaire" button*/
-        if(isset($_POST["create_questionnaire"]))
-           {
-                   $_SESSION["experimentID"] = $row['experimentid'];
-                   $_SESSION["experimentName"] = $row['experimentname'];
-                   header("location:createQuestionnaires.php");
-           }
 
         //closes the connection to the database
         mysqli_close($conn);
