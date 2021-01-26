@@ -17,14 +17,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Please enter a username.";
     } else{
         $username = trim($_POST["username"]);
     }
 
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Please enter a password.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -40,18 +40,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
       }
-
-
+}
+    //if both passwords are not the same
     if ($password != $confirm_password){
       echo "Passwords entered do not match";
     }
 
+    //if both passwords are the same and username is not used
     if($password == $confirm_password && $result['username'] != $username){
       // Prepare an insert statement
        $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES ($firstname, $surname, $email, $role, $username, $password)";
        $result = mysqli_query($conn, $sql);
-       echo "Successfully added user.";
+       if ($result){
+          echo "Successfully added user.";
+       }
+
     }
+  }
 
 ?>
 
@@ -72,38 +77,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p>Please fill this form to create an account.</p>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
+              <!-- form to recieve first name from user -->
               <div class="form-group">
                   <label>First Name</label>
                   <input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>">
               </div>
 
+              <!-- form to recieve surname from user -->
               <div class="form-group">
                   <label>Surname</label>
                   <input type="text" name="surname" class="form-control" value="<?php echo $surname; ?>">
               </div>
 
+              <!-- form to recieve email address from user -->
               <div class="form-group">
                   <label>Email Address</label>
                   <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
               </div>
 
+              <!-- form to recieve role from user -->
               <div class="form-group">
                   <label>Role</label>
                   <input type="text" name="role" class="form-control" value="<?php echo $role; ?>">
               </div>
 
+              <!-- form to recieve username from user -->
                 <div class="form-group ">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                     <span class="help-block"><?php if(isset($username_err))echo $username_err; ?></span>
                 </div>
 
+                <!-- form to recieve password from user -->
                 <div class="form-group ">
                     <label>Password</label>
                     <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
                     <span class="help-block"><?php if(isset($password_err))echo $password_err; ?></span>
                 </div>
 
+                <!-- form to confirm password from user -->
                 <div class="form-group ">
                     <label>Confirm Password</label>
                     <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
@@ -112,7 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Submit">
-                    <input type="reset" class="btn btn-default" value="Reset">
+
                 </div>
       </body>
     </html>
