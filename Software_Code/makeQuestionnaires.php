@@ -114,7 +114,8 @@
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
-        <?php echo "<h2>".$_SESSION['experimentName']."</h2>" ?>
+        <h2 class="text-center">Questionnaire name is:
+        <?php echo "<h2>".$_SESSION['experimentName']."</h2>" ?></h2>
           <form method="POST">
             <div class="form-group">
               <label>Please enter the name of the questionnaire you are creating : </label>
