@@ -15,13 +15,13 @@
 					
 					$query = "SELECT UserName, UserID FROM User";
 					$result = mysqli_query($conn, $query);
-						
+					
 					while($row = mysqli_fetch_array($result)){
 						
 						echo "<tr>";
 
 						echo "<td>" . $row['UserName'] . "</td>";
-						echo '<button onclick="location.href=\'ManageUser.php?id=' .$row['UserID'] .';" type="button">Manage</button>';
+						echo '<td> <button onclick="location.href=\'ManageUser.php?id=' .$row['UserID'] .'\';" type="button">Manage</button> </td>';
 
 						echo "</tr>";
 						
