@@ -11,9 +11,9 @@ $extension = end(explode(".", $_FILES["file"]["name"]));
 // echo "experiment name: " . $test;
 
 if ((($_FILES["file"]["type"] == "video/mp4")
-|| ($_FILES["file"]["type"] == "video/mov")
-|| ($_FILES["file"]["type"] == "video/wmv")
-|| ($_FILES["file"]["type"] == "video/avi")
+// || ($_FILES["file"]["type"] == "video/mov")
+// || ($_FILES["file"]["type"] == "video/wmv")
+// || ($_FILES["file"]["type"] == "video/avi")
 // Limiting video upload to 50 MB
 && ($_FILES["file"]["size"] < 52428800)
 && in_array($extension, $allowedExts))
