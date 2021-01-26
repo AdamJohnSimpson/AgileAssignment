@@ -1,9 +1,9 @@
 <?php
 //ensures user is logged in
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-    header("location: login.php");
-    exit;
-  }
+  // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  //   header("location: login.php");
+  //   exit;
+  // }
   // if(isset($_SESSION["experimentID"])){
   //   $experimentID = $_SESSION["experimentID"];
   // } else {
@@ -13,25 +13,25 @@
   // }
 
   //gets db connection
-  require_once "Includes/db.inc.php";
+  include "Includes/db.inc.php";
   //when clicked the submit button while post the question value
 
   //check it table exsits for questionnaie, if not create the mysql_list_table
-  $exists = mysql_query("SELECT 1 from {$experimentID}");
-  if ($exists !== FALSE) {
-    //table exsists
-  } else {
-    try{
-    //table does not exsist, create table
-    $query = "CREATE TABLE  $experimentID (
-                UserID int,
-                Question VARCHAR(255),
-    )";
-    $mysql->exec($query);
-  } catch (PDOException $e) {
-    echo $e->getMessage();
-  }
-  }
+  // $exists = mysql_query("SELECT 1 from {$experimentID}");
+  // if ($exists !== FALSE) {
+  //   //table exsists
+  // } else {
+  //   try{
+  //   //table does not exsist, create table
+  //   $query = "CREATE TABLE  $experimentID (
+  //               UserID int,
+  //               Question VARCHAR(255),
+  //   )";
+  //   $mysql->exec($query);
+  // } catch (PDOException $e) {
+  //   echo $e->getMessage();
+  // }
+  // }
 
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
