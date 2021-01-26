@@ -31,7 +31,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
         //displays an error if user cannot connect to database
          if (!$conn) {
-          die('Could not connect: ' . mysql_error());
+          die('Could not connect: ' . mysqli_error());
         }
 
         //retrieve all experiments tied to the user
