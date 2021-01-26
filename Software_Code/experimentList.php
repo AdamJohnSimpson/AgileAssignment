@@ -1,9 +1,9 @@
 <?php
 //checks if user logged in, if not returns to login page
-// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//   header("location: login.php");
-//   exit;
-// }
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+  header("location: login.php");
+  exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +55,7 @@
         //<a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
         }
 
-        if(isset($_POST['submit'])){
+        if(isset($_POST['select'])){
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
           header("Location:makeQuestionnaires.php");
