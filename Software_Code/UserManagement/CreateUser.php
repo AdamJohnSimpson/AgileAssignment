@@ -50,8 +50,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($password == $confirm_password && $result['username'] != $username){
       // Prepare an insert statement
        $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES ($firstname, $surname, $email, $role, $username, $password)";
-       $conn->exec($sql);;
-       echo "Successfully added user.";
+       $result = mysqli_query($conn, $sql);
+       if ($result){
+          echo "Successfully added user.";
+       }
+
     }
   }
 
