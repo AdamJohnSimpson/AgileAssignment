@@ -16,7 +16,7 @@ if ((($_FILES["file"]["type"] == "video/mp4")
 // || ($_FILES["file"]["type"] == "video/wmv")
 // || ($_FILES["file"]["type"] == "video/avi")
 // Limiting video upload to 50 MB
-&& ($_FILES["file"]["size"] < 52428800)
+&& ($_FILES["file"]["size"] < 20000)
 && in_array($extension, $allowedExts))
   {
   if ($_FILES["file"]["error"] > 0)
