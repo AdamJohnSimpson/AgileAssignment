@@ -35,7 +35,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         }
 
         //retrieve all experiments tied to the user
-        $sql = SELECT * FROM experiments WHERE userID = $_SESSION["id"];
+        $sql = "SELECT * FROM experiments WHERE userID = ".$_SESSION["id"];
         $result = mysqli_query($conn, $sql);
 
         //displays all experiments fetched along with an option to create a questionnaire
