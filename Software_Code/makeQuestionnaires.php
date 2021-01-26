@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'?>
 <?php
 //ensures user is logged in
   // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
@@ -13,7 +14,6 @@
   // }
 
   //gets db connection
-  session_start();
   include "Includes/db.inc.php";
   //when clicked the submit button while post the question value
 
@@ -117,7 +117,7 @@
       <div class="jumbotron" style="margin-bottom:1px;">
         <h2 class="text-center">Questionnaire name is:
         <?php echo $_SESSION['experimentName']; ?></h2>
-        <?php echo "h2".$_SESSION['experimentName']."/h2"; ?></h2>
+        <?php echo "<h2> ".$_SESSION['experimentName']." </h2>"; ?>
           <form method="POST">
             <div class="form-group">
               <label>Please enter the name of the questionnaire you are creating : </label>
