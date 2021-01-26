@@ -29,18 +29,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
 
+    // Check if confirm password is empty
+    if(empty(trim($_POST["confirm_password"]))){
+        $password_err = "Please enter a password.";
+    } else{
+        $confirm_password = trim($_POST["confirm_password"]);
+    }
+
     if(empty($username_err) && empty($password_err)){
 
-      //checks to see if user already exists
-      $sql = "SELECT * FROM User WHERE UserName = '$username'";
-      $result = mysqli_query($conn, $sql);
-      if ($result){
-        if ($result['username'] === $username){
-          echo "Username already exists";
-        }
-
-      }
-}
+		//checks to see if user already exists
+		$sql = "SELECT * FROM User WHERE UserName = '$username'";
+		$result = mysqli_query($conn, $sql);
+		if ($result){
+			$row = mysqli_fetch_array($result);
+			if($row && $row['UserName'] === $username){
+				echo "Username already exists";
+			}
+		}
+	}
     //if both passwords are not the same
     if ($password != $confirm_password){
       echo "Passwords entered do not match";

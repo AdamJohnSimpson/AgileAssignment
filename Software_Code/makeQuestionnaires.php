@@ -1,9 +1,9 @@
 <?php
 //ensures user is logged in
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-    header("location: login.php");
-    exit;
-  }
+  // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  //   header("location: login.php");
+  //   exit;
+  // }
   if(isset($_SESSION["experimentID"])){
     $experimentID = $_SESSION["experimentID"];
   } else {
@@ -13,49 +13,82 @@
   }
 
   //gets db connection
-  require_once "Includes/db.inc.php";
+  include "Includes/db.inc.php";
   //when clicked the submit button while post the question value
 
-  //check it table exsits for questionnaie, if not create the mysql_list_table
-  $exists = mysql_query("SELECT 1 from {$experimentID}");
-  if ($exists !== FALSE) {
-    //table exsists
-  } else {
-    try{
+//  check it table exsits for questionnaie, if not create the mysql_list_table
+  $experimentID ="1";
+  $experimentName ="Test Experiment One";
+  // $exists = mysql_query("SELECT 1 from {$experimentID}");
+  // if ($exists !== FALSE) {
+  //   //table exsists
+  // } else {
     //table does not exsist, create table
-    $query = "CREATE TABLE  $experimentID (
-                UserID int,
-                Question VARCHAR(255),
-    )";
-    $mysql->exec($query);
-  } catch (PDOException $e) {
-    echo $e->getMessage();
-  }
-  }
+    // CREATE TABLE $experimentID (
+    //             QuestionNo INT(2) PRIMARY KEY,
+    //             UserID INT(4),
+    //             Question VARCHAR(255) NOT NULL,
+    // )
+    // $sql = "CREATE TABLE MyGuests (
+    //   questionNo INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    //   question VARCHAR(255) NOT NULL,
+    //   lastname VARCHAR(30) NOT NULL,
+    //   email VARCHAR(50),
+    //   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    // )";
+    // if (mysqli_query($conn, $sql)) {
+    //   echo "<p> 'Table MyGuests created successfully' </p>";
+    // }
+    // else {
+    //   echo "Error creating table: " . mysqli_error($conn);
+    // }
+  //   $mysql->exec($query);
+  // } catch (PDOException $e) {
+  //   echo $e->getMessage();
+  // }
+  //}
 
-
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['Add Question']);{
-      $question = $_POST['question'];
-  if (empty($question)) {
-      echo "A question can't be empty!";
+  if(isset($_POST['addname'])){
+    $questionnaireName = $_POST['questionnaireName'];
+  if (empty($questionnaireName)) {
+      echo "The questionnaire must have a name!";
       //refresh page or whatever
   } else {
     //send to db sql here
-    $stmt = $mysql->prepare("INSERT INTO {$experimentID} (UserID, Question) VALUE (:UserID, :Question)");
-
-    $stmt->bindParam(":UserID", $userID);
-    $stmt->bindParam(":Question", $tableQuestion);
-
-    $userID =  $_SESSION["id"];
-    $tableQuestion = $question;
-    $stmt->execute();
+     $questionnaireID = uniqid($prefix="", $more_entropy=false);
+    //$questionnaireID = "42";
+    $userID = "21";
+    $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
+    if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+    }
+    else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    // $insert = mysqli_query($conn,"INSERT INTO questionnaires (questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')");
+    //
+    // if(!$insert)
+    // {
+    //     echo mysqli_error();
+    // }
+    // else
+    // {
+    //     echo "Records added successfully.";
+    // }
+    // $stmt = $mysql->prepare("INSERT INTO questionnaires (UserID, Question) VALUE (:UserID, :Question)");
+    //
+    // $stmt->bindParam(":UserID", $userID);
+    // $stmt->bindParam(":Question", $tableQuestion);
+    //
+    // $userID =  $_SESSION["id"];
+    // $tableQuestion = questionnaireName;
+    // $stmt->execute();
 }
 }
   //if the exit button is clicked then ends experiment choice session and returns to expereiment list
-  if(isset($_POST['quit']) {
-    unset($_SESSION['experimentName'])
-    unset($_SESSION['experimentID'])
+  if(isset($_POST['quit'])) {
+    unset($_SESSION['experimentName']);
+    unset($_SESSION['experimentID']);
     header("location: experimentList.php");
     exit;
 }
@@ -81,16 +114,14 @@
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
-          <form>
+        <?php echo "<h2>".$_SESSION['experimentName']."</h2>" ?>
+          <form method="POST">
             <div class="form-group">
-              <label>You are currently creating a questionnaire for experiment : <?php echo $_SESSION["experimentName"] ?></label>
-              <input type="text" name="question"><br><br>
-              <input type="submit" value="Add Question" name="Add Question">
+              <label>Please enter the name of the questionnaire you are creating : </label>
+              <input type="text" name="questionnaireName"><br><br>
+              <input type="submit" value="addname" name="addname">
           </form>
           <br></br>
-          <form>
-            <input type="submit" value="Save and Quit" name="quit">
-          </form>
         </div>
       </div>
   </body>
