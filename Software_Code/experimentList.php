@@ -27,7 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
-        require_once "Includes/db.inc.php";
+        include "Includes/db.inc.php";
 
         //displays an error if user cannot connect to database
          if (!$conn) {
@@ -43,10 +43,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
            echo "<div class='row'>
              <div class='card-body'>
-               <h5 class='card-text mt-2'>"$row['name']"</h6>
-                 <button name="create_questionnaire" type="submit">Create questionnaire</button>
+               <h5 class='card-text mt-2'>".$row['name']."</h6>
+                 <button name='create_questionnaire' type='submit'>Create questionnaire</button>
              </div>
-           </div>"
+           </div>";
 
         }
 
@@ -55,8 +55,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         if(isset($_POST["create_questionnaire"]))
            {
                    $_SESSION["experimentID"] = $row['ID'];
-                   $_SESSION["experimentName"] = $row['name']
-                   header("location createQuestionnaires.php")
+                   $_SESSION["experimentName"] = $row['name'];
+                   header("location createQuestionnaires.php");
            }
 
         //closes the connection to the database
