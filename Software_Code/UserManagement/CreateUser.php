@@ -43,18 +43,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     if ($password != $confirm_password){
-      echo "passwords entered do not match";
+      echo "Passwords entered do not match";
     }
 
-        // Prepare an insert statement
-        // $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES (:firstname, :surname, :email, :role, :username, :password)";
-        //
-        // if($stmt = $conn->prepare($sql)){
-
-
-
-
-
+    if($password == $confirm_password && $result['username'] != $username){
+      // Prepare an insert statement
+       $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES ($firstname, $surname, $email, $role, $username, $password)";
+       $result = mysqli_query($conn, $sql);
+       echo "Successfully added user.";
+    }
 
 ?>
 
