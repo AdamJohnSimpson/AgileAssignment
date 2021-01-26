@@ -64,7 +64,7 @@
     // else{
     //   echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
     // }
-    $insert = mysqli_query($conn,"INSERT INTO `questionnaires`('questionnaireID', 'questionnaireName', 'userID', 'experimentID') VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')");
+    $insert = mysqli_query($conn,"INSERT INTO questionnaires (questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')");
 
     if(!$insert)
     {
