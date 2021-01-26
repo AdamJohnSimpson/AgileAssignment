@@ -46,7 +46,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-               <form method="POST">
+               <form method=\"POST\">
                <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
                <input type=\"submit\" value=\"Create questionnaire\" name=\"select\">
                </form>
@@ -59,7 +59,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
           header("Location:makeQuestionnaires.php");
-          exit();}
+          exit();
+        }
 
 
 
