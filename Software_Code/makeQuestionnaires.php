@@ -25,8 +25,8 @@
   // } else {
     //table does not exsist, create table
     $sql = "CREATE TABLE $experimentID (
-                QuestionNo INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                UserID INT(4) UNSIGNED,
+                QuestionNo INT(2) PRIMARY KEY,
+                UserID INT(4),
                 Question VARCHAR(255) NOT NULL,
     )";
     if (mysqli_query($conn, $sql)) {
