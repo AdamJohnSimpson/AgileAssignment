@@ -11,8 +11,7 @@ if(isset($_POST["create_questionnaire"]))
      echo "<p> hello there </p>";
      $_SESSION["experimentID"] = $row['experimentid'];
      $_SESSION["experimentName"] = $row['experimentname'];
-     header("location: makeQuestionnaires.php");
-     exit();
+     header("location:makeQuestionnaires.php");
    }
 
 ?>
@@ -53,17 +52,28 @@ if(isset($_POST["create_questionnaire"]))
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 
-//<a href = \"makeQuestionnaires.php\">  </a>
-
+          $experimentid = $row['experimentid'];
+          $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-               <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
-               <form>
-                 <input type='submit' value='create_questionnaire' name='Create Questionnaire'>
-                 </form>
+               <h5 class='card-text mt-2'>".$row['experimentname']."</h6> "
+               // <a href = \"makeQuestionnaires.php?i=".$row['experimentid']."&n".$row['experimentname']."\">
+               "<a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
 
+        }
+
+        if(isset($_GET['i']) && isset($_GET['n']))
+        {
+            func($_GET['i'], $_GET['n']);
+        }
+        function func($experimentid, $experimentname)
+        {
+          array_push($_SESSION['experimentID'], $experimentid);
+          array_push($_SESSION['experimentName'], $experimentname);
+          header(\"makeQuestionnaires.php\"");
+          exit();
         }
 
         //closes the connection to the database
