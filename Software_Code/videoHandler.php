@@ -1,23 +1,18 @@
 <?php
-
-$allowedExts = array("jpg", "jpeg", "gif", "png", "mp3", "mp4", "wma");
+//===========================================================================================================================================
+// Code to upload and store a file adapted from the following stack overflow page:
+// https://stackoverflow.com/questions/18217964/upload-video-files-via-php-and-save-them-in-appropriate-folder-and-have-a-databa/18219669
+//===========================================================================================================================================
+$allowedExts = array("mp4", "mov", "wmv", "avi");
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
-// $extension = $path_parts['extension'];
-
-// echo "File name: " . $_FILES["file"]["name"] . "\n";
-// echo "Extension: " . $extension . "\n";
-// echo "File Type: " . $_FILES["file"]["type"] . "\n";
-// $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
 if ((($_FILES["file"]["type"] == "video/mp4")
-|| ($_FILES["file"]["type"] == "audio/mp3")
-|| ($_FILES["file"]["type"] == "audio/wma")
-|| ($_FILES["file"]["type"] == "image/pjpeg")
-|| ($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg"))
-
-&& ($_FILES["file"]["size"] < 500000)
+|| ($_FILES["file"]["type"] == "video/mov")
+|| ($_FILES["file"]["type"] == "video/wmv")
+|| ($_FILES["file"]["type"] == "video/avi")
+// Limiting video upload to 50 MB
+&& ($_FILES["file"]["size"] < 52428800)
 && in_array($extension, $allowedExts))
   {
   if ($_FILES["file"]["error"] > 0)

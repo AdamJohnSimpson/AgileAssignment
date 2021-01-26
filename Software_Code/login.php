@@ -1,10 +1,10 @@
-//code adapted from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php //
+<!-- code adapted from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php  -->
 <?php
 // Initialize the session
 session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true){
     header("location: welcome.php");
     exit;
 }
@@ -36,11 +36,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT UserID, UserName, Password FROM Users WHERE UserName = :username";
+        $sql = "SELECT UserID, UserName, Password FROM Users WHERE UserName = $username";
 
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+            $stmt->bindParam("$username", $param_username, PDO::PARAM_STR);
 
             // Set parameters
             $param_username = trim($_POST["username"]);
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-
+                            echo "works"
                             // Redirect user to welcome page
                             header("location: welcome.php");
                         } else{
@@ -107,14 +107,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
 
-                // username form to recieve input
+                 <!-- username form to recieve input -->
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
 
-                // password form to recieve input
+                 <!-- password form to recieve input -->
                 <label>Password</label>
                 <input type="password" name="password" class="form-control">
                 <span class="help-block"><?php echo $password_err; ?></span>
