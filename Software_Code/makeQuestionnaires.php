@@ -48,10 +48,8 @@
   // }
   //}
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['addname'])){
-      $questionnaireName = $_POST['questionnaireName'];
-    }
+  if(isset($_POST['addname'])){
+    $questionnaireName = $_POST['questionnaireName'];
   if (empty($questionnaireName)) {
       echo "The questionnaire must have a name!";
       //refresh page or whatever
@@ -105,7 +103,7 @@
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
-          <form>
+          <form method="POST">
             <div class="form-group">
               <label>Please enter the name of the questionnaire you are creating : </label>
               <input type="text" name="questionnaireName"><br><br>
