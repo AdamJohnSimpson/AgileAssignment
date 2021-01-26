@@ -55,7 +55,7 @@
       //refresh page or whatever
   } else {
     //send to db sql here
-     $questionnaireID = uniqid();
+     $questionnaireID = uniqid(string $prefix="", bool $more_entropy=false);
     //$questionnaireID = "42";
     $userID = "21";
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
