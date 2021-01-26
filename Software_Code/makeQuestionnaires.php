@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'?>
 <?php
 //ensures user is logged in
   // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
@@ -13,7 +14,6 @@
   // }
 
   //gets db connection
-  include 'includes/header.php'
   include "Includes/db.inc.php";
   //when clicked the submit button while post the question value
 
