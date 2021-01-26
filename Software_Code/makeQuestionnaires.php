@@ -23,7 +23,6 @@
   // if ($exists !== FALSE) {
   //   //table exsists
   // } else {
-    try{
     //table does not exsist, create table
     $sql = "CREATE TABLE $experimentID (
                 QuestionNo INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -31,10 +30,11 @@
                 Question VARCHAR(255) NOT NULL,
     )";
     if (mysqli_query($conn, $sql)) {
-  echo "<p> 'Table MyGuests created successfully' </p>";
-  } else {
-  echo "Error creating table: " . mysqli_error($conn);
-  }
+      echo "<p> 'Table MyGuests created successfully' </p>";
+    }
+    else {
+      echo "Error creating table: " . mysqli_error($conn);
+    }
   //   $mysql->exec($query);
   // } catch (PDOException $e) {
   //   echo $e->getMessage();
