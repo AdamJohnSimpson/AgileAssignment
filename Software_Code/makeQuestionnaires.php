@@ -56,24 +56,24 @@
   } else {
     //send to db sql here
     $questionnaireID = uniqid(more_entropy);
-    $userID = $_SESSION["id"];
-    // $sql = "INSERT INTO questionnaires (questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
-    // if(mysqli_query($link, $sql)){
-    //   echo "Records added successfully.";
-    // }
-    // else{
-    //   echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-    // }
-    $insert = mysqli_query($conn,"INSERT INTO questionnaires (questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')");
-
-    if(!$insert)
-    {
-        echo mysqli_error();
+    $userID = "21";
+    $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
+    if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
     }
-    else
-    {
-        echo "Records added successfully.";
+    else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    // $insert = mysqli_query($conn,"INSERT INTO questionnaires (questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')");
+    //
+    // if(!$insert)
+    // {
+    //     echo mysqli_error();
+    // }
+    // else
+    // {
+    //     echo "Records added successfully.";
+    // }
     // $stmt = $mysql->prepare("INSERT INTO questionnaires (UserID, Question) VALUE (:UserID, :Question)");
     //
     // $stmt->bindParam(":UserID", $userID);
