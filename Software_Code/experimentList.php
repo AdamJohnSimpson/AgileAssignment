@@ -45,7 +45,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
            echo "<div class='row'>
              <div class='card-body'>
                <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
-                 <button name='create_questionnaire' type='submit' class='btn btn-outline-success'>Create questionnaire</button>
+                 <a href = 'createQuestionnaires.php'> <button name='create_questionnaire' type='submit' class='btn btn-outline-success'>Create questionnaire</button> </a>
              </div>
            </div>";
 
