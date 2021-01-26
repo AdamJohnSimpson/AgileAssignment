@@ -19,10 +19,10 @@
 //  check it table exsits for questionnaie, if not create the mysql_list_table
   $experimentID ="1";
   $experimentName ="Test Experiment One";
-  $exists = mysql_query("SELECT 1 from {$experimentID}");
-  if ($exists !== FALSE) {
-    //table exsists
-  } else {
+  // $exists = mysql_query("SELECT 1 from {$experimentID}");
+  // if ($exists !== FALSE) {
+  //   //table exsists
+  // } else {
     try{
     //table does not exsist, create table
     $query = "CREATE TABLE  $experimentID (
@@ -33,7 +33,7 @@
   } catch (PDOException $e) {
     echo $e->getMessage();
   }
-  }
+  //}
 
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
