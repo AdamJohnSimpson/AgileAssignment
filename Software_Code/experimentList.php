@@ -11,7 +11,7 @@ if(isset($_POST["create_questionnaire"]))
      echo "<p> hello there </p>";
      $_SESSION["experimentID"] = $row['experimentid'];
      $_SESSION["experimentName"] = $row['experimentname'];
-     header("location: makeQuestionnaires.php");
+     header("location: https://agile-assignment-group-4.azurewebsites.net/makeQuestionnaires.php");
      exit();
    }
 
@@ -59,8 +59,8 @@ if(isset($_POST["create_questionnaire"]))
              <div class='card-body'>
                <h5 class='card-text mt-2'>".$row['experimentname']."</h6>
                <form>
-                 <input type='submit' value='create_questionnaire' name='Create Questionnaire'>
-                 </form>
+                 <input type='submit' name='create_questionnaire' value='Create Questionnaire'>
+                </form>
              </div>
            </div>";
 
