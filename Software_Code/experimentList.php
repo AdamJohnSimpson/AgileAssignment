@@ -59,8 +59,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         }
         function func($experimentid, $experimentname)
         {
-          array_push($_SESSION['experimentID'], $experimentid);
-          array_push($_SESSION['experimentName'], $experimentname);
+          $_SESSION['experimentID'] = $experimentid;
+          $_SESSION['experimentName'] = $experimentname;
           header("Location:makeQuestionnaires.php");
           exit();
         }
