@@ -1,9 +1,9 @@
 <?php
 
 $servername_db = 'localhost';
-$username_db = 'teseuser';
-$password_db = 'pass123';
-$name_db = 'teseuser';
+$username_db = 'azure';
+$password_db = '6#vWHD_$';
+$name_db = 'localdb';
 $port = 56570;
 
 // Create connection
