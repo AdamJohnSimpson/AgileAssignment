@@ -16,20 +16,13 @@
       $query = "SELECT experimentname FROM experiments";
       $result = mysqli_query($conn, $query);
 
-      // echo "<table>
-			// 	<tr>
-			// 		<th>Experiments</th>
-			// 	</tr>";
-
       echo "<select id='experiments' name='experiments'>";
 
       while($row = mysqli_fetch_array($result)){
         echo '<option value=' . $row['experimentname'] . '> ' . $row['experimentname'] . ' </option>';
-        // echo "<td>" . $row['experimentname'] . "</td>";
       }
 
       echo "</select>";
-      // echo "</table>";
 
       ?>
 
