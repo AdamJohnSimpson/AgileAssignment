@@ -1,9 +1,9 @@
 <?php
 
 $servername_db = 'localhost';
-$username_db = 'testuser';
-$password_db = 'password123';
-$name_db = 'testdb';
+$username_db = 'teseuser';
+$password_db = 'pass123';
+$name_db = 'teseuser';
 $port = 56570;
 
 // Create connection
