@@ -46,9 +46,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-               <h5 class='card-text mt-2'>".$row['experimentname']."</h6> "
-               // <a href = \"makeQuestionnaires.php?i=".$row['experimentid']."&n".$row['experimentname']."\">
-               "<a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
 
