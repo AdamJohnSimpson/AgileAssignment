@@ -3,10 +3,18 @@
 <html>
 	<title>Manage User</title>
 	<body>
-		<h1> Manage User <?php echo $userID; ?> </h1>
+		<h1>Manage User</h1>
 		
-		<button onclick="location.href='';" type="button">Delete Account</button>
+		<?php
 		
+		if(ISSET($_GET['d']) && $_GET['d'] == 'true'){
+		
+			echo ' <button onclick="location.href=\'../Includes/deleteUser.inc.php?id=' .$userID .'\';" type="button">Confirm Delete?</button> ';			
+		}else{
+			echo ' <button onclick="location.href=\'ManageUser.php?id=' .$userID .'&d=true\';" type="button">Delete Account</button> ';	
+		}
+		?>
+				
 		<div>
 			<?php
 			
