@@ -46,7 +46,7 @@ $experimentID = 1;
         <div class="form-group">
           <?php
           //get information from experiment list page to display the selected experiment
-          $query = "SELECT experimentInformation FROM experiments WHERE experimentid={$experimentID}";
+          $query = "SELECT experimentInformation FROM experiments WHERE experimentid=1";
           $stmt = $mysql->prepare($query);
           $stmt->execute();
           $result = $stmt->fetchAll();
