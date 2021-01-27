@@ -82,7 +82,7 @@
             header("Location:makeQuestionnaires.php");
           }
           else {
-            echo "<p> destination: ".$reason. " </p>"
+            echo "<p> destination: ".$reason. " </p>";
             echo "<p> Adam fucked up this one is for the boys witht the boomer systemas top down ac with the coolin systems the sequel </p>";
           }
           exit();
