@@ -12,15 +12,22 @@
 	$qID = $_GET['qid'];
 	
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
-  $result = mysqli_query($conn, $query);
-  $row = mysqli_fetch_array($result);
-  if($row){
-    $qName = $row['questionnaireName'];
-  }else{
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($result);
+	if($row){
+		$qName = $row['questionnaireName'];
+	}else{
 		//header('Location:../Includes/redirect.inc.php');
 		//exit();
 		echo 'Couldn\' find questionnaire';
-  }
+	}
+	
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		
+	}
+	
+	
+	$responseID = uniqid($prefix="", $more_entropy=false);
 					
 ?>
 
