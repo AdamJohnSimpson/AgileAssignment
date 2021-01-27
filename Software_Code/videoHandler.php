@@ -10,7 +10,7 @@ $extension = end(explode(".", $_FILES["file"]["name"]));
 
 if(isset($_POST['submit'])){
   $test = $_POST['experiments'];
-else {
+} else {
   echo "no worky";
 }
 // $test = $_POST['experiments'];

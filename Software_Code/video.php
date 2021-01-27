@@ -12,7 +12,7 @@
   <body>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
     <div class="jumbotron text-center">
-      <h1 class="text-center">Video Upload Test Page</h1>
+      <h1 class="text-center">Video Upload Test Page 1</h1>
     </div>
 
     <div class="container-fluid" style="padding:0">
