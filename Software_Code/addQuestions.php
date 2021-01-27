@@ -14,7 +14,7 @@
   // }
 
   include "Includes/db.inc.php";
-  
+
   if(isset($_POST['addQ'])){
       $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
@@ -61,6 +61,9 @@
     </head>
 
     <body>
+      <header>
+        <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+      </header>
       <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
         <div class="jumbotron text-center">
           <h1 class="text-center">Add a Question</h1>
@@ -79,5 +82,8 @@
             <br></br>
           </div>
         </div>
+      <footer>
+        <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
+      </footer>
     </body>
   </html>

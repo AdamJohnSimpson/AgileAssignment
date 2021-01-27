@@ -7,8 +7,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
 }
-
-require_once "Includes/db.inc.php";
  ?>
 
 <!DOCTYPE html>
@@ -53,8 +51,11 @@ require_once "Includes/db.inc.php";
       <br></br>
       <form>
         <input type="submit" value="Submit For Approval" name="submit">
+
+
         <!--include php here that sends -->
         <?php
+        require_once "Includes/db.inc.php";
         if(isset($_POST['submit'])){
           $experimentName = $_POST['experimentName'];
           $_SESSION['experimentName'] = $experimentName;
