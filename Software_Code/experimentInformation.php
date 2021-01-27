@@ -1,4 +1,7 @@
 <?php
+// Include database file
+require_once "Includes/db.inc.php";
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
@@ -6,8 +9,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 
 //make sure correct user is logged in for the experiment they are accessing
 
-//get information from experiment list page to display the selected experiment
-
+//get expeirment id
+$experimentID = $_SESSION["experimentID"];
 
 
 ?>
@@ -38,6 +41,17 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
+          <?php
+          //get information from experiment list page to display the selected experiment
+          $query = "SELECT experimentInformation FROM experiment WHERE experimentID={$experimentID}";
+          $stmt = $mysql->prepare($query);
+          $stmt->execute();
+          $result = $stmt->fetchAll();
+
+          // foreach( $result as $row ) {
+          echo <"p">.$row['experimentInformation'] ."</p>";
+          // }
+          ?>
           <label>Information</label><br></br> <!-- get information from expeirment table -->
           <input type="submit" value="Edit Information">
       </form>
