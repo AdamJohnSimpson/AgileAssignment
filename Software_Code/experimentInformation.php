@@ -39,6 +39,7 @@ $experimentName = $_SESSION["experimentName"];
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
+          <h5> Name of experiment: </h5> <br>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
           // Include database file
@@ -56,6 +57,7 @@ $experimentName = $_SESSION["experimentName"];
           }
           // }
           ?>
+          <br>
           <input type="submit" value="Edit Information">
       </form>
     </div>
