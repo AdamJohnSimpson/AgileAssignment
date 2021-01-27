@@ -39,7 +39,7 @@
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }}
-}
+  }
   //if the exit button is clicked then ends experiment choice session and returns to expereiment list
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
