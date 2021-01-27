@@ -37,7 +37,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
         <div class="form-group">
           <label>Enter Name of experiment</label>
           <input type="text" name="Name of Experiment"><br><br>
-          <input type="submit" value="Template button">
+          <input type="submit" value="Submit For Approval">
       </form>
       <br></br>
       <form>
