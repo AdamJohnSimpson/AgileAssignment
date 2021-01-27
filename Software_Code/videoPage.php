@@ -20,8 +20,23 @@
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-      
 
+      <?php
+        // $experiment = $_SESSION['experimentid'];
+        $experiment = 1;
+        $allVideos = scandir("/videos");
+
+        for ($x=0; $x < count($allVideos); $x++) {
+          echo "
+          <br>
+          <video width='320' height='240' controls>
+            <source src='videos/" . $experiment . "/" . $allVideos[$x] . " type='video/mp4'>
+            Your browser does not support the video tag.
+          </video>
+          <br><br>";
+        }
+
+       ?>
     </div>
   </div>
 
