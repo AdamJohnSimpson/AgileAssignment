@@ -73,7 +73,7 @@ require_once "Includes/db.inc.php";
           $_SESSION['experimentID'] = $experimentID;
           $primaryresearcher = "21";
 
-          $sql = "INSERT INTO experiment(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
+          $sql = "INSERT INTO experiments(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
           if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
             header("location: addQuestions.php");
