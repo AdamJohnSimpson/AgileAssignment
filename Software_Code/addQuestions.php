@@ -13,23 +13,29 @@
   //   exit;
   // }
 
+  include "Includes/db.inc.php";
+  
   if(isset($_POST['addQ'])){
-    $questiontext = $_POST['questionText'];
-  if (empty($questiontext)) {
-      echo "The question gotta have text!";
-  }
-  else {
-    //send to db sql here
-    $questionnaireID = $_SESSION['questionnaireID'];
-    $sql = "INSERT INTO questions(questionText, questionnaireID) VALUES ('$questiontext', '$questionnaireID')";
-    if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-      //header("location: addQuestions.php");
+      $questiontext = $_POST['questionText'];
+    if (empty($questiontext)) {
+      echo "The question must have text!";
     }
     else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-    }}
+    //send to db sql here
+      $questionnaireID = $_SESSION['questionnaireID'];
+      $questionID = uniqid($prefix="", $more_entropy=false);
+      // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
+      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID) VALUES ('$questionID', '$questiontext', '$questionnaireID')";
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        //header("location: addQuestions.php");
+      }
+      else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
   }
+
 
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
