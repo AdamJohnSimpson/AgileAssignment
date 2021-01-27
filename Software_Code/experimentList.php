@@ -48,7 +48,8 @@
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r='info''> <button class='btn btn-outline-success' type='button'>Experiment Information</button> </a>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r='quest''> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
         //
@@ -66,15 +67,23 @@
         //   exit();
         // }
 
-        if(isset($_GET['i']) && isset($_GET['n']))
+        if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
         {
-            func($_GET['i'], $_GET['n']);
+            func($_GET['i'], $_GET['n'], $_GET['r']);
         }
-        function func($experimentid, $experimentname)
+        function func($experimentid, $experimentname, $reason)
         {
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
-          header("Location:makeQuestionnaires.php");
+          if ($reason == 'info') {
+            header("Location:experimentInformation.php");
+          }
+          else if ($reason == 'quest') {
+            header("Location:makeQuestionnaires.php");
+          }
+          else {
+            echo "<p> Adam fucked up this one is for the boys witht the boomer systemas top down ac with the coolin systems </p>"
+          }
           exit();
         }
         //closes the connection to the database
