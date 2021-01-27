@@ -67,7 +67,7 @@
     <header>
       <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
     </header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
+    
       <div class="jumbotron text-center">
         <h1 class="text-center">Make a Questionnaire</h1>
       </div>
