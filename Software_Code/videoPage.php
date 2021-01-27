@@ -33,26 +33,18 @@
           unset($allVideos[$key]);
         }
 
-        echo getcwd();
+        // echo getcwd();
 
-        echo "
-        <br>
-        <video src='D:\home\site\wwwroot\Software_Code\\vine.mp4' width='320' height='240' type='video/mp4' controls autoplay>
-          Your browser does not support the video tag.
-        </video>
-        <br><br>";
-
-        // for ($x=0; $x < count($allVideos); $x++) {
-        //   // $path = "videos/" . $experiment . "/" . $allVideos[$x];
-        //   $path = $allVideos[$x];
-        //   echo $path;
-        //     echo "
-        //     <br>
-        //     <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
-        //       Your browser does not support the video tag.
-        //     </video>
-        //     <br><br>";
-        // }
+        for ($x=0; $x < count($allVideos); $x++) {
+          $path = "videos/" . $experiment . "/" . $allVideos[$x];
+          echo $path;
+            echo "
+            <br>
+            <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
+              Your browser does not support the video tag.
+            </video>
+            <br><br>";
+        }
 
        ?>
     </div>
