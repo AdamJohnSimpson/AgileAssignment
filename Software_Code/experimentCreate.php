@@ -7,6 +7,37 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
 }
+
+ require_once "Includes/db.inc.php";
+ if(isset($_POST['submit'])){
+   $experimentName = $_POST['experimentName'];
+   $_SESSION['experimentName'] = $experimentName;
+
+   $experimentInfo = $_POST['experimentInfo'];
+   $_SESSION['experimentInfo'] = $experimentInfo;
+
+ if (empty($experimentName)) {
+     echo "The experiment must have a name!";
+ }
+ if (empty($experimentInfo)) {
+     echo "The experiment must have information!";
+ }
+ else {
+   //send to db sql here
+   $experimentID = uniqid($prefix="", $more_entropy=false);
+   $_SESSION['experimentID'] = $experimentID;
+   $primaryresearcher = "21";
+   echo "Hey I'm in here! this one is for the boys w the boomer systems top down ac with the coolin systems ";
+   $sql = "INSERT INTO experiments(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
+   if ($conn->query($sql) === TRUE) {
+     echo "New record created successfully";
+     header("location: addQuestions.php");
+   }
+   else {
+     echo "Error: " . $sql . "<br>" . $conn->error;
+   }
+ }
+ }
  ?>
 
 <!DOCTYPE html>
@@ -35,57 +66,19 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       <form>
         <div class="form-group">
           <label>Enter Name of Experiment</label>
-          <input type="text" name="experimentName"><br><br>
-          <!--check if the experiment name already exists and display error message to user?-->
-
-
-
-          <!--store input from user in session variable and compare it to result from SQL query to the database-->
+          <input type="text" name="experimentName"><br></br>
+        </div>
       </form>
       <br></br>
       <form>
         <div class="form-group">
           <label>Enter Description of experiment</label>
-          <input type="text" name="experimentInfo"><br><br>
+          <input type="text" name="experimentInfo"><br></br>
+        </div>
       </form>
       <br></br>
-      <form>
+      <form method="POST">
         <input type="submit" value="Submit For Approval" name="submit">
-
-
-        <!--include php here that sends -->
-        <?php
-        require_once "Includes/db.inc.php";
-        if(isset($_POST['submit'])){
-          $experimentName = $_POST['experimentName'];
-          $_SESSION['experimentName'] = $experimentName;
-
-          $experimentInfo = $_POST['experimentInfo'];
-          $_SESSION['experimentInfo'] = $experimentInfo;
-
-        if (empty($experimentName)) {
-            echo "The experiment must have a name!";
-        }
-        if (empty($experimentInfo)) {
-            echo "The experiment must have information!";
-        }
-        else {
-          //send to db sql here
-          $experimentID = uniqid($prefix="", $more_entropy=false);
-          $_SESSION['experimentID'] = $experimentID;
-          $primaryresearcher = "21";
-          echo "Hey I'm in here! this one is for the boys w the boomer systems top down ac with the coolin systems ";
-          $sql = "INSERT INTO experiments(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
-          if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-            header("location: addQuestions.php");
-          }
-          else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-          }
-        }
-        }
-        ?>
       </form>
     </div>
   </div>
