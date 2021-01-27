@@ -34,13 +34,12 @@
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
-
       header("location: addQuestions.php");
     }
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }}
-}
+  }
   //if the exit button is clicked then ends experiment choice session and returns to expereiment list
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
@@ -78,7 +77,6 @@
               <input type="text" name="questionnaireName"><br><br>
               <input type="submit" value="Add questionnaire name" name="addname">
               <input type="submit" value="quit" name="quit">
-
           </form>
           <br></br>
         </div>
