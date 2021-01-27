@@ -1,10 +1,7 @@
 
 <?php
 
-include 'includes/header.php'
-
-// Include database file
-require_once "Includes/db.inc.php";
+include 'Includes/header.php';
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
@@ -14,9 +11,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 //make sure correct user is logged in for the experiment they are accessing
 
 //get expeirment id
-$experimentID = $_SESSION["experimentID"];
-
-
+// $experimentID = $_SESSION["experimentID"];
+$experimentID = 1;
 ?>
 
 
@@ -46,17 +42,23 @@ $experimentID = $_SESSION["experimentID"];
       <form>
         <div class="form-group">
           <?php
+          // Include database file
+          require_once "Includes/db.inc.php";
+
           //get information from experiment list page to display the selected experiment
-          $query = "SELECT experimentInformation FROM experiment WHERE experimentID={$experimentID}";
-          $stmt = $mysql->prepare($query);
-          $stmt->execute();
-          $result = $stmt->fetchAll();
+          $query = "SELECT experimentInformation FROM experiments WHERE experimentid=1";
+          // $stmt = $mysql->prepare($query);
+          // $stmt->execute();
+          // $result = $stmt->fetchAll();
+
+          $result = mysqli_query($conn, $query);
 
           // foreach( $result as $row ) {
-          echo <"p">.$row['experimentInformation'] ."</p>";
+          while($row = mysqli_fetch_array($result)){
+            echo $row['experimentInformation'];
+          }
           // }
           ?>
-          <label>Information</label><br></br> <!-- get information from expeirment table -->
           <input type="submit" value="Edit Information">
       </form>
     </div>

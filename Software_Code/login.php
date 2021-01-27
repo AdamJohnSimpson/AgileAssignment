@@ -50,8 +50,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION["loggedin"] = true;
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $username;
-                // Redirect user to welcome page
-                header("location: welcome.php");
+                $_SESSION["USER_role"] = $row["Role"];
+                // Redirect user to redirection page
+                header('Location:../Includes/redirect.inc.php');
+				exit();
             }else{
                 // Display an error message if password is not valid
                 $password_err = "The password you entered was not valid.";

@@ -70,40 +70,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //if there are not username or password errors
     if(empty($username_err) && empty($password_err)){
 
-		//checks to see if user already exists
+		//checks to see if user already exists in the databse
 		$sql = "SELECT * FROM User WHERE UserName = '$username'";
 		$result = mysqli_query($conn, $sql);
 		if ($result){
 			$row = mysqli_fetch_array($result);
 			if($row && $row['UserName'] === $username){
-				echo "Username already exists";
-        $userNameResult = True;
+				$username_err = "Username already exists";
+				$userNameResult = True;
 			} else {
-        $userNameResult = FALSE;
-      }
+				$userNameResult = FALSE;
+			}
 		}
 	}
     //if both passwords are not the same
     if ($password != $confirm_password){
-      echo "Passwords entered do not match";
+      $password_err = "Passwords entered do not match";
     }
 
-    //if both passwords are the same and username is not used
-
+    //if both passwords are the same and username is not used and role is not empty
     if($password === $confirm_password && $userNameResult == FALSE && $roleEmpty == FALSE) {
       // Prepare an insert statement
        $sql = "INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
-       // $result = mysqli_query($conn, $sql);
-       // if ($result){
-       //    echo "Successfully added user.";
-       // }
+
+       // if query works
        if ($conn->query($sql) === TRUE) {
          echo "New user created successfully.";
 
-         sleep(2);
+         sleep(1);
          header("location: ViewUsers.php");
 
        }
+       //if query doesnt work
        else {
          echo "Error: " . $sql . "<br>" . $conn->error;
        }
@@ -148,49 +146,52 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               <div class="form-group">
                   <label>First Name</label>
                   <input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>">
-                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
+                  <span class="help-block" style="color:red"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
               <!-- form to recieve surname from user -->
               <div class="form-group">
                   <label>Surname</label>
                   <input type="text" name="surname" class="form-control" value="<?php echo $surname; ?>">
-                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
+                  <span class="help-block" style="color:red"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
               <!-- form to recieve email address from user -->
               <div class="form-group">
                   <label>Email Address</label>
                   <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
-                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
+                  <span class="help-block" style="color:red"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
               <!-- form to recieve role from user -->
               <div class="form-group">
                   <label>Role</label>
-                  <input type="text" name="role" class="form-control" value="<?php echo $role; ?>">
-                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
+				  <select name="role" class="form-control" value="<?php echo $role; ?>">
+					<option value="Lab Manager">Lab Manager</option>
+					<option value="Principal Researcher">Principal Researcher</option>
+					<option value="Co-Researcher">Co-Researcher</option>
+				  </select>
               </div>
 
               <!-- form to recieve username from user -->
                 <div class="form-group ">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                    <span class="help-block"><?php if(isset($username_err))echo $username_err; ?></span>
+                    <span class="help-block" style="color:red"><?php if(isset($username_err))echo $username_err; ?></span>
                 </div>
 
                 <!-- form to recieve password from user -->
                 <div class="form-group ">
                     <label>Password</label>
                     <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                    <span class="help-block"><?php if(isset($password_err))echo $password_err; ?></span>
+                    <span class="help-block" style="color:red"><?php if(isset($password_err))echo $password_err; ?></span>
                 </div>
 
                 <!-- form to confirm password from user -->
                 <div class="form-group ">
                     <label>Confirm Password</label>
                     <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                    <span class="help-block"><?php if(isset($password_err))echo $password_err; ?></span>
+                    <span class="help-block" style="color:red"><?php if(isset($password_err))echo $password_err; ?></span>
                 </div>
 
                 <div class="form-group">
