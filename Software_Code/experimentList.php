@@ -48,8 +48,8 @@
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r='info''> <button class='btn btn-outline-success' type='button'>Experiment Information</button> </a>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r='quest''> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=\"info\"'> <button class='btn btn-outline-success' type='button'>Experiment Information</button> </a>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=\"quest\"'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
         //
@@ -75,14 +75,15 @@
         {
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
-          if ($reason == 'info') {
+          if ($reason == "info") {
             header("Location:experimentInformation.php");
           }
-          else if ($reason == 'quest') {
+          else if ($reason == "quest") {
             header("Location:makeQuestionnaires.php");
           }
           else {
-            echo "<p> Adam fucked up this one is for the boys witht the boomer systemas top down ac with the coolin systems </p>";
+            echo "<p> destination: ".$reason. " </p>"
+            echo "<p> Adam fucked up this one is for the boys witht the boomer systemas top down ac with the coolin systems the sequel </p>";
           }
           exit();
         }
