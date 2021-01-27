@@ -56,13 +56,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //if both passwords are the same and username is not used
     if($password == $confirm_password && $result['username'] != $username){
       // Prepare an insert statement
-       $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES ('$firstname',' $surname', '$email', '$role',' $username', '$password')";
-       $result = mysqli_query($conn, $sql);
-       if ($result){
-          echo "Successfully added user.";
+       $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname',' $surname', '$email', '$role',' $username', '$password')";
+       // $result = mysqli_query($conn, $sql);
+       // if ($result){
+       //    echo "Successfully added user.";
+       // }
+       if ($conn->query($sql) === TRUE) {
+         echo "New user created successfully.";
+       }
+       else {
+         echo "Error: " . $sql . "<br>" . $conn->error;
        }
 
-       
+
   }
 
 ?>
