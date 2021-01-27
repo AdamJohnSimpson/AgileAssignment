@@ -1,4 +1,7 @@
 <?php
+// Include database file
+require_once "Includes/db.inc.php";
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
@@ -7,6 +10,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 //make sure correct user is logged in for the experiment they are accessing
 
 //get information from experiment list page to display the selected experiment
+
+$query = "SELECT * FROM experiment";
+$stmt = $mysql->prepare($query);
+$stmt->execute();
+$result = $stmt->fetchAll();
 
 
 
