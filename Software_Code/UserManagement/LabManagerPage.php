@@ -22,7 +22,7 @@
 
 <body>
   <header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <img class="img-fluid" src="../University-of-Dundee-logo.png" width="300px" style="padding:20px">
   </header>
 
   <div class="jumbotron text-center">
@@ -36,7 +36,7 @@
   </div>
 
   <footer>
-        <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
+        <img class="img-fluid mx-auto d-block" src="../University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
 </body>
 
