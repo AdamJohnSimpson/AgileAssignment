@@ -8,14 +8,19 @@ include "Includes/db.inc.php";
 //researcher requires to send link of the questionnaire page to someone
 //get the qestinoaire ID
 
-if(isset($_POST['addParticipant'])){
-  $questiontext = $_POST['participantsEmail'];
-if (empty($questiontext)) {
-    echo "You must enter a participants email.";
-}
-}
+if(isset($_POST['sendQuestionnaire'])){
+  $participantsEmail = $_POST['participantsEmail'];
+  if (empty($questiontext)) {
+      echo "You must enter a participants email.";
+    }
+    else{
+         echo "<p> Participants email: ".$participantsEmail."</p>";
+
+    }
+  }
 
 if(isset($_POST['quit'])) {
+  header("location: experimentList.php");
   exit();
 }
 
@@ -38,16 +43,18 @@ if(isset($_POST['quit'])) {
    <body>
      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
        <div class="jumbotron text-center">
-         <h1 class="text-center">Add a Participants email</h1>
+         <h1 class="text-center">Send Questionnaires</h1>
        </div>
      <div class="container-fluid" style="padding:0">
        <div class="jumbotron" style="margin-bottom:1px;">
+         <h2 class="text-center">You are sending the following questionnaire:
+         <?php echo $_SESSION['questionnaireID']; ?></h2>
 
            <form method="POST">
              <div class="form-group">
                <label>Add an email of the person you would like to recieve this questionnaire. </label>
                <input type="text" name="participantsEmail"><br><br>
-               <input type="submit" value="Adding participants email" name="addParticipant">
+               <input type="submit" value="Send Questionnaire" name="sendQ">
                <input type="submit" value="quit" name="quit">
            </form>
            <br></br>
