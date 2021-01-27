@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 include 'Includes/header.php';
 
@@ -23,6 +23,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
+<!-- -->
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
@@ -35,13 +36,21 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
-          <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</label>
-          <input type="text" name="question"><br><br>
-          <input type="submit" value="Template button">
+          <label>Enter Name of Experiment</label>
+          <input type="text" name="Name of Experiment"><br><br>
+          <!--check if the experiment name already exists and display error message to user?-->
+          <!--store input from user in session variable and compare it to result from SQL query to the database-->
       </form>
       <br></br>
       <form>
-        <input type="submit" value="Template button">
+        <div class="form-group">
+          <label>Enter Description of experiment</label>
+          <input type="text" name="Description of Experiment"><br><br>
+      </form>
+      <br></br>
+      <form>
+        <input type="submit" value="Submit For Approval">
+        <!--include php here that sends -->
       </form>
     </div>
   </div>
