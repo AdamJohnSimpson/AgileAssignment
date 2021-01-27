@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   //        echo "<p> Participants email: ".$participantsEmail."</p>";
          //add code that sends the link to the persons email
     }
-  }
+  
 
 if(isset($_POST['quit'])) {
   header("location: experimentList.php");
