@@ -36,13 +36,21 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
-          <label>Enter Name of experiment</label>
+          <label>Enter Name of Experiment</label>
           <input type="text" name="Name of Experiment"><br><br>
           <!--check if the experiment name already exists and display error message to user?-->
+          <!--store input from user in session variable and compare it to result from SQL query to the database-->
+      </form>
+      <br></br>
+      <form>
+        <div class="form-group">
+          <label>Enter Description of experiment</label>
+          <input type="text" name="Description of Experiment"><br><br>
       </form>
       <br></br>
       <form>
         <input type="submit" value="Submit For Approval">
+        <!-- -->
       </form>
     </div>
   </div>
