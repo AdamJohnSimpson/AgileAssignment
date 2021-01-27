@@ -1,5 +1,5 @@
 <<?php
-
+include "Includes/header.php";
 include "Includes/db.inc.php";
 
 
@@ -10,12 +10,12 @@ include "Includes/db.inc.php";
 
 if(isset($_POST['sendQuestionnaire'])){
   $participantsEmail = $_POST['participantsEmail'];
-  if (empty($questiontext)) {
+  if (empty($participantsEmail)) {
       echo "You must enter a participants email.";
     }
     else{
          echo "<p> Participants email: ".$participantsEmail."</p>";
-
+         //add code that sends the link to the persons email
     }
   }
 
