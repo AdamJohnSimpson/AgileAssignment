@@ -44,7 +44,7 @@
         // </video>
         // <br><br>";
 
-        echo '<img src="/videos/1/dogMeme.jpg" alt="Dog Meme Here">';
+        echo '<video src="/videos/1/vine.mp4" />';
 
         // for ($x=0; $x < count($allVideos); $x++) {
         //   // $path = "videos/" . $experiment . "/" . $allVideos[$x];
