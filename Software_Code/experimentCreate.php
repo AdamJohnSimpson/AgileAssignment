@@ -65,10 +65,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 
         if (empty($experimentName)) {
             echo "The experiment must have a name!";
+        }
         if (empty($experimentInfo)) {
             echo "The experiment must have information!";
-
-        } else {
+        }
+        else {
           //send to db sql here
           $experimentID = uniqid($prefix="", $more_entropy=false);
           $_SESSION['experimentID'] = $experimentID;
@@ -81,7 +82,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           }
           else {
             echo "Error: " . $sql . "<br>" . $conn->error;
-          }}
+          }
+        }
         }
         ?>
       </form>
