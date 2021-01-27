@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //if there are not username or password errors
     if(empty($username_err) && empty($password_err)){
 
-		//checks to see if user already exists
+		//checks to see if user already exists in the databse
 		$sql = "SELECT * FROM User WHERE UserName = '$username'";
 		$result = mysqli_query($conn, $sql);
 		if ($result){
@@ -88,22 +88,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo "Passwords entered do not match";
     }
 
-    //if both passwords are the same and username is not used
-
+    //if both passwords are the same and username is not used and role is not empty
     if($password === $confirm_password && $userNameResult == FALSE && $roleEmpty == FALSE) {
       // Prepare an insert statement
        $sql = "INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
-       // $result = mysqli_query($conn, $sql);
-       // if ($result){
-       //    echo "Successfully added user.";
-       // }
+
+       // if query works
        if ($conn->query($sql) === TRUE) {
          echo "New user created successfully.";
 
-         sleep(2);
+         sleep(1);
          header("location: ViewUsers.php");
 
        }
+       //if query doesnt work
        else {
          echo "Error: " . $sql . "<br>" . $conn->error;
        }
