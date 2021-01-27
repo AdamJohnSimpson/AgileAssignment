@@ -2,23 +2,23 @@
 include "Includes/header.php";
 include "Includes/db.inc.php";
 
-$subject = 'Questionnaire';
-$message = 'test: www.google.com';
-$headers = 'From: https://agile-assignment-group-4.azurewebsites.net/' . phpversion();
+$subject = "Questionnaire";
+$message = "test: www.google.com";
+$headers = "From: https://agile-assignment-group-4.azurewebsites.net/" . phpversion();
 
 
 //researcher requires to send link of the questionnaire page to someone
 //get the qestinoaire ID
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-if(isset($_POST['sendQuestionnaire'])){
-  $participantsEmail = trim($_POST['participantsEmail']);
+// if(isset($_POST['sendQuestionnaire'])){
 
-  if(empty(trim($_POST["sendQuestionnaire"]))){
+
+  if(empty(trim($_POST["participantsEmail"]))){
       echo "You must enter a participants email.";
   } else{
-      $firstname = trim($_POST["firstname"]);
-      mail($participantsEmail, $subject, $message, $headers);
+      $participantsEmail = trim($_POST['participantsEmail']);
+      mail($participantsEmail, $subject, $message);
   }
 
 
@@ -30,7 +30,7 @@ if(isset($_POST['sendQuestionnaire'])){
   //        echo "<p> Participants email: ".$participantsEmail."</p>";
          //add code that sends the link to the persons email
     }
-  }
+  
 
 if(isset($_POST['quit'])) {
   header("location: experimentList.php");

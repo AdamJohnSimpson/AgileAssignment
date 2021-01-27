@@ -73,19 +73,19 @@ n/a
 
 ### Summary of Conversation:
 Yesterday's Tasks
-Adam Sh - video upload works, just needs to be linked to a user 
-Adam Si - experiment list and make questionnaire page, database linked/set up, made a header file containing session variables that all pages will need
-Beth - experiment list and make questionnaire page, database linked/set up
-Craig  - login page, login set up, managing users finished, add a user done just some bugs
-Euan - login page, login set up, managing users finished, add a user done just some bugs
-Holly - made a template for all webpages
-Scott - experiment list, video upload
+- Adam Sh: video upload works, just needs to be linked to a user 
+- Adam Si: experiment list and make questionnaire page, database linked/set up, made a header file containing session variables that all pages will need
+- Beth: experiment list and make questionnaire page, database linked/set up
+- Craig: login page, login set up, managing users finished, add a user done just some bugs
+- Euan: login page, login set up, managing users finished, add a user done just some bugs
+- Holly: made a template for all webpages
+- Scott: experiment list, video upload
 
 Today's Tasks
-Adam Sh - working on linking users to the videos they upload
-Adam Si/Beth - pair programming, working on the ability to add questions to a questionnaire
-Craig and Euan - pair programming, wokring on being able to add user accounts and have a lab manager who can access all accounts
-Holly and Scott - pair programming, started information about experiments page and the create an experiment page
+- Adam Sh: working on linking users to the videos they upload
+- Adam Si/Beth: pair programming, working on the ability to add questions to a questionnaire
+- Craig and Euan: pair programming, wokring on being able to add user accounts and have a lab manager who can access all accounts
+- Holly and Scott: pair programming, started information about experiments page and the create an experiment page
 
 Issues
 - We had a problem with correctly hosting the website and database to azure and making sure everyone on the team has access to the database part
