@@ -13,10 +13,12 @@ if(isset($_POST['addParticipant'])){
 if (empty($questiontext)) {
     echo "You must enter a participants email.";
 }
+}
 
 if(isset($_POST['quit'])) {
   exit();
 }
+
 
 
  ?>
