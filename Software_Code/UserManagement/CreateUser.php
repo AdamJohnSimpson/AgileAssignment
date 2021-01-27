@@ -12,6 +12,7 @@ $username = "";
 $password = "";
 $confirm_password = "";
 $userNameResult = TRUE;
+$roleEmpty = TRUE;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -42,6 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $fill_err = "Please fill this required field.";
     } else{
         $role = trim($_POST["role"]);
+        $roleEmpty = FALSE;
     }
 
     // Check if username is empty
@@ -87,7 +89,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     //if both passwords are the same and username is not used
-    if($password === $confirm_password && $userNameResult == FALSE) {
+
+    if($password === $confirm_password && $userNameResult == FALSE && $roleEmpty == FALSE) {
       // Prepare an insert statement
        $sql = "INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
        // $result = mysqli_query($conn, $sql);
@@ -96,6 +99,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        // }
        if ($conn->query($sql) === TRUE) {
          echo "New user created successfully.";
+
+         sleep(2);
+         header("location: ViewUsers.php");
+
        }
        else {
          echo "Error: " . $sql . "<br>" . $conn->error;
