@@ -25,17 +25,23 @@
         // $experiment = $_SESSION['experimentid'];
         $experiment = "1";
         $allVideos = scandir("videos/" . $experiment . "/");
+
+        if (($key = array_search('.', $allVideos)) !== false) {
+          unset($array[$key]);
+        }
+        if (($key = array_search('..', $allVideos)) !== false) {
+          unset($array[$key]);
+        }
+
         for ($x=0; $x < count($allVideos); $x++) {
           $path = "videos/" . $experiment . "/" . $allVideos[$x];
           echo $path;
-          if ($allVideos[$x] != "." || $allVideos[$x] != "..") {
             echo "
             <br>
             <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
               Your browser does not support the video tag.
             </video>
             <br><br>";
-          }
         }
 
        ?>
