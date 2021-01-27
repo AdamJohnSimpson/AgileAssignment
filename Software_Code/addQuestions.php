@@ -12,6 +12,25 @@
   //   header("location: experimentList.php");
   //   exit;
   // }
+
+  if(isset($_POST['addQ'])){
+    $questiontext = $_POST['questionText'];
+  if (empty($questionnaireName)) {
+      echo "The question must have text!";
+  }
+  else {
+    //send to db sql here
+    $questionnaireID = $_SESSION['questionnaireID'];
+    $sql = "INSERT INTO questions(questionText, questionnaireID) VALUES ('$questiontext', ''$questionnaireID')";
+    if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+      //header("location: addQuestions.php");
+    }
+    else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }}
+  }
+
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
     unset($_SESSION['experimentID']);
