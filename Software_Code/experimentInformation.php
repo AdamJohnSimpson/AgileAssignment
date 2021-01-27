@@ -49,7 +49,7 @@ $experimentID = $_SESSION["experimentID"];
           $result = $stmt->fetchAll();
 
           // foreach( $result as $row ) {
-          echo $row['experimentInformation'] ."<br>";
+          echo <"p">.$row['experimentInformation'] ."</p>";
           // }
           ?>
           <label>Information</label><br></br> <!-- get information from expeirment table -->
