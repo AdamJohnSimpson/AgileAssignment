@@ -2,11 +2,13 @@
 
 include 'Includes/header.php';
 
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
 }
 
+require_once "Includes/db.inc.php";
  ?>
 
 <!DOCTYPE html>
@@ -46,7 +48,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       <form>
         <div class="form-group">
           <label>Enter Description of experiment</label>
-          <input type="text" name="Description of Experiment"><br><br>
+          <input type="text" name="experimentInfo"><br><br>
       </form>
       <br></br>
       <form>
@@ -71,7 +73,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           $_SESSION['experimentID'] = $experimentID;
           $primaryresearcher = "21";
 
-          $sql = "INSERT INTO experiment(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentid', '$experimentname', '$primaryresearcher', '$experimentInformation')";
+          $sql = "INSERT INTO experiment(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
           if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
             header("location: addQuestions.php");
