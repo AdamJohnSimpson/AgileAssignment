@@ -63,21 +63,17 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-      <form>
+    <form method="POST">
         <div class="form-group">
           <label>Enter Name of Experiment</label>
           <input type="text" name="experimentName"><br></br>
         </div>
-      </form>
       <br></br>
-      <form>
         <div class="form-group">
           <label>Enter Description of experiment</label>
           <input type="text" name="experimentInfo"><br></br>
         </div>
-      </form>
       <br></br>
-      <form method="POST">
         <input type="submit" value="Submit For Approval" name="submit">
       </form>
     </div>
