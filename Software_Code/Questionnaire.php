@@ -11,17 +11,16 @@
 	
 	$qID = $_GET['qid'];
 	
-	echo $qID;
-	
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
-	$result = mysqli_query($conn, $query);
-	if($result){
-		$qName = $result['questionnaireName'];
-	}else{
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_array($result);
+  if($row){
+    $qName = $row['questionnaireName'];
+  }else{
 		//header('Location:../Includes/redirect.inc.php');
 		//exit();
 		echo 'Couldn\' find questionnaire';
-	}
+  }
 					
 ?>
 
