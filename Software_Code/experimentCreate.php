@@ -30,7 +30,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
    $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
    $checkResult = mysqli_query($conn, $testsql);
 
-   if(mysql_num_rows($checkResult) == 0) { //check if the name of experiment already exists
+   if(mysqli_num_rows($checkResult) == 0) { //check if the name of experiment already exists
      //the experiment name doesn't already exist
      $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
      if ($conn->query($sql) === TRUE) {
@@ -47,12 +47,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
      }
 } else {
     // the experiment name already exists
-    echo "That experiment already exists"
+    echo "That experiment already exists";
 }
 }
-
-
- }
  }
  ?>
 
