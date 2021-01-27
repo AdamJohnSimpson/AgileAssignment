@@ -4,7 +4,7 @@
 // https://forums.phpfreaks.com/topic/282415-need-clarification-on-why-no-error-message/
 //===========================================================================================================================================
 
-$experimentid = $_POST['experimentid'];
+$experimentid = $_POST['experiment'];
 echo "<br><br>experiment id: " . $experimentid;
 
 // define allowed file types in an array

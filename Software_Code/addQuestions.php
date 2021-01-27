@@ -16,12 +16,13 @@
   if(isset($_POST['addQ'])){
     $questiontext = $_POST['questionText'];
   if (empty($questiontext)) {
-      echo "The question gotta have text!";
+      echo "The question must have text!";
   }
   else {
     //send to db sql here
     $questionnaireID = $_SESSION['questionnaireID'];
-    $sql = "INSERT INTO questions(questionText, questionnaireID) VALUES ('$questiontext', '$questionnaireID')";
+    $questionID = uniqid($prefix="", $more_entropy=false);
+    $sql = "INSERT INTO questions(questionID, questionText, questionnaireID) VALUES ('$questionID', '$questiontext', '$questionnaireID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
       //header("location: addQuestions.php");

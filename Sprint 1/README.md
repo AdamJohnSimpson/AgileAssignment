@@ -22,6 +22,7 @@ Holly, Scott, Adam Simpson and Beth - working on creating the questionnaires
 Adam Shepherd - working on setting up the database
 Craig and Euan - working on setting up the abiltiy to add and create accounts
 
+---
 
 ## Day [2] - Scrum Meeting summary
 The Scrum Master for this meeting was Holly Groves
@@ -55,6 +56,44 @@ Issues from Yesterday
  - We orginally intended to use github pages to host our website, however that does not support PHP so we switched to Microsfot Azure
  - We struggled slighlty to set up Microsoft Azure however it is all set up correctly now and our website is currently being hosted at https://agile-assignment-group-4.azurewebsites.net/ 
  - Adam Sh had a slight issue with the PHP for uploading videos, we initally thought it was to do with the file type however the file size in the code was not set large enough      to be able to store videos, this has been corrected now
+ 
+ ---
+ 
+ ## Day [3] - Scrum Meeting summary
+The Scrum Master for this meeting was Holly Groves
+
+### Members Present:
+Holly, Scott, Adam Shepherd, Adam Simpson, Beth, Craig and Euan
+
+### Members Not Present:
+n/a
+
+### Apologies:
+n/a
+
+### Summary of Conversation:
+Yesterday's Tasks
+Adam Sh - video upload works, just needs to be linked to a user 
+Adam Si - experiment list and make questionnaire page, database linked/set up, made a header file containing session variables that all pages will need
+Beth - experiment list and make questionnaire page, database linked/set up
+Craig  - login page, login set up, managing users finished, add a user done just some bugs
+Euan - login page, login set up, managing users finished, add a user done just some bugs
+Holly - made a template for all webpages
+Scott - experiment list, video upload
+
+Today's Tasks
+Adam Sh - working on linking users to the videos they upload
+Adam Si/Beth - pair programming, working on the ability to add questions to a questionnaire
+Craig and Euan - pair programming, wokring on being able to add user accounts and have a lab manager who can access all accounts
+Holly and Scott - pair programming, started information about experiments page and the create an experiment page
+
+Issues
+- We had a problem with correctly hosting the website and database to azure and making sure everyone on the team has access to the database part
+
+
+---
+ 
+ 
 
 ## Day [X] - Scrum Meeting summary
 The Scrum Master for this meeting was **Mike Crabb**
