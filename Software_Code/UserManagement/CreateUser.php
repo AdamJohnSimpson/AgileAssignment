@@ -166,7 +166,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               <!-- form to recieve role from user -->
               <div class="form-group">
                   <label>Role</label>
-                  <input type="text" name="role" class="form-control" value="<?php echo $role; ?>">
+				  <select name="role" class="form-control" value="<?php echo $role; ?>">
+					<option value="Lab Manager">Lab Manager</option>
+					<option value="Principal Researcher">Principal Researcher</option>
+					<option value="Co-Researcher">Co-Researcher</option>
+				  </select>
                   <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
