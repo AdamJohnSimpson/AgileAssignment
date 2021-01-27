@@ -4,19 +4,21 @@
 	session_start();
 
 	if(!ISSET($_GET['qid'])){
-		header('Location:../Includes/redirect.inc.php');
-		exit();
+		//header('Location:../Includes/redirect.inc.php');
+		//exit();
+		echo 'Couldn\' retrieve ID';
 	}
 	
 	$qID = $_GET['qid'];
 	
-	$query = "SELECT questionnaireName FROM questionnaires WHERE questionnaireID = $qID";
+	$query = "SELECT questionnaireName FROM questionnaires WHERE questionnaireID = '$qID'";
 	$result = mysqli_query($conn, $query);
 	if($result){
 		$qName = $result['questionnaireName'];
 	}else{
-		header('Location:../Includes/redirect.inc.php');
-		exit();
+		//header('Location:../Includes/redirect.inc.php');
+		//exit();
+		echo 'Couldn\' find questionnaire';
 	}
 					
 ?>
