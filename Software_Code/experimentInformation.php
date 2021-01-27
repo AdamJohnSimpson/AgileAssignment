@@ -51,7 +51,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           $result = $stmt->fetchAll();
 
           // foreach( $result as $row ) {
-          echo <"p">.$row['experimentInformation'] ."</p>";
+          while($row = mysqli_fetch_array($result)){
+            echo "<p>" . $row['experimentInformation'] ."</p>";
+          }
           // }
           ?>
           <label>Information</label><br></br> <!-- get information from expeirment table -->
