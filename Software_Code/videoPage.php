@@ -24,7 +24,7 @@
       <?php
         // $experiment = $_SESSION['experimentid'];
         $experiment = 1;
-        $allVideos = scandir("/videos");
+        $allVideos = scandir("videos/");
 
         for ($x=0; $x < count($allVideos); $x++) {
           echo $allVideos[$x];
