@@ -24,11 +24,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
  }
  else {
    //send to db sql here
-   $experimentID = uniqid($prefix="", $more_entropy=false);
    $_SESSION['experimentID'] = $experimentID;
    $primaryresearcher = "21";
    echo "Hey I'm in here! this one is for the boys w the boomer systems top down ac with the coolin systems ";
-   $sql = "INSERT INTO experiments(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
+   $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
    if ($conn->query($sql) === TRUE) {
      echo "New record created successfully";
      header("location: addQuestions.php");
