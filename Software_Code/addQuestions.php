@@ -13,6 +13,8 @@
   //   exit;
   // }
 
+  include "Includes/db.inc.php";
+  
   if(isset($_POST['addQ'])){
       $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
@@ -24,13 +26,13 @@
       $questionID = uniqid($prefix="", $more_entropy=false);
       // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID) VALUES ('$questionID', '$questiontext', '$questionnaireID')";
-      // if ($conn->query($sql) === TRUE) {
-      //   echo "New record created successfully";
-      //   //header("location: addQuestions.php");
-      // }
-      // else {
-      //   echo "Error: " . $sql . "<br>" . $conn->error;
-      // }
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        //header("location: addQuestions.php");
+      }
+      else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
     }
   }
 
