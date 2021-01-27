@@ -33,9 +33,11 @@
           unset($allVideos[$key]);
         }
 
+        echo getcwd();
+
         echo "
         <br>
-        <video src='vine.mp4' width='320' height='240' type='video/mp4' controls autoplay>
+        <video src='D:\home\site\wwwroot\Software_Code\\vine.mp4' width='320' height='240' type='video/mp4' controls autoplay>
           Your browser does not support the video tag.
         </video>
         <br><br>";
