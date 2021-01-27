@@ -27,6 +27,7 @@
         $allVideos = scandir("/videos");
 
         for ($x=0; $x < count($allVideos); $x++) {
+          echo $allVideos[$x];
           echo "
           <br>
           <video width='320' height='240' controls>
