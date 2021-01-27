@@ -16,6 +16,34 @@ $userNameResult = TRUE;
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    //checks if firsname is empty
+    if(empty(trim($_POST["firstname"]))){
+        $fill_err = "Please fill this required field.";
+    } else{
+        $firstname = trim($_POST["firstname"]);
+    }
+
+    //checks if surname is empty
+    if(empty(trim($_POST["surname"]))){
+        $fill_err = "Please fill this required field.";
+    } else{
+        $surname = trim($_POST["surname"]);
+    }
+
+    //checks if email is empty
+    if(empty(trim($_POST["email"]))){
+        $fill_err = "Please fill this required field.";
+    } else{
+        $email = trim($_POST["email"]);
+    }
+
+    //checks if role is empty
+    if(empty(trim($_POST["role"]))){
+        $fill_err = "Please fill this required field.";
+    } else{
+        $role = trim($_POST["role"]);
+    }
+
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
@@ -37,6 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $confirm_password = trim($_POST["confirm_password"]);
     }
 
+    //if there are not username or password errors
     if(empty($username_err) && empty($password_err)){
 
 		//checks to see if user already exists
@@ -99,24 +128,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               <div class="form-group">
                   <label>First Name</label>
                   <input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>">
+                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
               <!-- form to recieve surname from user -->
               <div class="form-group">
                   <label>Surname</label>
                   <input type="text" name="surname" class="form-control" value="<?php echo $surname; ?>">
+                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
               <!-- form to recieve email address from user -->
               <div class="form-group">
                   <label>Email Address</label>
                   <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
+                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
               <!-- form to recieve role from user -->
               <div class="form-group">
                   <label>Role</label>
                   <input type="text" name="role" class="form-control" value="<?php echo $role; ?>">
+                  <span class="help-block"><?php if(isset($fill_err))echo $fill_err; ?></span>
               </div>
 
               <!-- form to recieve username from user -->
