@@ -4,8 +4,8 @@
 // https://forums.phpfreaks.com/topic/282415-need-clarification-on-why-no-error-message/
 //===========================================================================================================================================
 
-$test = $_POST['experimentid'];
-echo "<br><br>experiment id: " . $test;
+$experimentid = $_POST['experimentid'];
+echo "<br><br>experiment id: " . $experimentid;
 
 // define allowed file types in an array
 $allowedTypes = array(
@@ -46,7 +46,7 @@ if(isset($_POST['submit']) && is_array($_FILES))
         }
         else
         {
-            move_uploaded_file(($_FILES["file"]["tmp_name"]),"videos/".$_FILES['file']['name']);
+            move_uploaded_file(($_FILES["file"]["tmp_name"]),"videos/". $experimentid . "/" . $_FILES['file']['name']);
             echo "<br><br>Your upload was successful";
         }
     }
