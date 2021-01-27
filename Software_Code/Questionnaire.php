@@ -47,7 +47,7 @@
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <?php
-          	$query = "SELECT * FROM questions WHERE questionnaireID = $qID";
+          	$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
             $result = mysqli_query($conn, $query);
             $count = 0;
             while($row = mysqli_fetch_array($result)){
