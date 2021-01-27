@@ -126,11 +126,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <body>
 
       <header>
-        <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+        <img class="img-fluid" src="../University-of-Dundee-logo.png" width="300px" style="padding:20px">
       </header>
 
       <div class="jumbotron text-center">
-        <h1 class="text-center">Template Heading</h1>
+        <h1 class="text-center">User Management</h1>
       </div>
 
       <div class="container-fluid" style="padding:0">
@@ -195,7 +195,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
 
                 <footer>
-                      <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
+                      <img class="img-fluid mx-auto d-block" src="../University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
                 </footer>
 
       </body>
