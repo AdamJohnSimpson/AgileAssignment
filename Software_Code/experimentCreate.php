@@ -7,8 +7,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
-//
-
  ?>
 
 <!DOCTYPE html>
@@ -37,8 +35,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       <form>
         <div class="form-group">
           <label>Enter Name of Experiment</label>
-          <input type="text" name="Name of Experiment"><br><br>
+          <input type="text" name="experimentName"><br><br>
           <!--check if the experiment name already exists and display error message to user?-->
+
+
+
           <!--store input from user in session variable and compare it to result from SQL query to the database-->
       </form>
       <br></br>
@@ -49,8 +50,37 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       </form>
       <br></br>
       <form>
-        <input type="submit" value="Submit For Approval">
+        <input type="submit" value="Submit For Approval" name="submit">
         <!--include php here that sends -->
+        <?php
+        if(isset($_POST['submit'])){
+          $experimentName = $_POST['experimentName'];
+          $_SESSION['experimentName'] = $experimentName;
+
+          $experimentInfo = $_POST['experimentInfo'];
+          $_SESSION['experimentInfo'] = $experimentInfo;
+
+        if (empty($experimentName)) {
+            echo "The experiment must have a name!";
+        if (empty($experimentInfo)) {
+            echo "The experiment must have information!";
+
+        } else {
+          //send to db sql here
+          $experimentID = uniqid($prefix="", $more_entropy=false);
+          $_SESSION['experimentID'] = $experimentID;
+          $primaryresearcher = "21";
+
+          $sql = "INSERT INTO experiment(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentid', '$experimentname', '$primaryresearcher', '$experimentInformation')";
+          if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+            header("location: addQuestions.php");
+          }
+          else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+          }}
+        }
+        ?>
       </form>
     </div>
   </div>
