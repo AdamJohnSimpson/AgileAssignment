@@ -33,7 +33,7 @@
           unset($allVideos[$key]);
         }
 
-        echo getcwd();
+        // echo getcwd();
 
         for ($x=0; $x < count($allVideos); $x++) {
           $path = "videos/" . $experiment . "/" . $allVideos[$x];
