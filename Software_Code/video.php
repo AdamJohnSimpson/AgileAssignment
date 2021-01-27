@@ -19,8 +19,9 @@
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <form action="videoHandler.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value="131072000" />
         <label for="file"><span>Filename:</span></label>
-        <input type="file" name="file" id="file" />
+        <input type="file" name="file"/>
 
           <?php
           include "Includes/db.inc.php";
