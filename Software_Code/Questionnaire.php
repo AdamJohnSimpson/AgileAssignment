@@ -24,10 +24,23 @@
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		
-	}
+		$responseID = uniqid($prefix="", $more_entropy=false);
+		
+		$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
+        $result = mysqli_query($conn, $query);
+        $count = 0;
+        while($row = mysqli_fetch_array($result)){
+			    if(ISSET($_POST[$count]) && !empty($_POST[$count])){
+            $questionID = $row['questionID'];
+            $newQuery = "INSERT INTO results (response, questionID, responseID) VALUES ('$_POST[$count]', '$questionID', '$responseID')";
+            $conn->query($newQuery);
+			    }
+          $count++;
+        }
+	  }
 	
 	
-	$responseID = uniqid($prefix="", $more_entropy=false);
+	
 					
 ?>
 
@@ -53,7 +66,7 @@
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-      <form>
+      <form action="Questionnaire.php?qid=<?php echo $qID; ?>" method=POST>
         <?php
           	$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
             $result = mysqli_query($conn, $query);
