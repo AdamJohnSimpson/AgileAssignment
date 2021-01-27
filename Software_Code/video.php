@@ -29,7 +29,7 @@
           $result = mysqli_query($conn, $query);
           echo "</br>";
           echo "<label for='experiments'> Which experiment is this video part of?    </label>";
-          echo "<select id='experiments' name='experiments'>";
+          echo "<select id='experiment' name='experiment'>";
           while($row = mysqli_fetch_array($result)){
             echo "<option value='" . $row['experimentname'] . "'> " . $row['experimentname'] . " (ID: " . $row['experimentid'] . ")</option>";
           }
