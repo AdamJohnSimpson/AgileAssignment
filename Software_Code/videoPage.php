@@ -27,11 +27,13 @@
         $allVideos = scandir("videos/" . $experiment . "/");
 
         for ($x=0; $x < count($allVideos); $x++) {
-          echo $allVideos[$x];
+          // echo $allVideos[$x];
+          $path = "videos/" . $experiment . "/" . $allVideos[$x];
+          echo $path;
           echo "
           <br>
           <video width='320' height='240' controls>
-            <source src='videos/" . $experiment . "/" . $allVideos[$x] . "' type='video/mp4'>
+            <source src='videos/" . $path . "' type='video/mp4'>
             Your browser does not support the video tag.
           </video>
           <br><br>";
