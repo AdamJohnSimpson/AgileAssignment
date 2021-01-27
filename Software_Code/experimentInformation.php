@@ -1,18 +1,17 @@
-
 <?php
 
 include 'Includes/header.php';
-
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  header("location: login.php");
-  exit;
-}
+include "Includes/db.inc.php";
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+//   header("location: login.php");
+//   exit;
+// }
 
 //make sure correct user is logged in for the experiment they are accessing
 
 //get expeirment id
-// $experimentID = $_SESSION["experimentID"];
-$experimentID = 1;
+$experimentID = $_SESSION["experimentID"];
+$experimentName = $_SESSION["experimentName"];
 ?>
 
 
@@ -28,7 +27,6 @@ $experimentID = 1;
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
@@ -41,10 +39,10 @@ $experimentID = 1;
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
+          <p> <b> Name of experiment: </b> </p>
           <?php
+          echo "<h3> ".$experimentName."</h3> <br>";
           // Include database file
-          require_once "Includes/db.inc.php";
-
           //get information from experiment list page to display the selected experiment
           $query = "SELECT experimentInformation FROM experiments WHERE experimentid=1";
           // $stmt = $mysql->prepare($query);
@@ -59,6 +57,7 @@ $experimentID = 1;
           }
           // }
           ?>
+          <br><br>
           <input type="submit" value="Edit Information">
       </form>
     </div>
