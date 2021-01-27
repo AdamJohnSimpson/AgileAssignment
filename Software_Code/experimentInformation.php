@@ -1,4 +1,13 @@
 <?php
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+  header("location: login.php");
+  exit;
+}
+
+//make sure correct user is logged in for the experiment they are accessing
+
+//get information from experiment list page to display the selected experiment
+
 
 
 ?>
@@ -10,7 +19,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Template</title <!-- Bootstrap CSS -->
+  <title>Experiment Information</title <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -23,19 +32,15 @@
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Template Heading</h1>
+    <h1 class="text-center">Experiment Information</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
-          <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</label>
-          <input type="text" name="question"><br><br>
-          <input type="submit" value="Template button">
-      </form>
-      <br></br>
-      <form>
-        <input type="submit" value="Template button">
+          <label>Information</label> <!-- get information from expeirment table -->
+          <input type="text" name="add info">
+          <input type="submit" value="Edit Information">
       </form>
     </div>
   </div>
