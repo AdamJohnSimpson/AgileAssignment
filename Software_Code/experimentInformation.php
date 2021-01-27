@@ -12,13 +12,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 //get expeirment id
 $experimentID = $_SESSION["experimentID"];
 
-//get information from experiment list page to display the selected experiment
-$query = "SELECT experimentInformation FROM experiment WHERE experimentID={$experimentID}";
-$stmt = $mysql->prepare($query);
-$stmt->execute();
-$result = $stmt->fetchAll();
-
-
 
 ?>
 
@@ -48,6 +41,15 @@ $result = $stmt->fetchAll();
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
+          <?php
+          //get information from experiment list page to display the selected experiment
+          $query = "SELECT experimentInformation FROM experiment WHERE experimentID={$experimentID}";
+          $stmt = $mysql->prepare($query);
+          $stmt->execute();
+          $result = $stmt->fetchAll();
+
+          echo $result;
+          ?>
           <label>Information</label><br></br> <!-- get information from expeirment table -->
           <input type="submit" value="Edit Information">
       </form>
