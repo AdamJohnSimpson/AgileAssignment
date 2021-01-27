@@ -16,7 +16,7 @@
   if(isset($_POST['addQ'])){
     $questiontext = $_POST['questionText'];
   if (empty($questiontext)) {
-      echo "The question must have text!";
+      echo "The question gotta have text!";
   }
   else {
     //send to db sql here
