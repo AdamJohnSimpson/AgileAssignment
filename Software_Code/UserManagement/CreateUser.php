@@ -1,5 +1,13 @@
 <!-- code adapted from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php  -->
+<?php
 
+	session_start();
+
+	if(!ISSET($_SESSION["USER_role"]) || $_SESSION["USER_role"] != "Lab Manager"){
+		 header('Location:../Includes/redirect.inc.php');
+		 exit();
+	}
+?>
 <?php
 include "../Includes/db.inc.php";
 
