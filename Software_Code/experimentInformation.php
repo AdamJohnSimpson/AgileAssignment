@@ -48,7 +48,9 @@ $experimentID = $_SESSION["experimentID"];
           $stmt->execute();
           $result = $stmt->fetchAll();
 
-          echo $result;
+          // foreach( $result as $row ) {
+          echo $row['experimentInformation'] ."<br>";
+          // }
           ?>
           <label>Information</label><br></br> <!-- get information from expeirment table -->
           <input type="submit" value="Edit Information">
