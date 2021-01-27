@@ -42,7 +42,7 @@
         // </video>
         // <br><br>";
 
-        echo '<img src="D:\home\site\wwwroot\Software_Code\\dogMeme.jpg" alt="Dog Meme Here">';
+        echo '<img src="dogMeme.jpg" alt="Dog Meme Here">';
 
         // for ($x=0; $x < count($allVideos); $x++) {
         //   // $path = "videos/" . $experiment . "/" . $allVideos[$x];
