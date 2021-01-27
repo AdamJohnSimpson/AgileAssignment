@@ -12,7 +12,7 @@
   <body>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
     <div class="jumbotron text-center">
-      <h1 class="text-center">Video Upload Test Page</h1>
+      <h1 class="text-center">Video Upload Test Page 1</h1>
     </div>
 
     <div class="container-fluid" style="padding:0">
@@ -30,13 +30,13 @@
           echo "<label for='experiments'> Which experiment is this video part of?    </label>";
           echo "<select id='experiments' name='experiments'>";
           while($row = mysqli_fetch_array($result)){
-            echo "<option value='" . $row['experimentid'] . "'> " . $row['experimentname'] . " (ID: " . $row['experimentid'] . ")</option>";
+            echo "<option value='" . $row['experimentname'] . "'> " . $row['experimentname'] . " (ID: " . $row['experimentid'] . ")</option>";
           }
           echo "</select>";
           ?>
 
         </select>
-        <br />
+        <br>
         <input type="submit" name="submit" value="Submit" />
         </form>
       </div>
