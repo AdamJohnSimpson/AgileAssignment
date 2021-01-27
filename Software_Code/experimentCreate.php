@@ -23,6 +23,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
+<!-- -->
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
@@ -37,11 +38,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
         <div class="form-group">
           <label>Enter Name of experiment</label>
           <input type="text" name="Name of Experiment"><br><br>
-          <input type="submit" value="Submit For Approval">
+          <!--check if the experiment name already exists and display error message to user?-->
       </form>
       <br></br>
       <form>
-        <input type="submit" value="Template button">
+        <input type="submit" value="Submit For Approval">
       </form>
     </div>
   </div>
