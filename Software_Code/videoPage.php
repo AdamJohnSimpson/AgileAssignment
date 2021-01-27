@@ -28,7 +28,7 @@
 
         for ($x=0; $x < count($allVideos); $x++) {
           // echo $allVideos[$x];
-          $path = "videos/" . $experiment . "/" . $allVideos[$x];
+          $path = "videos\\" . $experiment . "\\" . $allVideos[$x];
           echo $path;
           echo '
           <br>
