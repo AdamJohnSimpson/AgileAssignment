@@ -33,6 +33,8 @@
           unset($allVideos[$key]);
         }
 
+        echo getcwd();
+        
         echo "
         <br>
         <video src='vine.mp4' width='320' height='240' type='video/mp4' controls autoplay>
