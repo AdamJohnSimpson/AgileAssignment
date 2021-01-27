@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //if both passwords are the same and username is not used
     if($password === $confirm_password && $userNameResult == FALSE) {
       // Prepare an insert statement
-       $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
+       $sql = "INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
        // $result = mysqli_query($conn, $sql);
        // if ($result){
        //    echo "Successfully added user.";
