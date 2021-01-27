@@ -7,13 +7,13 @@ if(isset($_SESSION['USER_role']))
   switch ($_SESSION['USER_role'])
   {
     case 'Principal Researcher':
-      header('Location:../welcome.php');
+      header('Location:../experimentList.php');
       break;
     case 'Co-Researcher':
-		header('Location:../welcome.php');
+		header('Location:../experimentList.php');
 		break;
     case 'Lab Manager':
-		header('Location:../UserManagement/ViewUsers.php');
+		header('Location:../UserManagement/LabManagerPage.php');
 		break;
     default:
 		header('Location:../login.php');

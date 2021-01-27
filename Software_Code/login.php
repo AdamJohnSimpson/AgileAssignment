@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION["username"] = $username;
                 $_SESSION["USER_role"] = $row["Role"];
                 // Redirect user to redirection page
-                header('Location:../Includes/redirect.inc.php');
+                header('Location:Includes/redirect.inc.php');
 				exit();
             }else{
                 // Display an error message if password is not valid
