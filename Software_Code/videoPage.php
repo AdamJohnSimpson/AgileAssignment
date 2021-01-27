@@ -44,7 +44,7 @@
         // </video>
         // <br><br>";
 
-        echo '<video src="/videos/1/vine.mp4" height="400" width="600" type="video/mp4" controls>';
+        echo '<video src="D:\home\site\wwwroot\Software_Code\\vine.mp4" height="400" width="600" type="video/mp4" controls>';
 
         // for ($x=0; $x < count($allVideos); $x++) {
         //   // $path = "videos/" . $experiment . "/" . $allVideos[$x];
