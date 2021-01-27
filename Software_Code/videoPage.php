@@ -32,8 +32,8 @@
           echo $path;
           echo "
           <br>
-          <video width='320' height='240' controls>
-            <source src='D:/home/site/wwwroot/Software_Code/videos/2/vine.mp4>' type='video/mp4'>
+          <video width='320' height='240' controls autoplay>
+            <source src='" . $path . "' type='video/mp4'>
             Your browser does not support the video tag.
           </video>
           <br><br>";
