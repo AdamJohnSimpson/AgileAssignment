@@ -29,7 +29,7 @@
     //send to db sql here
     $questionnaireID = uniqid($prefix="", $more_entropy=false);
     $_SESSION['questionnaireID'] = $questionnaireID;
-    $experimentID = $_SESSION['$experimentID'];
+    $experimentID = $_SESSION['experimentID'];
     $userID = "21";
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
     if ($conn->query($sql) === TRUE) {
