@@ -77,7 +77,6 @@
           header("Location:makeQuestionnaires.php");
           exit();
         }
-
         //closes the connection to the database
         mysqli_close($conn);
 

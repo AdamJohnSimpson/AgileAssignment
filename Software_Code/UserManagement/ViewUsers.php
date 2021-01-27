@@ -1,4 +1,14 @@
 <?php include "../Includes/db.inc.php";?>
+<?php
+
+	session_start();
+
+	if(!ISSET($_SESSION["USER_role"]) || $_SESSION["USER_role"] != "Lab Manager"){
+		 header('Location:../login.php');
+		 exit();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
