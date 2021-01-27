@@ -9,9 +9,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 
 //make sure correct user is logged in for the experiment they are accessing
 
-//get information from experiment list page to display the selected experiment
+//get expeirment id
+$experimentID = $_SESSION["experimentID"];
 
-$query = "SELECT * FROM experiment";
+//get information from experiment list page to display the selected experiment
+$query = "SELECT experimentInformation FROM experiment WHERE experimentID={$experimentID}";
 $stmt = $mysql->prepare($query);
 $stmt->execute();
 $result = $stmt->fetchAll();
