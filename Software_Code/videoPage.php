@@ -27,10 +27,10 @@
         $allVideos = scandir("videos/" . $experiment . "/");
 
         if (($key = array_search('.', $allVideos)) !== false) {
-          unset($array[$key]);
+          unset($allVideos[$key]);
         }
         if (($key = array_search('..', $allVideos)) !== false) {
-          unset($array[$key]);
+          unset($allVideos[$key]);
         }
 
         for ($x=0; $x < count($allVideos); $x++) {
