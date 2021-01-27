@@ -1,4 +1,8 @@
+
 <?php
+
+include 'includes/header.php'
+
 // Include database file
 require_once "Includes/db.inc.php";
 
