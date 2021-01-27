@@ -32,7 +32,7 @@
           echo $path;
           echo "
           <br>
-          <video width='320' height='240' controls autoplay>
+          <video width='320' height='240' controls autoplay />
             <source src='" . $path . "' type='video/mp4'>
             Your browser does not support the video tag.
           </video>
