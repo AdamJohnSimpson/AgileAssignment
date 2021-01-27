@@ -23,7 +23,7 @@
 
       <?php
         // $experiment = $_SESSION['experimentid'];
-        $experiment = "2";
+        $experiment = "1";
         $allVideos = scandir("videos/" . $experiment . "/");
 
         for ($x=0; $x < count($allVideos); $x++) {
