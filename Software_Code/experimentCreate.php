@@ -30,7 +30,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
    $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
    if ($conn->query($sql) === TRUE) {
      echo "New record created successfully";
-     header("location: addQuestions.php");
+     header("location: experimentList.php");
    }
    else {
      echo "Error: " . $sql . "<br>" . $conn->error;
