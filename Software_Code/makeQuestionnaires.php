@@ -18,73 +18,27 @@
   //when clicked the submit button while post the question value
 
 //  check it table exsits for questionnaie, if not create the mysql_list_table
-  $experimentID ="1";
-  $experimentName ="Test Experiment One";
-  // $exists = mysql_query("SELECT 1 from {$experimentID}");
-  // if ($exists !== FALSE) {
-  //   //table exsists
-  // } else {
-    //table does not exsist, create table
-    // CREATE TABLE $experimentID (
-    //             QuestionNo INT(2) PRIMARY KEY,
-    //             UserID INT(4),
-    //             Question VARCHAR(255) NOT NULL,
-    // )
-    // $sql = "CREATE TABLE MyGuests (
-    //   questionNo INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    //   question VARCHAR(255) NOT NULL,
-    //   lastname VARCHAR(30) NOT NULL,
-    //   email VARCHAR(50),
-    //   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    // )";
-    // if (mysqli_query($conn, $sql)) {
-    //   echo "<p> 'Table MyGuests created successfully' </p>";
-    // }
-    // else {
-    //   echo "Error creating table: " . mysqli_error($conn);
-    // }
-  //   $mysql->exec($query);
-  // } catch (PDOException $e) {
-  //   echo $e->getMessage();
-  // }
-  //}
 
   if(isset($_POST['addname'])){
     $questionnaireName = $_POST['questionnaireName'];
+    $_SESSION['questionnaireName'] = $questionnaireName;
   if (empty($questionnaireName)) {
       echo "The questionnaire must have a name!";
-      //refresh page or whatever
+
   } else {
     //send to db sql here
-     $questionnaireID = uniqid($prefix="", $more_entropy=false);
-    //$questionnaireID = "42";
+    $questionnaireID = uniqid($prefix="", $more_entropy=false);
+    $_SESSION['questionnaireID'] = $questionnaireID;
+    $experimentID = $_SESSION['$experimentID'];
     $userID = "21";
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
+      header("location: addQuestions.php");
     }
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    // $insert = mysqli_query($conn,"INSERT INTO questionnaires (questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')");
-    //
-    // if(!$insert)
-    // {
-    //     echo mysqli_error();
-    // }
-    // else
-    // {
-    //     echo "Records added successfully.";
-    // }
-    // $stmt = $mysql->prepare("INSERT INTO questionnaires (UserID, Question) VALUE (:UserID, :Question)");
-    //
-    // $stmt->bindParam(":UserID", $userID);
-    // $stmt->bindParam(":Question", $tableQuestion);
-    //
-    // $userID =  $_SESSION["id"];
-    // $tableQuestion = questionnaireName;
-    // $stmt->execute();
-}
+    }}
 }
   //if the exit button is clicked then ends experiment choice session and returns to expereiment list
   if(isset($_POST['quit'])) {
@@ -123,7 +77,6 @@
               <input type="text" name="questionnaireName"><br><br>
               <input type="submit" value="Add questionnaire name" name="addname">
               <input type="submit" value="quit" name="quit">
-
           </form>
           <br></br>
         </div>

@@ -8,15 +8,22 @@ $allowedExts = array("mp4", "mov", "wmv", "avi");
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
 
-$test = $_POST['experiments'];
-echo "experiment name: " . $test;
+if(isset($_POST['submit'])){
+  $test = $_POST['experiments'];
+} else {
+  echo "no worky";
+}
+// $test = $_POST['experiments'];
+
+echo "<br><br>experiment name: " . $test;
+
 
 if ((($_FILES["file"]["type"] == "video/mp4")
 || ($_FILES["file"]["type"] == "video/mov")
 || ($_FILES["file"]["type"] == "video/wmv")
 || ($_FILES["file"]["type"] == "video/avi"))
 // Limiting video upload to 50 MB
-&& ($_FILES["file"]["size"] < 20000)
+&& ($_FILES["file"]["size"] < 131072000)
 && in_array($extension, $allowedExts))
   {
   if ($_FILES["file"]["error"] > 0)
@@ -44,6 +51,6 @@ if ((($_FILES["file"]["type"] == "video/mp4")
   }
 else
   {
-  echo "Invalid file";
+  echo "<br><br>Invalid file";
   }
 ?>
