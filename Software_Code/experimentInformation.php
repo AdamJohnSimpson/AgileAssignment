@@ -59,7 +59,6 @@ $experimentID = 1;
           }
           // }
           ?>
-          <label>Information</label><br></br> <!-- get information from expeirment table -->
           <input type="submit" value="Edit Information">
       </form>
     </div>
