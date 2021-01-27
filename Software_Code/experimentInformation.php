@@ -14,7 +14,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 //make sure correct user is logged in for the experiment they are accessing
 
 //get expeirment id
-$experimentID = $_SESSION["experimentID"];
+// $experimentID = $_SESSION["experimentID"];
+$experimentID = 1;
 ?>
 
 
@@ -51,7 +52,9 @@ $experimentID = $_SESSION["experimentID"];
           $result = $stmt->fetchAll();
 
           // foreach( $result as $row ) {
-          echo <"p">.$row['experimentInformation'] ."</p>";
+          while($row = mysqli_fetch_array($result)){
+            echo "<p>" . $row['experimentInformation'] ."</p>";
+          }
           // }
           ?>
           <label>Information</label><br></br> <!-- get information from expeirment table -->
