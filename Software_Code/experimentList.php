@@ -20,7 +20,9 @@
   </head>
 
   <body>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
+    <header>
+      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    </header>
       <div class="jumbotron text-center">
         <h1 class="text-center">List of experiments</h1>
       </div>
@@ -48,8 +50,8 @@
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=\"info\"'> <button class='btn btn-outline-success' type='button'>Experiment Information</button> </a>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=\"quest\"'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info'> <button class='btn btn-outline-success' type='button'>Experiment Information</button> </a>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
         //
@@ -78,7 +80,7 @@
           if ($reason == "info") {
             header("Location:experimentInformation.php");
           }
-          else if ($reason == "quest") {
+          else if ($reason === "quest") {
             header("Location:makeQuestionnaires.php");
           }
           else {
@@ -90,8 +92,11 @@
         //closes the connection to the database
         mysqli_close($conn);
 
-?>
+        ?>
         </div>
       </div>
+      <footer>
+        <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
+      </footer>
   </body>
 </html>

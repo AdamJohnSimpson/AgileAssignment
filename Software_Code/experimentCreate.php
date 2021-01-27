@@ -2,11 +2,11 @@
 
 include 'Includes/header.php';
 
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
 }
-
  ?>
 
 <!DOCTYPE html>
@@ -51,8 +51,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       <br></br>
       <form>
         <input type="submit" value="Submit For Approval" name="submit">
+
+
         <!--include php here that sends -->
         <?php
+        require_once "Includes/db.inc.php";
         if(isset($_POST['submit'])){
           $experimentName = $_POST['experimentName'];
           $_SESSION['experimentName'] = $experimentName;
@@ -71,7 +74,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
           $_SESSION['experimentID'] = $experimentID;
           $primaryresearcher = "21";
 
-          $sql = "INSERT INTO experiment(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
+          $sql = "INSERT INTO experiments(experimentid, experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentID', '$experimentName', '$primaryresearcher', '$experimentInfo')";
           if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
             header("location: addQuestions.php");
