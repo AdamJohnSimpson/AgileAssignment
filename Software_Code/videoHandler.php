@@ -8,7 +8,12 @@ $allowedExts = array("mp4", "mov", "wmv", "avi");
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
 
-$test = $_POST['experiments'];
+if(isset($_POST['submit'])){
+  $test = $_POST['experiments'];
+else {
+  echo "no worky";
+}
+// $test = $_POST['experiments'];
 
 echo "<br><br>experiment name: " . $test;
 
@@ -46,6 +51,6 @@ if ((($_FILES["file"]["type"] == "video/mp4")
   }
 else
   {
-  echo "Invalid file";
+  echo "<br><br>Invalid file";
   }
 ?>
