@@ -27,7 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
    $_SESSION['experimentID'] = $experimentID;
    $primaryresearcher = "21";
 
-   $testsql = "SELECT experimentname FROM experiments WHERE experimentname = '{$experimentName}'"
+   $testsql = "SELECT experimentname FROM experiments WHERE experimentname = '{$experimentName}'";
    $checkResult = mysqli_query($conn, $testsql);
 
 while($row = mysqli_fetch_array($checkResult)){

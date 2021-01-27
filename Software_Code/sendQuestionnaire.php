@@ -1,8 +1,10 @@
-<<?php
+<?php
 include "Includes/header.php";
 include "Includes/db.inc.php";
 
-
+$subject = 'Questionnaire';
+$message = 'test: www.google.com';
+$headers = 'From: https://agile-assignment-group-4.azurewebsites.net/' . phpversion();
 
 
 //researcher requires to send link of the questionnaire page to someone
@@ -10,12 +12,16 @@ include "Includes/db.inc.php";
 
 if(isset($_POST['sendQuestionnaire'])){
   $participantsEmail = $_POST['participantsEmail'];
+
+  mail($participantsEmail, $subject, $message, $headers);
+
   if (empty($participantsEmail)) {
       echo "You must enter a participants email.";
     }
     else{
          echo "<p> Participants email: ".$participantsEmail."</p>";
          //add code that sends the link to the persons email
+
     }
   }
 
