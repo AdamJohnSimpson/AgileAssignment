@@ -47,38 +47,36 @@
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-               <form method=\"POST\">
-               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-               <input type=\"submit\" value=\"Create questionnaire\" name=\"select\">
-               </form>
+              <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
-        //<a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+        //
+        // <form method=\"POST\">
+        // <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+        // <input type=\"submit\" value=\"Create questionnaire\" name=\"select\">
+        // </form>
         }
 
-        if(isset($_POST['select'])){
+        // if(isset($_POST['select'])){
+        //   $_SESSION['experimentID'] = $experimentid;
+        //   $_SESSION['experimentName'] = $experimentname;
+        //   echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
+        //   //header("Location:makeQuestionnaires.php");
+        //   exit();
+        // }
+
+        if(isset($_GET['i']) && isset($_GET['n']))
+        {
+            func($_GET['i'], $_GET['n']);
+        }
+        function func($experimentid, $experimentname)
+        {
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
-          //echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
           header("Location:makeQuestionnaires.php");
           exit();
         }
-
-
-
-
-        // if(isset($_GET['i']) && isset($_GET['n']))
-        // {
-        //     func($_GET['i'], $_GET['n']);
-        // }
-        // function func($experimentid, $experimentname)
-        // {
-        //
-        //   $_SESSION['experimentID'] = $experimentid;
-        //   $_SESSION['experimentName'] = $experimentname;
-        //   header("Location:makeQuestionnaires.php");
-        //   exit();
-        // }
 
         //closes the connection to the database
         mysqli_close($conn);
