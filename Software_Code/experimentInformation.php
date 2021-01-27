@@ -15,6 +15,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 
 //get expeirment id
 // $experimentID = $_SESSION["experimentID"];
+$experimentID = 1;
 ?>
 
 
@@ -45,7 +46,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
         <div class="form-group">
           <?php
           //get information from experiment list page to display the selected experiment
-          $query = "SELECT experimentInformation FROM experiments WHERE experimentid=" . $_SESSION["experimentID"];
+          $query = "SELECT experimentInformation FROM experiments WHERE experimentid={$experimentID}";
           $stmt = $mysql->prepare($query);
           $stmt->execute();
           $result = $stmt->fetchAll();
