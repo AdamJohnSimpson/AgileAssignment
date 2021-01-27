@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //if there are not username or password errors
     if(empty($username_err) && empty($password_err)){
 
-		//checks to see if user already exists
+		//checks to see if user already exists in the databse
 		$sql = "SELECT * FROM User WHERE UserName = '$username'";
 		$result = mysqli_query($conn, $sql);
 		if ($result){
@@ -88,22 +88,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo "Passwords entered do not match";
     }
 
-    //if both passwords are the same and username is not used
-
+    //if both passwords are the same and username is not used and role is not empty
     if($password === $confirm_password && $userNameResult == FALSE && $roleEmpty == FALSE) {
       // Prepare an insert statement
        $sql = "INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
-       // $result = mysqli_query($conn, $sql);
-       // if ($result){
-       //    echo "Successfully added user.";
-       // }
+
+       // if query works
        if ($conn->query($sql) === TRUE) {
          echo "New user created successfully.";
 
-         sleep(2);
+         sleep(1);
          header("location: ViewUsers.php");
 
        }
+       //if query doesnt work
        else {
          echo "Error: " . $sql . "<br>" . $conn->error;
        }
@@ -116,16 +114,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   <!DOCTYPE html>
   <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>User Management</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-        <style type="text/css">
-            body{ font: 14px sans-serif; }
-            .wrapper{ width: 350px; padding: 20px; }
-        </style>
-    </head>
+
+  <head>
+    <meta charset="utf-8">
+    <title>User Management</title <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  </head>
+
     <body>
+
+      <header>
+        <img class="img-fluid" src="../University-of-Dundee-logo.png" width="300px" style="padding:20px">
+      </header>
+
+      <div class="jumbotron text-center">
+        <h1 class="text-center">User Management</h1>
+      </div>
+
+      <div class="container-fluid" style="padding:0">
+        <div class="jumbotron" style="margin-bottom:1px;">
+
         <div class="wrapper">
             <h2>Create Users</h2>
             <p>Please fill this form to create an account.</p>
@@ -182,7 +193,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Submit">
-
                 </div>
+
+                <footer>
+                      <img class="img-fluid mx-auto d-block" src="../University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
+                </footer>
+
       </body>
+
     </html>

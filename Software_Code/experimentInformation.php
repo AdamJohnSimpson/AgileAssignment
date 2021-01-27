@@ -1,4 +1,8 @@
+
 <?php
+
+include 'Includes/header.php';
+
 // Include database file
 require_once "Includes/db.inc.php";
 
@@ -11,8 +15,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 
 //get expeirment id
 $experimentID = $_SESSION["experimentID"];
-
-
 ?>
 
 
@@ -43,13 +45,13 @@ $experimentID = $_SESSION["experimentID"];
         <div class="form-group">
           <?php
           //get information from experiment list page to display the selected experiment
-          $query = "SELECT experimentInformation FROM experiment WHERE experimentID={$experimentID}";
+          $query = "SELECT experimentInformation FROM experiments WHERE experimentid={$experimentID}";
           $stmt = $mysql->prepare($query);
           $stmt->execute();
           $result = $stmt->fetchAll();
 
           // foreach( $result as $row ) {
-          echo $row['experimentInformation'] ."<br>";
+          echo <"p">.$row['experimentInformation'] ."</p>";
           // }
           ?>
           <label>Information</label><br></br> <!-- get information from expeirment table -->
