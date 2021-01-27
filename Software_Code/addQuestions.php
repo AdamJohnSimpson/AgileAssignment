@@ -21,7 +21,7 @@
   else {
     //send to db sql here
     $questionnaireID = $_SESSION['questionnaireID'];
-    $sql = "INSERT INTO questions(questionText, questionnaireID) VALUES ('$questiontext', ''$questionnaireID')";
+    $sql = "INSERT INTO questions(questionText, questionnaireID) VALUES ('$questiontext', '$questionnaireID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
       //header("location: addQuestions.php");
