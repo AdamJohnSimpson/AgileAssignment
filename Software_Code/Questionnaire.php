@@ -4,8 +4,8 @@
 	session_start();
 
 	if(!ISSET($_GET['qid'])){
-		 header('Location:../Includes/redirect.inc.php');
-		 exit();
+		header('Location:../Includes/redirect.inc.php');
+		exit();
 	}
 	
 	$qID = $_GET['qid'];
@@ -26,7 +26,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title><?php echo '$qName'; ?> </title <!-- Bootstrap CSS -->
+  <title><?php echo '$qName'; ?> </title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -44,14 +44,22 @@
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
+        <?php
+          	$query = "SELECT * FROM questions WHERE questionnaireID = $qID";
+            $result = mysqli_query($conn, $query);
+            $count = 0;
+            while($row = mysqli_fetch_array($result)){
+              echo '<div class="form-group">';
+              echo '<label for="'.$count.'">'. $row['questionText'] . '</label>';
+              echo '<input type = "text" name="'. $count . '" ><br><br>';
+              echo '</div>';
+
+              $count++;
+            }
+        ?>
         <div class="form-group">
-          <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</label>
-          <input type="text" name="question"><br><br>
           <input type="submit" value="Template button">
-      </form>
-      <br></br>
-      <form>
-        <input type="submit" value="Template button">
+        </div>
       </form>
     </div>
   </div>
