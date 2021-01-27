@@ -1,4 +1,4 @@
-<?php include "../Includes/db.inc.php";?>
+<?php include "Includes/db.inc.php";?>
 <?php
 
 	session_start();
