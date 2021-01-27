@@ -26,19 +26,30 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
    //send to db sql here
    $_SESSION['experimentID'] = $experimentID;
    $primaryresearcher = "21";
-   $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
-   if ($conn->query($sql) === TRUE) {
 
-     if (! mkdir("videos/" . $experimentName, 0700)) {
-         die('Failed to create folder');
+   $testsql = "SELECT experimentname FROM experiments WHERE experimentname = '{$experimentName}'"
+   $checkResult = mysqli_query($conn, $testsql);
+   if(mysql_num_rows($checkResult) == 0) { //check if the name of experiment already exists
+     //the experiment name doesn't already exist
+     $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
+     if ($conn->query($sql) === TRUE) {
+
+       if (! mkdir("videos/" . $experimentName, 0700)) {
+           die('Failed to create folder');
+       }
+
+       echo "New record created successfully";
+       header("location: experimentList.php");
      }
+     else {
+       echo "Error: " . $sql . "<br>" . $conn->error;
+     }
+} else {
+    // the experiment name already exists
+    echo "That experiment already exists"
+}
 
-     echo "New record created successfully";
-     header("location: experimentList.php");
-   }
-   else {
-     echo "Error: " . $sql . "<br>" . $conn->error;
-   }
+
  }
  }
  ?>
