@@ -26,7 +26,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
    //send to db sql here
    $_SESSION['experimentID'] = $experimentID;
    $primaryresearcher = "21";
-   echo "Hey I'm in here! this one is for the boys w the boomer systems top down ac with the coolin systems ";
    $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
    if ($conn->query($sql) === TRUE) {
 
