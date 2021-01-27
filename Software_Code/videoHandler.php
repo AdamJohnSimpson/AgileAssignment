@@ -8,6 +8,10 @@ $allowedExts = array("mp4", "mov", "wmv", "avi", "jpg");
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
 
+if ($_FILES["file"]["error"] === 0) {
+  echo "filed upload...";
+}
+
 if(isset($_POST['submit'])){
   $test = $_POST['experiments'];
 } else {
