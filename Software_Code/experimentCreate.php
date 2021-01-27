@@ -27,7 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
    $_SESSION['experimentID'] = $experimentID;
    $primaryresearcher = "21";
 
-   $testsql = "SELECT experimentname FROM experiments WHERE experimentname = '{$experimentName}'";
+   $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
    $checkResult = mysqli_query($conn, $testsql);
 
    if(mysql_num_rows($checkResult) == 0) { //check if the name of experiment already exists
