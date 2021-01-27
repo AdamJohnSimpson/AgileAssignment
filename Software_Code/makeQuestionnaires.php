@@ -21,17 +21,20 @@
 
   if(isset($_POST['addname'])){
     $questionnaireName = $_POST['questionnaireName'];
+    $_SESSION['questionnaireName'] = $questionnaireName;
   if (empty($questionnaireName)) {
       echo "The questionnaire must have a name!";
 
   } else {
     //send to db sql here
     $questionnaireID = uniqid($prefix="", $more_entropy=false);
+    $_SESSION['questionnaireID'] = $questionnaireID;
     $experimentID = $_SESSION['$experimentID'];
     $userID = "21";
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
+      header("location: addQuestions.php");
     }
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;

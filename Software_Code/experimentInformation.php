@@ -38,8 +38,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
         <div class="form-group">
-          <label>Information</label> <!-- get information from expeirment table -->
-          <input type="text" name="add info">
+          <label>Information</label><br></br> <!-- get information from expeirment table -->
           <input type="submit" value="Edit Information">
       </form>
     </div>
