@@ -50,7 +50,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
       <br></br>
       <form>
         <input type="submit" value="Submit For Approval">
-        <!-- -->
+        <!--include php here that sends -->
       </form>
     </div>
   </div>
