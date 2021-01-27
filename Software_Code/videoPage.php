@@ -21,6 +21,8 @@
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
+      <!-- <img src="dogMeme.jpg" alt="Dog Meme Here"> -->
+
       <?php
         // $experiment = $_SESSION['experimentid'];
         $experiment = "1";
@@ -42,7 +44,7 @@
         // </video>
         // <br><br>";
 
-        echo '<img src="dogMeme.jpg" alt="Dog Meme Here">';
+        echo '<img src="/videos/1/dogMeme.jpg" alt="Dog Meme Here">';
 
         // for ($x=0; $x < count($allVideos); $x++) {
         //   // $path = "videos/" . $experiment . "/" . $allVideos[$x];
