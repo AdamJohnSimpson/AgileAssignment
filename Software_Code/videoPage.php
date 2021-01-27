@@ -30,12 +30,10 @@
           // echo $allVideos[$x];
           $path = "videos/" . $experiment . "/" . $allVideos[$x];
           echo $path;
-          echo "
+          echo '
           <br>
-          <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
-            Your browser does not support the video tag.
-          </video>
-          <br><br>";
+          <iframe width="560" height="315" src="' . $path . '" frameborder="0" allowfullscreen></iframe>
+          <br><br>';
         }
 
        ?>
