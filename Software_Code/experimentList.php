@@ -1,10 +1,11 @@
+<?php include 'includes/header.php'?>
 <?php
 //checks if user logged in, if not returns to login page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: login.php");
-  exit;
-}
-?>
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//   header("location: login.php");
+//   exit;
+// }
+ ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -31,7 +32,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
         //displays an error if user cannot connect to database
          if (!$conn) {
-          die('Could not connect: ' . mysql_error());
+          die('Could not connect: ' . mysqli_error());
         }
 
         //retrieve all experiments tied to the user
@@ -46,13 +47,24 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-               <h5 class='card-text mt-2'>".$row['experimentname']."</h6> "
-               // <a href = \"makeQuestionnaires.php?i=".$row['experimentid']."&n".$row['experimentname']."\">
-               "<a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+              <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
              </div>
            </div>";
-
+        //
+        // <form method=\"POST\">
+        // <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+        // <input type=\"submit\" value=\"Create questionnaire\" name=\"select\">
+        // </form>
         }
+
+        // if(isset($_POST['select'])){
+        //   $_SESSION['experimentID'] = $experimentid;
+        //   $_SESSION['experimentName'] = $experimentname;
+        //   echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
+        //   //header("Location:makeQuestionnaires.php");
+        //   exit();
+        // }
 
         if(isset($_GET['i']) && isset($_GET['n']))
         {
@@ -60,8 +72,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         }
         function func($experimentid, $experimentname)
         {
-          array_push($_SESSION['experimentID'], $experimentid);
-          array_push($_SESSION['experimentName'], $experimentname);
+          $_SESSION['experimentID'] = $experimentid;
+          $_SESSION['experimentName'] = $experimentname;
           header("Location:makeQuestionnaires.php");
           exit();
         }

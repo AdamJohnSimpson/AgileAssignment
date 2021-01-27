@@ -29,6 +29,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
 
+    // Check if confirm password is empty
+    if(empty(trim($_POST["confirm_password"]))){
+        $password_err = "Please enter a password.";
+    } else{
+        $confirm_password = trim($_POST["confirm_password"]);
+    }
+
     if(empty($username_err) && empty($password_err)){
 
 		//checks to see if user already exists
@@ -49,13 +56,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //if both passwords are the same and username is not used
     if($password == $confirm_password && $result['username'] != $username){
       // Prepare an insert statement
-       $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES ($firstname, $surname, $email, $role, $username, $password)";
+       $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName,  Password) VALUES ('$firstname',' $surname', '$email', '$role',' $username', '$password')";
        $result = mysqli_query($conn, $sql);
        if ($result){
           echo "Successfully added user.";
        }
 
-    }
+       
   }
 
 ?>
