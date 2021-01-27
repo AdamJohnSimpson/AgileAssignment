@@ -1,6 +1,13 @@
 <?php include "../Includes/db.inc.php";?>
 <?php 
 
+	session_start();
+
+	if(!ISSET($_SESSION["USER_role"]) || $_SESSION["USER_role"] != "Lab Manager"){
+		 header('Location: redirect.inc.php');
+		 exit();
+	}
+
 	$userID = $_GET['id']; 
 	
 	if(ISSET($_GET['id'])){
