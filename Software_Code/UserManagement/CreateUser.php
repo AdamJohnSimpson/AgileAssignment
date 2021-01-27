@@ -89,6 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     //if both passwords are the same and username is not used
+
     if($password === $confirm_password && $userNameResult == FALSE && $roleEmpty == FALSE) {
       // Prepare an insert statement
        $sql = "INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
@@ -98,8 +99,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        // }
        if ($conn->query($sql) === TRUE) {
          echo "New user created successfully.";
+
          sleep(2);
          header("location: ViewUsers.php");
+
        }
        else {
          echo "Error: " . $sql . "<br>" . $conn->error;

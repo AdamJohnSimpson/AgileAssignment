@@ -23,13 +23,17 @@
 		</div>
 		<div class="container-fluid" style="padding:0">
 			<div class="jumbotron" style="margin-bottom:1px;">
+
+				<div style="margin-bottom:1%">
 				<button onclick="location.href='CreateUser.php';" type="button" class="btn btn-primary">Create Account</button>
-			
-				<table>
+				</div>
+				
+
+				<table class="table">
 					<tr>
-						<th>Username</th>
-						<th>First name</th>
-						<th>Surname</th>
+						<th scope="col">Username</th>
+						<th scope="col">First name</th>
+						<th scope="col">Surname</th>
 					</tr>
 					<?php
 					

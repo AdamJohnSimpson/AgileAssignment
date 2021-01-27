@@ -15,11 +15,12 @@ if(isset($_POST['submit'])){
 }
 // $test = $_POST['experiments'];
 
+
 echo "<br><br>experiment name: " . $test;
 
 
 if ((($_FILES["file"]["type"] == "video/mp4")
-|| ($_FILES["file"]["type"] == "image/jpg")
+|| ($_FILES["file"]["type"] == "image/jpeg")
 || ($_FILES["file"]["type"] == "video/mov")
 || ($_FILES["file"]["type"] == "video/wmv")
 || ($_FILES["file"]["type"] == "video/avi"))
