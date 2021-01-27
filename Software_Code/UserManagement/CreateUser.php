@@ -11,6 +11,7 @@ $role = "";
 $username = "";
 $password = "";
 $confirm_password = "";
+$userNameResult = TRUE;
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -45,7 +46,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$row = mysqli_fetch_array($result);
 			if($row && $row['UserName'] === $username){
 				echo "Username already exists";
-			}
+        $userNameResult = True;
+			} else {
+        $userNameResult = FALSE;
+      }
 		}
 	}
     //if both passwords are not the same
@@ -54,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     //if both passwords are the same and username is not used
-    if($password == $confirm_password && $result['username'] != $username){
+    if($password === $confirm_password && $userNameResult == FALSE) {
       // Prepare an insert statement
        $sql = "INSERT INTO Users (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
        // $result = mysqli_query($conn, $sql);
