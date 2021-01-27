@@ -8,11 +8,11 @@ $allowedExts = array("mp4", "mov", "wmv", "avi");
 
 $extension = end(explode(".", $_FILES["file"]["name"]));
 
-// if(isset($_POST['submit'])){
+if(isset($_POST['submit'])){
   $test = $_POST['experiments'];
-// } else {
-//   echo "no worky";
-// }
+} else {
+  echo "no worky";
+}
 // $test = $_POST['experiments'];
 
 echo "<br><br>experiment name: " . $test;
