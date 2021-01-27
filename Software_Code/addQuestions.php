@@ -32,7 +32,7 @@
       //   echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
-  }
+
 
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
