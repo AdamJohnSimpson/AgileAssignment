@@ -37,6 +37,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
    }
  }
  }
+
+
  ?>
 
 <!DOCTYPE html>
@@ -51,10 +53,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<!-- -->
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <input type="submit" value="Logout" name="submit">
   </header>
 
   <div class="jumbotron text-center">
