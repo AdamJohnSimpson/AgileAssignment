@@ -27,10 +27,14 @@ require_once "Includes/db.inc.php";
     </style>
 </head>
 <body>
+
   <header>
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
+    <br></br>
+    <br></br>
   </header>
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>

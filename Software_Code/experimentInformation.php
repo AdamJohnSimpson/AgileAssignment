@@ -57,6 +57,7 @@ if(isset($_POST['edit'])){
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
     <br></br>
+    <br></br>
   </header>
 
   <div class="jumbotron text-center">
@@ -85,6 +86,7 @@ if(isset($_POST['edit'])){
           ?>
           <br><br>
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
+            <a href="questionnaireList.php"> <button class='btn btn-outline-success' type='button'>View Questionnaires</button> </a>
             <h3>Update experiment information:</h3>
         <form method="POST">
             <input type="text" value "Add a new description here" name="addedinfo">

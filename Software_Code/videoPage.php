@@ -1,11 +1,12 @@
 <?php
-include 'includes/header.php';
+include 'Includes/header.php';
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
 
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +23,12 @@ if(isset($_POST['logout'])) {
 
 <body>
   <header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
+    <br></br>
+    <br></br>
   </header>
 
   <div class="jumbotron text-center">
