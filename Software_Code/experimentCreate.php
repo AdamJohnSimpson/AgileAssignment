@@ -16,7 +16,7 @@ $_SESSION["USER_role"] = "aaeefsef";
 $userID= $_SESSION['userID'];
 
 if(isset($_POST['logout'])) {
-  unset($_SESSION['loggedin']);
+  session_destroy();
   header("location: login.php");
 }
 
