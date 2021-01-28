@@ -11,7 +11,7 @@ $questionnaireURL = $questionnaireURL.$questionnaireID;
 
 
 
-    // }
+
 
 
 if(isset($_POST['quit'])) {
@@ -48,7 +48,7 @@ if(isset($_POST['quit'])) {
            <form method="POST">
              <div class="form-group">
                <label>The url for your questionnaire is:
-                <?php echo $_SESSION['questionnaireURL']; ?> </label>
+                <?php echo $questionnaireURL; ?> </label>
                <input type="submit" value="Copy Link" name="copyLink">
                <input type="submit" value="quit" name="quit">
            </form>
