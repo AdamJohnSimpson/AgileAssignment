@@ -80,7 +80,7 @@ if(isset($_POST['logout'])) {
         if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
         {
             echo "<h1> look im in here </h1>";
-            func($_GET['i'], $_GET['n'], $_GET['r']);
+            func("$_GET['i']", "$_GET['n']", "$_GET['r']");
         }
         function func($experimentid, $experimentname, $reason)
         {
