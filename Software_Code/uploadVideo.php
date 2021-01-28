@@ -22,21 +22,14 @@ if(isset($_POST['logout'])) {
 <body>
 
   <header>
-<<<<<<< HEAD
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
     <br></br>
     <br></br>
-=======
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
-    <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
-    </form>
->>>>>>> master
   </header>
---
+
   <div class="jumbotron text-center">
     <?php echo "<h1 class='text-center'>Video Upload for ".$_SESSION['experimentName']."</h1>"; ?>
   </div>
