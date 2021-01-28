@@ -51,7 +51,8 @@ if(isset($_POST['logout'])) {
         $userID = $_SESSION['id'];
 
         if ($_SESSION['USER_role'] == 'Lab Manager'){
-            $sql = "SELECT * FROM experiments WHERE primaryresearcher != NULL";
+            // //$sql = "SELECT * FROM experiments WHERE experimentName !=|| ''";
+            $sql = "SELECT * FROM experiments WHERE primaryresearcher != {$userID} || primaryresearcher = {$userID}";
             $result = mysqli_query($conn, $sql);
         }
         else {
