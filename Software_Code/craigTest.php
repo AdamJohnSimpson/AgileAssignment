@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'?>
+<?php include "Includes/db.inc.php";?>
 <?php
 //checks if user logged in, if not returns to login page
 // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -6,6 +6,8 @@
 //   exit;
 // }
 
+$_SESSION['USER_role'] = 'Lab Manager';
+$_SESSION['id'] = 1;
 
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
