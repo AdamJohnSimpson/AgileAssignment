@@ -1,7 +1,7 @@
 
 <?php include 'includes/header.php'?>
 <?php
-ensures user is logged in
+//ensures user is logged in
   if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
     header("location: login.php");
     exit;

@@ -70,9 +70,9 @@
 
     <body>
       <header>
-        <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+        <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
         <form method="POST">
-          <input type="submit" value="Log Out" name="logout">
+          <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
         </form>
       </header>
 
