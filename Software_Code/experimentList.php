@@ -57,7 +57,7 @@ if(isset($_POST['logout'])) {
         else if ($_SESSION['USER_role'] != 'Lab Manager'){
           $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
           $result = mysqli_query($conn, $sql);
-        }
+         }
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 
@@ -79,10 +79,12 @@ if(isset($_POST['logout'])) {
               </div>";
         if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
         {
+            echo "<h1> look im in here </h1>";
             func($_GET['i'], $_GET['n'], $_GET['r']);
         }
         function func($experimentid, $experimentname, $reason)
         {
+          echo "<h1> Im also in here </h1>";
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
           if ($reason == "info") {
