@@ -4,7 +4,7 @@
 // https://forums.phpfreaks.com/topic/282415-need-clarification-on-why-no-error-message/
 //===========================================================================================================================================
 
-$experimentid = $_POST['experiment'];
+$experimentid = $_SESSION['experimentID'];
 echo "<br><br>experiment id: " . $experimentid;
 
 // define allowed file types in an array

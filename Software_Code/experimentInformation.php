@@ -12,6 +12,26 @@ include "Includes/db.inc.php";
 //get expeirment id
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
+
+
+
+if(isset($_POST['edit'])){
+  $newInfo = $_POST['addedinfo'];
+  if (empty($newInfo)) {
+    echo "The experiment must have a description!";
+
+  } else {
+  //send to db sql her
+  $experimentID = $_SESSION['experimentID'];
+  $userID = $_SESSION['userID'];
+  $sql = "UPDATE experiments SET experimentInformation= WHERE experimentID= $experimentID";
+  if ($conn->query($sql) === TRUE) {
+    echo "New description added successfully";
+  }
+  else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }}
+}
 ?>
 
 
@@ -58,7 +78,10 @@ $experimentName = $_SESSION["experimentName"];
           // }
           ?>
           <br><br>
-          <input type="submit" value="Edit Information">
+          <form method="post">
+            <input type="text" value "Add a new description here" name="addedinfo">
+          <input type="submit" value="Edit Information" name="edit">
+        </form>
       </form>
     </div>
   </div>

@@ -52,6 +52,7 @@
               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info'> <button class='btn btn-outline-success' type='button'>Experiment Information</button> </a>
               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
+              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video'> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
              </div>
            </div>";
         //
@@ -83,9 +84,11 @@
           else if ($reason === "quest") {
             header("Location:makeQuestionnaires.php");
           }
+          else if ($reason === "video") {
+            header("Location:uploadVideo.php");
+          }
           else {
-            echo "<p> destination: ".$reason. " </p>";
-            echo "<p> Adam fucked up this one is for the boys witht the boomer systemas top down ac with the coolin systems the sequel </p>";
+
           }
           exit();
         }
