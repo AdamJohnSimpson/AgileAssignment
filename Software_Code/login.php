@@ -83,11 +83,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </head>
     <body>
 
-      <header>
+      <header style="height:150px;">
         <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
-      
-        <br></br>
-        <br></br>
       </header>
 
         <div class="jumbotron text-center">

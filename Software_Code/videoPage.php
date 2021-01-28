@@ -27,10 +27,6 @@ if(isset($_POST['logout'])) {
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
-    <br>
-    <br>
-    <br>
-
   </header>
 
   <div class="jumbotron text-center">
@@ -63,7 +59,9 @@ if(isset($_POST['logout'])) {
        ?>
     </div>
   </div>
-
+  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
+      <input type="submit" value="Return to Experiments Information" />
+  </form>
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
