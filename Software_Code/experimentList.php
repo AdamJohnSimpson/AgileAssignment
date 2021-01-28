@@ -1,4 +1,4 @@
-<?php include 'includes/header.php';?>
+<?php include "Includes/db.inc.php";?>
 <?php
 //checks if user logged in, if not returns to login page
 // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -11,6 +11,7 @@ if(isset($_POST['logout'])) {
   header("location: login.php");
 }
  ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -36,12 +37,15 @@ if(isset($_POST['logout'])) {
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
+
         <?php
-        if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
-        {
-            echo "<h1> look im in here </h1>";
-            func($_GET['i'], $_GET['n'], $_GET['r']);
-        }
+
+if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
+{
+    echo "<h1> look im in here </h1>";
+    func($_GET['i'], $_GET['n'], $_GET['r']);
+}
+
         include "Includes/db.inc.php";
 
         //displays an error if user cannot connect to database
@@ -51,15 +55,13 @@ if(isset($_POST['logout'])) {
 
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
-
         $userID = $_SESSION['id'];
 
         if ($_SESSION['USER_role'] == 'Lab Manager'){
-            //$sql = "SELECT * FROM experiments WHERE experimentName !=|| ''";
             $sql = "SELECT * FROM experiments";
             $result = mysqli_query($conn, $sql);
         }
-        else {
+        else if ($_SESSION['USER_role'] != 'Lab Manager'){
           $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
           $result = mysqli_query($conn, $sql);
          }
@@ -71,9 +73,9 @@ if(isset($_POST['logout'])) {
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info'> <button class='btn btn-outline-success' type='button'>Experiment Information</button> </a>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest'> <button class='btn btn-outline-success' type='button'>Create questionnaire</button> </a>
-              <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video'> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
+              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info\"' class='btn btn-outline-success' type='button'>Experiment Information</button>
+              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest\"' class='btn btn-outline-success' type='button'>Create questionnaire</button>
+              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video\"' class='btn btn-outline-success' type='button'>Upload video</button>
              </div>
            </div>";
         }
@@ -82,22 +84,23 @@ if(isset($_POST['logout'])) {
                   <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
                 </div>
               </div>";
-        
-        function func($experimentid, $experimentname, $reason)
+
+        function func($eid, $ename, $r)
         {
-          echo "<h1> Im also in here </h1>";
-          echo "<p> experimentID: ".$experimentid."<br> Experiment Name: ".$experimentname."<br> Destination: ".$reason."</p>";
-          $_SESSION['experimentID'] = $experimentid;
-          $_SESSION['experimentName'] = $experimentname;
-          if ($reason === "info") {
-            echo "<h2> im literally setting the header location to experiment Information </h2>";
+          echo "<h1> Im also in here $eid $ename $r</h1>";
+          $_SESSION['experimentID'] = $eid;
+          $_SESSION['experimentName'] = $ename;
+          if ($r== "info") {
             header("Location:experimentInformation.php");
+            exit();
           }
-          else if ($reason === "quest") {
+          else if ($r === "quest") {
             header("Location:makeQuestionnaires.php");
+            exit();
           }
-          else if ($reason === "video") {
+          else if ($r === "video") {
             header("Location:uploadVideo.php");
+            exit();
           }
           exit();
         }
@@ -105,6 +108,8 @@ if(isset($_POST['logout'])) {
         mysqli_close($conn);
 
         ?>
+
+
         </div>
       </div>
       <footer>
