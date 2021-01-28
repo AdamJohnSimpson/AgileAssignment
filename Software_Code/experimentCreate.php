@@ -8,11 +8,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
-$_SESSION["loggedin"] = true;
-$_SESSION["id"] = 1;
-$_SESSION["username"] = "sdsdfsefsef";
-$_SESSION["USER_role"] = "aaeefsef";
-
 $userID= $_SESSION['userID'];
 
 if(isset($_POST['logout'])) {
