@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -17,7 +18,7 @@
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Video Upload Test Page</h1>
+    <?php echo "<h1 class='text-center'>Video Upload for ".$_SESSION['experimentName']."</h1>"; ?>
   </div>
 
   <div class="container-fluid" style="padding:0">
@@ -28,17 +29,8 @@
             <input type="hidden" name="MAX_FILE_SIZE" value="131072000" /><input type="file" name="file"/>
             <?php
               include "Includes/db.inc.php";
-              $query = "SELECT experimentid, experimentname FROM experiments";
-              $result = mysqli_query($conn, $query);
               echo "</br>";
-              echo "<label for='experiments'> Which experiment is this video part of?    </label>";
-              echo "<select id='experiment' name='experiment'>";
-              while($row = mysqli_fetch_array($result)){
-                echo "<option value='" . $row['experimentid'] . "'> " . $row['experimentname'] . " (ID: " . $row['experimentid'] . ")</option>";
-              }
-              echo "</select>";
             ?>
-          </select>
           <br>
           <input type="submit" name="submit" value="Submit" />
         </form>

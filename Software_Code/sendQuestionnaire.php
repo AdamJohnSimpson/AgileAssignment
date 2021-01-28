@@ -2,35 +2,17 @@
 include "Includes/header.php";
 include "Includes/db.inc.php";
 
-$subject = "Questionnaire";
-$message = "test: www.google.com";
-$headers = "From: https://agile-assignment-group-4.azurewebsites.net/" . phpversion();
-
-
-//researcher requires to send link of the questionnaire page to someone
-//get the qestinoaire ID
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-// if(isset($_POST['sendQuestionnaire'])){
-
-
-  if(empty(trim($_POST["participantsEmail"]))){
-      echo "You must enter a participants email.";
-  } else{
-      $participantsEmail = trim($_POST['participantsEmail']);
-      mail($participantsEmail, $subject, $message);
-  }
 
 
 
-  // if (empty($participantsEmail)) {
-  //     echo "You must enter a participants email.";
-  //   }
-  //   else{
-  //        echo "<p> Participants email: ".$participantsEmail."</p>";
-         //add code that sends the link to the persons email
-    }
-  
+
+$questionnaireURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php?qid=";
+$questionnaireURL = $questionnaireURL.$questionnaireID;
+
+
+
+
+
 
 if(isset($_POST['quit'])) {
   header("location: experimentList.php");
@@ -60,14 +42,14 @@ if(isset($_POST['quit'])) {
        </div>
      <div class="container-fluid" style="padding:0">
        <div class="jumbotron" style="margin-bottom:1px;">
-         <h2 class="text-center">You are sending the following questionnaire:
+         <h2 class="text-center">The ID for your questionnaire:
          <?php echo $_SESSION['questionnaireID']; ?></h2>
 
            <form method="POST">
              <div class="form-group">
-               <label>Add an email of the person you would like to recieve this questionnaire. </label>
-               <input type="text" name="participantsEmail"><br><br>
-               <input type="submit" value="Send Questionnaire" name="sendQ">
+               <label>The url for your questionnaire is:
+                <?php echo $questionnaireURL; ?> </label>
+               <input type="submit" value="Copy Link" name="copyLink">
                <input type="submit" value="quit" name="quit">
            </form>
            <br></br>

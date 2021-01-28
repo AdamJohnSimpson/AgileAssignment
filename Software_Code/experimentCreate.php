@@ -53,6 +53,8 @@ $userID= $_SESSION['userID'];
 }
 }
  }
+
+
  ?>
 
 <!DOCTYPE html>
@@ -67,14 +69,17 @@ $userID= $_SESSION['userID'];
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<!-- -->
 <body>
   <header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
+    </form>
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Create Experiment</h1>
+    <br></br>
+    <h1 class="text-center" style="float: center ">Create Experiment</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">

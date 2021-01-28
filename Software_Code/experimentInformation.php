@@ -12,6 +12,24 @@ include "Includes/db.inc.php";
 //get expeirment id
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
+
+
+if(isset($_POST['edit'])){
+  $newInfo = $_POST['addedinfo'];
+  if (empty($newInfo)) {
+    echo "The experiment must have a description!";
+
+  } else {
+  //send to db sql here
+  $sql = "UPDATE experiments SET experimentInformation={$newInfo} WHERE experimentid={$experimentID}";
+  echo "<p> ".$sql."</p>";
+  if ($conn->query($sql) === TRUE) {
+    echo "New description added successfully";
+  }
+  else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }}
+}
 ?>
 
 
@@ -30,6 +48,9 @@ $experimentName = $_SESSION["experimentName"];
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout">
+    </form>
   </header>
 
   <div class="jumbotron text-center">
@@ -42,6 +63,7 @@ $experimentName = $_SESSION["experimentName"];
           <p> <b> Name of experiment: </b> </p>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
+
           // Include database file
           //get information from experiment list page to display the selected experiment
           $query = "SELECT experimentInformation FROM experiments WHERE experimentid=$experimentID";
@@ -58,7 +80,12 @@ $experimentName = $_SESSION["experimentName"];
           // }
           ?>
           <br><br>
-          <input type="submit" value="Edit Information">
+          <form method="post">
+            <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
+            <h3>Update experiment information:</h3>
+            <input type="text" value "Add a new description here" name="addedinfo">
+            <input type="submit" value="Edit Information" name="edit">
+        </form>
       </form>
     </div>
   </div>
