@@ -66,9 +66,9 @@ if(isset($_POST['logout'])) {
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-              <button onClick='location.href=".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info' class='btn btn-outline-success' type='button'>Experiment Information</button>
-              <button onClick='location.href=".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest' class='btn btn-outline-success' type='button'>Create questionnaire</button>
-              <button onClick='location.href=".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video' class='btn btn-outline-success' type='button'>Upload video</button>
+              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info\"' class='btn btn-outline-success' type='button'>Experiment Information</button>
+              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest\"' class='btn btn-outline-success' type='button'>Create questionnaire</button>
+              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video\"' class='btn btn-outline-success' type='button'>Upload video</button>
              </div>
            </div>";
         }
