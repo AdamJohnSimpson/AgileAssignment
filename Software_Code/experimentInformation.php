@@ -26,7 +26,7 @@ if(isset($_POST['edit'])){
 
   } else {
   //send to db sql here
-  $sql = "UPDATE experiments SET experimentInformation='{$newInfo}' WHERE experimentid='{$experimentID}";
+  $sql = "UPDATE experiments SET experimentInformation='{$newInfo}' WHERE experimentid={$experimentID}";
   echo "<p> ".$sql."</p>";
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully!";
@@ -69,7 +69,7 @@ if(isset($_POST['edit'])){
 
           // Include database file
           //get information from experiment list page to display the selected experiment
-          $query = "SELECT experimentInformation FROM experiments WHERE experimentid='{$experimentID}'";
+          $query = "SELECT experimentInformation FROM experiments WHERE experimentid={$experimentID}";
           // $stmt = $mysql->prepare($query);
           // $stmt->execute();
           // $result = $stmt->fetchAll();
