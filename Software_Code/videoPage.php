@@ -25,18 +25,17 @@
         // $experiment = $_SESSION['experimentid'];
         $experiment = "1";
         $allVideos = scandir("videos/" . $experiment . "/");
-        print_r($allVideos);
+
         if (($key = array_search('.', $allVideos)) !== false) {
-          unset($allVideos[$key]);
+          array_shift($allVideos);
         }
         if (($key = array_search('..', $allVideos)) !== false) {
-          unset($allVideos[$key]);
+          array_shift($allVideos);
         }
 
         // echo '<video src="videos/1/vine.mp4" height="400" width="600" type="video/mp4" controls>';
 
         for ($x=0; $x < count($allVideos); $x++) {
-          print_r($allVideos);
           $path = "videos/" . $experiment . "/" . $allVideos[$x];
           // $path = $allVideos[$x];
           echo $path;
