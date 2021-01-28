@@ -7,9 +7,9 @@
 		header('Location:../Includes/error.inc.php');
 		exit();
   }
-	
+
 	$qID = $_GET['qid'];
-	
+
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_array($result);
@@ -19,9 +19,9 @@
 		header('Location:../Includes/error.inc.php');
 		exit();
 	}
-	
+
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-    
+
     if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true){
       header('Location: ThankYou.php');
       exit();
@@ -30,7 +30,7 @@
     }
 
 		$responseID = uniqid($prefix="", $more_entropy=false);
-		
+
 		$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
     $result = mysqli_query($conn, $query);
     $count = 0;
@@ -39,7 +39,7 @@
         $questionID = $row['questionID'];
 
         $response = $_POST[$count];
-        
+
         $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
         $newQuery->bind_param('s', $response);
         $newQuery->execute();
@@ -50,7 +50,12 @@
     $_SESSION['TakePart'] = false;
     header('Location: ThankYou.php');
     exit();
-	}					
+	}
+
+	if(isset($_POST['logout'])) {
+	  unset($_SESSION['loggedin']);
+	  header("location: login.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +73,9 @@
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+		<form method="POST">
+			<input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+		</form>
   </header>
 
   <div class="jumbotron text-center">
