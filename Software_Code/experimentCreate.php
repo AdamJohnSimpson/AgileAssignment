@@ -1,14 +1,16 @@
 <?php
 
 include 'Includes/header.php';
-
+require_once "Includes/db.inc.php";
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
 }
 
- require_once "Includes/db.inc.php";
+$userID= $_SESSION['userID']
+
+
  if(isset($_POST['submit'])){
    $experimentName = $_POST['experimentName'];
    $_SESSION['experimentName'] = $experimentName;
@@ -25,7 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
  else {
    //send to db sql here
    $_SESSION['experimentID'] = $experimentID;
-   $primaryresearcher = "21";
+   $primaryresearcher = $userID;
 
    $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
    $checkResult = mysqli_query($conn, $testsql);
