@@ -28,7 +28,6 @@ $experimentName = $_SESSION['experimentName'];
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
       <?php
-        // $experiment = "1";
         $allVideos = scandir("videos/" . $experimentID . "/");
 
         if (($key = array_search('.', $allVideos)) !== false) {
