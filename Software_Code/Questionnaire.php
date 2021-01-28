@@ -101,8 +101,10 @@
                 $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
                 $newResult = mysqli_query($conn, $newQuery);
                 while($newRow = mysqli_fetch_array($newResult)){
-                  echo '<input type="radio" id="'.$newRow['optionID'].'" name="'.$count.'" value="'.$newRow['optionText'].'">';
-                  echo '<label for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';              
+                  echo '<div class="form-check">';
+                  echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$count.'" value="'.$newRow['optionText'].'">';
+                  echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
+                  echo '</div>';              
                 }
               }
               echo '</div>';
