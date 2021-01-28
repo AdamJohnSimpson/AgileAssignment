@@ -57,8 +57,10 @@ if(isset($_POST['edit'])){
       <form>
         <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
+
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
+
           // Include database file
           //get information from experiment list page to display the selected experiment
           $query = "SELECT experimentInformation FROM experiments WHERE experimentid=$experimentID";
@@ -76,6 +78,8 @@ if(isset($_POST['edit'])){
           ?>
           <br><br>
           <form method="post">
+            <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
+            <h3>Update experiment information:</h3>
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
