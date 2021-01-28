@@ -19,7 +19,7 @@ if(isset($_POST['logout'])) {
 }
 
 if(isset($_POST['edit'])){
-  echo "<h1> yo mamma </h1>";
+  echo "<h1> test </h1>";
   $newInfo = $_POST['addedinfo'];
   if (empty($newInfo)) {
     echo "The experiment must have a description!";
@@ -52,9 +52,9 @@ if(isset($_POST['edit'])){
 </head>
 <body>
   <header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
   </header>
 
@@ -63,7 +63,6 @@ if(isset($_POST['edit'])){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-      <form>
           <p> <b> Name of experiment: </b> </p>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
@@ -86,12 +85,13 @@ if(isset($_POST['edit'])){
           <br><br>
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <h3>Update experiment information:</h3>
+        <form method="POST">
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
     </div>
     </div>
-  </div>
+
 
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
