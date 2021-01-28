@@ -40,7 +40,8 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
 
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
-        $sql = "SELECT * FROM questionnaires WHERE experimentID = $_SESSION['experimentID']";
+        $experimentid = $_SESSION['experimentID']
+        $sql = "SELECT * FROM questionnaires WHERE experimentID == '$experimentid'";
         $result = mysqli_query($conn, $sql);
 
         //displays all experiments fetched along with an option to create a questionnaire
