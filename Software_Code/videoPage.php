@@ -59,7 +59,7 @@ if(isset($_POST['logout'])) {
        ?>
     </div>
   </div>
-  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentList.php">
+  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
       <input type="submit" value="Return to Experiments Information" />
   </form>
   <footer>
