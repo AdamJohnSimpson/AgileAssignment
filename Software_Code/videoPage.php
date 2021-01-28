@@ -21,13 +21,11 @@
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
-      <!-- <img src="dogMeme.jpg" alt="Dog Meme Here"> -->
-
       <?php
         // $experiment = $_SESSION['experimentid'];
         $experiment = "1";
         $allVideos = scandir("videos/" . $experiment . "/");
-
+        print_r($allVideos);
         if (($key = array_search('.', $allVideos)) !== false) {
           unset($allVideos[$key]);
         }
@@ -35,28 +33,19 @@
           unset($allVideos[$key]);
         }
 
-        echo getcwd();
+        // echo '<video src="videos/1/vine.mp4" height="400" width="600" type="video/mp4" controls>';
 
-        // echo "
-        // <br>
-        // <video src='D:\home\site\wwwroot\Software_Code\\vine.mp4' width='320' height='240' type='video/mp4' controls autoplay>
-        //   Your browser does not support the video tag.
-        // </video>
-        // <br><br>";
-
-        echo '<video src="videos/1/vine.mp4" height="400" width="600" type="video/mp4" controls>';
-
-        // for ($x=0; $x < count($allVideos); $x++) {
-        //   // $path = "videos/" . $experiment . "/" . $allVideos[$x];
-        //   $path = $allVideos[$x];
-        //   echo $path;
-        //     echo "
-        //     <br>
-        //     <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
-        //       Your browser does not support the video tag.
-        //     </video>
-        //     <br><br>";
-        // }
+        for ($x=0; $x < count($allVideos); $x++) {
+          $path = "videos/" . $experiment . "/" . $allVideos[$x];
+          // $path = $allVideos[$x];
+          echo $path;
+            echo "
+            <br>
+            <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
+              Your browser does not support the video tag.
+            </video>
+            <br><br>";
+        }
 
        ?>
     </div>
