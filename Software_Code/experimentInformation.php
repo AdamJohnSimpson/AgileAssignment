@@ -81,7 +81,7 @@ if(isset($_POST['edit'])){
           // }
           ?>
           <br><br>
-          <form method="post">
+          <form method="POST">
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <h3>Update experiment information:</h3>
             <input type="text" value "Add a new description here" name="addedinfo">
