@@ -10,6 +10,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 
 $userID= $_SESSION['userID'];
 
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
 
  if(isset($_POST['submit'])){
    $experimentName = $_POST['experimentName'];
@@ -75,10 +79,11 @@ $userID= $_SESSION['userID'];
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
+    <br></br>
   </header>
 
   <div class="jumbotron text-center">
-    <br></br>
+
     <h1 class="text-center" style="float: center ">Create Experiment</h1>
   </div>
   <div class="container-fluid" style="padding:0">

@@ -11,6 +11,9 @@ $questionnaireURL = $questionnaireURL.$questionnaireID;
 
 
 
+      mail($participantsEmail, $subject, $message);
+      echo "email sent.";
+  }
 
 
 
@@ -19,7 +22,10 @@ if(isset($_POST['quit'])) {
   exit();
 }
 
-
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
 
  ?>
 
@@ -34,6 +40,13 @@ if(isset($_POST['quit'])) {
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
      <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
    </head>
+
+   <header>
+     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+     <form method="POST">
+       <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+     </form>
+   </header>
 
    <body>
      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">

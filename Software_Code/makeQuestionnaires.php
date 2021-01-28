@@ -1,7 +1,7 @@
 
 <?php include 'includes/header.php'?>
 <?php
-ensures user is logged in
+//ensures user is logged in
   if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
     header("location: login.php");
     exit;
@@ -33,7 +33,7 @@ ensures user is logged in
     $_SESSION['questionnaireID'] = $questionnaireID;
     $experimentID = $_SESSION['experimentID'];
     $userID= $_SESSION['userID'];
-    $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
+    $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', $userID, '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
       header("location: addQuestions.php");
@@ -48,6 +48,11 @@ ensures user is logged in
     unset($_SESSION['experimentID']);
     header("location: experimentList.php");
     exit;
+  }
+
+  if(isset($_POST['logout'])) {
+    unset($_SESSION['loggedin']);
+    header("location: login.php");
   }
 ?>
 
@@ -66,7 +71,11 @@ ensures user is logged in
 
   <body>
     <header>
-      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+      <form method="POST">
+        <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
+      </form>
+      <br></br>
     </header>
 
       <div class="jumbotron text-center">

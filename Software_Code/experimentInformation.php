@@ -13,19 +13,23 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
 
 if(isset($_POST['edit'])){
-  echo "<h1> yo mamma </h1>";
+
   $newInfo = $_POST['addedinfo'];
   if (empty($newInfo)) {
     echo "The experiment must have a description!";
 
   } else {
   //send to db sql here
-  $sql = "UPDATE experiments SET experimentInformation={$newInfo} WHERE experimentid={$experimentID}";
-  echo "<p> ".$sql."</p>";
+  $sql = "UPDATE experiments SET experimentInformation='{$newInfo}' WHERE experimentid={$experimentID}";
+
   if ($conn->query($sql) === TRUE) {
-    echo "New description added successfully";
+    echo "New description added successfully!";
   }
   else {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -40,7 +44,7 @@ if(isset($_POST['edit'])){
 
 <head>
   <meta charset="utf-8">
-  <title>Experiment Information</title <!-- Bootstrap CSS -->
+  <title>Experiment Information</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -48,10 +52,11 @@ if(isset($_POST['edit'])){
 </head>
 <body>
   <header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout">
+      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
+    <br></br>
   </header>
 
   <div class="jumbotron text-center">
@@ -59,15 +64,13 @@ if(isset($_POST['edit'])){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-      <form>
-        <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
 
           // Include database file
           //get information from experiment list page to display the selected experiment
-          $query = "SELECT experimentInformation FROM experiments WHERE experimentid=$experimentID";
+          $query = "SELECT experimentInformation FROM experiments WHERE experimentid={$experimentID}";
           // $stmt = $mysql->prepare($query);
           // $stmt->execute();
           // $result = $stmt->fetchAll();
@@ -81,15 +84,15 @@ if(isset($_POST['edit'])){
           // }
           ?>
           <br><br>
-          <form method="post">
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <h3>Update experiment information:</h3>
+        <form method="POST">
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
-      </form>
     </div>
-  </div>
+    </div>
+
 
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
