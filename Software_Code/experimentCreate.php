@@ -84,7 +84,7 @@ if(isset($_POST['logout'])) {
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
-    <form class="" action="index.html" method="POST">
+    <form method="POST">
       <input type="submit" value="Log Out" name="logout">
     </form>
   </header>
