@@ -24,7 +24,7 @@ if(isset($_POST['edit'])){
   //send to db sql her
   $experimentID = $_SESSION['experimentID'];
   $userID = $_SESSION['userID'];
-  $sql = "UPDATE experiments SET experimentInformation= $newInfo WHERE experimentID= $experimentID";
+  $sql = "UPDATE experiments SET experimentInformation= $newInfo WHERE experimentid= $experimentID";
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully";
   }
