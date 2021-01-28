@@ -50,7 +50,7 @@ if(isset($_POST['logout'])) {
 
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
-        $sql = "SELECT * FROM experiments WHERE primaryresearcher = 1";
+        $sql = "SELECT * FROM experiments WHERE primaryresearcher = $_SESSION['id']";
         $result = mysqli_query($conn, $sql);
 
         //displays all experiments fetched along with an option to create a questionnaire
