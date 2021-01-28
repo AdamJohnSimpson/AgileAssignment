@@ -20,12 +20,12 @@
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
-      
+
       <?php
         // $experiment = $_SESSION['experimentid'];
         $experiment = "1";
         $allVideos = scandir("videos/" . $experiment . "/");
-
+        print_r($allVideos);
         if (($key = array_search('.', $allVideos)) !== false) {
           unset($allVideos[$key]);
         }
