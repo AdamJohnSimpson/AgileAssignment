@@ -1,10 +1,10 @@
 <?php
 session_start();
 //checks if user logged in, if not returns to login page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: login.php");
-  exit;
-}
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//   header("location: login.php");
+//   exit;
+// }
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
