@@ -65,7 +65,6 @@ if(isset($_POST['edit'])){
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
           <p> <b> Name of experiment: </b> </p>
-          <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
 
