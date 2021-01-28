@@ -22,8 +22,9 @@
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
       <?php
-        // $experiment = $_SESSION['experimentid'];
-        $experiment = "1";
+        include 'includes/header.php';
+        $experiment = $_SESSION['experimentID'];
+        // $experiment = "1";
         $allVideos = scandir("videos/" . $experiment . "/");
 
         if (($key = array_search('.', $allVideos)) !== false) {
@@ -35,7 +36,7 @@
 
         for ($x=0; $x < count($allVideos); $x++) {
           $path = "videos/" . $experiment . "/" . $allVideos[$x];
-          echo $path;
+          echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
             <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
