@@ -90,8 +90,21 @@
 
               $number = $count + 1;
 
-              echo '<label for="'.$count.'"><b>'. $number . ') ' . $row['questionText'] . '</b></label>';
-              echo '<textarea class="form-control" name="'. $count . '" ></textarea>';
+              if($row['questionType'] == 1){
+                echo '<label for="'.$count.'"><b>'. $number . ') ' . $row['questionText'] . '</b></label>';
+                echo '<textarea class="form-control" name="'. $count . '" ></textarea>';
+              }else if($row['questionType'] == 2){
+                echo '<p><b>'. $number . ') ' . $row['questionText'] . '</b></p>';
+
+                $questionID = $row['questionID'];
+
+                $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
+                $newResult = mysqli_query($conn, $newQuery);
+                while($newRow = mysqli_fetch_array($newResult)){
+                  echo '<input type="radio" id="'.$newRow['optionID'].'" name="'.$count.'" value="'.$newRow['optionText'].'">';
+                  echo '<label for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';              
+                }
+              }
               echo '</div>';
 
               $count++;
