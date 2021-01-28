@@ -13,7 +13,8 @@ if(isset($_SESSION['USER_role']))
 		header('Location:../experimentList.php');
 		break;
     case 'Lab Manager':
-		header('Location:../UserManagement/LabManagerPage.php');
+		// header('Location:../UserManagement/LabManagerPage.php');
+    header('Location:../experimentList.php');
 		break;
     default:
 		header('Location:../login.php');
