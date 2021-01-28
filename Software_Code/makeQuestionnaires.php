@@ -33,7 +33,7 @@
     $_SESSION['questionnaireID'] = $questionnaireID;
     $experimentID = $_SESSION['experimentID'];
     $userID= $_SESSION['id'];
-    $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', $userID, '$experimentID')";
+    $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
       header("location: addQuestions.php");
@@ -44,8 +44,6 @@
   }
   //if the exit button is clicked then ends experiment choice session and returns to expereiment list
   if(isset($_POST['quit'])) {
-    unset($_SESSION['experimentName']);
-    unset($_SESSION['experimentID']);
     header("location: experimentList.php");
     exit;
   }
