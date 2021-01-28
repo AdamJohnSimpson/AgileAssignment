@@ -8,6 +8,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit();
 }
+
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+
 require_once "Includes/db.inc.php";
 ?>
 

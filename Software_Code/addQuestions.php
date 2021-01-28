@@ -46,10 +46,6 @@
   }
 
   if(isset($_POST['quit'])) {
-    unset($_SESSION['experimentName']);
-    unset($_SESSION['experimentID']);
-    unset($_SESSION['questionnaireName']);
-    unset($_SESSION['questionnaireID']);
     header("location: questionnaireList.php");
     exit;
   }
