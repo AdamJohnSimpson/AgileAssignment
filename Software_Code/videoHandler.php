@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'?>
 <?php
 //===========================================================================================================================================
 // Code to upload and store a file adapted from the following page:
@@ -9,15 +10,11 @@ echo "<br><br>experiment id: " . $experimentid;
 
 // define allowed file types in an array
 $allowedTypes = array(
-    'image/png',
-    'image/jpeg',
-    'image/jpg',
-    'image/gif',
     'video/mp4'
 );
 
 // define allowed file extensions in array
-$allowedExt = array("png", "jpeg", "jpg", "gif", "mp4");
+$allowedExt = array("mp4");
 
 // define max file size to be uploaded (this needs to be in bytes)
 $maxFileSize = 131072000;  // 125MB Max
