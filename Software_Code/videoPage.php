@@ -27,11 +27,11 @@ if(isset($_POST['logout'])) {
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
-    <br></br>
-    <br></br>
+    <!-- <br></br>
+    <br></br> -->
   </header>
 
-  <div class="jumbotron text-center">
+  <div style="margin-top: 100px;" class="jumbotron text-center">
     <?php echo "<h1 class='text-center'>{$experimentName} Videos</h1>"; ?>
   </div>
   <div class="container-fluid" style="padding:0">
