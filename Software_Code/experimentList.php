@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php';?>
 <?php
 //checks if user logged in, if not returns to login page
 // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -51,7 +51,8 @@ if(isset($_POST['logout'])) {
         $userID = $_SESSION['id'];
 
         if ($_SESSION['USER_role'] == 'Lab Manager'){
-            $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
+            // //$sql = "SELECT * FROM experiments WHERE experimentName !=|| ''";
+            $sql = "SELECT * FROM experiments WHERE primaryresearcher != {$userID} || primaryresearcher = {$userID}";
             $result = mysqli_query($conn, $sql);
         }
         else {
@@ -90,6 +91,7 @@ if(isset($_POST['logout'])) {
           $_SESSION['experimentName'] = $experimentname;
           if ($reason === "info") {
             echo "<h2> im literally setting the header location to experiment Information </h2>";
+
             header("Location:experimentInformation.php");
             exit();
           }
