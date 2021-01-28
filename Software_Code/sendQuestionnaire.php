@@ -11,6 +11,9 @@ $questionnaireURL = $questionnaireURL.$questionnaireID;
 
 
 
+      mail($participantsEmail, $subject, $message);
+      echo "email sent.";
+  }
 
 
 

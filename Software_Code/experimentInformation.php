@@ -62,6 +62,7 @@ if(isset($_POST['edit'])){
       <form>
         <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
+          <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
 
