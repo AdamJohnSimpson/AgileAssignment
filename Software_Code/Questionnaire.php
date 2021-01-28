@@ -38,10 +38,11 @@
 		  if(ISSET($_POST[$count]) && !empty($_POST[$count])){
         $questionID = $row['questionID'];
 
-        $response = $conn->real_escape_string($_POST[$count]);
+        $response = $_POST[$count];
         
-        $newQuery = "INSERT INTO results (response, questionID, responseID) VALUES ('$response', '$questionID', '$responseID')";
-        $conn->query($newQuery);
+        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+        $newQuery->bind_param('s', $response);
+        $newQuery->execute();
 		  }
       $count++;
     }
