@@ -6,6 +6,7 @@
 //   exit;
 // }
 
+
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
@@ -39,6 +40,13 @@ if(isset($_POST['logout'])) {
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
+
+if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
+{
+    echo "<h1> look im in here </h1>";
+    func($_GET['i'], $_GET['n'], $_GET['r']);
+}
+
         include "Includes/db.inc.php";
 
         //displays an error if user cannot connect to database
@@ -77,24 +85,23 @@ if(isset($_POST['logout'])) {
                   <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
                 </div>
               </div>";
-        if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
+
+        function func($eid, $ename, $r)
         {
-            echo "<h1> look im in here </h1>";
-            func("$_GET['i']", "$_GET['n']", "$_GET['r']");
-        }
-        function func($experimentid, $experimentname, $reason)
-        {
-          echo "<h1> Im also in here $experimentid $experimentname $reason</h1>";
-          $_SESSION['experimentID'] = $experimentid;
-          $_SESSION['experimentName'] = $experimentname;
-          if ($reason == "info") {
+          echo "<h1> Im also in here $eid $ename $r</h1>";
+          $_SESSION['experimentID'] = $eid;
+          $_SESSION['experimentName'] = $ename;
+          if ($r== "info") {
             header("Location:experimentInformation.php");
+            exit();
           }
-          else if ($reason === "quest") {
+          else if ($r === "quest") {
             header("Location:makeQuestionnaires.php");
+            exit();
           }
-          else if ($reason === "video") {
+          else if ($r === "video") {
             header("Location:uploadVideo.php");
+            exit();
           }
           exit();
         }
