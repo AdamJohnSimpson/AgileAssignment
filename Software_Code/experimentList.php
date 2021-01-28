@@ -1,15 +1,14 @@
 <?php include "Includes/db.inc.php";?>
 <?php
 //checks if user logged in, if not returns to login page
-// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//   header("location: login.php");
-//   exit;
-// }
-//
-// if(isset($_POST['logout'])) {
-//   unset($_SESSION['loggedin']);
-//   header("location: login.php");
-//}
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+  header("location: login.php");
+  exit;
+}
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
  ?>
 
 <!DOCTYPE html>
@@ -39,24 +38,18 @@
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
-
 if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
 {
     echo "<h1> look im in here </h1>";
     func($_GET['i'], $_GET['n'], $_GET['r']);
 }
-
-        include "Includes/db.inc.php";
-
         //displays an error if user cannot connect to database
          if (!$conn) {
           die('Could not connect: ' . mysqli_error());
         }
-
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
         $userID = $_SESSION['id'];
-
         if ($_SESSION['USER_role'] == 'Lab Manager'){
             $sql = "SELECT * FROM experiments";
             $result = mysqli_query($conn, $sql);
@@ -67,7 +60,6 @@ if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
          }
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
-
           $experimentid = $row['experimentid'];
           $experimentname = $row['experimentname'];
            echo "<div class='row'>
@@ -84,7 +76,6 @@ if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
                   <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
                 </div>
               </div>";
-
         function func($eid, $ename, $r)
         {
           echo "<h1> Im also in here $eid $ename $r</h1>";
@@ -102,11 +93,9 @@ if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
             header("Location:uploadVideo.php");
             exit();
           }
-          exit();
         }
         //closes the connection to the database
         mysqli_close($conn);
-
         ?>
 
 
