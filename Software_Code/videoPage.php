@@ -1,3 +1,9 @@
+<?php
+include 'includes/header.php';
+$experimentID = $_SESSION['experimentID'];
+$experimentName = $_SESSION['experimentName'];
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -16,16 +22,14 @@
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Experiment [X] Videos</h1>
+    <?php echo "<h1 class="text-center">{$experimentName} Videos</h1>"; ?>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
       <?php
-        include 'includes/header.php';
-        $experiment = $_SESSION['experimentID'];
         // $experiment = "1";
-        $allVideos = scandir("videos/" . $experiment . "/");
+        $allVideos = scandir("videos/" . $experimentID . "/");
 
         if (($key = array_search('.', $allVideos)) !== false) {
           array_shift($allVideos);
@@ -35,7 +39,7 @@
         }
 
         for ($x=0; $x < count($allVideos); $x++) {
-          $path = "videos/" . $experiment . "/" . $allVideos[$x];
+          $path = "videos/" . $experimentID . "/" . $allVideos[$x];
           echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
