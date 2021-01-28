@@ -80,7 +80,7 @@ if(isset($_POST['edit'])){
           <form method="post">
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <h3>Update experiment information:</h3>
-            <input type="text" value "Add a new description here" name="addedinfo">
+            <input type="text" value "Add a new description here:" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
       </form>
