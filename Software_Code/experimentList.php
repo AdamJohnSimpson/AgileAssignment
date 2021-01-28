@@ -55,21 +55,8 @@
               <a href='".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video'> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
              </div>
            </div>";
-        //
-        // <form method=\"POST\">
-        // <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-        // <input type=\"submit\" value=\"Create questionnaire\" name=\"select\">
-        // </form>
         }
-
-        // if(isset($_POST['select'])){
-        //   $_SESSION['experimentID'] = $experimentid;
-        //   $_SESSION['experimentName'] = $experimentname;
-        //   echo "<p> ".$_SESSION['experimentID']." = ".$experimentid."<br> ".$_SESSION['experimentName']." = ".$experimentname;
-        //   //header("Location:makeQuestionnaires.php");
-        //   exit();
-        // }
-
+        echo "<a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>"
         if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
         {
             func($_GET['i'], $_GET['n'], $_GET['r']);
@@ -87,15 +74,14 @@
           else if ($reason === "video") {
             header("Location:uploadVideo.php");
           }
-          else {
-
-          }
           exit();
         }
         //closes the connection to the database
         mysqli_close($conn);
 
         ?>
+
+
         </div>
       </div>
       <footer>
