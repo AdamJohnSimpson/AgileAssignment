@@ -89,6 +89,7 @@ if(isset($_POST['logout'])) {
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
           if ($reason == "info") {
+            echo "<h2> im literally setting the header location to experiment Information </h2>";
             header("Location:experimentInformation.php");
           }
           else if ($reason === "quest") {
