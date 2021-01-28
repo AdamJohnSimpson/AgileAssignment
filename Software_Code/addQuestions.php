@@ -75,6 +75,7 @@
           <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
         </form>
         <br></br>
+        <br></br>
       </header>
 
         <div class="jumbotron text-center">
