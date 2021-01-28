@@ -22,7 +22,7 @@ if(isset($_POST['logout'])) {
 </head>
 
 <body>
-  <header>
+  <header style="margin-bottom: 100px;" >
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
@@ -31,7 +31,7 @@ if(isset($_POST['logout'])) {
     <br></br> -->
   </header>
 
-  <div style="margin-top: 100px;" class="jumbotron text-center">
+  <div class="jumbotron text-center">
     <?php echo "<h1 class='text-center'>{$experimentName} Videos</h1>"; ?>
   </div>
   <div class="container-fluid" style="padding:0">
