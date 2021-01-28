@@ -25,7 +25,7 @@ if(isset($_POST['logout'])) {
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
+      <input type="submit" value="Log Out" name="logout" style="float: right; padding:20px" class="btn btn-warning">
     </form>
     <br></br>
     <br></br>
