@@ -2,7 +2,7 @@
 <?php
 // Initialize the session
 session_start();
-
+echo '<link rel="shortcut icon" href="https://www.dundee.ac.uk/themes/custom/uod/assets/favicons/favicon.ico"/>';
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     //header("location: welcome.php");
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($count!=1){
             // Display an error message if username doesn't exist
             $username_err = "No account found with that username.";
-        }      
+        }
     }
 }
 ?>
