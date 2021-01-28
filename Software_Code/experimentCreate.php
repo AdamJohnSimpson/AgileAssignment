@@ -62,6 +62,8 @@ if(isset($_POST['logout'])) {
 }
 }
  }
+
+
  ?>
 
 <!DOCTYPE html>
@@ -76,7 +78,6 @@ if(isset($_POST['logout'])) {
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<!-- -->
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
