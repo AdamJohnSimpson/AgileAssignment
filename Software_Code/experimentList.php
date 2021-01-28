@@ -50,11 +50,11 @@ if(isset($_POST['logout'])) {
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
         $userID = $_SESSION['id'];
 
-        if ($_SESSION['USER_role'] == 'Lab Manager'){
+        if ($_SESSION['USER_role'] == 'Principal Researcher'){
             $sql = "SELECT * FROM experiments";
             $result = mysqli_query($conn, $sql);
         }
-        else if ($_SESSION['USER_role'] != 'Lab Manager'){
+        else if ($_SESSION['USER_role'] != 'Principal Researcher'){
           $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
           $result = mysqli_query($conn, $sql);
          }
@@ -88,9 +88,9 @@ if(isset($_POST['logout'])) {
           echo "<p> experimentID: ".$experimentid."<br> Experiment Name: ".$experimentname."<br> Destination: ".$reason."</p>";
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
-          if ($reason == "info") {
+          if ($reason === "info") {
             echo "<h2> im literally setting the header location to experiment Information </h2>";
-            // header("Location:experimentInformation.php");
+            header("Location:experimentInformation.php");
             exit();
           }
           else if ($reason === "quest") {
