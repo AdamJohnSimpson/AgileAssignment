@@ -49,6 +49,11 @@ ensures user is logged in
     header("location: experimentList.php");
     exit;
   }
+
+  if(isset($_POST['logout'])) {
+    unset($_SESSION['loggedin']);
+    header("location: login.php");
+  }
 ?>
 
 
@@ -67,6 +72,9 @@ ensures user is logged in
   <body>
     <header>
       <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+      <form method="POST">
+        <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+      </form>
     </header>
 
       <div class="jumbotron text-center">
