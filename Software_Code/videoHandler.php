@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'?>
 <?php
 //===========================================================================================================================================
 // Code to upload and store a file adapted from the following page:
