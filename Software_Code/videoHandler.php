@@ -74,6 +74,7 @@
       }
 
       ?>
+      <br><br>
       <a href="experimentList.php"> <button class='btn btn-outline-success' type='button'>Return to experiments</button> </a>
     </div>
   </div>
