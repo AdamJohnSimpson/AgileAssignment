@@ -8,11 +8,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
-$_SESSION["loggedin"] = true;
-$_SESSION["id"] = 1;
-$_SESSION["username"] = "sdsdfsefsef";
-$_SESSION["USER_role"] = "aaeefsef";
-
 $userID= $_SESSION['userID'];
 
 if(isset($_POST['logout'])) {
@@ -71,7 +66,7 @@ if(isset($_POST['logout'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>Create Experiment</title <!-- Bootstrap CSS -->
+  <title>Create Experiment</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -87,7 +82,8 @@ if(isset($_POST['logout'])) {
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Create Experiment</h1>
+    <br></br>
+    <h1 class="text-center" style="float: center ">Create Experiment</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
