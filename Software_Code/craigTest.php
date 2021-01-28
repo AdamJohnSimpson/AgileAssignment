@@ -6,9 +6,6 @@
 //   exit;
 // }
 
-$_SESSION['USER_role'] = 'Lab Manager';
-$_SESSION['id'] = 1;
-
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
