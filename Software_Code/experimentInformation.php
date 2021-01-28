@@ -29,7 +29,7 @@ if(isset($_POST['edit'])){
 
   } else {
   //send to db sql here
-  $sql = "UPDATE experiments SET experimentInformation= '$newInfo' WHERE experimentid= '$experimentID";
+  $sql = "UPDATE experiments SET experimentInformation={$newInfo} WHERE experimentid={$experimentID}";
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully";
   }
@@ -68,7 +68,6 @@ if(isset($_POST['edit'])){
       <form>
         <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
-          <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
 
