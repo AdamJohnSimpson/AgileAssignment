@@ -13,14 +13,6 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
-if(isset($_POST['logout'])) {
-  unset($_SESSION['id']);
-  unset($_SESSION['username']);
-  unset($_SESSION['USER_role']);
-
-  $_SESSION["loggedin"] = false;
-  header("location: login.php");
-}
 
 if(isset($_POST['edit'])){
   $newInfo = $_POST['addedinfo'];
@@ -30,6 +22,7 @@ if(isset($_POST['edit'])){
   } else {
   //send to db sql here
   $sql = "UPDATE experiments SET experimentInformation={$newInfo} WHERE experimentid={$experimentID}";
+  echo "<p> ".$sql."</p>";
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully";
   }
