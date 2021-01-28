@@ -50,14 +50,14 @@ if(isset($_POST['logout'])) {
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
         $userID = $_SESSION['id'];
 
-        if ($_SESSION['USER_role'] == 'Lab Manager'){
+        // if ($_SESSION['USER_role'] == 'Lab Manager'){
             $sql = "SELECT * FROM experiments";
             $result = mysqli_query($conn, $sql);
-        }
-        else if ($_SESSION['USER_role'] != 'Lab Manager'){
-          $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
-          $result = mysqli_query($conn, $sql);
-        }
+        // }
+        // else if ($_SESSION['USER_role'] != 'Lab Manager'){
+        //   $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
+        //   $result = mysqli_query($conn, $sql);
+        // }
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 
