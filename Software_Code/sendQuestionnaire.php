@@ -20,6 +20,7 @@ if(isset($_POST['sendQ'])){
   } else{
 
       mail($participantsEmail, $subject, $message);
+      echo "email sent.";
   }
 
 
