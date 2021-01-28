@@ -87,6 +87,7 @@ if(isset($_POST['logout'])) {
   </header>
 
   <div class="jumbotron text-center">
+    <br></br>
     <h1 class="text-center">Create Experiment</h1>
   </div>
   <div class="container-fluid" style="padding:0">
