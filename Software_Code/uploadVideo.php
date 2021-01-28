@@ -18,8 +18,7 @@
   </header>
 
   <div class="jumbotron text-center">
-    <?php echo "<h1 class="text-center">Video Upload for ".$experimentname."</h1>"; ?>
-    <h1 class="text-center">Video Upload for </h1>
+    <?php echo "<h1 class='text-center'>Video Upload for ".$_SESSION['experimentName']."</h1>"; ?>
   </div>
 
   <div class="container-fluid" style="padding:0">

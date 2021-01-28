@@ -16,11 +16,7 @@ $_SESSION["USER_role"] = "aaeefsef";
 $userID= $_SESSION['userID'];
 
 if(isset($_POST['logout'])) {
-  unset($_SESSION['id']);
-  unset($_SESSION['username']);
-  unset($_SESSION['USER_role']);
-
-  $_SESSION["loggedin"] = false;
+  unset($_SESSION['loggedin']);
   header("location: login.php");
 }
 
@@ -84,9 +80,9 @@ if(isset($_POST['logout'])) {
 
 <body>
   <header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout">
+      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
     </form>
   </header>
 
