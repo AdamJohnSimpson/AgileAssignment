@@ -17,7 +17,7 @@
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Template Heading</h1>
+    <h1 class="text-center">Video Upload</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
