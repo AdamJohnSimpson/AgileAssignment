@@ -39,7 +39,7 @@
           echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
-            <video src='" . $path . "' width='320' height='240' type='video/mp4' controls autoplay>
+            <video src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
             </video>
             <br><br>";
