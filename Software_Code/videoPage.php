@@ -22,7 +22,7 @@ $experimentName = $_SESSION['experimentName'];
   </header>
 
   <div class="jumbotron text-center">
-    <?php echo "<h1 class="text-center">{$experimentName} Videos</h1>"; ?>
+    <?php echo "<h1 class='text-center'>{$experimentName} Videos</h1>"; ?>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
