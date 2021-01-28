@@ -1,21 +1,23 @@
+
 <?php include 'includes/header.php'?>
 <?php
-//ensures user is logged in
-  // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  //   header("location: login.php");
-  //   exit;
-  // }
-  // if(isset($_SESSION["experimentID"])){
-  //   $experimentID = $_SESSION["experimentID"];
-  // } else {
-  //   //If an experiment hasn't been selected redirect to relevant page
-  //   header("location: experimentList.php");
-  //   exit;
-  // }
+ensures user is logged in
+  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: login.php");
+    exit;
+  }
+  if(isset($_SESSION["experimentID"])){
+    $experimentID = $_SESSION["experimentID"];
+  } else {
+    //If an experiment hasn't been selected redirect to relevant page
+    header("location: experimentList.php");
+    exit;
+  }
 
   //gets db connection
   include "Includes/db.inc.php";
   //when clicked the submit button while post the question value
+
 
 //  check it table exsits for questionnaie, if not create the mysql_list_table
 
@@ -30,17 +32,16 @@
     $questionnaireID = uniqid($prefix="", $more_entropy=false);
     $_SESSION['questionnaireID'] = $questionnaireID;
     $experimentID = $_SESSION['experimentID'];
-    $userID = "21";
+    $userID= $_SESSION['userID'];
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
-
       header("location: addQuestions.php");
     }
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }}
-}
+  }
   //if the exit button is clicked then ends experiment choice session and returns to expereiment list
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
@@ -64,7 +65,10 @@
   </head>
 
   <body>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
+    <header>
+      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    </header>
+
       <div class="jumbotron text-center">
         <h1 class="text-center">Make a Questionnaire</h1>
       </div>
@@ -78,10 +82,12 @@
               <input type="text" name="questionnaireName"><br><br>
               <input type="submit" value="Add questionnaire name" name="addname">
               <input type="submit" value="quit" name="quit">
-
           </form>
           <br></br>
         </div>
       </div>
+      <footer>
+            <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
+      </footer>
   </body>
 </html>

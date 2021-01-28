@@ -12,6 +12,31 @@
   //   header("location: experimentList.php");
   //   exit;
   // }
+
+  include "Includes/db.inc.php";
+
+  if(isset($_POST['addQ'])){
+      $questiontext = $_POST['questionText'];
+    if (empty($questiontext)) {
+      echo "The question must have text!";
+    }
+    else {
+    //send to db sql here
+      $questionnaireID = $_SESSION['questionnaireID'];
+      $questionID = uniqid($prefix="", $more_entropy=false);
+      // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
+      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID) VALUES ('$questionID', '$questiontext', '$questionnaireID')";
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        //header("location: addQuestions.php");
+      }
+      else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
+  }
+
+
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
     unset($_SESSION['experimentID']);
@@ -36,7 +61,10 @@
     </head>
 
     <body>
-      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
+      <header>
+        <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+      </header>
+
         <div class="jumbotron text-center">
           <h1 class="text-center">Add a Question</h1>
         </div>
@@ -54,5 +82,8 @@
             <br></br>
           </div>
         </div>
+      <footer>
+        <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
+      </footer>
     </body>
   </html>

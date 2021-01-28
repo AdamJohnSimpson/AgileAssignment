@@ -1,58 +1,56 @@
+<?php include 'includes/header.php'?>
 <?php
 //===========================================================================================================================================
-// Code to upload and store a file adapted from the following stack overflow page:
-// https://stackoverflow.com/questions/18217964/upload-video-files-via-php-and-save-them-in-appropriate-folder-and-have-a-databa/18219669
+// Code to upload and store a file adapted from the following page:
+// https://forums.phpfreaks.com/topic/282415-need-clarification-on-why-no-error-message/
 //===========================================================================================================================================
-$allowedExts = array("mp4", "mov", "wmv", "avi", "jpg");
-//
 
-$extension = end(explode(".", $_FILES["file"]["name"]));
+$experimentid = $_SESSION['experimentID'];
+echo "<br><br>experiment id: " . $experimentid;
 
-if(isset($_POST['submit'])){
-  $test = $_POST['experiments'];
-} else {
-  echo "no worky";
-}
-// $test = $_POST['experiments'];
+// define allowed file types in an array
+$allowedTypes = array(
+    'video/mp4'
+);
 
+// define allowed file extensions in array
+$allowedExt = array("mp4");
 
-echo "<br><br>experiment name: " . $test;
+// define max file size to be uploaded (this needs to be in bytes)
+$maxFileSize = 131072000;  // 125MB Max
 
+// check that form has been submitted
+if(isset($_POST['submit']) && is_array($_FILES))
+{
+    // get the file type
+    $fileType = $_FILES['file']['type'];
 
-if ((($_FILES["file"]["type"] == "video/mp4")
-|| ($_FILES["file"]["type"] == "image/jpg")
-|| ($_FILES["file"]["type"] == "video/mov")
-|| ($_FILES["file"]["type"] == "video/wmv")
-|| ($_FILES["file"]["type"] == "video/avi"))
-// Limiting video upload to 50 MB
-&& ($_FILES["file"]["size"] < 131072000)
-&& in_array($extension, $allowedExts))
-  {
-  if ($_FILES["file"]["error"] > 0)
+    // get the file extension using pathinfo function
+    $fileExt  = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+    // get fileSize
+    $fileSize = $_FILES['file']['size'];
+
+    // check that
+    // - fileType is in allowTypes array,
+    // - fileExt is in allowedExt array and
+    // - fileSize is not bigger than maxFileSize
+    if(in_array($fileType, $allowedTypes) && in_array($fileExt, $allowedExt) && ($fileSize < $maxFileSize))
     {
-    echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
+        if($_FILES['file']['error'] > 0)
+        {
+            echo "Error" . $_FILES["file"]["error"];
+        }
+        else
+        {
+            move_uploaded_file(($_FILES["file"]["tmp_name"]),"videos/". $experimentid . "/" . $_FILES['file']['name']);
+            echo "<br><br>Your upload was successful";
+        }
     }
-  else
-    {
-    echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-    echo "Type: " . $_FILES["file"]["type"] . "<br />";
-    echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-    echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
-
-    if (file_exists("upload/" . $_FILES["file"]["name"]))
-      {
-      echo $_FILES["file"]["name"] . " already exists. ";
-      }
     else
-      {
-      move_uploaded_file($_FILES["file"]["tmp_name"],
-      "upload/" . $_FILES["file"]["name"]);
-      echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-      }
+    {
+        echo '<br><br>There was an error uploading your file...';
     }
-  }
-else
-  {
-  echo "<br><br>Invalid file";
-  }
+}
+
 ?>

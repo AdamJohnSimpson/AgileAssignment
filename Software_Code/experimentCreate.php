@@ -1,14 +1,29 @@
 <?php
 
 include 'Includes/header.php';
-
+require_once "Includes/db.inc.php";
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   header("location: login.php");
   exit;
 }
 
- require_once "Includes/db.inc.php";
+$_SESSION["loggedin"] = true;
+$_SESSION["id"] = 1;
+$_SESSION["username"] = "sdsdfsefsef";
+$_SESSION["USER_role"] = "aaeefsef";
+
+$userID= $_SESSION['userID'];
+
+if(isset($_POST['logout'])) {
+  unset($_SESSION['id']);
+  unset($_SESSION['username']);
+  unset($_SESSION['USER_role']);
+
+  $_SESSION["loggedin"] = false;
+  header("location: login.php");
+}
+
  if(isset($_POST['submit'])){
    $experimentName = $_POST['experimentName'];
    $_SESSION['experimentName'] = $experimentName;
@@ -25,17 +40,31 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
  else {
    //send to db sql here
    $_SESSION['experimentID'] = $experimentID;
-   $primaryresearcher = "21";
-   echo "Hey I'm in here! this one is for the boys w the boomer systems top down ac with the coolin systems ";
-   $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
-   if ($conn->query($sql) === TRUE) {
-     echo "New record created successfully";
-     header("location: experimentList.php");
-   }
-   else {
-     echo "Error: " . $sql . "<br>" . $conn->error;
-   }
- }
+   $primaryresearcher = $userID;
+
+   $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
+   $checkResult = mysqli_query($conn, $testsql);
+
+   if(mysqli_num_rows($checkResult) == 0) { //check if the name of experiment already exists
+     //the experiment name doesn't already exist
+     $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
+     if ($conn->query($sql) === TRUE) {
+
+       if (!mkdir("videos/" . $experimentName, 0700)) {
+           die('Failed to create folder');
+       }
+
+       echo "New record created successfully";
+       header("location: experimentList.php");
+     }
+     else {
+       echo "Error: " . $sql . "<br>" . $conn->error;
+     }
+} else {
+    // the experiment name already exists
+    echo "That experiment already exists";
+}
+}
  }
 
 
@@ -56,7 +85,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
-    <input type="submit" value="Logout" name="submit">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout">
+    </form>
   </header>
 
   <div class="jumbotron text-center">
