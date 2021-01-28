@@ -25,13 +25,11 @@ if(isset($_POST['logout'])) {
   </head>
 
   <body>
-    <header>
+    <header style="height:150px;">
       <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
       <form method="POST">
         <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
       </form>
-      <br></br>
-      <br></br>
     </header>
 
       <div class="jumbotron text-center">
@@ -51,9 +49,15 @@ if(isset($_POST['logout'])) {
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
         $userID = $_SESSION['id'];
-        $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
-        $result = mysqli_query($conn, $sql);
 
+        if ($_SESSION['USER_role'] == 'Lab Manager'){
+            $sql = "SELECT * FROM experiments";
+            $result = mysqli_query($conn, $sql);
+        }
+        else if ($_SESSION['USER_role'] != 'Lab Manager'){
+          $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
+          $result = mysqli_query($conn, $sql);
+         }
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 
@@ -75,20 +79,27 @@ if(isset($_POST['logout'])) {
               </div>";
         if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
         {
+            echo "<h1> look im in here </h1>";
             func($_GET['i'], $_GET['n'], $_GET['r']);
         }
         function func($experimentid, $experimentname, $reason)
         {
+          echo "<h1> Im also in here </h1>";
+          echo "<p> experimentID: ".$experimentid."<br> Experiment Name: ".$experimentname."<br> Destination: ".$reason."</p>";
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
           if ($reason == "info") {
-            header("Location:experimentInformation.php");
+            echo "<h2> im literally setting the header location to experiment Information </h2>";
+            // header("Location:experimentInformation.php");
+            exit();
           }
           else if ($reason === "quest") {
             header("Location:makeQuestionnaires.php");
+            exit();
           }
           else if ($reason === "video") {
             header("Location:uploadVideo.php");
+            exit();
           }
           exit();
         }

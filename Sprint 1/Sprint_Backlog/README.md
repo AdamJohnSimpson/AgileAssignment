@@ -1,3 +1,3 @@
 # Sprint 1 Backlog
 
-Your Sprint 1 backlog should be put into this folder.
+This can be found under projects, in the Sprint 1 Progress project.

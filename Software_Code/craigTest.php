@@ -5,14 +5,18 @@
 //   header("location: login.php");
 //   exit;
 // }
-$tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php?qid=";
+
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
  ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>List of questionnaires for </title
+    <title>List of experiments</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -27,9 +31,9 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
         <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
       </form>
     </header>
-    
+
       <div class="jumbotron text-center">
-        <?php echo "<h1 class='text-center'>List of questionnaires for ".$_SESSION['experimentName']."</h1>"; ?>
+        <h1 class="text-center">List of experiments</h1>
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
@@ -44,47 +48,51 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
 
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
-        $experimentid = $_SESSION['experimentID'];
-        $sql = "SELECT * FROM questionnaires WHERE experimentID = '$experimentid'";
-        $result = mysqli_query($conn, $sql);
+        $userID = $_SESSION['id'];
 
+        if ($_SESSION['USER_role'] == 'Lab Manager'){
+            $sql = "SELECT * FROM experiments";
+            $result = mysqli_query($conn, $sql);
+        }
+        else if ($_SESSION['USER_role'] != 'Lab Manager'){
+          $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
+          $result = mysqli_query($conn, $sql);
+         }
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 
-          $questionnaireID = $row['questionnaireID'];
-          $questionnaireName = $row['questionnaireName'];
+          $experimentid = $row['experimentid'];
+          $experimentname = $row['experimentname'];
            echo "<div class='row'>
              <div class='card-body'>
-              <h5 class='card-text mt-2'>".$questionnaireName."</h5>";
-              $questionnaireURL = $tempURL.$questionnaireID;
-              echo " <p>".$questionnaireURL."</p>
+              <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
+              <button onClick=func(".$experimentid.",".$experimentname.",'info') class='btn btn-outline-success' type='button'>Experiment Information</button>
+              <button onClick=func(".$experimentid.",".$experimentname.",'quest') class='btn btn-outline-success' type='button'>Create questionnaire</button>
+              <button onClick=func(".$experimentid.",".$experimentname.",'video') class='btn btn-outline-success' type='button'>Upload video</button>
              </div>
            </div>";
         }
         echo "<div class='row'>
                 <div class='card-body'>
-                  <a href='experimentInformation.php'> <button class='btn btn-outline-success' type='button'>Back to Experiment Information</button> </a>
+                  <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
                 </div>
               </div>";
-        // if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
-        // {
-        //     func($_GET['i'], $_GET['n'], $_GET['r']);
-        // }
-        // function func($experimentid, $experimentname, $reason)
-        // {
-        //   $_SESSION['experimentID'] = $experimentid;
-        //   $_SESSION['experimentName'] = $experimentname;
-        //   if ($reason == "info") {
-        //     header("Location:experimentInformation.php");
-        //   }
-        //   else if ($reason === "quest") {
-        //     header("Location:makeQuestionnaires.php");
-        //   }
-        //   else if ($reason === "video") {
-        //     header("Location:uploadVideo.php");
-        //   }
-        //   exit();
-        // }
+        function func($experimentid, $experimentname, $reason)
+        {
+          echo "<h1> Im also in here </h1>";
+          $_SESSION['experimentID'] = $experimentid;
+          $_SESSION['experimentName'] = $experimentname;
+          if ($reason == "info") {
+            header("Location:experimentInformation.php");
+          }
+          else if ($reason === "quest") {
+            header("Location:makeQuestionnaires.php");
+          }
+          else if ($reason === "video") {
+            header("Location:uploadVideo.php");
+          }
+          exit();
+        }
         //closes the connection to the database
         mysqli_close($conn);
 

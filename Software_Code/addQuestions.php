@@ -25,7 +25,10 @@
       $questionnaireID = $_SESSION['questionnaireID'];
       $questionID = uniqid($prefix="", $more_entropy=false);
       // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
-      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID) VALUES ('$questionID', '$questiontext', '$questionnaireID')";
+
+      $questionType = 1;
+
+      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
         //header("location: addQuestions.php");
@@ -65,13 +68,11 @@
     </head>
 
     <body>
-      <header>
+      <header style="height:150px;">
         <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
         <form method="POST">
           <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
         </form>
-        <br></br>
-        <br></br>
       </header>
 
         <div class="jumbotron text-center">
