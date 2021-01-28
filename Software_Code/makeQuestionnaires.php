@@ -1,22 +1,23 @@
 
 <?php include 'includes/header.php'?>
 <?php
-//ensures user is logged in
-  // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  //   header("location: login.php");
-  //   exit;
-  // }
-  // if(isset($_SESSION["experimentID"])){
-  //   $experimentID = $_SESSION["experimentID"];
-  // } else {
-  //   //If an experiment hasn't been selected redirect to relevant page
-  //   header("location: experimentList.php");
-  //   exit;
-  // }
+ensures user is logged in
+  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: login.php");
+    exit;
+  }
+  if(isset($_SESSION["experimentID"])){
+    $experimentID = $_SESSION["experimentID"];
+  } else {
+    //If an experiment hasn't been selected redirect to relevant page
+    header("location: experimentList.php");
+    exit;
+  }
 
   //gets db connection
   include "Includes/db.inc.php";
   //when clicked the submit button while post the question value
+
 
 //  check it table exsits for questionnaie, if not create the mysql_list_table
 
@@ -31,7 +32,7 @@
     $questionnaireID = uniqid($prefix="", $more_entropy=false);
     $_SESSION['questionnaireID'] = $questionnaireID;
     $experimentID = $_SESSION['experimentID'];
-    $userID = "21";
+    $userID= $_SESSION['userID'];
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
@@ -67,7 +68,7 @@
     <header>
       <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
     </header>
-    
+
       <div class="jumbotron text-center">
         <h1 class="text-center">Make a Questionnaire</h1>
       </div>
