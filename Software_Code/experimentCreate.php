@@ -8,7 +8,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
-$userID= $_SESSION['userID']
+$userID= $_SESSION['userID'];
 
 
  if(isset($_POST['submit'])){
