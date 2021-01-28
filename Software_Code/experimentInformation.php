@@ -90,6 +90,10 @@ if(isset($_POST['edit'])){
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
+        <br>
+        <form action="https://agile-assignment-group-4.azurewebsites.net/experimentList.php">
+            <input type="submit" value="Return to Experiments List" />
+    </form>
     </div>
     </div>
 

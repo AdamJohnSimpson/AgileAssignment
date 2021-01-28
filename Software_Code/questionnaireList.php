@@ -23,12 +23,9 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
   <body>
     <header>
       <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
-      <form method="POST">
-  			<input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
-  		</form>
     </header>
       <div class="jumbotron text-center">
-        <?php echo "<h1 class='text-center'>List of questionnaires for".$_SESSION['questionnaireName']."</h1>"; ?>
+        <?php echo "<h1 class='text-center'>List of questionnaires for".$_SESSION['experimentName']."</h1>"; ?>
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
@@ -85,12 +82,6 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
         //   exit();
         // }
         //closes the connection to the database
-
-        if(isset($_POST['logout'])) {
-          unset($_SESSION['loggedin']);
-          header("location: login.php");
-        }
-
         mysqli_close($conn);
 
         ?>

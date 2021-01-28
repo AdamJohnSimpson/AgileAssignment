@@ -2,6 +2,10 @@
 include 'Includes/header.php';
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
+
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +23,9 @@ $experimentName = $_SESSION['experimentName'];
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+    </form>
   </header>
 
   <div class="jumbotron text-center">
