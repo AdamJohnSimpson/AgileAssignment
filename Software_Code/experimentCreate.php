@@ -8,17 +8,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
-$_SESSION["loggedin"] = true;
-$_SESSION["id"] = 1;
-$_SESSION["username"] = "sdsdfsefsef";
-$_SESSION["USER_role"] = "aaeefsef";
-
 $userID= $_SESSION['userID'];
 
-if(isset($_POST['logout'])) {
-  session_destroy();
-  header("location: login.php");
-}
 
  if(isset($_POST['submit'])){
    $experimentName = $_POST['experimentName'];
@@ -87,7 +78,8 @@ if(isset($_POST['logout'])) {
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Create Experiment</h1>
+    <br></br>
+    <h1 class="text-center" style="float: center ">Create Experiment</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
