@@ -50,11 +50,11 @@ if(isset($_POST['logout'])) {
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
         $userID = $_SESSION['id'];
 
-        if ($_SESSION['USER_role'] == 'Lab Manger'){
+        if ($_SESSION['USER_role'] == 'Lab Manager'){
             $sql = "SELECT * FROM experiments";
             $result = mysqli_query($conn, $sql);
         }
-        else if ($_SESSION['USER_role'] != 'Lab Manger'){
+        else if ($_SESSION['USER_role'] != 'Lab Manager'){
           $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
           $result = mysqli_query($conn, $sql);
         }
