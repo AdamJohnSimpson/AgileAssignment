@@ -25,7 +25,7 @@ if(isset($_POST['edit'])){
   $sql = "UPDATE experiments SET experimentInformation={$newInfo} WHERE experimentid={$experimentID}";
   echo "<p> ".$sql."</p>";
   if ($conn->query($sql) === TRUE) {
-    echo "New description added successfully";
+    echo "New description added successfully!";
   }
   else {
     echo "Error: " . $sql . "<br>" . $conn->error;
