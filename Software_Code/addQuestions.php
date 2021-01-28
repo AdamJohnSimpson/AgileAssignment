@@ -50,7 +50,7 @@
     unset($_SESSION['experimentID']);
     unset($_SESSION['questionnaireName']);
     unset($_SESSION['questionnaireID']);
-    header("location: experimentList.php");
+    header("location: questionnaireList.php");
     exit;
   }
   ?>
