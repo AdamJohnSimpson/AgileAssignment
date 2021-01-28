@@ -59,7 +59,9 @@ if(isset($_POST['logout'])) {
        ?>
     </div>
   </div>
-
+  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentList.php">
+      <input type="submit" value="Return to Experiments Information" />
+  </form>
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
