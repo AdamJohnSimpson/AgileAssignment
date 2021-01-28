@@ -27,7 +27,7 @@ if(isset($_POST['logout'])) {
       <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
     </form>
   </header>
-
+--
   <div class="jumbotron text-center">
     <?php echo "<h1 class='text-center'>Video Upload for ".$_SESSION['experimentName']."</h1>"; ?>
   </div>
