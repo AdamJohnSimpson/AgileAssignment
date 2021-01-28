@@ -61,7 +61,7 @@
           {
               if($_FILES['file']['error'] > 0)
               {
-                  echo "Error" . $_FILES["file"]["error"];
+                  echo "<h3>Error" . $_FILES["file"]["error"] . "</h3>";
               }
               else
               {
