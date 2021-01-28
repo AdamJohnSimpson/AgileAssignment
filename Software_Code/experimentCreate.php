@@ -16,11 +16,7 @@ $_SESSION["USER_role"] = "aaeefsef";
 $userID= $_SESSION['userID'];
 
 if(isset($_POST['logout'])) {
-  unset($_SESSION['id']);
-  unset($_SESSION['username']);
-  unset($_SESSION['USER_role']);
-
-  $_SESSION["loggedin"] = false;
+  unset($_SESSION['loggedin']);
   header("location: login.php");
 }
 
@@ -66,6 +62,8 @@ if(isset($_POST['logout'])) {
 }
 }
  }
+
+
  ?>
 
 <!DOCTYPE html>
@@ -80,7 +78,6 @@ if(isset($_POST['logout'])) {
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<!-- -->
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
