@@ -1,11 +1,12 @@
 <?php
-include 'includes/header.php';
+include 'Includes/header.php';
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
 
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
