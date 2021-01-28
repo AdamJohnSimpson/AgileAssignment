@@ -56,7 +56,7 @@
              </div>
            </div>";
         }
-        echo "<a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>"
+        echo "<a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>";
         if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
         {
             func($_GET['i'], $_GET['n'], $_GET['r']);
