@@ -4,9 +4,8 @@
 	session_start();
 
 	if(!ISSET($_GET['qid'])){
-		//header('Location:../Includes/redirect.inc.php');
-		//exit();
-		echo 'Couldn\' retrieve ID';
+		header('Location:../Includes/error.inc.php');
+		exit();
 	}
 	
 	$qID = $_GET['qid'];
@@ -17,9 +16,8 @@
 	if($row){
 		$qName = $row['questionnaireName'];
 	}else{
-		//header('Location:../Includes/redirect.inc.php');
-		//exit();
-		echo 'Couldn\' find questionnaire';
+		header('Location:../Includes/error.inc.php');
+		exit();
 	}
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
