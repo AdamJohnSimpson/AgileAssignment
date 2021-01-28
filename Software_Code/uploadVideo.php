@@ -16,7 +16,7 @@
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
   </header>
-
+--
   <div class="jumbotron text-center">
     <?php echo "<h1 class='text-center'>Video Upload for ".$_SESSION['experimentName']."</h1>"; ?>
   </div>
