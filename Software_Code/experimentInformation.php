@@ -15,6 +15,7 @@ $experimentName = $_SESSION["experimentName"];
 
 
 if(isset($_POST['edit'])){
+  echo "<h1> yo mamma </h1>";
   $newInfo = $_POST['addedinfo'];
   if (empty($newInfo)) {
     echo "The experiment must have a description!";
