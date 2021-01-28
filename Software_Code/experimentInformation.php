@@ -13,6 +13,10 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
 
 if(isset($_POST['edit'])){
   echo "<h1> yo mamma </h1>";
@@ -50,7 +54,7 @@ if(isset($_POST['edit'])){
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout">
+      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
     </form>
   </header>
 
@@ -60,7 +64,6 @@ if(isset($_POST['edit'])){
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
-        <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
@@ -81,13 +84,11 @@ if(isset($_POST['edit'])){
           // }
           ?>
           <br><br>
-          <form method="POST">
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <h3>Update experiment information:</h3>
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
-      </form>
     </div>
     </div>
   </div>
