@@ -66,9 +66,9 @@ if(isset($_POST['logout'])) {
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'>".$row['experimentname']."</h5>
-              <button onClick=func(".$experimentid.",".$experimentname.",'info') class='btn btn-outline-success' type='button'>Experiment Information</button>
-              <button onClick=func(".$experimentid.",".$experimentname.",'quest') class='btn btn-outline-success' type='button'>Create questionnaire</button>
-              <button onClick=func(".$experimentid.",".$experimentname.",'video') class='btn btn-outline-success' type='button'>Upload video</button>
+              <button onClick='location.href=".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info' class='btn btn-outline-success' type='button'>Experiment Information</button>
+              <button onClick='location.href=".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest' class='btn btn-outline-success' type='button'>Create questionnaire</button>
+              <button onClick='location.href=".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video' class='btn btn-outline-success' type='button'>Upload video</button>
              </div>
            </div>";
         }
@@ -77,6 +77,11 @@ if(isset($_POST['logout'])) {
                   <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
                 </div>
               </div>";
+        if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
+        {
+            echo "<h1> look im in here </h1>";
+            func($_GET['i'], $_GET['n'], $_GET['r']);
+        }
         function func($experimentid, $experimentname, $reason)
         {
           echo "<h1> Im also in here </h1>";
