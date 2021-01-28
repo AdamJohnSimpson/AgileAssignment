@@ -14,6 +14,9 @@
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
+    </form>
   </header>
 
   <div class="jumbotron text-center">
@@ -73,6 +76,10 @@
           }
       }
 
+      if(isset($_POST['logout'])) {
+        unset($_SESSION['loggedin']);
+        header("location: login.php");
+      }
       ?>
       <br><br>
       <a href="experimentList.php"> <button class='btn btn-outline-success' type='button'>Return to experiments</button> </a>
