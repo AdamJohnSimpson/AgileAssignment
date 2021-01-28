@@ -36,6 +36,14 @@
     }
   }
 
+  if(isset($_POST['logout'])) {
+    unset($_SESSION['id']);
+    unset($_SESSION['username']);
+    unset($_SESSION['USER_role']);
+
+    $_SESSION["loggedin"] = false;
+    header("location: login.php");
+  }
 
   if(isset($_POST['quit'])) {
     unset($_SESSION['experimentName']);
@@ -63,6 +71,9 @@
     <body>
       <header>
         <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+        <form method="POST">
+          <input type="submit" value="Log Out" name="logout">
+        </form>
       </header>
 
         <div class="jumbotron text-center">

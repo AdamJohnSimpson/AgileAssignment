@@ -9,16 +9,18 @@ $headers = "From: https://agile-assignment-group-4.azurewebsites.net/" . phpvers
 
 //researcher requires to send link of the questionnaire page to someone
 //get the qestinoaire ID
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+//if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-// if(isset($_POST['sendQuestionnaire'])){
 
+if(isset($_POST['sendQ'])){
+    $participantsEmail = trim($_POST['participantsEmail']);
 
   if(empty(trim($_POST["participantsEmail"]))){
       echo "You must enter a participants email.";
   } else{
-      $participantsEmail = trim($_POST['participantsEmail']);
+
       mail($participantsEmail, $subject, $message);
+      echo "email sent.";
   }
 
 
@@ -30,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   //        echo "<p> Participants email: ".$participantsEmail."</p>";
          //add code that sends the link to the persons email
     }
-  
+
 
 if(isset($_POST['quit'])) {
   header("location: experimentList.php");

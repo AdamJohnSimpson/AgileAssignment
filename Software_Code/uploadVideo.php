@@ -18,7 +18,7 @@
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Video Upload Test Page</h1>
+    <?php echo "<h1 class='text-center'>Video Upload for ".$_SESSION['experimentName']."</h1>"; ?>
   </div>
 
   <div class="container-fluid" style="padding:0">
