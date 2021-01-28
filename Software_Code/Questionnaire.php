@@ -4,10 +4,9 @@
 	session_start();
 
 	if(!ISSET($_GET['qid'])){
-		//header('Location:../Includes/redirect.inc.php');
-		//exit();
-		echo 'Couldn\' retrieve ID';
-	}
+		header('Location:../Includes/error.inc.php');
+		exit();
+  }
 	
 	$qID = $_GET['qid'];
 	
@@ -17,31 +16,37 @@
 	if($row){
 		$qName = $row['questionnaireName'];
 	}else{
-		//header('Location:../Includes/redirect.inc.php');
-		//exit();
-		echo 'Couldn\' find questionnaire';
+		header('Location:../Includes/error.inc.php');
+		exit();
 	}
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		
+    
+    if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true){
+      header('Location: ThankYou.php');
+      exit();
+    }else{
+      $_SESSION['TakePart'] = false;
+    }
+
 		$responseID = uniqid($prefix="", $more_entropy=false);
 		
 		$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
-        $result = mysqli_query($conn, $query);
-        $count = 0;
-        while($row = mysqli_fetch_array($result)){
-			    if(ISSET($_POST[$count]) && !empty($_POST[$count])){
-            $questionID = $row['questionID'];
-            $newQuery = "INSERT INTO results (response, questionID, responseID) VALUES ('$_POST[$count]', '$questionID', '$responseID')";
-            $conn->query($newQuery);
-			    }
-          $count++;
-        }
-	  }
-	
-	
-	
-					
+    $result = mysqli_query($conn, $query);
+    $count = 0;
+    while($row = mysqli_fetch_array($result)){
+		  if(ISSET($_POST[$count]) && !empty($_POST[$count])){
+        $questionID = $row['questionID'];
+        $newQuery = "INSERT INTO results (response, questionID, responseID) VALUES ('$_POST[$count]', '$questionID', '$responseID')";
+        $conn->query($newQuery);
+		  }
+      $count++;
+    }
+
+    $_SESSION['TakePart'] = false;
+    header('Location: ThankYou.php');
+    exit();
+	}					
 ?>
 
 <!DOCTYPE html>
