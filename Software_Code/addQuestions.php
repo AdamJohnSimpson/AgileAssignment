@@ -46,10 +46,6 @@
   }
 
   if(isset($_POST['quit'])) {
-    unset($_SESSION['experimentName']);
-    unset($_SESSION['experimentID']);
-    unset($_SESSION['questionnaireName']);
-    unset($_SESSION['questionnaireID']);
     header("location: questionnaireList.php");
     exit;
   }
@@ -74,6 +70,7 @@
         <form method="POST">
           <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
         </form>
+        <br></br>
         <br></br>
       </header>
 

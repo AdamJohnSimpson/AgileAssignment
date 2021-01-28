@@ -57,6 +57,7 @@ if(isset($_POST['edit'])){
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
     <br></br>
+    <br></br>
   </header>
 
   <div class="jumbotron text-center">
@@ -90,6 +91,10 @@ if(isset($_POST['edit'])){
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
+        <br>
+        <form action="https://agile-assignment-group-4.azurewebsites.net/experimentList.php">
+            <input type="submit" value="Return to Experiments List" />
+    </form>
     </div>
     </div>
 

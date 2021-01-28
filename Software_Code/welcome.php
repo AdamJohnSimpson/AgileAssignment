@@ -8,6 +8,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit();
 }
+
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+
 require_once "Includes/db.inc.php";
 ?>
 
@@ -22,6 +27,15 @@ require_once "Includes/db.inc.php";
     </style>
 </head>
 <body>
+
+  <header>
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
+    </form>
+    <br></br>
+    <br></br>
+  </header>
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
     </div>
