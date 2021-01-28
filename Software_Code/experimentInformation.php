@@ -19,7 +19,7 @@ if(isset($_POST['logout'])) {
 }
 
 if(isset($_POST['edit'])){
-  echo "<h1> test </h1>";
+
   $newInfo = $_POST['addedinfo'];
   if (empty($newInfo)) {
     echo "The experiment must have a description!";
@@ -27,7 +27,7 @@ if(isset($_POST['edit'])){
   } else {
   //send to db sql here
   $sql = "UPDATE experiments SET experimentInformation='{$newInfo}' WHERE experimentid={$experimentID}";
-  echo "<p> ".$sql."</p>";
+
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully!";
   }
@@ -56,6 +56,7 @@ if(isset($_POST['edit'])){
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
+    <br></br>
   </header>
 
   <div class="jumbotron text-center">
