@@ -85,6 +85,7 @@ if(isset($_POST['logout'])) {
         function func($experimentid, $experimentname, $reason)
         {
           echo "<h1> Im also in here </h1>";
+          echo "<p> experimentID: ".$experimentid."<br> Experiment Name: ".$experimentname."<br> Destination: ".$reason."</p>";
           $_SESSION['experimentID'] = $experimentid;
           $_SESSION['experimentName'] = $experimentname;
           if ($reason == "info") {
