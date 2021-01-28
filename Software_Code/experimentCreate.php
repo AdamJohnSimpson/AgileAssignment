@@ -10,10 +10,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 
 $userID= $_SESSION['userID'];
 
-if(isset($_POST['logout'])) {
-  session_destroy();
-  header("location: login.php");
-}
 
  if(isset($_POST['submit'])){
    $experimentName = $_POST['experimentName'];
