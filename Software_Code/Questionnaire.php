@@ -82,15 +82,18 @@
             $count = 0;
             while($row = mysqli_fetch_array($result)){
               echo '<div class="form-group">';
-              echo '<label for="'.$count.'">'. $row['questionText'] . '</label>';
-              echo '<input type = "text" name="'. $count . '" ><br><br>';
+
+              $number = $count + 1;
+
+              echo '<label for="'.$count.'"><b>'. $number . ') ' . $row['questionText'] . '</b></label>';
+              echo '<textarea class="form-control" name="'. $count . '" ></textarea>';
               echo '</div>';
 
               $count++;
             }
         ?>
         <div class="form-group">
-          <input type="submit" value="Template button">
+          <input type="submit" value="Submit" class="btn btn-primary">
         </div>
       </form>
     </div>
