@@ -11,7 +11,10 @@ $questionnaireURL = $questionnaireURL.$questionnaireID;
 
 
 
-    // }
+      mail($participantsEmail, $subject, $message);
+      echo "email sent.";
+  }
+
 
 
 if(isset($_POST['quit'])) {
@@ -38,17 +41,15 @@ if(isset($_POST['quit'])) {
    <body>
      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px">
        <div class="jumbotron text-center">
-         <h1 class="text-center">Send Questionnaires</h1>
+         <h1 class="text-center">Questionnaire Link</h1>
        </div>
      <div class="container-fluid" style="padding:0">
        <div class="jumbotron" style="margin-bottom:1px;">
-         <h2 class="text-center">The ID for your questionnaire:
-         <?php echo $_SESSION['questionnaireID']; ?></h2>
 
            <form method="POST">
              <div class="form-group">
-               <label>The url for your questionnaire is:
-                <?php echo $_SESSION['questionnaireURL']; ?> </label>
+               <h4>The url for your questionnaire is:
+                <?php echo $questionnaireURL; ?> </h4>
                <input type="submit" value="Copy Link" name="copyLink">
                <input type="submit" value="quit" name="quit">
            </form>

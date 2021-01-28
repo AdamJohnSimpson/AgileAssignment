@@ -13,16 +13,9 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
-if(isset($_POST['logout'])) {
-  unset($_SESSION['id']);
-  unset($_SESSION['username']);
-  unset($_SESSION['USER_role']);
-
-  $_SESSION["loggedin"] = false;
-  header("location: login.php");
-}
 
 if(isset($_POST['edit'])){
+  echo "<h1> yo mamma </h1>";
   $newInfo = $_POST['addedinfo'];
   if (empty($newInfo)) {
     echo "The experiment must have a description!";
@@ -30,6 +23,7 @@ if(isset($_POST['edit'])){
   } else {
   //send to db sql here
   $sql = "UPDATE experiments SET experimentInformation={$newInfo} WHERE experimentid={$experimentID}";
+  echo "<p> ".$sql."</p>";
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully";
   }
@@ -46,7 +40,7 @@ if(isset($_POST['edit'])){
 
 <head>
   <meta charset="utf-8">
-  <title>Experiment Information</title <!-- Bootstrap CSS -->
+  <title>Experiment Information</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -68,6 +62,7 @@ if(isset($_POST['edit'])){
       <form>
         <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
+          <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
 
@@ -87,13 +82,14 @@ if(isset($_POST['edit'])){
           // }
           ?>
           <br><br>
-          <form method="post">
+          <form method="POST">
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <h3>Update experiment information:</h3>
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
       </form>
+    </div>
     </div>
   </div>
 

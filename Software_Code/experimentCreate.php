@@ -11,7 +11,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 $userID= $_SESSION['userID'];
 
 if(isset($_POST['logout'])) {
-  session_destroy();
+  unset($_SESSION['loggedin']);
   header("location: login.php");
 }
 
@@ -66,7 +66,7 @@ if(isset($_POST['logout'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>Create Experiment</title <!-- Bootstrap CSS -->
+  <title>Create Experiment</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -77,7 +77,7 @@ if(isset($_POST['logout'])) {
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
+      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
     </form>
   </header>
 
