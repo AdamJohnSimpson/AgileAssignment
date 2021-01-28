@@ -1,4 +1,3 @@
-<?php include "Includes/db.inc.php";?>
 <?php
 //checks if user logged in, if not returns to login page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -38,6 +37,7 @@ if(isset($_POST['logout'])) {
       <div class="jumbotron" style="margin-bottom:1px;">
 
         <?php
+        include "Includes/db.inc.php";
 if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
 {
     echo "<h1> look im in here </h1>";
