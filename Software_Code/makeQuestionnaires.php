@@ -32,7 +32,7 @@
     $questionnaireID = uniqid($prefix="", $more_entropy=false);
     $_SESSION['questionnaireID'] = $questionnaireID;
     $experimentID = $_SESSION['experimentID'];
-    $userID= $_SESSION['userID'];
+    $userID= $_SESSION['id'];
     $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', $userID, '$experimentID')";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
