@@ -13,6 +13,10 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
 
 if(isset($_POST['edit'])){
   echo "<h1> yo mamma </h1>";
@@ -25,7 +29,7 @@ if(isset($_POST['edit'])){
   $sql = "UPDATE experiments SET experimentInformation={$newInfo} WHERE experimentid={$experimentID}";
   echo "<p> ".$sql."</p>";
   if ($conn->query($sql) === TRUE) {
-    echo "New description added successfully";
+    echo "New description added successfully!";
   }
   else {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -40,7 +44,7 @@ if(isset($_POST['edit'])){
 
 <head>
   <meta charset="utf-8">
-  <title>Experiment Information</title <!-- Bootstrap CSS -->
+  <title>Experiment Information</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -50,7 +54,7 @@ if(isset($_POST['edit'])){
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
     <form method="POST">
-      <input type="submit" value="Log Out" name="logout">
+      <input type="submit" value="Log Out" name="logout" style="float: left; padding:20px">
     </form>
   </header>
 
@@ -60,9 +64,7 @@ if(isset($_POST['edit'])){
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
       <form>
-        <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
-          <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
 
@@ -82,13 +84,12 @@ if(isset($_POST['edit'])){
           // }
           ?>
           <br><br>
-          <form method="post">
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <h3>Update experiment information:</h3>
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
-      </form>
+    </div>
     </div>
   </div>
 

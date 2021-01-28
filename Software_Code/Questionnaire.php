@@ -37,8 +37,12 @@
     while($row = mysqli_fetch_array($result)){
 		  if(ISSET($_POST[$count]) && !empty($_POST[$count])){
         $questionID = $row['questionID'];
-        $newQuery = "INSERT INTO results (response, questionID, responseID) VALUES ('$_POST[$count]', '$questionID', '$responseID')";
-        $conn->query($newQuery);
+
+        $response = $_POST[$count];
+        
+        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+        $newQuery->bind_param('s', $response);
+        $newQuery->execute();
 		  }
       $count++;
     }
