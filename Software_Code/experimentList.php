@@ -91,12 +91,15 @@ if(isset($_POST['logout'])) {
           if ($reason == "info") {
             echo "<h2> im literally setting the header location to experiment Information </h2>";
             header("Location:experimentInformation.php");
+            exit();
           }
           else if ($reason === "quest") {
             header("Location:makeQuestionnaires.php");
+            exit();
           }
           else if ($reason === "video") {
             header("Location:uploadVideo.php");
+            exit();
           }
           exit();
         }
