@@ -14,17 +14,14 @@ $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
 
-
 if(isset($_POST['edit'])){
   $newInfo = $_POST['addedinfo'];
   if (empty($newInfo)) {
     echo "The experiment must have a description!";
 
   } else {
-  //send to db sql her
-  $experimentID = $_SESSION['experimentID'];
-  $userID = $_SESSION['userID'];
-  $sql = "UPDATE experiments SET experimentInformation= $newInfo WHERE experimentid= $experimentID";
+  //send to db sql here
+  $sql = "UPDATE experiments SET experimentInformation= '$newInfo' WHERE experimentid= '$experimentID";
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully";
   }
@@ -60,6 +57,7 @@ if(isset($_POST['edit'])){
       <form>
         <div class="form-group">
           <p> <b> Name of experiment: </b> </p>
+          <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
           // Include database file
@@ -80,7 +78,7 @@ if(isset($_POST['edit'])){
           <br><br>
           <form method="post">
             <input type="text" value "Add a new description here" name="addedinfo">
-          <input type="submit" value="Edit Information" name="edit">
+            <input type="submit" value="Edit Information" name="edit">
         </form>
       </form>
     </div>
