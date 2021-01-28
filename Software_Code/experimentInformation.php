@@ -13,6 +13,14 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
+if(isset($_POST['logout'])) {
+  unset($_SESSION['id']);
+  unset($_SESSION['username']);
+  unset($_SESSION['USER_role']);
+
+  $_SESSION["loggedin"] = false;
+  header("location: login.php");
+}
 
 if(isset($_POST['edit'])){
   $newInfo = $_POST['addedinfo'];
@@ -47,6 +55,9 @@ if(isset($_POST['edit'])){
 <body>
   <header>
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout">
+    </form>
   </header>
 
   <div class="jumbotron text-center">
@@ -60,6 +71,7 @@ if(isset($_POST['edit'])){
           <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>Upload video</button> </a>
           <?php
           echo "<h3> ".$experimentName."</h3> <br>";
+
           // Include database file
           //get information from experiment list page to display the selected experiment
           $query = "SELECT experimentInformation FROM experiments WHERE experimentid=$experimentID";
@@ -77,6 +89,8 @@ if(isset($_POST['edit'])){
           ?>
           <br><br>
           <form method="post">
+            <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
+            <h3>Update experiment information:</h3>
             <input type="text" value "Add a new description here" name="addedinfo">
             <input type="submit" value="Edit Information" name="edit">
         </form>
