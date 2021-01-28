@@ -8,7 +8,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
   exit;
 }
 
-$userID= $_SESSION['userID'];
+$userID= $_SESSION['id'];
 
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
