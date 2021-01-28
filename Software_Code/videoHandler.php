@@ -26,9 +26,7 @@
       // Code to upload and store a file adapted from the following page:
       // https://forums.phpfreaks.com/topic/282415-need-clarification-on-why-no-error-message/
       //===========================================================================================================================================
-
       $experimentid = $_SESSION['experimentID'];
-      echo "<br><br>experiment id: " . $experimentid;
 
       // define allowed file types in an array
       $allowedTypes = array(
@@ -61,7 +59,7 @@
           {
               if($_FILES['file']['error'] > 0)
               {
-                  echo "Error" . $_FILES["file"]["error"];
+                  echo "<h3>Error" . $_FILES["file"]["error"] . "</h3>";
               }
               else
               {
