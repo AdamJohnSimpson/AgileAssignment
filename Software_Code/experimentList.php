@@ -25,13 +25,11 @@ if(isset($_POST['logout'])) {
   </head>
 
   <body>
-    <header>
+    <header style="height:150px;">
       <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
       <form method="POST">
         <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
       </form>
-      <br></br>
-      <br></br>
     </header>
 
       <div class="jumbotron text-center">
@@ -50,9 +48,16 @@ if(isset($_POST['logout'])) {
 
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
-        $sql = "SELECT * FROM experiments WHERE primaryresearcher = $_SESSION['id']";
-        $result = mysqli_query($conn, $sql);
+        $userID = $_SESSION['id'];
 
+        if ($_SESSION['USER_role'] == 'Lab Manager'){
+            $sql = "SELECT * FROM experiments";
+            $result = mysqli_query($conn, $sql);
+        }
+        else if ($_SESSION['USER_role'] != 'Lab Manager'){
+          $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID}";
+          $result = mysqli_query($conn, $sql);
+        }
         //displays all experiments fetched along with an option to create a questionnaire
         while($row = mysqli_fetch_array($result)){
 

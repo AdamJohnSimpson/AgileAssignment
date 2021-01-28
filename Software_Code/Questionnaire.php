@@ -71,8 +71,8 @@
 </head>
 
 <body>
-  <header>
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px">
+	<header style="height:150px;">
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
   </header>
 
   <div class="jumbotron text-center">
