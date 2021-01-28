@@ -94,6 +94,40 @@ Issues
 ---
  
  
+ 
+## Day [4] - Scrum Meeting summary
+The Scrum Master for this meeting was Holly Groves
+
+### Members Present:
+Holly, Scott, Adam Shepherd, Adam Simpson, Beth, Craig and Euan
+
+### Members Not Present:
+n/a
+
+### Apologies:
+n/a
+
+### Summary of Conversation:
+Yesterday's Tasks
+- Adam Sh: managed to get uploading .mp4 videos to work and be stored properly as well as getting the videos to play on the website after having to fiddle with the way azure is set up
+- Adam Si and Beth: pair programming, managed to be able to add a page to create questionnaires and view the experiment list
+- Craig and Euan: pair programming, user can now be added and log in successfully, began work on being able to let participents take the questionnaires and send the questionnaires out
+- Holly and Scott: created an experiment information page to allow users to view details about their experiments and made a create experiment page to allow experiments to be created and details stored in a database
+
+Today's Tasks
+- Adam Sh: creating a page so experiment videos can be viewed linked to the experiment information page
+- Adam Si: adding missing buttons from the experiment list page so a user can view/create experiments from the list page, helping with the smaller/fine tuining issues
+- Beth: adding the edit information functionality to the experiment information page so the data stored in the database updates correctly
+- Craig: doing error handling on the questionnaires to ensure participents fill them out in a way that will work with the database
+- Euan: continuing to try get the send out questionnaires to participents and try get that to work, helping with the smaller/fine tuining issues
+- Holly: Creating the logout button to be able to log users out, adding the userid information to the create experiment page so user information is stored in the experiment database
+- Scott: Ensuring logout button is consistent on all webpages, helping with the smaller/fine tuining issues
+
+Issues
+- in general, there were php problems that everyone encountered, it would be little things like a missed semi-colon/bracket or some slight misspelling. These were easy fixes but took a little while to spot them in the code
+- there was a problem with being able to play videos due to the permissions on Microsoft Azure where the videos are being stored. After asking for help and eventually finding a solution which was to do with the way it was configured, videos can be played
+
+---
 
 ## Day [X] - Scrum Meeting summary
 The Scrum Master for this meeting was **Mike Crabb**
