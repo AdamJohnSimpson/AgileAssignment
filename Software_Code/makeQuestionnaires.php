@@ -85,9 +85,9 @@
           <form method="POST">
             <div class="form-group">
               <label>Please enter the name of the questionnaire you are creating : </label>
-              <input type="text" name="questionnaireName"><br><br>
-              <input type="submit" value="Add questionnaire name" name="addname">
-              <input type="submit" value="quit" name="quit">
+              <input type="text" name="questionnaireName" ><br><br>
+              <input type="submit" value="Add questionnaire name" name="addname" class='btn btn-outline-success'>
+              <input type="submit" value="quit" name="quit" class='btn btn-outline-success'>
           </form>
           <br></br>
         </div>
