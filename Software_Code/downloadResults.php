@@ -30,7 +30,7 @@ for ($x=0; $x < count($listOfQuestions) ; $i++) {
   $responseResults = mysqli_query($conn, $responseQuery);
 
   if (mysqli_num_rows($responseResults) > 0) {
-      while ($row = mysqli_fetch_assoc($responseResults)) {
+      while ($row = mysqli_fetch_array($responseResults)) {
           $listOfResponses[] = $row;
       }
   }
