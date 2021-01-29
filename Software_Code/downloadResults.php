@@ -8,6 +8,7 @@ $questionnaireID = $_GET['qid'];
 echo $questionnaireID;
 
 $questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '$questionnaireID'";
+echo $questionQuery;
 $questionResult = mysqli_query($conn, $questionQuery);
 // if (!$questionResult = mysqli_query($conn, $query)) {
 //     exit(mysqli_error($conn));
