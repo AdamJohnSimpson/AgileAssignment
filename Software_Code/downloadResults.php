@@ -5,25 +5,25 @@ session_start();
 require_once "Includes/db.inc.php";
 
 // get Users
-$query = "SELECT * FROM users";
-if (!$result = mysqli_query($con, $query)) {
-    exit(mysqli_error($con));
+$query = "SELECT * FROM results";
+if (!$result = mysqli_query($conn, $query)) {
+    exit(mysqli_error($conn));
 }
 
-$users = array();
+$listOfResults = array();
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $users[] = $row;
+        $listOfResults[] = $row;
     }
 }
 
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=Users.csv');
+header('Content-Disposition: attachment; filename=questionnaireResults.csv');
 $output = fopen('php://output', 'w');
-fputcsv($output, array('No', 'First Name', 'Last Name', 'Email'));
+fputcsv($output, array('resultID', 'response', 'questionID', 'responseID'));
 
-if (count($users) > 0) {
-    foreach ($users as $row) {
+if (count($listOfResults) > 0) {
+    foreach ($listOfResults as $row) {
         fputcsv($output, $row);
     }
 }
