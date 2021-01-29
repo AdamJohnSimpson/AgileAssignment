@@ -2,7 +2,7 @@
 session_start();
 
 // Database Connection
-require_once "Includes/db.inc.php";
+include "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
 
 echo $questionnaireID;
@@ -26,29 +26,25 @@ if (mysqli_num_rows($questionResult) > 0) {
 
 print_r($listOfQuestions);
 
-// $listOfQuestions = [questionID, questionText], [questionID, questionText], [questionID, questionText]
-// [response1, response2, response3], [response1, response2, response3]
 
-
-
-for ($x=0; $x < count($listOfQuestions) ; $i++) {
-  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='{$listOfQuestions[$x][0]}' GROUP BY questionID";
-
-  if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
-      exit(mysqli_error($conn));
-  }
-
-  if (mysqli_num_rows($resultQuery) > 0) {
-      while ($row = mysqli_fetch_assoc($responseQuery)) {
-          $listOfResponses[] = $row;
-      }
-  }
-
-  $bigBoiList[] = $listOfResponses;
-
-}
-
-print_r($bigBoiList);
+// for ($x=0; $x < count($listOfQuestions) ; $i++) {
+//   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
+//
+//   if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
+//       exit(mysqli_error($conn));
+//   }
+//
+//   if (mysqli_num_rows($resultQuery) > 0) {
+//       while ($row = mysqli_fetch_assoc($responseQuery)) {
+//           $listOfResponses[] = $row;
+//       }
+//   }
+//
+//   $bigBoiList[] = $listOfResponses;
+//
+// }
+//
+// print_r($bigBoiList);
 
 
 // header('Content-Type: text/csv; charset=utf-8');
