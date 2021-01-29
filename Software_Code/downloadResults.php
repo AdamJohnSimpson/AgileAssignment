@@ -11,19 +11,22 @@ if (!$questionResult = mysqli_query($conn, $query)) {
     exit(mysqli_error($conn));
 }
 
+$listOfQuestions = array();
+$listOfResponses = array();
+$bigBoiList = array();
+
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_assoc($questionResult)) {
         $listOfQuestions[] = $row;
     }
 }
-
+echo "hi!";
 print_r($listOfQuestions);
 
 // $listOfQuestions = [questionID, questionText], [questionID, questionText], [questionID, questionText]
 // [response1, response2, response3], [response1, response2, response3]
 
-$listOfResponses = array();
-$bigBoiList = array();
+
 
 for ($x=0; $x < count($listOfQuestions) ; $i++) {
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID={$listOfQuestions[$x][0]} GROUP BY questionID";
