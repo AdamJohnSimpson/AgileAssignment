@@ -27,12 +27,10 @@ echo "<br><br>";
 for ($x=0; $x < count($listOfQuestions) ; $i++) {
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
 
-  if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
-      exit(mysqli_error($conn));
-  }
+  $responseResults = mysqli_query($conn, $responseQuery);
 
-  if (mysqli_num_rows($resultQuery) > 0) {
-      while ($row = mysqli_fetch_assoc($responseQuery)) {
+  if (mysqli_num_rows($responseResults) > 0) {
+      while ($row = mysqli_fetch_assoc($responseResults)) {
           $listOfResponses[] = $row;
       }
   }
