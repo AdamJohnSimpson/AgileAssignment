@@ -86,8 +86,8 @@
               <div class="form-group">
                 <label>Please enter the question: </label>
                 <input type="text" name="questionText"><br><br>
-                <input type="submit" value="Add question" name="addQ">
-                <input type="submit" value="quit" name="quit">
+                <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
+                <input type="submit" value="quit" name="quit" class='btn btn-outline-success'>
             </form>
             <br></br>
           </div>
