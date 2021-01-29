@@ -24,7 +24,8 @@ print_r($listOfQuestions);
 echo "<br><br>";
 
 for ($x=0; $x < count($listOfQuestions) ; $i++) {
-  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
+  $tempqid = $listOfQuestions[$x][0];
+  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid' GROUP BY questionID";
 
   $responseResults = mysqli_query($conn, $responseQuery);
 
