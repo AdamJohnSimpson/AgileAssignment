@@ -80,6 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <style type="text/css">
             .wrapper{ margin-left: 35%; margin-right:35%; width: 30%; }
         </style>
+    <link rel="stylesheet" href="style.css">
     </head>
     <body>
 

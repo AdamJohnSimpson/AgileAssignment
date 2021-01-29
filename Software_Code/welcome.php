@@ -25,6 +25,7 @@ require_once "Includes/db.inc.php";
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
