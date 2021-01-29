@@ -19,7 +19,8 @@ $listOfResponses = array();
 $bigBoiList = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
-    while ($row = mysqli_fetch_assoc($questionResult)) {
+  echo "entering if now...";
+    while ($row = mysqli_fetch_array($questionResult)) {
         $listOfQuestions[] = $row;
         print_r($row);
     }
