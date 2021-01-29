@@ -27,7 +27,7 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
         <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
       </form>
     </header>
-    
+
       <div class="jumbotron text-center">
         <?php echo "<h1 class='text-center'>List of questionnaires for ".$_SESSION['experimentName']."</h1>"; ?>
       </div>
@@ -58,6 +58,8 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
               <h5 class='card-text mt-2'>".$questionnaireName."</h5>";
               $questionnaireURL = $tempURL.$questionnaireID;
               echo " <p>".$questionnaireURL."</p>
+              <br>
+              <button onClick='location.href=\"https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}\" class='btn btn-outline-success' type='button'>Download Results</button>
              </div>
            </div>";
         }

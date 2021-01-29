@@ -3,7 +3,7 @@ session_start();
 
 // Database Connection
 require_once "Includes/db.inc.php";
-
+$qID = $_GET['qid'];
 // get Users
 $query = "SELECT * FROM results";
 if (!$result = mysqli_query($conn, $query)) {
