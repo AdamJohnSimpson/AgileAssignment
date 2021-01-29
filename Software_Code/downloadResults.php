@@ -5,11 +5,10 @@ session_start();
 require_once "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
 
-echo "hi1";
+echo $questionnaireID;
 
 $questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = {$questionnaireID}";
 $questionResult = mysqli_query($conn, $questionQuery);
-echo "hi after query";
 // if (!$questionResult = mysqli_query($conn, $query)) {
 //     exit(mysqli_error($conn));
 // }
@@ -24,7 +23,6 @@ if (mysqli_num_rows($questionResult) > 0) {
     }
 }
 
-echo "hi!";
 print_r($listOfQuestions);
 
 // $listOfQuestions = [questionID, questionText], [questionID, questionText], [questionID, questionText]
