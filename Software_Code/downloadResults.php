@@ -17,6 +17,8 @@ if (mysqli_num_rows($questionResult) > 0) {
     }
 }
 
+print_r($listOfQuestions);
+
 // $listOfQuestions = [questionID, questionText], [questionID, questionText], [questionID, questionText]
 // [response1, response2, response3], [response1, response2, response3]
 
