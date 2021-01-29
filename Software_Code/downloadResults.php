@@ -20,7 +20,7 @@ $bigBoiList = array();
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_assoc($questionResult)) {
         $listOfQuestions[] = $row;
-        echo $row;
+        echo $row['questionID'];
     }
 }
 
