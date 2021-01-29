@@ -7,7 +7,7 @@ $questionnaireID = $_GET['qid'];
 
 echo $questionnaireID;
 
-$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = {$questionnaireID}";
+$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '{$questionnaireID}'";
 $questionResult = mysqli_query($conn, $questionQuery);
 // if (!$questionResult = mysqli_query($conn, $query)) {
 //     exit(mysqli_error($conn));
@@ -32,7 +32,7 @@ print_r($listOfQuestions);
 
 
 for ($x=0; $x < count($listOfQuestions) ; $i++) {
-  $responseQuery = "SELECT response, resultID FROM results WHERE questionID={$listOfQuestions[$x][0]} GROUP BY questionID";
+  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='{$listOfQuestions[$x][0]}' GROUP BY questionID";
 
   if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
       exit(mysqli_error($conn));
