@@ -3,6 +3,7 @@
 
 	session_start();
 
+  // If no questionnaire ID was present, redirect the user
 	if(!ISSET($_GET['qid'])){
 		header('Location:../Includes/error.inc.php');
 		exit();
@@ -10,9 +11,12 @@
 
 	$qID = $_GET['qid'];
 
+  // Find the questionnaire in the database
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
 	$result = mysqli_query($conn, $query);
-	$row = mysqli_fetch_array($result);
+  $row = mysqli_fetch_array($result);
+  
+  // If the questionnaire exists, store its name. If it doesn't, redirect the user
 	if($row){
 		$qName = $row['questionnaireName'];
 	}else{
@@ -22,6 +26,7 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    // If the user has already taken part, redirect them
     if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true){
       header('Location: ThankYou.php');
       exit();
@@ -59,7 +64,7 @@
 		  }
     }
 
-    $_SESSION['TakePart'] = false;
+    $_SESSION['TakePart'] = true;
     header('Location: ThankYou.php');
     exit();
 	}
