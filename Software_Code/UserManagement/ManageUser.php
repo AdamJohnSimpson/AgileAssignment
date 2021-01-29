@@ -7,7 +7,7 @@
 		 header('Location:../Includes/redirect.inc.php');
 		 exit();
 	}
-	
+
 	$userID = $_GET['id'];
 ?>
 <!DOCTYPE html>
@@ -20,38 +20,39 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
 		<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" href="https://www.dundee.ac.uk/themes/custom/uod/assets/favicons/favicon.ico"/>
 	</head>
-	
-	
-	
+
+
+
 	<body>
-	
+
 		<header>
 			<img class="img-fluid" src="../University-of-Dundee-logo.png" width="300px" style="padding:20px">
 		</header>
-		
+
 		<div class="jumbotron text-center">
 			<h1 class="text-center">Manage User</h1>
-		
+
 		<?php
-		
+
 		if(ISSET($_GET['d']) && $_GET['d'] == 'true'){
-		
-			echo ' <button onclick="location.href=\'../Includes/deleteUser.inc.php?id=' .$userID .'\';" type="button" class="btn btn-danger">Confirm Delete?</button> ';			
+
+			echo ' <button onclick="location.href=\'../Includes/deleteUser.inc.php?id=' .$userID .'\';" type="button" class="btn btn-danger">Confirm Delete?</button> ';
 		}else{
-			echo ' <button onclick="location.href=\'ManageUser.php?id=' .$userID .'&d=true\';" type="button" class="btn btn-danger">Delete Account</button> ';	
+			echo ' <button onclick="location.href=\'ManageUser.php?id=' .$userID .'&d=true\';" type="button" class="btn btn-danger">Delete Account</button> ';
 		}
 		?>
 		</div>
-				
+
 		<div class="container-fluid" style="padding:0">
 			<div class="jumbotron" style="margin-bottom:1px;">
 				<?php
-			
+
 					if(ISSET($_GET['id'])){
 						$query = "SELECT * FROM User WHERE User.UserID = $userID";
 						$result = mysqli_query($conn, $query);
-					
+
 						while($row = mysqli_fetch_array($result)){
 							echo "<h4>Username: " . $row['UserName'] . "</h4>";
 							echo "<h4>Firstname: " . $row['FirstName'] . "</h4>";
@@ -64,11 +65,11 @@
 				?>
 			</div>
 		</div>
-		
+
 		<footer>
 			<img class="img-fluid mx-auto d-block" src="../University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
 		</footer>
-		
+
 	</body>
 
 </html>
