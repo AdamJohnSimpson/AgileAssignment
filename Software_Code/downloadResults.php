@@ -23,7 +23,7 @@ echo "<br><br>";
 print_r($listOfQuestions);
 echo "<br><br>";
 
-for ($x=0; $x < count($listOfQuestions) ; $i++) {
+for ($x=0; $x < count($listOfQuestions) ; $x++) {
   $tempqid = $listOfQuestions[$x][0];
   echo $tempqid;
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid' GROUP BY questionID";
