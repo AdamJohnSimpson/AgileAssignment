@@ -68,6 +68,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -104,7 +105,7 @@
                   echo '<div class="form-check">';
                   echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$count.'" value="'.$newRow['optionText'].'">';
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
-                  echo '</div>';              
+                  echo '</div>';
                 }
               }
               echo '</div>';
