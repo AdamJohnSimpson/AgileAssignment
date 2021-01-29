@@ -129,18 +129,39 @@ Issues
 
 ---
 
-## Day [X] - Scrum Meeting summary
-The Scrum Master for this meeting was **Mike Crabb**
+
+## Day [5] - Scrum Meeting summary
+The Scrum Master for this meeting was Holly Groves
 
 ### Members Present:
-Mike, Rachel, information
+Holly, Scott, Adam Shepherd, Adam Simpson, Beth, Craig and Euan
 
 ### Members Not Present:
-Naughty Student 1, Naughty Student 2
+n/a
 
 ### Apologies:
-Ill Student 1.
+n/a
 
 ### Summary of Conversation:
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Yesterday's Tasks
+- Adam Sh: finished linking the video pages together, helped others with issues
+- Adam Si: getting the experiment list page to display the lab managers properly, helped others with issues
+- Beth: add experiment information edit button functionality, helped others with issues
+- Craig: multiple choice question, helped others with issues
+- Euan: send questionnaires part, helped others with issues
+- Holly: added logout button, helped others with issues
+- Scott: helped everyone out with the small issues they encoutered throughout the day
+
+Today's Tasks
+- Adam Sh: looking into being able to export results to a .csv file
+- Adam Si/Craig: pair programming, adding checkbox option to the multiple choice questions (this is for displaying not making the question)
+- Beth: tidying up the database, getting rid of the failed testing data
+- Euan: helping Adam Sh and Holly with issues
+- Holly: add .css file to make sure fonts are consistent with walk the stakeholders
+- Scott: helping Adam Sh and Holly with issues
+
+Issues
+- we had a major issue with the Experiment List page. Initally we thought the problem was that when all the experiments are being listed (for lab manager) none of the buttons on the experiments work, even thought it is fine when primary researchers list their experiments. After trying various fixes we realised it was actually a problem with the number of experiments being listed, it works with 3 or less but when 4 or more are added all the buttons break. After trying more fixes we realised it was the header file causing the problem and the way we were laying out our php code.
+
 ---
+
