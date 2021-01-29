@@ -5,48 +5,37 @@ session_start();
 include "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
 
-echo $questionnaireID;
-
-$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '$questionnaireID'";
-echo $questionQuery;
 $questionResult = mysqli_query($conn, $questionQuery);
-// if (!$questionResult = mysqli_query($conn, $query)) {
-//     exit(mysqli_error($conn));
-// }
 
 $listOfQuestions = array();
 $listOfResponses = array();
 $bigBoiList = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
-  echo "entering if now...";
     while ($row = mysqli_fetch_array($questionResult)) {
         $listOfQuestions[] = $row;
-        print_r($row);
     }
 }
 
-print_r($listOfQuestions);
 
+for ($x=0; $x < count($listOfQuestions) ; $i++) {
+  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
 
-// for ($x=0; $x < count($listOfQuestions) ; $i++) {
-//   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
-//
-//   if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
-//       exit(mysqli_error($conn));
-//   }
-//
-//   if (mysqli_num_rows($resultQuery) > 0) {
-//       while ($row = mysqli_fetch_assoc($responseQuery)) {
-//           $listOfResponses[] = $row;
-//       }
-//   }
-//
-//   $bigBoiList[] = $listOfResponses;
-//
-// }
-//
-// print_r($bigBoiList);
+  if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
+      exit(mysqli_error($conn));
+  }
+
+  if (mysqli_num_rows($resultQuery) > 0) {
+      while ($row = mysqli_fetch_assoc($responseQuery)) {
+          $listOfResponses[] = $row;
+      }
+  }
+
+  $bigBoiList[] = $listOfResponses;
+
+}
+
+print_r($bigBoiList);
 
 
 // header('Content-Type: text/csv; charset=utf-8');
