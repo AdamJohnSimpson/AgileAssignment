@@ -97,7 +97,7 @@ if(isset($_POST['logout'])) {
           <input type="text" name="experimentInfo"><br></br>
         </div>
       <br></br>
-        <input type="submit" value="Submit For Approval" name="submit">
+        <input type="submit" value="Create experiment" name="submit" class='btn btn-outline-success'>
       </form>
     </div>
   </div>
