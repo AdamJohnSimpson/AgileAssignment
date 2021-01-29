@@ -3,29 +3,55 @@ session_start();
 
 // Database Connection
 require_once "Includes/db.inc.php";
-$qID = $_GET['qid'];
-// get Users
-$query = "SELECT * FROM results";
-if (!$result = mysqli_query($conn, $query)) {
+$questionnaireID = $_GET['qid'];
+
+$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = {$questionnaireID}";
+
+if (!$questionResult = mysqli_query($conn, $query)) {
     exit(mysqli_error($conn));
 }
 
-$listOfResults = array();
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $listOfResults[] = $row;
+if (mysqli_num_rows($questionResult) > 0) {
+    while ($row = mysqli_fetch_assoc($questionResult)) {
+        $listOfQuestions[] = $row;
     }
 }
 
-header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=questionnaireResults.csv');
-$output = fopen('php://output', 'w');
-fputcsv($output, array('resultID', 'response', 'questionID', 'responseID'));
+// $listOfQuestions = [questionID, questionText], [questionID, questionText], [questionID, questionText]
+// [response1, response2, response3], [response1, response2, response3]
 
-if (count($listOfResults) > 0) {
-    foreach ($listOfResults as $row) {
-        fputcsv($output, $row);
-    }
+$listOfResponses = array();
+$bigBoiList = array();
+
+for ($x=0; $x < count($listOfQuestions) ; $i++) {
+  $responseQuery = "SELECT response, resultID FROM results WHERE questionID={$listOfQuestions[$x][0]} GROUP BY questionID";
+
+  if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
+      exit(mysqli_error($conn));
+  }
+
+  if (mysqli_num_rows($resultQuery) > 0) {
+      while ($row = mysqli_fetch_assoc($responseQuery)) {
+          $listOfResponses[] = $row;
+      }
+  }
+
+  $bigBoiList[] = $listOfResponses;
+
 }
+
+print_r($bigBoiList);
+
+
+// header('Content-Type: text/csv; charset=utf-8');
+// header('Content-Disposition: attachment; filename=questionnaireResults.csv');
+// $output = fopen('php://output', 'w');
+// fputcsv($output, array('resultID', 'response', 'questionID', 'responseID'));
+//
+// if (count($listOfResults) > 0) {
+//     foreach ($listOfResults as $row) {
+//         fputcsv($output, $row);
+//     }
+// }
 
 ?>
