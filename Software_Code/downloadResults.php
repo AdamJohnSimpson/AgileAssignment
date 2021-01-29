@@ -25,7 +25,9 @@ echo "<br><br>";
 
 for ($x=0; $x < count($listOfQuestions) ; $i++) {
   $tempqid = $listOfQuestions[$x][0];
+  echo $tempqid;
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid' GROUP BY questionID";
+  echo $responseQuery;
 
   $responseResults = mysqli_query($conn, $responseQuery);
 
@@ -41,7 +43,7 @@ for ($x=0; $x < count($listOfQuestions) ; $i++) {
 
 echo "<br><br>";
 print_r($bigBoiList);
-echo "<br><br>";
+echo "test<br><br>";
 
 // header('Content-Type: text/csv; charset=utf-8');
 // header('Content-Disposition: attachment; filename=questionnaireResults.csv');
