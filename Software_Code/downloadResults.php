@@ -16,7 +16,7 @@ if (mysqli_num_rows($questionResult) > 0) {
         $listOfQuestions[] = $row;
     }
 }
-
+echo "hi!";
 print_r($listOfQuestions);
 
 // $listOfQuestions = [questionID, questionText], [questionID, questionText], [questionID, questionText]
