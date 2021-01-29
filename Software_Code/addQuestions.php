@@ -65,6 +65,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
@@ -86,8 +87,8 @@
               <div class="form-group">
                 <label>Please enter the question: </label>
                 <input type="text" name="questionText"><br><br>
-                <input type="submit" value="Add question" name="addQ">
-                <input type="submit" value="quit" name="quit">
+                <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
+                <input type="submit" value="quit" name="quit" class='btn btn-outline-success'>
             </form>
             <br></br>
           </div>

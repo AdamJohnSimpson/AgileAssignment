@@ -49,6 +49,7 @@ if(isset($_POST['edit'])){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header style="height:150px;">
@@ -92,7 +93,7 @@ if(isset($_POST['edit'])){
         </form>
         <br>
         <form action="https://agile-assignment-group-4.azurewebsites.net/experimentList.php">
-            <input type="submit" value="Return to Experiments List" />
+            <input type="submit" class='btn btn-outline-success' value="Return to Experiments List" />
     </form>
     </div>
     </div>

@@ -71,6 +71,7 @@ if(isset($_POST['logout'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -97,7 +98,7 @@ if(isset($_POST['logout'])) {
           <input type="text" name="experimentInfo"><br></br>
         </div>
       <br></br>
-        <input type="submit" value="Submit For Approval" name="submit">
+        <input type="submit" value="Create experiment" name="submit" class='btn btn-outline-success'>
       </form>
     </div>
   </div>

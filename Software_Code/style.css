@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  color:#394867;
+  font-size: 20px;
+  font-weight: 300px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #14274E;
+}
+
+.jumbotron {
+  background-color: #f1f6f9;
+}
+/* font size min 14px and no lighter than a font-weight of 300. */
+
+
+/* colour scheme and  contrast Light, modern colours. The prime focus is the content so nothing too distracting. This is a good example: https://colorhunt.co/palette/212984
+#14274E for Headings (H1-H7)
+#394867 for Body Text */
+
+/* contrast level ontrast Levels - The above colour scheme works well and passes WCAG's recommended contrast ratio. */
