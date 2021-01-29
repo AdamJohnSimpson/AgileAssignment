@@ -33,18 +33,30 @@
 
 		$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
     $result = mysqli_query($conn, $query);
-    $count = 0;
     while($row = mysqli_fetch_array($result)){
-		  if(ISSET($_POST[$count]) && !empty($_POST[$count])){
-        $questionID = $row['questionID'];
 
-        $response = $_POST[$count];
+      $questionID = $row['questionID'];
+
+      if($row['questionType'] == 3){
+        $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
+        $newResult = mysqli_query($conn, $newQuery);
+        while($newRow = mysqli_fetch_array($newResult)){
+          if(ISSET($_POST[$newRow['optionID']]) && !empty($_POST[$newRow['optionID']])){
+            $response = $_POST[$newRow['optionID']];
+
+            $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+            $newQuery->bind_param('s', $response);
+            $newQuery->execute();
+          }
+        }
+      }else if(ISSET($_POST[$questionID]) && !empty($_POST[$questionID])){
+        
+        $response = $_POST[$questionID];
 
         $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
         $newQuery->bind_param('s', $response);
         $newQuery->execute();
 		  }
-      $count++;
     }
 
     $_SESSION['TakePart'] = false;
@@ -84,29 +96,39 @@
         <?php
           	$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
             $result = mysqli_query($conn, $query);
-            $count = 0;
+            $count = 1;
             while($row = mysqli_fetch_array($result)){
               echo '<div class="form-group">';
 
-              $number = $count + 1;
+              $questionID = $row['questionID'];
 
               if($row['questionType'] == 1){
-                echo '<label for="'.$count.'"><b>'. $number . ') ' . $row['questionText'] . '</b></label>';
-                echo '<textarea class="form-control" name="'. $count . '" ></textarea>';
+                echo '<label for="'.$questionID.'"><b>'. $count . ') ' . $row['questionText'] . '</b></label>';
+                echo '<textarea class="form-control" name="'. $row['questionID'] . '" ></textarea>';
               }else if($row['questionType'] == 2){
-                echo '<p><b>'. $number . ') ' . $row['questionText'] . '</b></p>';
-
-                $questionID = $row['questionID'];
+                echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
 
                 $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
                 $newResult = mysqli_query($conn, $newQuery);
                 while($newRow = mysqli_fetch_array($newResult)){
                   echo '<div class="form-check">';
-                  echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$count.'" value="'.$newRow['optionText'].'">';
+                  echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$questionID.'" value="'.$newRow['optionText'].'">';
+                  echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
+                  echo '</div>';              
+                }
+              }else if($row['questionType'] == 3){
+                echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
+
+                $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
+                $newResult = mysqli_query($conn, $newQuery);
+                while($newRow = mysqli_fetch_array($newResult)){
+                  echo '<div class="form-check">';
+                  echo '<input class="form-check-input" type="checkbox" id="'.$newRow['optionID'].'" name="'.$newRow['optionID'].'" value="'.$newRow['optionText'].'">';
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
                   echo '</div>';              
                 }
               }
+
               echo '</div>';
 
               $count++;
