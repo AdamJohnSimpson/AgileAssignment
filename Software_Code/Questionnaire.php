@@ -3,6 +3,7 @@
 
 	session_start();
 
+  // If no questionnaire ID was present, redirect the user
 	if(!ISSET($_GET['qid'])){
 		header('Location:../Includes/error.inc.php');
 		exit();
@@ -10,9 +11,12 @@
 
 	$qID = $_GET['qid'];
 
+  // Find the questionnaire in the database
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
 	$result = mysqli_query($conn, $query);
-	$row = mysqli_fetch_array($result);
+  $row = mysqli_fetch_array($result);
+  
+  // If the questionnaire exists, store its name. If it doesn't, redirect the user
 	if($row){
 		$qName = $row['questionnaireName'];
 	}else{
@@ -22,6 +26,7 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    // If the user has already taken part, redirect them
     if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true){
       header('Location: ThankYou.php');
       exit();
@@ -29,18 +34,23 @@
       $_SESSION['TakePart'] = false;
     }
 
+    // Generate an ID to uniquely identify the person that sent in these answers
 		$responseID = uniqid($prefix="", $more_entropy=false);
 
+    // Find all the questions in this questionnaire
 		$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result)){
 
       $questionID = $row['questionID'];
 
+      // If the question uses check boxes
       if($row['questionType'] == 3){
+        // Find all the options for the check box queston
         $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
         $newResult = mysqli_query($conn, $newQuery);
         while($newRow = mysqli_fetch_array($newResult)){
+          // If the user ticked this box, store the value in the results table
           if(ISSET($_POST[$newRow['optionID']]) && !empty($_POST[$newRow['optionID']])){
             $response = $_POST[$newRow['optionID']];
 
@@ -49,17 +59,20 @@
             $newQuery->execute();
           }
         }
-      }else if(ISSET($_POST[$questionID]) && !empty($_POST[$questionID])){
+      }
+      // If the question doesn't use check boxes and has been answered
+      else if(ISSET($_POST[$questionID]) && !empty($_POST[$questionID])){
         
         $response = $_POST[$questionID];
 
+        // Store the value in the results table
         $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
         $newQuery->bind_param('s', $response);
         $newQuery->execute();
 		  }
     }
 
-    $_SESSION['TakePart'] = false;
+    $_SESSION['TakePart'] = true;
     header('Location: ThankYou.php');
     exit();
 	}
@@ -81,6 +94,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="https://www.dundee.ac.uk/themes/custom/uod/assets/favicons/favicon.ico"/>
 </head>
 
 <body>
@@ -95,34 +109,50 @@
     <div class="jumbotron" style="margin-bottom:1px;">
       <form action="Questionnaire.php?qid=<?php echo $qID; ?>" method=POST>
         <?php
+
+            // Find all the questions in this questionnaire
           	$query = "SELECT * FROM questions WHERE questionnaireID = '$qID'";
             $result = mysqli_query($conn, $query);
             $count = 1;
+            // Loop through every question
             while($row = mysqli_fetch_array($result)){
               echo '<div class="form-group">';
 
               $questionID = $row['questionID'];
 
+              // If the question is text based, show a text input box
               if($row['questionType'] == 1){
                 echo '<label for="'.$questionID.'"><b>'. $count . ') ' . $row['questionText'] . '</b></label>';
                 echo '<textarea class="form-control" name="'. $row['questionID'] . '" ></textarea>';
-              }else if($row['questionType'] == 2){
+              }
+              // If the question is multiple choice
+              else if($row['questionType'] == 2){
                 echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
 
+                // Find all the options for the question
                 $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
                 $newResult = mysqli_query($conn, $newQuery);
+                // Loop through each option
                 while($newRow = mysqli_fetch_array($newResult)){
+
+                  // Display a radio button with appropriate values
                   echo '<div class="form-check">';
                   echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$questionID.'" value="'.$newRow['optionText'].'">';
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
                   echo '</div>';              
                 }
-              }else if($row['questionType'] == 3){
+              }
+              // If the question uses check boxes
+              else if($row['questionType'] == 3){
                 echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
 
+                // Find all the options for the question
                 $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
                 $newResult = mysqli_query($conn, $newQuery);
+                // Loop through each option
                 while($newRow = mysqli_fetch_array($newResult)){
+
+                  // Display a check box with appropriate values
                   echo '<div class="form-check">';
                   echo '<input class="form-check-input" type="checkbox" id="'.$newRow['optionID'].'" name="'.$newRow['optionID'].'" value="'.$newRow['optionText'].'">';
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';

@@ -2,36 +2,37 @@
 session_start();
 
 // Database Connection
-require_once "Includes/db.inc.php";
+include "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
 
-$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = {$questionnaireID}";
+$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '$questionnaireID'";
 
-if (!$questionResult = mysqli_query($conn, $query)) {
-    exit(mysqli_error($conn));
-}
+$questionResult = mysqli_query($conn, $questionQuery);
+
+$listOfQuestions = array();
+$listOfResponses = array();
+$bigBoiList = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
-    while ($row = mysqli_fetch_assoc($questionResult)) {
+    while ($row = mysqli_fetch_array($questionResult)) {
         $listOfQuestions[] = $row;
     }
 }
 
-// $listOfQuestions = [questionID, questionText], [questionID, questionText], [questionID, questionText]
-// [response1, response2, response3], [response1, response2, response3]
+echo "<br><br>";
+print_r($listOfQuestions);
+echo "<br><br>";
 
-$listOfResponses = array();
-$bigBoiList = array();
+for ($x=0; $x < count($listOfQuestions) ; $x++) {
+  $tempqid = $listOfQuestions[$x][0];
+  // echo $tempqid;
+  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid' GROUP BY questionID";
+  // echo $responseQuery;
 
-for ($x=0; $x < count($listOfQuestions) ; $i++) {
-  $responseQuery = "SELECT response, resultID FROM results WHERE questionID={$listOfQuestions[$x][0]} GROUP BY questionID";
+  $responseResults = mysqli_query($conn, $responseQuery);
 
-  if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
-      exit(mysqli_error($conn));
-  }
-
-  if (mysqli_num_rows($resultQuery) > 0) {
-      while ($row = mysqli_fetch_assoc($responseQuery)) {
+  if (mysqli_num_rows($responseResults) > 0) {
+      while ($row = mysqli_fetch_array($responseResults)) {
           $listOfResponses[] = $row;
       }
   }
@@ -40,8 +41,9 @@ for ($x=0; $x < count($listOfQuestions) ; $i++) {
 
 }
 
+echo "<br><br>";
 print_r($bigBoiList);
-
+echo "test<br><br>";
 
 // header('Content-Type: text/csv; charset=utf-8');
 // header('Content-Disposition: attachment; filename=questionnaireResults.csv');
