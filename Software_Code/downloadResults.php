@@ -16,7 +16,6 @@ $bigBoiList = array();
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
         $listOfQuestions[] = $row;
-        print_r($row);
     }
 }
 
@@ -24,20 +23,20 @@ echo "<br><br>";
 print_r($listOfQuestions);
 echo "<br><br>";
 
-for ($x=0; $x < count($listOfQuestions) ; $i++) {
-  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
-
-  $responseResults = mysqli_query($conn, $responseQuery);
-
-  if (mysqli_num_rows($responseResults) > 0) {
-      while ($row = mysqli_fetch_assoc($responseResults)) {
-          $listOfResponses[] = $row;
-      }
-  }
-
-  $bigBoiList[] = $listOfResponses;
-
-}
+// for ($x=0; $x < count($listOfQuestions) ; $i++) {
+//   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
+//
+//   $responseResults = mysqli_query($conn, $responseQuery);
+//
+//   if (mysqli_num_rows($responseResults) > 0) {
+//       while ($row = mysqli_fetch_assoc($responseResults)) {
+//           $listOfResponses[] = $row;
+//       }
+//   }
+//
+//   $bigBoiList[] = $listOfResponses;
+//
+// }
 
 echo "<br><br>";
 print_r($bigBoiList);
