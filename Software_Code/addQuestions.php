@@ -85,42 +85,6 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
       <link rel="stylesheet" href="style.css">
-      <style>
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-</style>
     </head>
 
     <body>
@@ -139,14 +103,24 @@
           <h2 class="text-center">You are creating a question for questionnaire:
           <?php echo $_SESSION['questionnaireName']; ?></h2>
           <br>
-          <div class="dropdown">
-            <button class="dropbtn">Change question type</button>
-            <div class="dropdown-content">
-              <a href="addMultipleChoice.php">Multiple Choice</a>
-              <a href="addSingleChoice.php">Single Choice</a>
-              <a href="#">Scale question</a>
+          <!-- <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Change question type
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="addMultipleChoice.php">Multiple Choice</a>
+              <a class="dropdown-item" href="addSingleChoice.php">Single Choice</a>
+              <a class="dropdown-item" href="#">Scale question</a>
             </div>
-          </div>
+          </div> -->
+          <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
             <form method="POST">
               <div class="form-group">
                 <label>Please enter the question: </label>
