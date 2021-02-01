@@ -9,7 +9,12 @@
 		exit();
   }
 
-	$qID = $_GET['qid'];
+  $qID = $_GET['qid'];
+  
+  if(!ISSET($_GET['ethicsCheck'])){
+		header('Location: ethicsForm.php?qid=' . $qID);
+		exit();
+	}
 
   // Find the questionnaire in the database
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
@@ -23,7 +28,7 @@
 		header('Location:../Includes/error.inc.php');
 		exit();
   }
-  
+
   // If the user has already taken part and isn't logged in, redirect them
   if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true && !ISSET($_SESSION['USER_role'])){
     header('Location: ThankYou.php');
