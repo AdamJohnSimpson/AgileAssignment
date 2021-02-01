@@ -33,18 +33,18 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
 
   if (mysqli_num_rows($responseResults) > 0) {
       while ($row = mysqli_fetch_array($responseResults)) {
-          $listOfResponses[] = $row;
-          echo "<br><br>{$row['response']}";
+          $listOfResponses = $row['response'];
       }
   }
-  // print_r($listOfResponses);
-  $bigBoiList[] = $listOfResponses;
+
+  $bigBoiList[$x][0] = $questionText;
+  $bigBoiList[$x][1] = $listOfResponses;
 
 }
 
-// echo "<br><br>";
-// print_r($bigBoiList);
-// echo "<br><br>";
+echo "<br><br>";
+print_r($bigBoiList);
+echo "<br><br>";
 
 // header('Content-Type: text/csv; charset=utf-8');
 // header('Content-Disposition: attachment; filename=questionnaireResults.csv');
