@@ -44,9 +44,11 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
       }
   }
 
-  // echo "<br><br>";
-  // print_r($listOfResponses);
-  // echo "<br><br>";
+  echo "<br><br>";
+  print_r($listOfResponses);
+  echo "<br><br>";
+  print_r($listOfResultID);
+  echo "<br><br>";
 
   array_push($bigBoiList[$x][0], $listOfQuestionText[$x]);
   array_push($bigBoiList[$x][1], $listOfResponses);
