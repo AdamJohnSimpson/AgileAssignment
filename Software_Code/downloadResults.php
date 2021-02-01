@@ -41,14 +41,6 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
 }
 
-for ($x=0; $x < count($listOfQuestionText); $x++) {
-  echo "<br><br>=========================================================";
-  echo "<br><br>Question: {$listOfQuestionText[$x]}";
-  echo "<br><br>Results: ";
-  print_r($allResults[$x]);
-
-}
-
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=questionnaireResults.csv');
 $output = fopen('php://output', 'w');
