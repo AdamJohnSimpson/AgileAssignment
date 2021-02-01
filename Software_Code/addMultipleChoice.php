@@ -37,7 +37,8 @@
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        for ($i=1; $i < $optionNo+2; $i++) {
+        for ($i=1; $i < $optionNo+3; $i++) {
+          echo "i= ".$i." <br> < ". $optionNo+3 ."<br>";
           $variablename = "answerOption".$i."";
           $questionoptiontext = $_POST[$variablename];
           if (empty($questionoptiontext)) {
