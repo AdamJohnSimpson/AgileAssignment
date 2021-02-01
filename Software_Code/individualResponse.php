@@ -38,6 +38,7 @@ $responseID = "60181209f21d8"; //hard coded until page is finished and can be li
     while($row = mysqli_fetch_array($resultQuestionnaire)){
       $questionnaireName = $row['questionnaireName'];
     }
+    echo "<h3 class='text-center'>".$questionnaireName."</h3>";
     ?>
   </div>
   <div class="container-fluid" style="padding:0">
