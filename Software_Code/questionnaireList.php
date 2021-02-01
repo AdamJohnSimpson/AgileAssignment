@@ -18,6 +18,7 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -27,7 +28,7 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
         <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
       </form>
     </header>
-    
+
       <div class="jumbotron text-center">
         <?php echo "<h1 class='text-center'>List of questionnaires for ".$_SESSION['experimentName']."</h1>"; ?>
       </div>
@@ -58,6 +59,8 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
               <h5 class='card-text mt-2'>".$questionnaireName."</h5>";
               $questionnaireURL = $tempURL.$questionnaireID;
               echo " <p>".$questionnaireURL."</p>
+              <br>
+              <a href='https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
              </div>
            </div>";
         }

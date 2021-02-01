@@ -14,6 +14,7 @@
   // }
 
   include "Includes/db.inc.php";
+  $questionnaireID = $_SESSION['questionnaireID'];
 
   if(isset($_POST['addQ'])){
       $questiontext = $_POST['questionText'];
@@ -22,7 +23,6 @@
     }
     else {
     //send to db sql here
-      $questionnaireID = $_SESSION['questionnaireID'];
       $questionID = uniqid($prefix="", $more_entropy=false);
       // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
 
@@ -52,6 +52,25 @@
     header("location: questionnaireList.php");
     exit;
   }
+
+  if(isset($_POST['cancel'])) {
+    $sql = "DELETE FROM questions WHERE questionnaireID = '$questionnaireID'";
+    if ($conn->query($sql) === TRUE) {
+      echo "Questions deleted successfully";
+    }
+    else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $sql = "DELETE FROM questionnaires WHERE questionnaireID = '$questionnaireID'";
+    if ($conn->query($sql) === TRUE) {
+      echo "Questionnaire deleted successfully";
+    }
+    else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    header("location: experimentList.php");
+    exit;
+  }
   ?>
 
 
@@ -65,6 +84,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
@@ -87,7 +107,8 @@
                 <label>Please enter the question: </label>
                 <input type="text" name="questionText"><br><br>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
-                <input type="submit" value="quit" name="quit" class='btn btn-outline-success'>
+                <input type="submit" value="Save and quit" name="quit" class='btn btn-outline-success'>
+                <input type="submit" value="Cancel questionnaire" name="cancel" class='btn btn-outline-success'>
             </form>
             <br></br>
           </div>

@@ -22,6 +22,7 @@ if(isset($_POST['logout'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="https://www.dundee.ac.uk/themes/custom/uod/assets/favicons/favicon.ico"/>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -71,7 +72,6 @@ if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
               <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info\"' class='btn btn-outline-success' type='button'>Experiment Information</button>
               <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest\"' class='btn btn-outline-success' type='button'>Create questionnaire</button>
               <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video\"' class='btn btn-outline-success' type='button'>Upload video</button>
-              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=download\"' class='btn btn-outline-success' type='button'>Download Results</button>
              </div>
            </div>";
         }
@@ -95,10 +95,6 @@ if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
           }
           else if ($r === "video") {
             header("Location:uploadVideo.php");
-            exit();
-          }
-          else if ($r === "download") {
-            header("Location:downloadResults.php");
             exit();
           }
         }

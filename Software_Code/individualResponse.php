@@ -1,12 +1,8 @@
-<?php
+<? php
+//loggedin
+//questionnaire id needed
 include 'Includes/header.php';
-$experimentID = $_SESSION['experimentID'];
-$experimentName = $_SESSION['experimentName'];
-
-if(isset($_POST['logout'])) {
-  unset($_SESSION['loggedin']);
-  header("location: login.php");
-}
+require_once "Includes/db.inc.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +10,8 @@ if(isset($_POST['logout'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>Videos</title> <!-- Bootstrap CSS -->
+  <title>Individual Responses</title>
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -31,38 +28,20 @@ if(isset($_POST['logout'])) {
   </header>
 
   <div class="jumbotron text-center">
-    <?php echo "<h1 class='text-center'>{$experimentName} Videos</h1>"; ?>
+    <h1 class="text-center">Individual Responses</h1>
   </div>
   <div class="container-fluid" style="padding:0">
-    <div class="jumbotron text-center" style="margin-bottom:1px;">
+    <div class="jumbotron" style="margin-bottom:1px;">
 
-      <?php
-        $allVideos = scandir("videos/" . $experimentID . "/");
 
-        if (($key = array_search('.', $allVideos)) !== false) {
-          array_shift($allVideos);
-        }
-        if (($key = array_search('..', $allVideos)) !== false) {
-          array_shift($allVideos);
-        }
 
-        for ($x=0; $x < count($allVideos); $x++) {
-          $path = "videos/" . $experimentID . "/" . $allVideos[$x];
-          echo "<h3>" . $allVideos[$x] . "</h3>";
-            echo "
-            <br>
-            <video src='" . $path . "' width='320' height='240' type='video/mp4' controls>
-              Your browser does not support the video tag.
-            </video>
-            <br><br>";
-        }
 
-       ?>
+
+
+
     </div>
   </div>
-  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
-      <input type="submit" value="Return to Experiments Information" />
-  </form>
+
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
