@@ -9,13 +9,14 @@ $questionQuery = "SELECT questionID, questionText FROM questions WHERE questionn
 
 $questionResult = mysqli_query($conn, $questionQuery);
 
-$listOfQuestions = array();
+$listOfQuestions = array(array());
 $listOfResponses = array();
 $bigBoiList = array(array());
 
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
-        $listOfQuestions[] = $row;
+      array_push($listOfQuestions[0], $row['questionText']);
+      array_push($listOfQuestions[1], $row['questionID']);
     }
 }
 
@@ -43,7 +44,7 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
   print_r($listOfResponses);
   echo "<br><br>";
 
-  $bigBoiList[$x][0] = $questionText[$x];
+  $bigBoiList[$x][0] = $questionText[$x][0];
   array_push($bigBoiList[$x][1], $listOfResponses);
 
 }
