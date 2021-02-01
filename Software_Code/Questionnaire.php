@@ -22,17 +22,17 @@
 	}else{
 		header('Location:../Includes/error.inc.php');
 		exit();
-	}
+  }
+  
+  // If the user has already taken part and isn't logged in, redirect them
+  if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true && !ISSET($_SESSION['USER_role'])){
+    header('Location: ThankYou.php');
+    exit();
+  }else{
+    $_SESSION['TakePart'] = false;
+  }
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    // If the user has already taken part, redirect them
-    if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true){
-      header('Location: ThankYou.php');
-      exit();
-    }else{
-      $_SESSION['TakePart'] = false;
-    }
 
     // Generate an ID to uniquely identify the person that sent in these answers
 		$responseID = uniqid($prefix="", $more_entropy=false);
@@ -82,7 +82,7 @@
         $response = $_POST[$questionID];
 
         // Store the value in the results table
-        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID, questionnaireID) VALUES (?, '$questionID', '$responseID', '$qID')");
         $newQuery->bind_param('s', $response);
         $newQuery->execute();
 		  }
