@@ -32,6 +32,7 @@
     }
     else {
       //send to db sql here
+      $success = true;
       $questionID = uniqid($prefix="", $more_entropy=false);
       $questionType = 2;
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
@@ -48,12 +49,15 @@
             $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
             if ($conn->query($sql) === TRUE) {
               echo "New record created successfully";
-              //header("location: addMultipleChoice.php");
             }
             else {
+              success = false;
               echo "Error: " . $sql . "<br>" . $conn->error;
             }
           }
+        }
+        if (success){
+          header("location: addMultipleChoice.php");
         }
       }
       else {
