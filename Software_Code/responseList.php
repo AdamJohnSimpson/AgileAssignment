@@ -4,7 +4,7 @@
 // include 'Includes/header.php';
 require_once "Includes/db.inc.php";
 //$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
-$questionnaireID = "601803297cc1b"; //hard coded until page is finished and can be linked
+$questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,6 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
   </header>
-
   <div class="jumbotron text-center">
     <h1 class="text-center">List of Responses</h1>
   </div>
@@ -45,22 +44,16 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
          echo "<div class='row'>
            <div class='card-body'>
             <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
+            <button class='btn btn-outline-success' type='button'>View Answers</button>
             </div>
          </div>";
       }
       echo "<p>Total Responses: ".$count;
       ?>
-
-
-
-
-
     </div>
   </div>
-
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
 </body>
-
 </html>
