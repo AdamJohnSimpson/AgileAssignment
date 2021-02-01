@@ -13,7 +13,7 @@ $listOfQuestionText = array();
 $listOfQuestionID = array();
 $listOfResponses = array();
 $listOfResultID = array();
-$bigBoiList = array();
+$bigBoiList = array(array());
 
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
