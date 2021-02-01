@@ -52,6 +52,25 @@
     header("location: questionnaireList.php");
     exit;
   }
+
+  if(isset($_POST['cancel'])) {
+    $sql = "DELETE FROM questions WHERE questionnaireID = $questionnaireID";
+    if ($conn->query($sql) === TRUE) {
+      echo "Questions deleted successfully";
+    }
+    else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $sql = "DELETE FROM questionnaire WHERE questionnaireID = $questionnaireID";
+    if ($conn->query($sql) === TRUE) {
+      echo "Questionnaire deleted successfully";
+    }
+    else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    // header("location: questionnaireList.php");
+    // exit;
+  }
   ?>
 
 
@@ -88,7 +107,8 @@
                 <label>Please enter the question: </label>
                 <input type="text" name="questionText"><br><br>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
-                <input type="submit" value="quit" name="quit" class='btn btn-outline-success'>
+                <input type="submit" value="Save and quit" name="quit" class='btn btn-outline-success'>
+                <input type="submit" value="Cancel questionnaire" name="cancel" class='btn btn-outline-success'>
             </form>
             <br></br>
           </div>
