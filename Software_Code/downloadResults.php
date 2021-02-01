@@ -11,8 +11,6 @@ $questionResult = mysqli_query($conn, $questionQuery);
 
 $listOfQuestionText = array();
 $listOfQuestionID = array();
-$listOfResponses = array();
-$listOfResultID = array();
 $bigBoiList = array(array());
 
 if (mysqli_num_rows($questionResult) > 0) {
@@ -28,8 +26,9 @@ echo "<br><br>";
 print_r($listOfQuestionID);
 echo "<br><br>";
 
-for ($x=0; $x < count($listOfQuestions) ; $x++) {
+for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   $listOfResponses = array();
+  $listOfResultID = array();
   $tempqid = $listOfQuestionID[$x];
   // echo $tempqid;
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid'";
