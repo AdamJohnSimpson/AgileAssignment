@@ -49,9 +49,25 @@
   }
 
   if(isset($_POST['quit'])) {
-    header("location: questionnaireList.php");
-    exit;
-  }
+    $questiontext = $_POST['questionText'];
+    if (empty($questiontext)) {
+      header("location: questionnaireList.php");
+      exit;
+    }
+    else {
+      $questionID = uniqid($prefix="", $more_entropy=false);
+      $questionType = 1;
+      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+      }
+      else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
+      header("location: questionnaireList.php");
+      exit;
+    }
 
   if(isset($_POST['cancel'])) {
     $sql = "DELETE FROM questions WHERE questionnaireID = '$questionnaireID'";
