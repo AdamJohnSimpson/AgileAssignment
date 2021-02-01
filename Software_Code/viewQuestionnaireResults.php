@@ -4,7 +4,7 @@ session_start();
 // Database Connection
 include "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
---
+
 $questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '$questionnaireID'";
 
 $questionResult = mysqli_query($conn, $questionQuery);
