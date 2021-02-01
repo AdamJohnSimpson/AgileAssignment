@@ -49,8 +49,11 @@ fputcsv($output, array('questionID', 'questionText', 'responseID', 'response'));
 if (count($listOfResults) > 0) {
     for ($x=0; $x < count($listOfQuestionID); $x++) {
       for ($y=0; $y < count($allResults[$x]) ; $y++) {
-        $row = array($listOfQuestionID[$x], $listOfQuestionText[$x], $allResultID[$x][$y], $allResults[$x][$y]);
-        fputcsv($output, $row);
+        // $row = array($listOfQuestionID[$x], $listOfQuestionText[$x], $allResultID[$x][$y], $allResults[$x][$y]);
+        fputcsv($output, array($listOfQuestionID[$x], $listOfQuestionText[$x], $allResultID[$x][$y], $allResults[$x][$y]));
+        fputcsv($output, array(99,99,$x,$y);
+
+        // fputcsv($output, $row);
       }
     }
 }
