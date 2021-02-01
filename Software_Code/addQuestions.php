@@ -68,8 +68,8 @@
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    // header("location: questionnaireList.php");
-    // exit;
+    header("location: experimentList.php");
+    exit;
   }
   ?>
 
