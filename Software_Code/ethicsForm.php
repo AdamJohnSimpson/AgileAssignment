@@ -14,13 +14,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     {
       echo "ticked";
       $_SESSION['ethicsCheck'] = true;
-      header('location: $questionnaireURL')
+      header('location: $questionnaireURL');
     }
   if (!ISSET($_POST['ethicsBox']))
     {
       echo "not ticked";
       $_SESSION['ethicsCheck'] = false;
-      header('location: thanksForTime.php')
+      header('location: thanksForTime.php');
     }
   }
 
