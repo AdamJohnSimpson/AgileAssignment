@@ -61,7 +61,7 @@
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    $sql = "DELETE FROM questionnaire WHERE questionnaireID = '$questionnaireID'";
+    $sql = "DELETE FROM questionnaires WHERE questionnaireID = '$questionnaireID'";
     if ($conn->query($sql) === TRUE) {
       echo "Questionnaire deleted successfully";
     }
