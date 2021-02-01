@@ -40,10 +40,14 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
       //display questions
       while($row = mysqli_fetch_array($resultQuestion)){
         $questionTxt = $row['questionText'];
+        $questionID = $row['questionID'];
          echo "<div class='row'>
            <div class='card-body'>
-            <h5 class='card-text mt-2'>".$questionTxt."</h5>
-           </div>
+            <h5 class='card-text mt-2'>".$questionTxt."</h5>";
+
+
+
+        echo "</div>
          </div>";
       }
       ?>
