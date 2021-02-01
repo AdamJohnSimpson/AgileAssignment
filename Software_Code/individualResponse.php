@@ -63,7 +63,7 @@ $responseID = $_GET['rid']; //get responseID
         echo "</div>
          </div>";
       }
-      echo "<a href='https://agile-assignment-group-4.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Individual Results</button></a>";
+      echo "<a href='https://agile-assignment-group-4.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Back To Individual Results</button></a>";
       ?>
     </div>
   </div>
