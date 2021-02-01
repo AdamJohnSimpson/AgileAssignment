@@ -33,7 +33,8 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
 
   if (mysqli_num_rows($responseResults) > 0) {
       while ($row = mysqli_fetch_array($responseResults)) {
-          $listOfResponses = $row['response'];
+        array_push($listOfResponses, $row['response']);
+          // $listOfResponses = $row['response'];
       }
   }
 
