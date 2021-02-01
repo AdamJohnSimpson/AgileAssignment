@@ -33,12 +33,17 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
 
   if (mysqli_num_rows($responseResults) > 0) {
       while ($row = mysqli_fetch_array($responseResults)) {
-          $listOfResponses = $row['response'];
+        array_push($listOfResponses, $row['response']);
+          // $listOfResponses = $row['response'];
       }
   }
 
-  $bigBoiList[$x][0] = $questionText;
-  $bigBoiList[$x][1] = $listOfResponses;
+  echo "<br><br>";
+  print_r($listOfResponses);
+  echo "<br><br>";
+
+  array_push($bigBoiList[$x][0], $questionText);
+  array_push($bigBoiList[$x][1], $listOfResponses);
 
 }
 
