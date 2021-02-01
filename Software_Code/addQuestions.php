@@ -103,7 +103,7 @@
           <h2 class="text-center">You are creating a question for questionnaire:
           <?php echo $_SESSION['questionnaireName']; ?></h2>
           <br>
-          <!-- <div class="dropdown show">
+          <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Change question type
             </a>
@@ -112,15 +112,7 @@
               <a class="dropdown-item" href="addSingleChoice.php">Single Choice</a>
               <a class="dropdown-item" href="#">Scale question</a>
             </div>
-          </div> -->
-          <li class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+          </div>
             <form method="POST">
               <div class="form-group">
                 <label>Please enter the question: </label>
