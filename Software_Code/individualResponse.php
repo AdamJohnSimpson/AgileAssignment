@@ -1,7 +1,7 @@
 <?php
 //ensure logged in code go here
 
-// include 'Includes/header.php';
+include 'Includes/header.php';
 require_once "Includes/db.inc.php";
 //$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
 $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
@@ -63,12 +63,9 @@ $responseID = "60181209f21d8"; //hard coded until page is finished and can be li
          </div>";
       }
       ?>
-
-
-
-
-
-
+      <form action="https://agile-assignment-group-4.azurewebsites.net/responseList.php">
+          <input type="submit" class='btn btn-outline-success' value="Return to Response List" />
+  </form>
     </div>
   </div>
 
