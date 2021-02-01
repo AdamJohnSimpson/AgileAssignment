@@ -167,25 +167,27 @@
           <br>
             <form method="POST">
               <div class="form-group">
-                <label>Please enter the question: </label>
+                <label>Please enter the plestion: </label>
                 <input type="text" name="questionText"><br><br>
                 <label>Please enter an answer option: </label>
                 <input type="text" name="answerOption1"><br><br>
                 <label>Please enter an answer option: </label>
                 <input type="text" name="answerOption2"><br><br>
+                <?php
+                for ($i=0; $i < $extraOptions; $i++) {
+                  $tempNo = $extraOptions + 1;
+                  $optionNoName = "answerOption" . $tempNo;
+                  echo "<label>Please enter an answer option: </label>
+                  <input type='text' name=".$optionNoName."><br><br>";
+                }
+                ?>
 
                 <form method="post">
                   <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
                   <?php
                     if(isset($_POST['addOption'])){
-                      $tempNo = $extraOptions + 1;
-                      $optionNoName = "answerOption" . $tempNo;
-                      echo "<label>Please enter an answer option: </label>
-                      <input type='text' name=".$optionNoName."><br><br>";
                       $extraOptions++;
-                      echo "yo mamma";
                       header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
-                      echo "this is past the header location bit";
                     } ?>
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
