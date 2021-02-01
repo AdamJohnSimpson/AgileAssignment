@@ -20,9 +20,7 @@ session_start();
 <body>
   <header style="height:150px;">
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
-    <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
-    </form>
+    
   </header>
 
 
@@ -31,12 +29,18 @@ session_start();
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
+
       <form>
         <div class="form-group">
           <label>Please tick to give permission to the use of your answers for research purposes.</label>
-          <input style="width: 50px; height: 50px;" type="checkbox" name="ethicsBox" value="Yes">
       </form>
+
       <br></br>
+
+      <form>
+        <input style="width: 50px; height: 50px;" type="checkbox" name="ethicsBox" value="Yes">
+      </form>
+
       <form>
         <input type="submit" value="submit">
       </form>
