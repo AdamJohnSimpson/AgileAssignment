@@ -102,6 +102,13 @@
         <div class="jumbotron" style="margin-bottom:1px;">
           <h2 class="text-center">You are creating a question for questionnaire:
           <?php echo $_SESSION['questionnaireName']; ?></h2>
+          <br>
+          <button class="dropbtn">Change question type</button>
+            <div class="dropdown-content">
+              <a href="addMultipleChoice.php">Multiple Choice</a>
+              <a href="addSingleChoice.php">Single Choice</a>
+              <a href="#">Scale question</a>
+            </div>
             <form method="POST">
               <div class="form-group">
                 <label>Please enter the question: </label>
