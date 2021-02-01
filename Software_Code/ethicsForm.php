@@ -25,6 +25,7 @@ session_start();
     </form>
   </header>
 
+
   <div class="jumbotron text-center">
     <h1 class="text-center">Ethics Form</h1>
   </div>
@@ -33,13 +34,11 @@ session_start();
       <form>
         <div class="form-group">
           <label>Please tick to give permission to the use of your answers for research purposes.</label>
-          <input type="text" name="question"><br><br>
-          <input type="checkbox" name="ethicsBox" value="Yes">
-          <input type="submit" value="Template button">
+          <input style="width: 50px; height: 50px;" type="checkbox" name="ethicsBox" value="Yes">
       </form>
       <br></br>
       <form>
-        <input type="submit" value="Template button">
+        <input type="submit" value="submit">
       </form>
     </div>
   </div>
