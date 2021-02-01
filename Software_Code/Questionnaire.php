@@ -23,12 +23,6 @@
 		header('Location:../Includes/error.inc.php');
 		exit();
   }
-
-  // Redirect the user if they haven't signed the ethics form
-  if(!ISSET($_GET['ethicsCheck']) || $_GET['ethicsCheck'] != true){
-    header('Location:ethicsForm.php?qid='.$qID);
-    exit();
-  }
   
   // If the user has already taken part and isn't logged in, redirect them
   if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true && !ISSET($_SESSION['USER_role'])){
