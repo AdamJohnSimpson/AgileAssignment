@@ -53,7 +53,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   // array_push($bigBoiList[$x][0], $listOfQuestionText[$x]);
   // array_push($bigBoiList[$x][1], $listOfResponses);
 
-  array_push($allResults, $listOfResults);
+  array_push($allResults, $listOfResponses);
 
 
 
@@ -63,8 +63,7 @@ for ($x=0; $x < count($listOfQuestionText); $x++) {
   echo "<br><br>=========================================================";
   echo "<br><br>Question: {$listOfQuestionText[$x]} <br><br>";
   echo "<br><br>Results: ";
-  print_r($allResults);
-  echo "<br><br>=========================================================<br><br>";
+  print_r($allResults[$x]);
 
 }
 
