@@ -1,8 +1,8 @@
 <? php
 //loggedin
 //questionnaire id needed
-
-
+include 'Includes/header.php';
+require_once "Includes/db.inc.php";
 ?>
 
 <!DOCTYPE html>
