@@ -36,14 +36,14 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
           $listOfResponses[] = $row;
       }
   }
-
+  print_r($listOfResponses);
   $bigBoiList[] = $listOfResponses;
 
 }
 
-echo "<br><br>";
-print_r($bigBoiList);
-echo "test<br><br>";
+// echo "<br><br>";
+// print_r($bigBoiList);
+// echo "<br><br>";
 
 // header('Content-Type: text/csv; charset=utf-8');
 // header('Content-Disposition: attachment; filename=questionnaireResults.csv');
