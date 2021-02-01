@@ -45,6 +45,12 @@ $responseID = "60181209f21d8"; //hard coded until page is finished and can be li
          echo "<div class='row'>
            <div class='card-body'>
             <h5 class='card-text mt-2'>".$questionTxt."</h5>";
+            $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
+            $resultResponse = mysqli_query($conn, $stmt);
+            while($row = mysqli_fetch_array($resultResponse)){
+
+            }
+
 
 
 
