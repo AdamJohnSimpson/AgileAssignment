@@ -11,7 +11,7 @@
 
   $qID = $_GET['qid'];
   
-  if(!ISSET($_GET['ethicsCheck'])){
+  if(!ISSET($_SESSION['ethicsCheck'])){
 		header('Location: ethicsForm.php?qid=' . $qID);
 		exit();
 	}
