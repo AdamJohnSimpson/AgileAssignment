@@ -3,16 +3,16 @@ session_start();
 //have questionaire.php rediret user if consent = false
 //have this be a consent form and when check box is checked then redirect back to questionaire with seesion variable consent set to true
 
-$_SESSION['ethicsBox'] = $consentCheck;
+//$_SESSION['ethicsBox'] = $consentCheck;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-  if(ISSET($_POST[$consentCheck]))
+  if(ISSET($_POST['ethicsBox']))
     {
       echo "ticked";
       sleep(2);
     }
-  if (!ISSET($_POST[$consentCheck]))
+  if (!ISSET($_POST['ethicsBox']))
     {
       echo "not ticked";
       sleep(2);
@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       <form>
         <div class="form-group">
           <label>Please tick to give permission to the use of your answers for research purposes.</label>
@@ -68,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   </div>
 </div>
 
+</form>
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
