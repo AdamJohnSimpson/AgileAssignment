@@ -63,12 +63,6 @@ $responseID = "60181209f21d8"; //hard coded until page is finished and can be li
          </div>";
       }
       ?>
-
-
-
-
-
-
     </div>
   </div>
 
