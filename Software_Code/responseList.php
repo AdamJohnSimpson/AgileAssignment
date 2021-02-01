@@ -50,6 +50,8 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
          </div>";
       }
       echo "<p>Total Responses: ".$count;
+
+      echo "<a href='https://agile-assignment-group-4.azurewebsites.net/questionnaireList.php'><button class='btn btn-outline-success' type='button'>Back To Questionnaie List</button></a>";
       ?>
     </div>
   </div>
