@@ -11,7 +11,6 @@ $questionResult = mysqli_query($conn, $questionQuery);
 
 $listOfQuestionText = array();
 $listOfQuestionID = array();
-// $bigBoiList = array(array());
 $allResults = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
@@ -21,19 +20,11 @@ if (mysqli_num_rows($questionResult) > 0) {
     }
 }
 
-echo "<br><br>";
-print_r($listOfQuestionText);
-echo "<br><br>";
-print_r($listOfQuestionID);
-echo "<br><br>";
-
 for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   $listOfResponses = array();
   $listOfResultID = array();
   $tempqid = $listOfQuestionID[$x];
-  // echo $tempqid;
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid'";
-  // echo $responseQuery;
 
   $responseResults = mysqli_query($conn, $responseQuery);
 
@@ -44,24 +35,13 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       }
   }
 
-  echo "<br><br>";
-  print_r($listOfResponses);
-  echo "<br><br>";
-  print_r($listOfResultID);
-  echo "<br><br>";
-
-  // array_push($bigBoiList[$x][0], $listOfQuestionText[$x]);
-  // array_push($bigBoiList[$x][1], $listOfResponses);
-
   array_push($allResults, $listOfResponses);
-
-
 
 }
 
 for ($x=0; $x < count($listOfQuestionText); $x++) {
   echo "<br><br>=========================================================";
-  echo "<br><br>Question: {$listOfQuestionText[$x]} <br><br>";
+  echo "<br><br>Question: {$listOfQuestionText[$x]}";
   echo "<br><br>Results: ";
   print_r($allResults[$x]);
 
