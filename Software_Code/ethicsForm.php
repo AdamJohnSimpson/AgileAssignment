@@ -3,6 +3,21 @@ session_start();
 //have questionaire.php rediret user if consent = false
 //have this be a consent form and when check box is checked then redirect back to questionaire with seesion variable consent set to true
 
+$_SESSION['ethicsBox'] = $consentCheck;
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+  if(ISSET($_POST[$consentCheck])
+  {
+    echo "ticked";
+    else{
+      echo "not ticked";
+    }
+  }
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -20,7 +35,7 @@ session_start();
 <body>
   <header style="height:150px;">
     <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
-    
+
   </header>
 
 
@@ -42,7 +57,8 @@ session_start();
       </form>
 
       <form>
-        <input type="submit" value="submit">
+        <label>Submit to be redirected to the quiz if you have ticked the checkbox.</label>
+        <input type="submit" class="btn btn-primary" value="submit">
       </form>
     </div>
   </div>
