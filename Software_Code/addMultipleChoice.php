@@ -37,19 +37,21 @@
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        for ($i=0; $i < $optionNo+2; $i++) {
+        for ($i=1; $i < $optionNo+2; $i++) {
           $variablename = "answerOption".$i."";
           $questionoptiontext = $_POST[$variablename];
           if (empty($questionoptiontext)) {
             echo "The answer option must have text!";
           }
-          $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
-          if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-            //header("location: addMultipleChoice.php");
-          }
           else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
+            if ($conn->query($sql) === TRUE) {
+              echo "New record created successfully";
+              //header("location: addMultipleChoice.php");
+            }
+            else {
+              echo "Error: " . $sql . "<br>" . $conn->error;
+            }
           }
         }
       }
