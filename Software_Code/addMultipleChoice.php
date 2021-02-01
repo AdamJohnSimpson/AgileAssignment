@@ -189,7 +189,8 @@
                       echo "extra options= ".$extraOptions."<br><br>";
                       $extraOptions= $extraOptions + 1;
                       echo "extra options + 1= ".$extraOptions."<br><br>";
-                      // header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+                      header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+                      exit;
                     } ?>
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
