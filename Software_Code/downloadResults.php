@@ -41,14 +41,6 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
 }
 
-for ($x=0; $x < count($listOfQuestionText); $x++) {
-  echo "<br><br>=========================================================";
-  echo "<br><br>Question: {$listOfQuestionText[$x]}";
-  echo "<br><br>Results: ";
-  print_r($allResults[$x]);
-
-}
-
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=questionnaireResults.csv');
 $output = fopen('php://output', 'w');
@@ -57,7 +49,7 @@ fputcsv($output, array('questionID', 'questionText', 'responseID', 'response'));
 if (count($listOfResults) > 0) {
     for ($x=0; $x < count($listOfQuestionID); $x++) {
       for ($y=0; $y < count($allResults[$x]) ; $y++) {
-        $row = array($listOfQuestionID[$x], $listOfQuestionText[$x], $listOfResultID[$x][$y], $allResults[$x][$y]);
+        $row = array($listOfQuestionID[$x], $listOfQuestionText[$x], $allResultID[$x][$y], $allResults[$x][$y]);
         fputcsv($output, $row);
       }
     }
