@@ -3,16 +3,19 @@ session_start();
 //have questionaire.php rediret user if consent = false
 //have this be a consent form and when check box is checked then redirect back to questionaire with seesion variable consent set to true
 
-//$_SESSION['ethicsBox'] = $consentCheck;
+$_SESSION['ethicsBox'] = $consentCheck;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-  if(ISSET($_POST['ethicsBox']))
+  //if ethics box is checked redirect to quiz and make consent = true
+  if(ISSET($_POST[$consentCheck]))
     {
       echo "ticked";
       sleep(2);
     }
-  if (!ISSET($_POST['ethicsBox']))
+
+  //if ethics box is not checked
+  if (!ISSET($_POST[$consentCheck]))
     {
       echo "not ticked";
       sleep(2);
