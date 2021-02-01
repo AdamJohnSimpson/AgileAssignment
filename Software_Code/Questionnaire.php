@@ -82,7 +82,7 @@
         $response = $_POST[$questionID];
 
         // Store the value in the results table
-        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID, questionnaireID) VALUES (?, '$questionID', '$responseID', '$qID')");
         $newQuery->bind_param('s', $response);
         $newQuery->execute();
 		  }
