@@ -15,24 +15,24 @@
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
 	$result = mysqli_query($conn, $query);
   $row = mysqli_fetch_array($result);
-  
+
   // If the questionnaire exists, store its name. If it doesn't, redirect the user
 	if($row){
 		$qName = $row['questionnaireName'];
 	}else{
 		header('Location:../Includes/error.inc.php');
 		exit();
-	}
+  }
+  
+  // If the user has already taken part and isn't logged in, redirect them
+  if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true && !ISSET($_SESSION['USER_role'])){
+    header('Location: ThankYou.php');
+    exit();
+  }else{
+    $_SESSION['TakePart'] = false;
+  }
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    // If the user has already taken part, redirect them
-    if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true){
-      header('Location: ThankYou.php');
-      exit();
-    }else{
-      $_SESSION['TakePart'] = false;
-    }
 
     // Generate an ID to uniquely identify the person that sent in these answers
 		$responseID = uniqid($prefix="", $more_entropy=false);
@@ -54,7 +54,23 @@
           if(ISSET($_POST[$newRow['optionID']]) && !empty($_POST[$newRow['optionID']])){
             $response = $_POST[$newRow['optionID']];
 
-            $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+            $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID, questionnaireID) VALUES (?, '$questionID', '$responseID', '$qID')");
+            $newQuery->bind_param('s', $response);
+            $newQuery->execute();
+          }
+        }
+      }else if($row['questionType'] == 4){
+        // Find all the options for the check box queston
+        $newQuery = "SELECT * FROM usabilityQuestions WHERE questionID = '$questionID'";
+        $newResult = mysqli_query($conn, $newQuery);
+        while($newRow = mysqli_fetch_array($newResult)){
+          // If the user ticked this box, store the value in the results table
+          if(ISSET($_POST[$newRow['uqID']]) && !empty($_POST[$newRow['uqID']])){
+            $response = $_POST[$newRow['uqID']];
+
+            $uqID = $newRow['uqID'];
+
+            $newQuery = $conn->prepare("INSERT INTO usabilityResults (response, uqID, responseID) VALUES (?, '$uqID', '$responseID')");
             $newQuery->bind_param('s', $response);
             $newQuery->execute();
           }
@@ -62,11 +78,11 @@
       }
       // If the question doesn't use check boxes and has been answered
       else if(ISSET($_POST[$questionID]) && !empty($_POST[$questionID])){
-        
+
         $response = $_POST[$questionID];
 
         // Store the value in the results table
-        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+        $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID, questionnaireID) VALUES (?, '$questionID', '$responseID', '$qID')");
         $newQuery->bind_param('s', $response);
         $newQuery->execute();
 		  }
@@ -139,7 +155,7 @@
                   echo '<div class="form-check">';
                   echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$questionID.'" value="'.$newRow['optionText'].'">';
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
-                  echo '</div>';              
+                  echo '</div>';
                 }
               }
               // If the question uses check boxes
@@ -192,7 +208,7 @@
                   }
 
                   echo '</tr>';
-                
+
 
 
                   // Display a check box with appropriate values
@@ -207,6 +223,8 @@
               }
 
               echo '</div>';
+              echo '<br>';
+              echo '<br>';
 
               $count++;
             }

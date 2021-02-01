@@ -12,8 +12,7 @@ $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can 
 
 <head>
   <meta charset="utf-8">
-  <title>Individual Responses</title>
-  <!-- Bootstrap CSS -->
+  <title>List of Responses</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -30,28 +29,27 @@ $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can 
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Individual Responses</h1>
+    <h1 class="text-center">List of Responses</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
       <?php
-      $stmt = "SELECT * FROM questions WHERE questionnaireID = '{$questionnaireID}'"; //gets all questions from that questionnaire
-      $resultQuestion = mysqli_query($conn, $stmt);
+      $stmt = "SELECT * FROM results WHERE questionnaireID = '{$questionnaireID}'"; //gets all results from that questionnaire
+      $result = mysqli_query($conn, $stmt);
       //display questions
-      while($row = mysqli_fetch_array($resultQuestion)){
-        $questionTxt = $row['questionText'];
-        $questionID = $row['questionID'];
+      $count=0;
+      while($row = mysqli_fetch_array($result)){
+        $count=$count+1;
+        $questionTxt = $row['responseID']; //unique response id
+        $questionID = $row['questionID']; //unique question
          echo "<div class='row'>
            <div class='card-body'>
-            <h5 class='card-text mt-2'>".$questionTxt."</h5>";
-
-
-
-        echo "</div>
+            <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
+            </div>
          </div>";
       }
+      echo "<p>Total Responses: ".$count;
       ?>
-
 
 
 

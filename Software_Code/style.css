@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 * {
@@ -17,6 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 .jumbotron {
   background-color: #f1f6f9;
 }
+
 /* font size min 14px and no lighter than a font-weight of 300. */
 
 
