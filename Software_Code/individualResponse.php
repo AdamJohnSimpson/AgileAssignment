@@ -1,8 +1,10 @@
 <?php
-//loggedin
-//questionnaire id needed
+//ensure logged in code go here
+
 include 'Includes/header.php';
 require_once "Includes/db.inc.php";
+//$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
+$questionnaireID = 6013e6ae83bd3; //hard coded until page is finished and can be linked
 ?>
 
 <!DOCTYPE html>
