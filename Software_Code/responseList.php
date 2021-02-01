@@ -33,7 +33,24 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
+      <?php
+      $stmt = "SELECT * FROM results WHERE questionnaireID = '{$questionnaireID}'"; //gets all results from that questionnaire
+      $result = mysqli_query($conn, $stmt);
+      //display questions
+      $count=1;
+      while($row = mysqli_fetch_array($result)){
+        $questionTxt = $row['responseID']; //unique response id
+        $questionID = $row['questionID']; //unique question
+         echo "<div class='row'>
+           <div class='card-body'>
+            <h5 class='card-text mt-2'>".$questionTxt."</h5>";
 
+
+
+        echo "</div>
+         </div>";
+      }
+      ?>
 
 
 
