@@ -42,15 +42,14 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 }
 
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=questionnaireResults.csv');
+header('Content-Disposition: attachment; filename='.$questionnaireID.'_Results.csv');
 $output = fopen('php://output', 'w');
 fputcsv($output, array('questionID', 'questionText', 'responseID', 'response'));
 
-if (count($listOfResults) > 0) {
+if (count($listOfQuestionID) > 0) {
     for ($x=0; $x < count($listOfQuestionID); $x++) {
-      for ($y=0; $y < count($allResults[$x]) ; $y++) {
-        $row = array($listOfQuestionID[$x], $listOfQuestionText[$x], $allResultID[$x][$y], $allResults[$x][$y]);
-        fputcsv($output, $row);
+      for ($y=0; $y < count($allResults[$x]); $y++) {
+        fputcsv($output, array($listOfQuestionID[$x], $listOfQuestionText[$x], $allResultID[$x][$y], $allResults[$x][$y]));
       }
     }
 }
