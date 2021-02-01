@@ -12,6 +12,7 @@ $questionResult = mysqli_query($conn, $questionQuery);
 $listOfQuestionText = array();
 $listOfQuestionID = array();
 $allResults = array();
+$allResultID = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
@@ -36,6 +37,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   }
 
   array_push($allResults, $listOfResponses);
+  array_push($allResultID, $listOfResultID);
 
 }
 
@@ -47,15 +49,18 @@ for ($x=0; $x < count($listOfQuestionText); $x++) {
 
 }
 
-// header('Content-Type: text/csv; charset=utf-8');
-// header('Content-Disposition: attachment; filename=questionnaireResults.csv');
-// $output = fopen('php://output', 'w');
-// fputcsv($output, array('resultID', 'response', 'questionID', 'responseID'));
-//
-// if (count($listOfResults) > 0) {
-//     foreach ($listOfResults as $row) {
-//         fputcsv($output, $row);
-//     }
-// }
+header('Content-Type: text/csv; charset=utf-8');
+header('Content-Disposition: attachment; filename=questionnaireResults.csv');
+$output = fopen('php://output', 'w');
+fputcsv($output, array('questionID', 'questionText', 'responseID', 'response'));
+
+if (count($listOfResults) > 0) {
+    for ($x=0; $x < count($listOfQuestionID; $x++) {
+      for ($y=0; $y < count($allResults[$x]) ; $y++) {
+        $row = array($listOfQuestionID[$x], $listOfQuestionText[$x], $listOfResultID[$x][$y], $allResults[$x][$y]);
+        fputcsv($output, $row);
+      }
+    }
+}
 
 ?>
