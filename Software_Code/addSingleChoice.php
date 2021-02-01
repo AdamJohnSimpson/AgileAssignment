@@ -34,7 +34,7 @@
       $success = true;
       //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
-      $questionType = 2;
+      $questionType = 3;
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
