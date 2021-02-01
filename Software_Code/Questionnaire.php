@@ -15,7 +15,7 @@
 	$query = "SELECT * FROM questionnaires WHERE questionnaireID = '$qID'";
 	$result = mysqli_query($conn, $query);
   $row = mysqli_fetch_array($result);
-  
+
   // If the questionnaire exists, store its name. If it doesn't, redirect the user
 	if($row){
 		$qName = $row['questionnaireName'];
@@ -54,7 +54,7 @@
           if(ISSET($_POST[$newRow['optionID']]) && !empty($_POST[$newRow['optionID']])){
             $response = $_POST[$newRow['optionID']];
 
-            $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID) VALUES (?, '$questionID', '$responseID')");
+            $newQuery = $conn->prepare("INSERT INTO results (response, questionID, responseID, questionnaireID) VALUES (?, '$questionID', '$responseID', '$qID')");
             $newQuery->bind_param('s', $response);
             $newQuery->execute();
           }
@@ -62,7 +62,7 @@
       }
       // If the question doesn't use check boxes and has been answered
       else if(ISSET($_POST[$questionID]) && !empty($_POST[$questionID])){
-        
+
         $response = $_POST[$questionID];
 
         // Store the value in the results table
@@ -139,7 +139,7 @@
                   echo '<div class="form-check">';
                   echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$questionID.'" value="'.$newRow['optionText'].'">';
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
-                  echo '</div>';              
+                  echo '</div>';
                 }
               }
               // If the question uses check boxes
@@ -192,7 +192,7 @@
                   }
 
                   echo '</tr>';
-                
+
 
 
                   // Display a check box with appropriate values
