@@ -45,7 +45,7 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
          echo "<div class='row'>
            <div class='card-body'>
             <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
-            <a href='https://agile-assignment-group-4.azurewebsites.net/responseList.php?rid={$responseID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
+            <a href='https://agile-assignment-group-4.azurewebsites.net/individualResponse.php?rid={$responseID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
             </div>
          </div>";
       }
