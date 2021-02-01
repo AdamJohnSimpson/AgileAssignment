@@ -37,6 +37,15 @@ $questionnaireID = "6013e6ae83bd3"; //hard coded until page is finished and can 
       <?php
       $stmt = "SELECT * FROM questions WHERE questionnaireID = '{$questionnaireID}'"; //gets all questions from that questionnaire
       $resultQuestion = mysqli_query($conn, $stmt);
+      //display questions
+      while($row = mysqli_fetch_array($resultQuestion)){
+        $questionTxt = $row['questionText'];
+         echo "<div class='row'>
+           <div class='card-body'>
+            <h5 class='card-text mt-2'>".$questionTxt."</h5>
+           </div>
+         </div>";
+      }
       ?>
 
 
