@@ -1,3 +1,4 @@
-# Sprint 1 Backlog
+# Sprint 2 Backlog
 
-Your Sprint 1 backlog should be put into this folder.
+Our Sprint 2 backlog can be found in Projects under Sprint 2.
+As a result of our retrospective, we have increased our planned velocity for this sprint

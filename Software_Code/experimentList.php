@@ -72,7 +72,6 @@ if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
               <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=info\"' class='btn btn-outline-success' type='button'>Experiment Information</button>
               <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=quest\"' class='btn btn-outline-success' type='button'>Create questionnaire</button>
               <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=video\"' class='btn btn-outline-success' type='button'>Upload video</button>
-              <button onClick='location.href=\"".$_SERVER['PHP_SELF']."?i=".$experimentid."&n=".$experimentname."&r=download\"' class='btn btn-outline-success' type='button'>Download Results</button>
              </div>
            </div>";
         }
@@ -96,10 +95,6 @@ if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
           }
           else if ($r === "video") {
             header("Location:uploadVideo.php");
-            exit();
-          }
-          else if ($r === "download") {
-            header("Location:downloadResults.php");
             exit();
           }
         }

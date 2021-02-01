@@ -5,47 +5,45 @@ session_start();
 include "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
 
-echo $questionnaireID;
-
 $questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '$questionnaireID'";
+
 $questionResult = mysqli_query($conn, $questionQuery);
-// if (!$questionResult = mysqli_query($conn, $query)) {
-//     exit(mysqli_error($conn));
-// }
 
 $listOfQuestions = array();
 $listOfResponses = array();
 $bigBoiList = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
-    while ($row = mysqli_fetch_assoc($questionResult)) {
+    while ($row = mysqli_fetch_array($questionResult)) {
         $listOfQuestions[] = $row;
-        print_r($row);
     }
 }
 
+echo "<br><br>";
 print_r($listOfQuestions);
+echo "<br><br>";
 
+for ($x=0; $x < count($listOfQuestions) ; $x++) {
+  $tempqid = $listOfQuestions[$x][0];
+  // echo $tempqid;
+  $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid' GROUP BY questionID";
+  // echo $responseQuery;
 
-// for ($x=0; $x < count($listOfQuestions) ; $i++) {
-//   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$listOfQuestions[$x][0]' GROUP BY questionID";
-//
-//   if (!$responseQuery = mysqli_query($conn, $responseQuery)) {
-//       exit(mysqli_error($conn));
-//   }
-//
-//   if (mysqli_num_rows($resultQuery) > 0) {
-//       while ($row = mysqli_fetch_assoc($responseQuery)) {
-//           $listOfResponses[] = $row;
-//       }
-//   }
-//
-//   $bigBoiList[] = $listOfResponses;
-//
-// }
-//
-// print_r($bigBoiList);
+  $responseResults = mysqli_query($conn, $responseQuery);
 
+  if (mysqli_num_rows($responseResults) > 0) {
+      while ($row = mysqli_fetch_array($responseResults)) {
+          $listOfResponses[] = $row;
+      }
+  }
+
+  $bigBoiList[] = $listOfResponses;
+
+}
+
+echo "<br><br>";
+print_r($bigBoiList);
+echo "test<br><br>";
 
 // header('Content-Type: text/csv; charset=utf-8');
 // header('Content-Disposition: attachment; filename=questionnaireResults.csv');
