@@ -5,6 +5,7 @@
 require_once "Includes/db.inc.php";
 //$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
 $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
+$responseID = "60181209f21d8"; //hard coded until page is finished and can be linked
 ?>
 
 <!DOCTYPE html>
