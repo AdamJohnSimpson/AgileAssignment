@@ -60,6 +60,7 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
               $questionnaireURL = $tempURL.$questionnaireID;
               echo " <p>".$questionnaireURL."</p>
               <br>
+              <a href='https://agile-assignment-group-4.azurewebsites.net/viewQuestionnaireResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>View Results</button> </a>
               <a href='https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
              </div>
            </div>";
