@@ -27,7 +27,7 @@
       $questionID = uniqid($prefix="", $more_entropy=false);
       // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
 
-      $questionType = 1;
+      $questionType = 2;
 
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
@@ -167,7 +167,7 @@
           <br>
             <form method="POST">
               <div class="form-group">
-                <label>Please enter the plestion: </label>
+                <label>Please enter the breastion: </label>
                 <input type="text" name="questionText"><br><br>
                 <label>Please enter an answer option: </label>
                 <input type="text" name="answerOption1"><br><br>
@@ -181,13 +181,16 @@
                   <input type='text' name=".$optionNoName."><br><br>";
                 }
                 ?>
-
+-
                 <form method="post">
                   <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
                   <?php
                     if(isset($_POST['addOption'])){
-                      $extraOptions++;
+                      echo "extra options= ".$extraOptions."<br><br>";
+                      $extraOptions= $extraOptions + 1;
+                      echo "extra options + 1= ".$extraOptions."<br><br>";
                       header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+                      exit;
                     } ?>
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
