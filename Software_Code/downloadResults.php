@@ -9,9 +9,9 @@ $questionQuery = "SELECT questionID, questionText FROM questions WHERE questionn
 
 $questionResult = mysqli_query($conn, $questionQuery);
 
-$listOfQuestions = array(array());
+$listOfQuestions = array();
 $listOfResponses = array();
-$bigBoiList = array(array());
+$bigBoiList = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
