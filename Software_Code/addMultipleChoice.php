@@ -15,6 +15,7 @@
 
   include "Includes/db.inc.php";
   $questionnaireID = $_SESSION['questionnaireID'];
+  $extraOptions = $_GET['on'];
 
   if(isset($_POST['addQ'])){
       $questiontext = $_POST['questionText'];
@@ -72,13 +73,13 @@
     exit;
   }
 
-  $optionNo = 3;
-  if(isset($_POST['addOption'])){
-    $optionNoName = "answerOption" . $optionNo;
-    echo "<label>Please enter an answer option: </label>
-    <input type='text' name=".$optionNoName."><br><br>";
-    $optionNo++;
-  }
+ //  $optionNo = 3;
+  // if(isset($_POST['addOption'])){
+  //   $optionNoName = "answerOption" . $optionNo;
+  //   echo "<label>Please enter an answer option: </label>
+  //   <input type='text' name=".$optionNoName."><br><br>";
+  //   $optionNo++;
+  //}
   ?>
 
 
@@ -175,6 +176,15 @@
 
                 <form method="post">
                   <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
+                  <?php
+                    if(isset($_POST['addOption'])){
+                      $tempNo = $extraOptions + 1;
+                      $optionNoName = "answerOption" . $tempNo;
+                      echo "<label>Please enter an answer option: </label>
+                      <input type='text' name=".$optionNoName."><br><br>";
+                      $extraOptions++;
+                      header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+                    } ?>
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
                 <input type="submit" value="Save and quit" name="quit" class='btn btn-outline-success'>
