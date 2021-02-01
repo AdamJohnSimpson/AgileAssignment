@@ -7,12 +7,12 @@ $_SESSION['ethicsBox'] = $consentCheck;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-  if(ISSET($_POST[$consentCheck]))
+  if(ISSET($_POST['ethicsBox']))
     {
       echo "ticked";
       sleep(2);
     }
-  if (!ISSET($_POST[$consentCheck]))
+  if (!ISSET($_POST['ethicsBox']))
     {
       echo "not ticked";
       sleep(2);
