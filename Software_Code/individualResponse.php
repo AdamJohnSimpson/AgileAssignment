@@ -32,6 +32,13 @@ $responseID = "60181209f21d8"; //hard coded until page is finished and can be li
 
   <div class="jumbotron text-center">
     <h1 class="text-center">Individual Responses</h1>
+    <?php
+    $stmt = "SELECT * FROM questionnaires WHERE questionnaireID = '{$questionnaireID}'";
+    $resultQuestionnaire = mysqli_query($conn, $stmt);
+    while($row = mysqli_fetch_array($resultQuestionnaire)){
+      $questionnaireName = $row['questionnaireName'];
+    }
+    ?>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
