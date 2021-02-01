@@ -42,7 +42,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 }
 
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=questionnaireResults.csv');
+header('Content-Disposition: attachment; filename='.$questionnaireID.'_Results.csv');
 $output = fopen('php://output', 'w');
 fputcsv($output, array('questionID', 'questionText', 'responseID', 'response'));
 
