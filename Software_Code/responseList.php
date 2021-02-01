@@ -27,7 +27,6 @@ $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can 
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
   </header>
-
   <div class="jumbotron text-center">
     <h1 class="text-center">List of Responses</h1>
   </div>
@@ -50,17 +49,10 @@ $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can 
       }
       echo "<p>Total Responses: ".$count;
       ?>
-
-
-
-
-
     </div>
   </div>
-
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
 </body>
-
 </html>
