@@ -43,12 +43,10 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
         $questionID = $row['questionID']; //unique question
          echo "<div class='row'>
            <div class='card-body'>
-            <h5 class='card-text mt-2'>".$questionTxt."</h5>";
-
-
-
-        echo "</div>
+            <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
+            </div>
          </div>";
+         $count=$count+1;
       }
       ?>
 
