@@ -34,7 +34,10 @@ $questionnaireID = "6013e6ae83bd3"; //hard coded until page is finished and can 
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-
+      <?php
+      $stmt = "SELECT * FROM questions WHERE questionnaireID = '{$questionnaireID}'"; //gets all questions from that questionnaire
+      $resultQuestion = mysqli_query($conn, $stmt);
+      ?>
 
 
 
