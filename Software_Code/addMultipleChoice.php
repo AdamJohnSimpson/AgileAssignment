@@ -17,6 +17,14 @@
   $questionnaireID = $_SESSION['questionnaireID'];
   $extraOptions = $_GET['on'];
 
+    if(isset($_POST['addOption'])){
+      echo "extra options= ".$extraOptions."<br><br>";
+      $extraOptions= $extraOptions + 1;
+      echo "extra options + 1= ".$extraOptions."<br><br>";
+      header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+      exit;
+    }
+
   if(isset($_POST['addQ'])){
       $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
@@ -184,14 +192,7 @@
 -
                 <form method="post">
                   <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
-                  <?php
-                    if(isset($_POST['addOption'])){
-                      echo "extra options= ".$extraOptions."<br><br>";
-                      $extraOptions= $extraOptions + 1;
-                      echo "extra options + 1= ".$extraOptions."<br><br>";
-                      header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
-                      exit;
-                    } ?>
+
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
                 <input type="submit" value="Save and quit" name="quit" class='btn btn-outline-success'>
