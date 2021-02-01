@@ -37,8 +37,12 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
       }
   }
 
-  $bigBoiList[$x][0] = $questionText;
-  $bigBoiList[$x][1] = $listOfResponses;
+  echo "<br><br>";
+  print_r($listOfResponses);
+  echo "<br><br>";
+
+  array_push($bigBoiList[$x][0], $questionText);
+  array_push($bigBoiList[$x][1], $listOfResponses);
 
 }
 
