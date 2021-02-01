@@ -5,6 +5,7 @@
 require_once "Includes/db.inc.php";
 //$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
 $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
+$responseID = "60181209f21d8"; //hard coded until page is finished and can be linked
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +45,12 @@ $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can 
          echo "<div class='row'>
            <div class='card-body'>
             <h5 class='card-text mt-2'>".$questionTxt."</h5>";
-
-
-
+            $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
+            $resultResponse = mysqli_query($conn, $stmt);
+            while($row = mysqli_fetch_array($resultResponse)){
+              $response = $row['response'];
+              echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
+            }
         echo "</div>
          </div>";
       }
