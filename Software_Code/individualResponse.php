@@ -63,10 +63,8 @@ $responseID = $_GET['rid']; //get responseID
         echo "</div>
          </div>";
       }
+      echo "<a href='https://agile-assignment-group-4.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Individual Results</button></a>";
       ?>
-      <form action="https://agile-assignment-group-4.azurewebsites.net/responseList.php">
-          <input type="submit" class='btn btn-outline-success' value="Return to Response List" />
-  </form>
     </div>
   </div>
 
