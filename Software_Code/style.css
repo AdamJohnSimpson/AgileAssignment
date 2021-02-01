@@ -1,3 +1,20 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  color:#394867;
+  font-size: 20px;
+  font-weight: 300px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #14274E;
+}
+
 .jumbotron {
   background-color: #f1f6f9;
 }
@@ -43,22 +60,6 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-* {
-  font-family: 'Montserrat', sans-serif;
-}
-
-body{
-  color:#394867;
-  font-size: 20px;
-  font-weight: 300px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #14274E;
-}
 
 
 /* font size min 14px and no lighter than a font-weight of 300. */
