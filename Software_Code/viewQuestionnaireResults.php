@@ -74,9 +74,11 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       <?php
       if (count($listOfQuestionID) > 0) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
-            echo "<br><h2>ID: {$listOfQuestionID[$x]} - {$listOfQuestionText[$x]}<br>";
+            echo "<br><h2>{$listOfQuestionText[$x]}</h2><br>";
+            echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
+
             for ($y=0; $y < count($allResults[$x]); $y++) {
-              echo " <br><br> - {$allResults[$x][$y]}";
+              echo " <br><br><h3> - {$allResults[$x][$y]} </h5>";
             }
           }
         } else {
