@@ -158,6 +158,52 @@
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
                   echo '</div>';
                 }
+              }else if($row['questionType'] == 4){
+                echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
+
+                // Find all the options for the question
+                $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
+                $newResult = mysqli_query($conn, $newQuery);
+
+                $valueArray = array();
+                while ($newRow = mysqli_fetch_array($newResult)) {
+                  $valueArray[] = $newRow['optionText'];
+                }
+
+
+                $newQuery = "SELECT * FROM UsabilityQuestions WHERE questionID = '$questionID'";
+                $newResult = mysqli_query($conn, $newQuery);
+
+                echo '<table class="table">';
+                echo '<tr>';
+                echo '<th scope="col"></th>';
+                foreach ($valueArray as &$value) {
+                  echo '<th scope="col" style="text-align:center">' . $value . '</th>';
+                }
+                echo '</tr>';
+
+                // Loop through each option
+                while($newRow = mysqli_fetch_array($newResult)){
+                  echo '<tr>';
+                  echo '<td>' . $newRow['uqText'] . '</td>';
+
+                  foreach ($valueArray as &$value) {
+                    echo '<td style="text-align:center"><input class="form-check-input" type="radio" id="'.$value.'" name="'.$newRow['uqID'].'" value="'.$value.'"></td>';
+                  }
+
+                  echo '</tr>';
+                
+
+
+                  // Display a check box with appropriate values
+                  //echo '<div class="form-check">';
+                  //echo '<input class="form-check-input" type="checkbox" id="'.$newRow['optionID'].'" name="'.$newRow['optionID'].'" value="'.$newRow['optionText'].'">';
+                  //echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
+                  //echo '</div>';
+                }
+
+                echo '</table>';
+
               }
 
               echo '</div>';
