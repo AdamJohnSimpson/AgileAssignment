@@ -44,6 +44,7 @@ $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can 
          echo "<div class='row'>
            <div class='card-body'>
             <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
+            <button class='btn btn-outline-success' type='button'>View Answers</button>
             </div>
          </div>";
       }
