@@ -28,7 +28,7 @@
 		header('Location:../Includes/error.inc.php');
 		exit();
   }
-  
+
   // If the user has already taken part and isn't logged in, redirect them
   if(ISSET($_SESSION['TakePart']) && $_SESSION['TakePart'] == true && !ISSET($_SESSION['USER_role'])){
     header('Location: ThankYou.php');
