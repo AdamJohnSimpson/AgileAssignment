@@ -38,16 +38,22 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
       $result = mysqli_query($conn, $stmt);
       //display questions
       $count=0;
+      $previousResponseID = "";
       while($row = mysqli_fetch_array($result)){
-        $count=$count+1;
         $responseID = $row['responseID']; //unique response id
-        $questionID = $row['questionID']; //unique question
-         echo "<div class='row'>
-           <div class='card-body'>
-            <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
-            <a href='https://agile-assignment-group-4.azurewebsites.net/individualResponse.php?rid={$responseID}&qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
-            </div>
-         </div>";
+        $count=$count+1;
+        if($previousResponseID!=$responseID)
+        {
+          $questionID = $row['questionID']; //unique question
+           echo "<div class='row'>
+             <div class='card-body'>
+              <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
+              <a href='https://agile-assignment-group-4.azurewebsites.net/individualResponse.php?rid={$responseID}&qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
+              </div>
+           </div>";
+           $previousResponseID = $responseID;
+        }
+
       }
       echo "<p>Total Responses: ".$count."</p>";
 
