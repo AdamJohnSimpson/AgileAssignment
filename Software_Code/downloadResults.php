@@ -28,7 +28,7 @@ echo "<br><br>";
 print_r($listOfQuestionID);
 echo "<br><br>";
 
-for ($x=0; $x < count($listOfQuestions) ; $x++) {
+for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   $listOfResponses = array();
   $tempqid = $listOfQuestionID[$x];
   // echo $tempqid;
