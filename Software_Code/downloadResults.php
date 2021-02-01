@@ -34,9 +34,10 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
   if (mysqli_num_rows($responseResults) > 0) {
       while ($row = mysqli_fetch_array($responseResults)) {
           $listOfResponses[] = $row;
+          echo "<br><br>{$row['response']}";
       }
   }
-  print_r($listOfResponses);
+  // print_r($listOfResponses);
   $bigBoiList[] = $listOfResponses;
 
 }
