@@ -60,6 +60,15 @@ if(isset($_POST['logout'])) {
        ?>
     </div>
   </div>
+  <br></br>
+  <div class="jumbotron text-center">
+    <h2 class="text-centre">"Timestamp 1"</h2>
+    <br></br>
+    <p>This is the description for timestamp 1</p>
+  </div>
+  <form>
+    <input type="button" value="Go to Timestamp 1" name="Timestamp1">
+  </form>
   <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
       <input type="submit" value="Return to Experiments Information" />
   </form>
