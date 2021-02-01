@@ -63,7 +63,7 @@ for ($x=0; $x < count($listOfQuestionText); $x++) {
   echo "<br><br>=========================================================";
   echo "<br><br>Question: {$listOfQuestionText[$x]} <br><br>";
   echo "<br><br>Results: ";
-  print_r($allResults);
+  print_r($allResults[$x]);
 
 }
 
