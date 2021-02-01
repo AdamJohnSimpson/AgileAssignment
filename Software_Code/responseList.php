@@ -49,7 +49,7 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
             </div>
          </div>";
       }
-      echo "<p>Total Responses: ".$count;
+      echo "<p>Total Responses: ".$count."</p>";
 
       echo "<a href='https://agile-assignment-group-4.azurewebsites.net/questionnaireList.php'><button class='btn btn-outline-success' type='button'>Back To Questionnaie List</button></a>";
       ?>
