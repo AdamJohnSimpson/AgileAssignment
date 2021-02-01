@@ -60,11 +60,11 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 }
 
 for ($x=0; $x < count($listOfQuestionText); $x++) {
-  echo "=========================================================";
-  echo "Question: {$listOfQuestionText} <br><br>";
-  echo "Results: ";
+  echo "<br><br>=========================================================";
+  echo "<br><br>Question: {$listOfQuestionText[$x]} <br><br>";
+  echo "<br><br>Results: ";
   print_r($allResults);
-  echo "=========================================================";
+  echo "<br><br>=========================================================<br><br>";
 
 }
 
