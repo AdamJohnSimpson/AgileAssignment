@@ -63,12 +63,9 @@ $responseID = "60181209f21d8"; //hard coded until page is finished and can be li
          </div>";
       }
       ?>
-
-
-
-
-
-
+      <form action="https://agile-assignment-group-4.azurewebsites.net/responseList.php">
+          <input type="submit" class='btn btn-outline-success' value="Return to Response List" />
+  </form>
     </div>
   </div>
 
