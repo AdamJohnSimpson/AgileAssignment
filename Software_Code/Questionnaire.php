@@ -176,15 +176,20 @@
 
                 echo '<table class="table">';
                 echo '<tr>';
-                echo '<th></th>';
+                echo '<th scope="col"></th>';
                 foreach ($valueArray as &$value) {
-                  echo '<th>' . $value . '</th>';
+                  echo '<th scope="col" style="text-align:center">' . $value . '</th>';
                 }
+                echo '</tr>';
 
                 // Loop through each option
                 while($newRow = mysqli_fetch_array($newResult)){
                   echo '<tr>';
                   echo '<td>' . $newRow['uqText'] . '</td>';
+
+                  foreach ($valueArray as &$value) {
+                    echo '<td style="text-align:center"><input class="form-check-input" type="radio" id="'.$value.'" name="'.$newRow['uqID'].'" value="'.$value.'"></td>';
+                  }
 
                   echo '</tr>';
                 
