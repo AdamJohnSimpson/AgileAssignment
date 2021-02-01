@@ -11,8 +11,8 @@ $questionResult = mysqli_query($conn, $questionQuery);
 
 $listOfQuestionText = array();
 $listOfQuestionID = array();
-// $bigBoiList = array(array());
 $allResults = array();
+$allResultID = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
@@ -21,19 +21,11 @@ if (mysqli_num_rows($questionResult) > 0) {
     }
 }
 
-echo "<br><br>";
-print_r($listOfQuestionText);
-echo "<br><br>";
-print_r($listOfQuestionID);
-echo "<br><br>";
-
 for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   $listOfResponses = array();
   $listOfResultID = array();
   $tempqid = $listOfQuestionID[$x];
-  // echo $tempqid;
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid'";
-  // echo $responseQuery;
 
   $responseResults = mysqli_query($conn, $responseQuery);
 
@@ -44,38 +36,23 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       }
   }
 
-  echo "<br><br>";
-  print_r($listOfResponses);
-  echo "<br><br>";
-  print_r($listOfResultID);
-  echo "<br><br>";
-
-  // array_push($bigBoiList[$x][0], $listOfQuestionText[$x]);
-  // array_push($bigBoiList[$x][1], $listOfResponses);
-
   array_push($allResults, $listOfResponses);
-
-
-
-}
-
-for ($x=0; $x < count($listOfQuestionText); $x++) {
-  echo "<br><br>=========================================================";
-  echo "<br><br>Question: {$listOfQuestionText[$x]} <br><br>";
-  echo "<br><br>Results: ";
-  print_r($allResults[$x]);
+  array_push($allResultID, $listOfResultID);
 
 }
 
-// header('Content-Type: text/csv; charset=utf-8');
-// header('Content-Disposition: attachment; filename=questionnaireResults.csv');
-// $output = fopen('php://output', 'w');
-// fputcsv($output, array('resultID', 'response', 'questionID', 'responseID'));
-//
-// if (count($listOfResults) > 0) {
-//     foreach ($listOfResults as $row) {
-//         fputcsv($output, $row);
-//     }
-// }
+header('Content-Type: text/csv; charset=utf-8');
+header('Content-Disposition: attachment; filename=questionnaireResults.csv');
+$output = fopen('php://output', 'w');
+fputcsv($output, array('questionID', 'questionText', 'responseID', 'response'));
+
+if (count($listOfResults) > 0) {
+    for ($x=0; $x < count($listOfQuestionID); $x++) {
+      for ($y=0; $y < count($allResults[$x]) ; $y++) {
+        $row = array($listOfQuestionID[$x], $listOfQuestionText[$x], $allResultID[$x][$y], $allResults[$x][$y]);
+        fputcsv($output, $row);
+      }
+    }
+}
 
 ?>
