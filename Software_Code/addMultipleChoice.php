@@ -181,13 +181,15 @@
                   <input type='text' name=".$optionNoName."><br><br>";
                 }
                 ?>
-
+-
                 <form method="post">
                   <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
                   <?php
                     if(isset($_POST['addOption'])){
+                      echo "extra options= ".$extraOptions."<br><br>";
                       $extraOptions= $extraOptions + 1;
-                      header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+                      echo "extra options + 1= ".$extraOptions."<br><br>";
+                      // header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
                     } ?>
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
