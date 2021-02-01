@@ -41,9 +41,9 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
       $previousResponseID = "";
       while($row = mysqli_fetch_array($result)){
         $responseID = $row['responseID']; //unique response id
-        $count=$count+1;
         if($previousResponseID!=$responseID)
         {
+          $count=$count+1;
           $questionID = $row['questionID']; //unique question
            echo "<div class='row'>
              <div class='card-body'>
