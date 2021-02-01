@@ -22,13 +22,15 @@ if (mysqli_num_rows($questionResult) > 0) {
     }
 }
 
-// echo "<br><br>";
-// print_r($listOfQuestions);
-// echo "<br><br>";
+echo "<br><br>";
+print_r($listOfQuestionText);
+echo "<br><br>";
+print_r($listOfQuestionID);
+echo "<br><br>";
 
 for ($x=0; $x < count($listOfQuestions) ; $x++) {
   $listOfResponses = array();
-  $tempqid = $listOfQuestions[$x][0];
+  $tempqid = $listOfQuestionID[$x];
   // echo $tempqid;
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid'";
   // echo $responseQuery;
