@@ -4,7 +4,7 @@
 // include 'Includes/header.php';
 require_once "Includes/db.inc.php";
 //$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
-$questionnaireID = "6013e6ae83bd3"; //hard coded until page is finished and can be linked
+$questionnaireID = "601803297cc1b"; //hard coded until page is finished and can be linked
 ?>
 
 <!DOCTYPE html>
@@ -40,10 +40,14 @@ $questionnaireID = "6013e6ae83bd3"; //hard coded until page is finished and can 
       //display questions
       while($row = mysqli_fetch_array($resultQuestion)){
         $questionTxt = $row['questionText'];
+        $questionID = $row['questionID'];
          echo "<div class='row'>
            <div class='card-body'>
-            <h5 class='card-text mt-2'>".$questionTxt."</h5>
-           </div>
+            <h5 class='card-text mt-2'>".$questionTxt."</h5>";
+
+
+
+        echo "</div>
          </div>";
       }
       ?>
