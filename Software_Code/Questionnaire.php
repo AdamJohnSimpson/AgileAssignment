@@ -59,6 +59,22 @@
             $newQuery->execute();
           }
         }
+      }else if($row['questionType'] == 4){
+        // Find all the options for the check box queston
+        $newQuery = "SELECT * FROM usabilityQuestions WHERE questionID = '$questionID'";
+        $newResult = mysqli_query($conn, $newQuery);
+        while($newRow = mysqli_fetch_array($newResult)){
+          // If the user ticked this box, store the value in the results table
+          if(ISSET($_POST[$newRow['uqID']]) && !empty($_POST[$newRow['uqID']])){
+            $response = $_POST[$newRow['uqID']];
+
+            $uqID = $newRow['uqID'];
+
+            $newQuery = $conn->prepare("INSERT INTO usabilityResults (response, uqID, responseID) VALUES (?, '$uqID', '$responseID')");
+            $newQuery->bind_param('s', $response);
+            $newQuery->execute();
+          }
+        }
       }
       // If the question doesn't use check boxes and has been answered
       else if(ISSET($_POST[$questionID]) && !empty($_POST[$questionID])){
@@ -207,6 +223,8 @@
               }
 
               echo '</div>';
+              echo '<br>';
+              echo '<br>';
 
               $count++;
             }
