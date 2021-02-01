@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method=post>
       <form>
         <div class="form-group">
           <label>Please tick to give permission to the use of your answers for research purposes.</label>
