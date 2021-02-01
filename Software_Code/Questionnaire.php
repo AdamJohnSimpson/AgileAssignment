@@ -192,14 +192,6 @@
                   }
 
                   echo '</tr>';
-                
-
-
-                  // Display a check box with appropriate values
-                  //echo '<div class="form-check">';
-                  //echo '<input class="form-check-input" type="checkbox" id="'.$newRow['optionID'].'" name="'.$newRow['optionID'].'" value="'.$newRow['optionText'].'">';
-                  //echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
-                  //echo '</div>';
                 }
 
                 echo '</table>';
@@ -207,6 +199,8 @@
               }
 
               echo '</div>';
+              echo '<br>';
+              echo '<br>';
 
               $count++;
             }
