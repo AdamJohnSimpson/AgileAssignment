@@ -37,8 +37,9 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
       $stmt = "SELECT * FROM results WHERE questionnaireID = '{$questionnaireID}'"; //gets all results from that questionnaire
       $result = mysqli_query($conn, $stmt);
       //display questions
-      $count=1;
+      $count=0;
       while($row = mysqli_fetch_array($result)){
+        $count=$count+1;
         $questionTxt = $row['responseID']; //unique response id
         $questionID = $row['questionID']; //unique question
          echo "<div class='row'>
@@ -46,7 +47,6 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
             <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
             </div>
          </div>";
-         $count=$count+1;
       }
       echo "<p>Total Responses: ".$count;
       ?>
