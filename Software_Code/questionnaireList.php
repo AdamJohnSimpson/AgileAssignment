@@ -59,9 +59,8 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
               <h5 class='card-text mt-2'>".$questionnaireName."</h5>";
               $questionnaireURL = $tempURL.$questionnaireID;
               echo " <p>".$questionnaireURL."</p>
-              <!-- <br>
+              <br>
               <a href='https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
-              -->
              </div>
            </div>";
         }

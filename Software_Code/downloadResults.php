@@ -19,9 +19,9 @@ if (mysqli_num_rows($questionResult) > 0) {
     }
 }
 
-echo "<br><br>";
-print_r($listOfQuestions);
-echo "<br><br>";
+// echo "<br><br>";
+// print_r($listOfQuestions);
+// echo "<br><br>";
 
 for ($x=0; $x < count($listOfQuestions) ; $x++) {
   $tempqid = $listOfQuestions[$x][0];
