@@ -60,16 +60,17 @@
           }
         }
       }else if($row['questionType'] == 4){
-        // Find all the options for the check box queston
+        // Find all the sub questions for the usability scale question
         $newQuery = "SELECT * FROM usabilityQuestions WHERE questionID = '$questionID'";
         $newResult = mysqli_query($conn, $newQuery);
         while($newRow = mysqli_fetch_array($newResult)){
-          // If the user ticked this box, store the value in the results table
+          // If the user answered this sub question, store their answer
           if(ISSET($_POST[$newRow['uqID']]) && !empty($_POST[$newRow['uqID']])){
             $response = $_POST[$newRow['uqID']];
 
             $uqID = $newRow['uqID'];
 
+            // Store the value in the usabilityResults table
             $newQuery = $conn->prepare("INSERT INTO usabilityResults (response, uqID, responseID) VALUES (?, '$uqID', '$responseID')");
             $newQuery->bind_param('s', $response);
             $newQuery->execute();
@@ -181,41 +182,38 @@
                 $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
                 $newResult = mysqli_query($conn, $newQuery);
 
+                // Store all the options inside an array
                 $valueArray = array();
                 while ($newRow = mysqli_fetch_array($newResult)) {
                   $valueArray[] = $newRow['optionText'];
                 }
 
-
+                // Find all the sub questions inside this usability question
                 $newQuery = "SELECT * FROM UsabilityQuestions WHERE questionID = '$questionID'";
                 $newResult = mysqli_query($conn, $newQuery);
 
+                // Create a table
                 echo '<table class="table">';
                 echo '<tr>';
                 echo '<th scope="col"></th>';
+                // Put the options inside the top row of the table
                 foreach ($valueArray as &$value) {
                   echo '<th scope="col" style="text-align:center">' . $value . '</th>';
                 }
                 echo '</tr>';
 
-                // Loop through each option
+                // Loop through each sub question
                 while($newRow = mysqli_fetch_array($newResult)){
                   echo '<tr>';
+                  // Put the sub question at the start of a new row
                   echo '<td>' . $newRow['uqText'] . '</td>';
 
+                  // Add radio buttons for each option
                   foreach ($valueArray as &$value) {
                     echo '<td style="text-align:center"><input class="form-check-input" type="radio" id="'.$value.'" name="'.$newRow['uqID'].'" value="'.$value.'"></td>';
                   }
 
                   echo '</tr>';
-
-
-
-                  // Display a check box with appropriate values
-                  //echo '<div class="form-check">';
-                  //echo '<input class="form-check-input" type="checkbox" id="'.$newRow['optionID'].'" name="'.$newRow['optionID'].'" value="'.$newRow['optionText'].'">';
-                  //echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
-                  //echo '</div>';
                 }
 
                 echo '</table>';
