@@ -48,6 +48,7 @@ $questionnaireID = "601803297cc1b"; //hard coded until page is finished and can 
          </div>";
          $count=$count+1;
       }
+      echo "<p>Total Responses: ".$count;
       ?>
 
 
