@@ -48,12 +48,9 @@ $responseID = "60181209f21d8"; //hard coded until page is finished and can be li
             $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
             $resultResponse = mysqli_query($conn, $stmt);
             while($row = mysqli_fetch_array($resultResponse)){
-
+              $response = $row['response'];
+              echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
             }
-
-
-
-
         echo "</div>
          </div>";
       }
