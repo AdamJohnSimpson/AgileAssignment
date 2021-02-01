@@ -14,6 +14,7 @@
   // }
 
   include "Includes/db.inc.php";
+  $questionnaireID = $_SESSION['questionnaireID'];
 
   if(isset($_POST['addQ'])){
       $questiontext = $_POST['questionText'];
@@ -22,7 +23,6 @@
     }
     else {
     //send to db sql here
-      $questionnaireID = $_SESSION['questionnaireID'];
       $questionID = uniqid($prefix="", $more_entropy=false);
       // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
 
