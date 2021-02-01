@@ -3,8 +3,4 @@
 # Link to Website
  - https://agile-assignment-group-4.azurewebsites.net/login.php link to the login page for our website
 
-
-# Notes
-All software code should be put in this folder along with either:
-- The binaries to run your completed application (if desktop based)
-- A link to your application running on a server (if web based)
+ - https://docs.google.com/document/d/1yjhlBeU6_A4MqcJGZAIjg0LneKx8S02hrD5beOz7KH0/edit?usp=sharing logins for testing can be found here
