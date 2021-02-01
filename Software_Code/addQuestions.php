@@ -54,14 +54,14 @@
   }
 
   if(isset($_POST['cancel'])) {
-    $sql = "DELETE FROM questions WHERE questionnaireID = $questionnaireID";
+    $sql = "DELETE FROM questions WHERE questionnaireID = {$questionnaireID}";
     if ($conn->query($sql) === TRUE) {
       echo "Questions deleted successfully";
     }
     else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    $sql = "DELETE FROM questionnaire WHERE questionnaireID = $questionnaireID";
+    $sql = "DELETE FROM questionnaire WHERE questionnaireID = {$questionnaireID}";
     if ($conn->query($sql) === TRUE) {
       echo "Questionnaire deleted successfully";
     }
