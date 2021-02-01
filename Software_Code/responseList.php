@@ -3,8 +3,9 @@
 
 include 'Includes/header.php';
 require_once "Includes/db.inc.php";
-//$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
-$questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
+
+$questionnaireID = $_GET['qid']; //get questionnaireID
+//$questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
 ?>
 
 <!DOCTYPE html>
@@ -39,12 +40,12 @@ $questionnaireID = "601811e5978fd"; //hard coded until page is finished and can 
       $count=0;
       while($row = mysqli_fetch_array($result)){
         $count=$count+1;
-        $questionTxt = $row['responseID']; //unique response id
+        $responseID = $row['responseID']; //unique response id
         $questionID = $row['questionID']; //unique question
          echo "<div class='row'>
            <div class='card-body'>
             <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
-            <button class='btn btn-outline-success' type='button'>View Answers</button>
+            <a href='https://agile-assignment-group-4.azurewebsites.net/responseList.php?rid={$responseID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
             </div>
          </div>";
       }

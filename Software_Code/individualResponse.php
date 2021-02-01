@@ -3,9 +3,10 @@
 
 include 'Includes/header.php';
 require_once "Includes/db.inc.php";
-//$questionnaireID = $_SESSION['questionnaireID']; //get questionnaire id
-$questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
-$responseID = "60181209f21d8"; //hard coded until page is finished and can be linked
+$questionnaireID = $_GET['qid']; //get questionnaireID
+//$questionnaireID = "601811e5978fd"; //hard coded until page is finished and can be linked
+$responseID = $_GET['rid']; //get responseID
+//$responseID = "60181209f21d8"; //hard coded until page is finished and can be linked
 ?>
 
 <!DOCTYPE html>
