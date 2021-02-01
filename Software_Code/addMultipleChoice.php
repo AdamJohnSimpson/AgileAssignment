@@ -26,21 +26,32 @@
     }
 
   if(isset($_POST['addQ'])){
-      $questiontext = $_POST['questionText'];
+    $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
       echo "The question must have text!";
     }
     else {
-    //send to db sql here
+      //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
-      // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
-
       $questionType = 2;
-
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        //header("location: addQuestions.php");
+        for ($i=0; $i < $optionNo+2; $i++) {
+          $variablename = "answerOption".$i."";
+          $questionoptiontext = $_POST[$variablename];
+          if (empty($questionoptiontext)) {
+            echo "The answer option must have text!";
+          }
+          $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
+          if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+            //header("location: addMultipleChoice.php");
+          }
+          else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+        }
       }
       else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -175,7 +186,7 @@
           <br>
             <form method="POST">
               <div class="form-group">
-                <label>Please enter the breastion: </label>
+                <label>Please enter the Question: </label>
                 <input type="text" name="questionText"><br><br>
                 <label>Please enter an answer option: </label>
                 <input type="text" name="answerOption1"><br><br>
@@ -183,13 +194,12 @@
                 <input type="text" name="answerOption2"><br><br>
                 <?php
                 for ($i=0; $i < $extraOptions; $i++) {
-                  $tempNo = $extraOptions + 1;
+                  $tempNo = $extraOptions + 2;
                   $optionNoName = "answerOption" . $tempNo;
                   echo "<label>Please enter an answer option: </label>
                   <input type='text' name=".$optionNoName."><br><br>";
                 }
                 ?>
--
                 <form method="post">
                   <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
 
