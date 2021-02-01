@@ -183,7 +183,9 @@
                       echo "<label>Please enter an answer option: </label>
                       <input type='text' name=".$optionNoName."><br><br>";
                       $extraOptions++;
+                      echo "yo mamma";
                       header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+                      echo "this is past the header location bit";
                     } ?>
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
