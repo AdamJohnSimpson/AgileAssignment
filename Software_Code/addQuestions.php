@@ -102,6 +102,25 @@
         <div class="jumbotron" style="margin-bottom:1px;">
           <h2 class="text-center">You are creating a question for questionnaire:
           <?php echo $_SESSION['questionnaireName']; ?></h2>
+          <br>
+          <div class="dropdown">
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+          <!-- <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Change question type
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="addMultipleChoice.php">Multiple Choice</a>
+              <a class="dropdown-item" href="addSingleChoice.php">Single Choice</a>
+              <a class="dropdown-item" href="#">Scale question</a>
+            </div>
+          </div> -->
             <form method="POST">
               <div class="form-group">
                 <label>Please enter the question: </label>

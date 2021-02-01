@@ -9,24 +9,28 @@ $questionQuery = "SELECT questionID, questionText FROM questions WHERE questionn
 
 $questionResult = mysqli_query($conn, $questionQuery);
 
-$listOfQuestions = array();
-$listOfResponses = array();
-$bigBoiList = array();
+$listOfQuestionText = array();
+$listOfQuestionID = array();
+// $bigBoiList = array(array());
+$allResults = array();
 
 if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
-      array_push($listOfQuestions[0], $row['questionText']);
-      array_push($listOfQuestions[1], $row['questionID']);
+      array_push($listOfQuestionText, $row['questionText']);
+      array_push($listOfQuestionID, $row['questionID']);
     }
 }
 
-// echo "<br><br>";
-// print_r($listOfQuestions);
-// echo "<br><br>";
+echo "<br><br>";
+print_r($listOfQuestionText);
+echo "<br><br>";
+print_r($listOfQuestionID);
+echo "<br><br>";
 
-for ($x=0; $x < count($listOfQuestions) ; $x++) {
+for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   $listOfResponses = array();
-  $tempqid = $listOfQuestions[$x][0];
+  $listOfResultID = array();
+  $tempqid = $listOfQuestionID[$x];
   // echo $tempqid;
   $responseQuery = "SELECT response, resultID FROM results WHERE questionID='$tempqid'";
   // echo $responseQuery;
@@ -36,22 +40,33 @@ for ($x=0; $x < count($listOfQuestions) ; $x++) {
   if (mysqli_num_rows($responseResults) > 0) {
       while ($row = mysqli_fetch_array($responseResults)) {
         array_push($listOfResponses, $row['response']);
-          // $listOfResponses = $row['response'];
+        array_push($listOfResultID, $row['resultID']);
       }
   }
 
   echo "<br><br>";
   print_r($listOfResponses);
   echo "<br><br>";
+  print_r($listOfResultID);
+  echo "<br><br>";
 
-  $bigBoiList[$x][0] = $questionText[$x][0];
-  array_push($bigBoiList[$x][1], $listOfResponses);
+  // array_push($bigBoiList[$x][0], $listOfQuestionText[$x]);
+  // array_push($bigBoiList[$x][1], $listOfResponses);
+
+  array_push($allResults, $listOfResults);
+
+
 
 }
 
-echo "<br><br>";
-print_r($bigBoiList);
-echo "<br><br>";
+for ($x=0; $x < count($listOfQuestionText); $x++) {
+  echo "<br><br>=========================================================";
+  echo "<br><br>Question: {$listOfQuestionText[$x]} <br><br>";
+  echo "<br><br>Results: ";
+  print_r($allResults);
+  echo "<br><br>=========================================================<br><br>";
+
+}
 
 // header('Content-Type: text/csv; charset=utf-8');
 // header('Content-Disposition: attachment; filename=questionnaireResults.csv');
