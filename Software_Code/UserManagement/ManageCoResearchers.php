@@ -98,7 +98,7 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\''.$link.'&aid=' .$row['UserID'] .'\';" type="button" class="btn btn-secondary">Add</button> </td>';
+							echo '<td> <button onclick="location.href=\'Includes/addco.inc.php?eid=' .$eID .'&aid='.$row['UserID'].'\'" type="button" class="btn btn-secondary">Add</button> </td>';
 
 							echo "</tr>";
 
