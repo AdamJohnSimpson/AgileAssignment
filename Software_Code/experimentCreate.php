@@ -40,12 +40,15 @@ if(isset($_POST['logout'])) {
      //the experiment name doesn't already exist
      $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
      if ($conn->query($sql) === TRUE) {
-       $sql = "SELECT experimentid FROM experiments WHERE experimentname = '$experimentName'"
+       $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'"
        $result = mysqli_query($conn, $sql);
-       $videoPath = "videos/".$result."";
+       $row = mysqli_fetch_array($result);
+       $experimentid = $row['experimentid'];
+       echo $experimentid;
+       $videoPath = "videos/".$experimentid."";
        if (!mkdir($videoPath, 0700)) {
          echo $videoPath;
-           die('Failed to create folder');
+         die('Failed to create folder');
        }
 
        echo "New record created successfully";
