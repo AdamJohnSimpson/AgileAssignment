@@ -51,7 +51,7 @@ if(isset($_POST['logout'])) {
           echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
-            <video id='"."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
+            <video id='".$path."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
             </video>
             <br><br>";
@@ -68,12 +68,14 @@ if(isset($_POST['logout'])) {
        <?php
        echo "
        <script>
-       var vid = document.getElementById("videos");
        function playAll(){
          var i;
-         for (i=0; i < count(".$allVideos."); $x++) {
+         for (i=0; i < count(".$allVideos."); i++) {
+           var videoIdD = videos/".$experimentID."/".$allVideos[."i".].";
+           var vid = document.getElementById("videos");
+           vid.play();
          }
-         vid.play();
+
        }
        function pauseAll(){
          vid.pause();
