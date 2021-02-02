@@ -70,6 +70,15 @@ $responseID = $_GET['rid']; //get responseID
                 echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
               }
             }
+            elseif($questionType == 3){
+              $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'";//get the response for the question it is on
+              $resultResponse = mysqli_query($conn, $stmt);
+              echo "<p><strong>Participent Response(s): </strong></p>";
+              while($row = mysqli_fetch_array($resultResponse)){
+                $response = $row['response'];
+                echo "<p> - ".$response."</p>";
+              }
+            }
         echo "</div>
          </div>";
       }
