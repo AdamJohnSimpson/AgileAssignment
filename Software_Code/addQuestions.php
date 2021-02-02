@@ -168,7 +168,7 @@
             <div class="dropdown-content">
               <a href="addMultipleChoice.php">Multiple Choice</a>
               <a href="addSingleChoice.php">Single Choice</a>
-              <a href="#">Scale question</a>
+              <a href="addUSabilityScale.php">Scale question</a>
             </div>
           </div>
           <br>

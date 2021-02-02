@@ -57,7 +57,7 @@
         }
         if ($success){
           echo "It was a success!";
-        //  header("location: addUsabilityScale.php");
+          header("location: addUsabilityScale.php");
         }
       }
       else {
