@@ -1,6 +1,6 @@
 <?php
 
- $transcript = $_POST['transcript'];
+ $transcript = $_GET['transcript'];
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
