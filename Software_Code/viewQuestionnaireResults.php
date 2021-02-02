@@ -87,7 +87,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
             } else {
               echo "<h3>{$listOfQuestionType[$x]}</h3>";
 
-              <div class="chart-wrap vertical">
+              echo '<div class="chart-wrap vertical">
               <h2 class="title">Test Title</h2>
 
               <div class="grid">
@@ -100,7 +100,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                   <div class="bar" style="--bar-value:5%;" data-name="Twitter" title="Twitter 5%"></div>
                   <div class="bar" style="--bar-value:20%;" data-name="Other" title="Other 20%"></div>
               </div>
-            </div>
+            </div>';
             }
           }
         } else {
