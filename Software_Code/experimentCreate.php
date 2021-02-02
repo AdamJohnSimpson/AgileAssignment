@@ -40,8 +40,9 @@ if(isset($_POST['logout'])) {
      //the experiment name doesn't already exist
      $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
      if ($conn->query($sql) === TRUE) {
-
-       if (!mkdir("videos/" . $experimentID, 0700)) {
+       $videoPath = "videos/".$experimentID."";
+       if (!mkdir($videoPath, 0700)) {
+         echo $videoPath;
            die('Failed to create folder');
        }
 
