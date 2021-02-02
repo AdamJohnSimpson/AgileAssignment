@@ -62,14 +62,12 @@ if(isset($_POST['logout'])) {
         */
        ?>
        <!-- PLAY/PAUSE VIDEOS IN SYNC -->
-       <button onclick="playAll()" type="button">Play All</button>
-       <button onclick="pauseAll()" type="button">Pause All</button><br>
        <?php
        echo "
        <script>
        var videoArray = ".$allVideos.";
        var videoCount = videoArry.length;
-       function playAll(){
+       function playAll() {
          var i;
          for (i=0; i < videoCount i++) {
            var videoID = videos/".$experimentID."/videoArray[i];
@@ -82,6 +80,8 @@ if(isset($_POST['logout'])) {
        }
        </script>";
        ?>
+       <button onclick="playAll()" type="button">Play All</button>
+       <button onclick="pauseAll()" type="button">Pause All</button><br>
 
        <div class="jumbotron text-center">
          <h2 class="text-centre">Timestamp 1</h2>
