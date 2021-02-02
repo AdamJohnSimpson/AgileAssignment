@@ -4,12 +4,12 @@
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-  if(isset($_POST['addT'])
+  if(isset($_POST['addT']))
     {
       echo "Transcript: <input type='text' value='$transcript'/>";
     }
 }
- ?>
+?>
 
 
 <!DOCTYPE html>
