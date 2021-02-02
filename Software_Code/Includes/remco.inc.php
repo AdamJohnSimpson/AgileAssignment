@@ -27,6 +27,6 @@
 	$query = "DELETE FROM coexperiments WHERE UserID = $userID AND experimentid = $eID";
 	$result = mysqli_query($conn, $query);
 	
-	header("location: ../ManageCoResearchers.php?eid=".$eID);
+	header("location: ../UserManagement/ManageCoResearchers.php?eid=".$eID);
 	exit();
 ?>
