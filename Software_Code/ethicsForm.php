@@ -5,8 +5,6 @@ session_start();
 
 
 $qID = $_GET['qid'];
-$tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php?qid=";
-$questionnaireURL = $tempURL.$qID;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -14,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     {
       echo "ticked";
       $_SESSION['ethicsCheck'] = true;
-      header('location: '.$questionnaireURL);
+      header('location: Questionnaire.php?qid=' . $qID);
     }
   if (!ISSET($_POST['ethicsBox']))
     {

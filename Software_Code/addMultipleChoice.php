@@ -17,22 +17,44 @@
   $questionnaireID = $_SESSION['questionnaireID'];
   $extraOptions = $_GET['on'];
 
+    if(isset($_POST['addOption'])){
+      echo "extra options= ".$extraOptions."<br><br>";
+      $extraOptions= $extraOptions + 1;
+      echo "extra options + 1= ".$extraOptions."<br><br>";
+      header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
+      exit;
+    }
+
   if(isset($_POST['addQ'])){
-      $questiontext = $_POST['questionText'];
+    $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
       echo "The question must have text!";
     }
     else {
-    //send to db sql here
+      //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
-      // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
-
       $questionType = 2;
-
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        //header("location: addQuestions.php");
+        for ($i=1; $i < $optionNo+3; $i++) {
+          echo "i= ".$i." <br> is less than ".$optionNo." +3 <br>";
+          $variablename = "answerOption".$i."";
+          $questionoptiontext = $_POST[$variablename];
+          if (empty($questionoptiontext)) {
+            echo "The answer option must have text!";
+          }
+          else {
+            $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
+            if ($conn->query($sql) === TRUE) {
+              echo "New record created successfully";
+              //header("location: addMultipleChoice.php");
+            }
+            else {
+              echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+          }
+        }
       }
       else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -73,13 +95,6 @@
     exit;
   }
 
- //  $optionNo = 3;
-  // if(isset($_POST['addOption'])){
-  //   $optionNoName = "answerOption" . $optionNo;
-  //   echo "<label>Please enter an answer option: </label>
-  //   <input type='text' name=".$optionNoName."><br><br>";
-  //   $optionNo++;
-  //}
   ?>
 
 
@@ -167,7 +182,7 @@
           <br>
             <form method="POST">
               <div class="form-group">
-                <label>Please enter the breastion: </label>
+                <label>Please enter the Question: </label>
                 <input type="text" name="questionText"><br><br>
                 <label>Please enter an answer option: </label>
                 <input type="text" name="answerOption1"><br><br>
@@ -175,22 +190,15 @@
                 <input type="text" name="answerOption2"><br><br>
                 <?php
                 for ($i=0; $i < $extraOptions; $i++) {
-                  $tempNo = $extraOptions + 1;
+                  $tempNo = $extraOptions + 2;
                   $optionNoName = "answerOption" . $tempNo;
                   echo "<label>Please enter an answer option: </label>
                   <input type='text' name=".$optionNoName."><br><br>";
                 }
                 ?>
--
                 <form method="post">
                   <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
-                  <?php
-                    if(isset($_POST['addOption'])){
-                      echo "extra options= ".$extraOptions."<br><br>";
-                      $extraOptions= $extraOptions + 1;
-                      echo "extra options + 1= ".$extraOptions."<br><br>";
-                      // header("location: https://agile-assignment-group-4.azurewebsites.net/addMultipleChoice.php?on={$extraOptions}");
-                    } ?>
+
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
                 <input type="submit" value="Save and quit" name="quit" class='btn btn-outline-success'>

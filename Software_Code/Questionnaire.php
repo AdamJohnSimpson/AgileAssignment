@@ -11,7 +11,8 @@
 
   $qID = $_GET['qid'];
   
-  if(!ISSET($_GET['ethicsCheck'])){
+  // Redirect the user if they haven't agreed to the ethics form
+  if(!ISSET($_SESSION['ethicsCheck'])){
 		header('Location: ethicsForm.php?qid=' . $qID);
 		exit();
 	}
@@ -141,14 +142,20 @@
               echo '<div class="form-group">';
 
               $questionID = $row['questionID'];
+              $qType = $row['questionType'];
 
               // If the question is text based, show a text input box
               if($row['questionType'] == 1){
                 echo '<label for="'.$questionID.'"><b>'. $count . ') ' . $row['questionText'] . '</b></label>';
                 echo '<textarea class="form-control" name="'. $row['questionID'] . '" ></textarea>';
               }
-              // If the question is multiple choice
-              else if($row['questionType'] == 2){
+              // If the question uses multiple choice or check boxes
+              else if($qType == 2 || $qType == 3){
+                if($qType == 2){
+                  $inType = 'radio';
+                }else if($qType == 3){
+                  $inType = 'checkbox';
+                }
                 echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
 
                 // Find all the options for the question
@@ -157,30 +164,19 @@
                 // Loop through each option
                 while($newRow = mysqli_fetch_array($newResult)){
 
-                  // Display a radio button with appropriate values
+                  if($qType == 2){
+                    $nameTag = $questionID;
+                  }else if($qType == 3){
+                    $nameTag = $newRow['optionID'];
+                  }
+
+                  // Display the correct input button with appropriate values
                   echo '<div class="form-check">';
-                  echo '<input class="form-check-input" type="radio" id="'.$newRow['optionID'].'" name="'.$questionID.'" value="'.$newRow['optionText'].'">';
+                  echo '<input class="form-check-input" type="'.$inType.'" id="'.$newRow['optionID'].'" name="'.$nameTag.'" value="'.$newRow['optionText'].'">';
                   echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
                   echo '</div>';
                 }
-              }
-              // If the question uses check boxes
-              else if($row['questionType'] == 3){
-                echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
-
-                // Find all the options for the question
-                $newQuery = "SELECT * FROM questionOptions WHERE questionID = '$questionID'";
-                $newResult = mysqli_query($conn, $newQuery);
-                // Loop through each option
-                while($newRow = mysqli_fetch_array($newResult)){
-
-                  // Display a check box with appropriate values
-                  echo '<div class="form-check">';
-                  echo '<input class="form-check-input" type="checkbox" id="'.$newRow['optionID'].'" name="'.$newRow['optionID'].'" value="'.$newRow['optionText'].'">';
-                  echo '<label class="form-check-label" for="'.$newRow['optionID'].'">'.$newRow['optionText'].'</label><br>';
-                  echo '</div>';
-                }
-              }else if($row['questionType'] == 4){
+              }else if($qType == 4){
                 echo '<p><b>'. $count . ') ' . $row['questionText'] . '</b></p>';
 
                 // Find all the options for the question
