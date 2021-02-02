@@ -31,14 +31,15 @@
       echo "The question must have text!";
     }
     else {
+      $success = true;
       //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
-      $questionType = 2;
+      $questionType = 3;
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        for ($i=1; $i < $optionNo+3; $i++) {
-          echo "i= ".$i." <br> is less than ".$optionNo." +3 <br>";
+        for ($i=1; $i < $extraOptions+3; $i++) {
+          echo "i= ".$i." <br> is less than ".$extraOptions." +3 <br>";
           $variablename = "answerOption".$i."";
           $questionoptiontext = $_POST[$variablename];
           if (empty($questionoptiontext)) {
@@ -48,12 +49,15 @@
             $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
             if ($conn->query($sql) === TRUE) {
               echo "New record created successfully";
-              //header("location: addMultipleChoice.php");
             }
             else {
+              $success = false;
               echo "Error: " . $sql . "<br>" . $conn->error;
             }
           }
+        }
+        if ($success){
+          header("location: addMultipleChoice.php");
         }
       }
       else {
