@@ -7,7 +7,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
   if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
     {
       $transcript = nl2br($transcript);
-      echo "Transcript:\n  '$transcript'";
+      echo "Transcript: <br>";
+      echo $transcript;
     }
 }
 ?>
@@ -55,7 +56,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
               <textarea name="transcript" cols="40" rows="5"></textarea>
             </div>
 
-            <input type="submit" value="Submit" name="addT" class='btn btn-outline-success'>
+            <div class="form-check">
+              <input type="submit" value="Submit" name="addT" class='btn btn-outline-success'>
+            </div>
+
 
     </form>
     </div>
