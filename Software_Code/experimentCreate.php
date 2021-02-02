@@ -41,7 +41,7 @@ if(isset($_POST['logout'])) {
      $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
      if ($conn->query($sql) === TRUE) {
 
-       if (!mkdir("videos/" . $experimentName, 0700)) {
+       if (!mkdir("videos/" . $experimentID, 0700)) {
            die('Failed to create folder');
        }
 
