@@ -51,27 +51,58 @@ if(isset($_POST['logout'])) {
           echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
-            <video src='" . $path . "' width='320' height='240' type='video/mp4' controls>
+            <video id='".$path."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
             </video>
             <br><br>";
         }
-
         /*
         Php which takes user to the Timestamp
-        use post method to connect php to button?
-
-
+        using echo stuff similar to above
         */
-
        ?>
+       <!-- PLAY/PAUSE VIDEOS IN SYNC -->
+       <button onclick="playAll()" type="button">Play All</button>
+       <button onclick="pauseAll()" type="button">Pause All</button><br>
+
+       <?php
+       echo "
+       <script>
+       function playAll(){
+         var i;
+         for (i=0; i < count('".$allVideos."'); i++) {
+           var videoID = videos/".$experimentID."/".$allVideos."[i];
+           var vid = document.getElementById('".$videoID."');
+           vid.play();
+         }
+
+       }
+       function pauseAll(){
+         vid.pause();
+       }
+       </script>";
+       ?>
+
        <div class="jumbotron text-center">
          <h2 class="text-centre">Timestamp 1</h2>
          <p>This is the description for timestamp 1</p>
        </div>
+       <!--
        <form>
-         <input type="button" class="btn btn-primary" value="Go to Timestamp 1" name="Timestamp1">
+         <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">
+         <script>
+         var video = document.getElementById('vid');
+         var btn = document.getElementById('btn');
+
+         //might need to put this script in the php stuff to work?
+         //as well as the html associated with this?
+         function timestamp() {
+           //go to 3 seconds in the video -> this would probably need to be in the php
+           video.pause(); //pause the video
+         }
+         </script>
        </form>
+     -->
        <br></br>
     </div>
   </div>
