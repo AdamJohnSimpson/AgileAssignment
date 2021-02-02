@@ -31,6 +31,7 @@
       echo "The question must have text!";
     }
     else {
+      $success = true;
       //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
       $questionType = 2;
@@ -48,12 +49,15 @@
             $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
             if ($conn->query($sql) === TRUE) {
               echo "New record created successfully";
-              //header("location: addMultipleChoice.php");
             }
             else {
+              $success = false;
               echo "Error: " . $sql . "<br>" . $conn->error;
             }
           }
+        }
+        if ($success){
+          header("location: addMultipleChoice.php");
         }
       }
       else {
@@ -95,13 +99,6 @@
     exit;
   }
 
- //  $optionNo = 3;
-  // if(isset($_POST['addOption'])){
-  //   $optionNoName = "answerOption" . $optionNo;
-  //   echo "<label>Please enter an answer option: </label>
-  //   <input type='text' name=".$optionNoName."><br><br>";
-  //   $optionNo++;
-  //}
   ?>
 
 
