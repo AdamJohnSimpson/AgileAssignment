@@ -71,12 +71,14 @@ $responseID = $_GET['rid']; //get responseID
                   $response = $row['response'];
                   echo "<p> - ".$response."</p>";
                 }
+              }
                 else{ // if the question is textbased or single choice
                   while($row = mysqli_fetch_array($resultResponse)){
                     $response = $row['response'];
                     echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
                 }
               }
+            }
               else{ //question to display is a usabiltiy scale question
                 echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
                 $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
@@ -93,7 +95,6 @@ $responseID = $_GET['rid']; //get responseID
                   echo "<p><strong>Participent Response: </strong>".$scaleResponse."</p>";
                 }
               }
-            }
         echo "</div>
          </div>";
       }
