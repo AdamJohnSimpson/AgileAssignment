@@ -51,18 +51,31 @@ if(isset($_POST['logout'])) {
           echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
-            <video src='" . $path . "' width='320' height='240' type='video/mp4' controls>
+            <video id='videos' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
             </video>
             <br><br>";
         }
-
         /*
         Php which takes user to the Timestamp
         using echo stuff similar to above
         */
-
        ?>
+       <!-- PLAY/PAUSE VIDEOS IN SYNC -->
+       <button onclick="playAll()" type="button">Play All</button>
+       <button onclick="pauseAll()" type="button">Pause All</button><br>
+
+       <script>
+       var vid = document.getElementById("videos");
+       function playAll(){
+         vid.play();
+       }
+       function pauseAll(){
+         vid.pause();
+       }
+       </script>
+
+
        <div class="jumbotron text-center">
          <h2 class="text-centre">Timestamp 1</h2>
          <p>This is the description for timestamp 1</p>
