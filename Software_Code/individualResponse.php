@@ -61,17 +61,17 @@ $responseID = $_GET['rid']; //get responseID
         */
          echo "<div class='row'>
            <div class='card-body'>";
-            if($questionType!=4){
+            if($questionType!=4){ //if the question is text based or multiple choice or single choice
               echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
               $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
               $resultResponse = mysqli_query($conn, $stmt);
-              if($questionType==3){
+              if($questionType==3){ //if the question is a checkbox question
                 echo "<p><strong>Participent Response(s): </strong></p>";
-                while($row = mysqli_fetch_array($resultResponse)){
+                while($row = mysqli_fetch_array($resultResponse)){//display the answers from the response
                   $response = $row['response'];
                   echo "<p> - ".$response."</p>";
                 }
-                else{
+                else{ // if the question is textbased or single choice
                   while($row = mysqli_fetch_array($resultResponse)){
                     $response = $row['response'];
                     echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
