@@ -59,11 +59,11 @@ if(isset($_POST['logout'])) {
           // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
           $userID = $_SESSION['id'];
           if ($_SESSION['USER_role'] == 'Lab Manager'){
-            $sql = "SELECT * FROM experiments ORDER BY DESC";
+            $sql = "SELECT * FROM experiments ORDER BY experimentid DESC";
             $result = mysqli_query($conn, $sql);
           }
           else if ($_SESSION['USER_role'] != 'Lab Manager'){
-            $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID} ORDER BY DESC";
+            $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID} ORDER BY experimentid DESC";
             $result = mysqli_query($conn, $sql);
           }
           //displays all experiments fetched along with an option to create a questionnaire
