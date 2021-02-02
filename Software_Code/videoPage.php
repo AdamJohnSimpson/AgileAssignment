@@ -64,18 +64,17 @@ if(isset($_POST['logout'])) {
        <!-- PLAY/PAUSE VIDEOS IN SYNC -->
        <button onclick="playAll()" type="button">Play All</button>
        <button onclick="pauseAll()" type="button">Pause All</button><br>
-
        <?php
        echo "
        <script>
+       var videoArray = ".$allVideos.";
        function playAll(){
          var i;
-         for (i=0; i < count('".$allVideos."'); i++) {
-           var videoID = videos/".$experimentID."/".$allVideos."[i];
+         for (i=0; i < count('videoArray'); i++) {
+           var videoID = videos/".$experimentID."/videoArray[i];
            var vid = document.getElementById('".$videoID."');
            vid.play();
          }
-
        }
        function pauseAll(){
          vid.pause();
