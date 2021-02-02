@@ -82,12 +82,8 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
               for ($y=0; $y < count($allResults[$x]); $y++) {
                 echo "<h3> - {$allResults[$x][$y]} </h3>";
               }
-            } else if ($listOfQuestionType[$x] == 2) {
-              echo "Question type: {listOfQuestionType[$x]}";
-            } else if ($listOfQuestionType[$x] == 3) {
-              echo "Question type: {listOfQuestionType[$x]}";
-            } else if ($listOfQuestionType[$x] == 4) {
-              echo "Question type: {listOfQuestionType[$x]}";
+            } else {
+              echo "<h3>{$listOfQuestionType[$x]}</h3>";
             }
           }
         } else {
