@@ -60,23 +60,22 @@ $responseID = $_GET['rid']; //get responseID
         4 - scale
         */
          echo "<div class='row'>
-           <div class='card-body'>
-            <h5 class='card-text mt-2'>".$questionTxt."</h5>";
-            if($questionType == 1 || $questionType == 2){
+           <div class='card-body'>";
+            if($questionType!=4){
+              echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
               $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
               $resultResponse = mysqli_query($conn, $stmt);
-              while($row = mysqli_fetch_array($resultResponse)){
-                $response = $row['response'];
-                echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
-              }
-            }
-            elseif($questionType == 3){
-              $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'";//get the response for the question it is on
-              $resultResponse = mysqli_query($conn, $stmt);
-              echo "<p><strong>Participent Response(s): </strong></p>";
-              while($row = mysqli_fetch_array($resultResponse)){
-                $response = $row['response'];
-                echo "<p> - ".$response."</p>";
+              if($questionType==3){
+                echo "<p><strong>Participent Response(s): </strong></p>";
+                while($row = mysqli_fetch_array($resultResponse)){
+                  $response = $row['response'];
+                  echo "<p> - ".$response."</p>";
+                }
+                else{
+                  while($row = mysqli_fetch_array($resultResponse)){
+                    $response = $row['response'];
+                    echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
+                }
               }
             }
         echo "</div>
