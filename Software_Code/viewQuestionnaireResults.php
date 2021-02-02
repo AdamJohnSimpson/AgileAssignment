@@ -89,8 +89,21 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
               $countOfValues = array_count_values($allResults[$x]);
 
-              echo '{$countOfValues[0][0]}';
+              $values = array_keys($countOfValues);
 
+
+
+              echo "<style>
+              .grid {
+                &::before {
+                  content: '1';
+                }
+
+                &::after {
+                  content: '10';
+                }
+              }
+              </style>";
 
               echo '<div class="chart-wrap vertical">
               <h2 class="title">Test Title</h2>
