@@ -88,8 +88,8 @@ $responseID = $_GET['rid']; //get responseID
                   $scaleResponse = $row['reponse']; //gets answer
                   $scaleQID = $row['uqid']; //gets question id for scale question
                   $stmt = "SELECT * FROM usabilityquestions WHERE questionID = $questionID"; //gets the question attached to the scale
-                  $scaleNameQ = mysqli_query($conn, $stmt);
-                  while($row = mysqli_fetch_array($scaleNameQ)){
+                  $scaleQ = mysqli_query($conn, $stmt);
+                  while($row = mysqli_fetch_array($scaleQ)){
                     $scaleName = $row['uqText'];
                     echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
                   }
