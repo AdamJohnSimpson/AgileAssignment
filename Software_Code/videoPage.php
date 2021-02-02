@@ -48,7 +48,7 @@ if(isset($_POST['logout'])) {
 
         for ($x=0; $x < count($allVideos); $x++) {
           $path = "videos/" . $experimentID . "/" . $allVideos[$x];
-          echo "<h3>" .  . "</h3>";
+          echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
             <video id='".$allVideos[$x]."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
