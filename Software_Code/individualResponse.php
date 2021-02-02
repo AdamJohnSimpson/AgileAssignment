@@ -51,6 +51,14 @@ $responseID = $_GET['rid']; //get responseID
       while($row = mysqli_fetch_array($resultQuestion)){
         $questionTxt = $row['questionText'];
         $questionID = $row['questionID'];
+        $questionType = $row['questionType'];
+        /*
+        Question type
+        1 - text-based
+        2 - single choice
+        3 - checkbox/multi choice
+        4 - scale
+        */
          echo "<div class='row'>
            <div class='card-body'>
             <h5 class='card-text mt-2'>".$questionTxt."</h5>";
