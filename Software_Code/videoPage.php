@@ -71,7 +71,7 @@ if(isset($_POST['logout'])) {
        function playAll(){
          var i;
          for (i=0; i < count(".$allVideos."); i++) {
-           var videoIdD = videos/".$experimentID."/".$allVideos[."i".].";
+           var videoIdD = videos/".$experimentID."/".$allVideos."[i];
            var vid = document.getElementById("videos");
            vid.play();
          }
@@ -81,7 +81,7 @@ if(isset($_POST['logout'])) {
          vid.pause();
        }
        </script>";
-
+       ?>
 
        <div class="jumbotron text-center">
          <h2 class="text-centre">Timestamp 1</h2>
