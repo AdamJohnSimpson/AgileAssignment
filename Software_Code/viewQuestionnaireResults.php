@@ -5,12 +5,13 @@ session_start();
 include "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
 
-$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '$questionnaireID'";
+$questionQuery = "SELECT questionID, questionText, questionType FROM questions WHERE questionnaireID = '$questionnaireID'";
 
 $questionResult = mysqli_query($conn, $questionQuery);
 
 $listOfQuestionText = array();
 $listOfQuestionID = array();
+$listOfQuestionType = array();
 $allResults = array();
 $allResultID = array();
 
@@ -18,6 +19,7 @@ if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
       array_push($listOfQuestionText, $row['questionText']);
       array_push($listOfQuestionID, $row['questionID']);
+      array_push($listOfQuestionType, $row['questionType']);
     }
 }
 
@@ -76,9 +78,12 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
             echo "<br><h2><u><strong>{$listOfQuestionText[$x]}</strong></u></h2>";
             echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
-
-            for ($y=0; $y < count($allResults[$x]); $y++) {
-              echo "<h3> - {$allResults[$x][$y]} </h3>";
+            if ($listOfQuestionType[$x] == 1) {
+              for ($y=0; $y < count($allResults[$x]); $y++) {
+                echo "<h3> - {$allResults[$x][$y]} </h3>";
+              }
+            } else {
+              echo "<h3>{$listOfQuestionType[$x]}</h3>";
             }
           }
         } else {
