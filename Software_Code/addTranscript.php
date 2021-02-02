@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
   if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
     {
       $transcript = nl2br($transcript);
-      echo "Transcript:\n";
+      echo "Transcript: <br>";
       echo $transcript;
     }
 }
