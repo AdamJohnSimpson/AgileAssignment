@@ -64,7 +64,6 @@ if(isset($_POST['logout'])) {
        <!-- PLAY/PAUSE VIDEOS IN SYNC -->
        <button onclick="playAll()" type="button">Play All</button>
        <button onclick="pauseAll()" type="button">Pause All</button><br>
-
        <?php
        echo "
        <script>
