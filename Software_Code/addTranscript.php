@@ -2,14 +2,15 @@
 
  $transcript = $_POST['transcript'];
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-  if(isset($_POST['addT'])
+  if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
     {
-      echo "Transcript: <input type='text' value='$transcript'/>";
+      $transcript = nl2br($transcript);
+      echo "Transcript:  '$transcript'";
     }
 }
- ?>
+?>
 
 
 <!DOCTYPE html>
@@ -38,18 +39,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">>
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
+
+          <form>
           <label>Please enter the transcript below.</label>
+          </form>
 
-      <form>
-        <textarea name="transcript" cols="40" rows="5"></textarea>
-      </form>
-      <br></br>
 
-      <form>
-          <input type="submit" value="Submit" name="addT" class='btn btn-outline-success'>
-      </form>
+
+
+        <br></br>
+
+            <div class="form-check">
+              <textarea name="transcript" cols="40" rows="5"></textarea>
+            </div>
+
+            <input type="submit" value="Submit" name="addT" class='btn btn-outline-success'>
+
     </form>
     </div>
   </div>

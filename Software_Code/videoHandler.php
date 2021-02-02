@@ -68,7 +68,15 @@
               else
               {
                   move_uploaded_file(($_FILES["file"]["tmp_name"]),"videos/". $experimentid . "/" . $_FILES['file']['name']);
-                  echo "<br><br><h3>Your upload was successful</h3>";
+                  echo "<br><br><h3>Your upload was successful.</h3>";
+                  echo "Now running the sql: <br> INSERT INTO videos(videoDescription, experimentID) VALUES ('', '".$experimentid."')"
+                  $sql = "INSERT INTO videos(videoDescription, experimentID) VALUES ('', '$experimentid')";
+                  if ($conn->query($sql) === TRUE) {
+                    echo "Successfully added to database";
+                  }
+                  else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                  }
               }
           }
           else

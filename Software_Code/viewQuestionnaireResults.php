@@ -78,50 +78,44 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       <?php
       if (count($listOfQuestionID) > 0) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
+
             echo "<br><h2><u><strong>{$listOfQuestionText[$x]}</strong></u></h2>";
             echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
-            if ($listOfQuestionType[$x] == 1) {
-              for ($y=0; $y < count($allResults[$x]); $y++) {
+
+            if ($listOfQuestionType[$x] == 1)
+            {
+              for ($y=0; $y < count($allResults[$x]); $y++)
+              {
                 echo "<h3> - {$allResults[$x][$y]} </h3>";
               }
-            } else {
+            }
+            else
+            {
               echo "<h3>{$listOfQuestionType[$x]}</h3>";
 
               $countOfValues = array_count_values($allResults[$x]);
 
               $values = array_keys($countOfValues);
 
-
-
-              echo "<style>
-              .grid {
-                &::before {
-                  content: '1';
-                }
-
-                &::after {
-                  content: '10';
-                }
-              }
-              </style>";
-
               echo '<div class="chart-wrap vertical">
-              <h2 class="title">Test Title</h2>
+              <div class="grid">';
 
-              <div class="grid">
-                  <div class="bar" style="--bar-value:85%;" data-name="Your Blog" title="Your Blog 85%"></div>
-                  <div class="bar" style="--bar-value:23%;" data-name="Medium" title="Medium 23%"></div>
-                  <div class="bar" style="--bar-value:7%;" data-name="Tumblr" title="Tumblr 7%"></div>
-                  <div class="bar" style="--bar-value:38%;" data-name="Facebook" title="Facebook 38%"></div>
-                  <div class="bar" style="--bar-value:35%;" data-name="YouTube" title="YouTube 35%"></div>
-                  <div class="bar" style="--bar-value:30%;" data-name="LinkedIn" title="LinkedIn 30%"></div>
-                  <div class="bar" style="--bar-value:5%;" data-name="Twitter" title="Twitter 5%"></div>
-                  <div class="bar" style="--bar-value:20%;" data-name="Other" title="Other 20%"></div>
-              </div>
+              for ($a=0; $a < count($values); $a++) {
+                $noOfResponses += $countOfValues[$values[$a]];
+              }
+
+              for ($z=0; $z < count($values); $z++)
+              {
+                $percentage = round(($countOfValues[$values[$z]] / $noOfResponses) * 100);
+                echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $values[$z] . '" title="' . $values[$z] . ': ' . $countOfValues[$values[$z]] . '"></div>';
+              }
+              echo '</div>
             </div>';
             }
           }
-        } else {
+        }
+        else
+        {
           echo "<h2> No results yet... </h2>";
         }
 

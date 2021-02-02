@@ -60,28 +60,22 @@ if(isset($_POST['edit'])){
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Experiment Information</h1>
+    <?php
+    echo "<h1 class='text-center'>".$experimentName."</h1>";
+    ?>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-          <p> <b> Name of experiment: </b> </p>
+          <p> <b> Experiment description: </b> </p>
           <?php
-          echo "<h3> ".$experimentName."</h3> <br>";
-
-          // Include database file
           //get information from experiment list page to display the selected experiment
           $query = "SELECT experimentInformation FROM experiments WHERE experimentid={$experimentID}";
-          // $stmt = $mysql->prepare($query);
-          // $stmt->execute();
-          // $result = $stmt->fetchAll();
-
           $result = mysqli_query($conn, $query);
 
           // foreach( $result as $row ) {
           while($row = mysqli_fetch_array($result)){
             echo $row['experimentInformation'];
           }
-          // }
           ?>
           <br><br>
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
@@ -91,10 +85,11 @@ if(isset($_POST['edit'])){
                 echo "<button class=class='btn btn-outline-success' type='button' onclick='location.href=\"UserManagement/ManageCoResearchers.php?eid=".$experimentID."\"'>Manage Co-Researchers</button>";
               }
             ?>
-            <h3>Update experiment information:</h3>
+            <br><br>
+            <p> <b> Update experiment information: </b> </p>
         <form method="POST">
             <input type="text" value "Add a new description here" name="addedinfo">
-            <input type="submit" value="Edit Information" name="edit">
+            <input type="submit" class='btn btn-outline-success' value="Edit Information" name="edit">
         </form>
         <br>
         <form action="https://agile-assignment-group-4.azurewebsites.net/experimentList.php">
