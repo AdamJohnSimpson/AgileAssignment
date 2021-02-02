@@ -66,7 +66,7 @@ if(isset($_POST['logout'])) {
        echo "
        <script>
        var videoArray = ".$allVideos.";
-       var videoCount = videoArry.length;
+       var videoCount = videoArray.length;
        function playAll() {
          var i;
          for (i=0; i < videoCount; i++) {
