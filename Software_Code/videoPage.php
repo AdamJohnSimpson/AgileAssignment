@@ -68,12 +68,12 @@ if(isset($_POST['logout'])) {
        <button onclick="pauseAll()" type="button">Pause All</button><br>
 
        <script>
+       var vid = document.getElementById("videos");
        function playAll(){
-
+         vid.play();
        }
-
        function pauseAll(){
-
+         vid.pause();
        }
        </script>
 
