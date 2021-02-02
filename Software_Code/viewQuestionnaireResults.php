@@ -87,7 +87,9 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
             } else {
               echo "<h3>{$listOfQuestionType[$x]}</h3>";
 
-              print_r(array_count_values($allResults[$x]));
+              $countOfValues = array_count_values($allResults[$x]);
+
+              echo '{$countOfValues[0][0]}';
 
 
               echo '<div class="chart-wrap vertical">
