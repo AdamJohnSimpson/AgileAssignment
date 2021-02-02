@@ -88,6 +88,7 @@ $responseID = $_GET['rid']; //get responseID
                   $scaleNameQ = mysqli_query($conn, $stmt);
                   while($row = mysqli_fetch_array($scaleNameQ)){
                     $scaleName = $row['uqText'];
+                    echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
                   }
                 }
               }
