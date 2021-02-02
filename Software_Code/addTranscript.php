@@ -38,19 +38,23 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-      <!-- <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">> -->
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">>
         <div class="form-group">
+
+          <form>
           <label>Please enter the transcript below.</label>
+          </form>
 
-      <form>
-        <textarea name="transcript" cols="40" rows="5"></textarea>
-      </form>
-      <br></br>
+        <form>
+          <textarea name="transcript" cols="40" rows="5"></textarea>
+        </form>
+        <br></br>
 
-      <form>
-          <input type="submit" value="Submit" name="addT" class='btn btn-outline-success'>
-      </form>
-    <!-- </form> -->
+        <form>
+            <input type="submit" value="Submit" name="addT" class='btn btn-outline-success'>
+        </form>
+
+    </form>
     </div>
   </div>
 
