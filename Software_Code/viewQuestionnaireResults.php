@@ -5,12 +5,13 @@ session_start();
 include "Includes/db.inc.php";
 $questionnaireID = $_GET['qid'];
 
-$questionQuery = "SELECT questionID, questionText FROM questions WHERE questionnaireID = '$questionnaireID'";
+$questionQuery = "SELECT questionID, questionText, questionType FROM questions WHERE questionnaireID = '$questionnaireID'";
 
 $questionResult = mysqli_query($conn, $questionQuery);
 
 $listOfQuestionText = array();
 $listOfQuestionID = array();
+$listOfQuestionType = array();
 $allResults = array();
 $allResultID = array();
 
@@ -18,6 +19,7 @@ if (mysqli_num_rows($questionResult) > 0) {
     while ($row = mysqli_fetch_array($questionResult)) {
       array_push($listOfQuestionText, $row['questionText']);
       array_push($listOfQuestionID, $row['questionID']);
+      array_push($listOfQuestionType, $row['questionType']);
     }
 }
 
