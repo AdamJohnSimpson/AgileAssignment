@@ -59,9 +59,7 @@ if(isset($_POST['logout'])) {
 
         /*
         Php which takes user to the Timestamp
-        use post method to connect php to button?
-
-
+        using echo stuff similar to above
         */
 
        ?>
@@ -69,9 +67,22 @@ if(isset($_POST['logout'])) {
          <h2 class="text-centre">Timestamp 1</h2>
          <p>This is the description for timestamp 1</p>
        </div>
+       <!--
        <form>
-         <input type="button" class="btn btn-primary" value="Go to Timestamp 1" name="Timestamp1">
+         <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">
+         <script>
+         var video = document.getElementById('vid');
+         var btn = document.getElementById('btn');
+
+         //might need to put this script in the php stuff to work?
+         //as well as the html associated with this?
+         function timestamp() {
+           //go to 3 seconds in the video -> this would probably need to be in the php
+           video.pause(); //pause the video
+         }
+         </script>
        </form>
+     -->
        <br></br>
     </div>
   </div>
