@@ -90,6 +90,7 @@ $responseID = $_GET['rid']; //get responseID
                     $scaleName = $row['uqText'];
                     echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
                   }
+                  echo "<p><strong>Participent Response: </strong>".$scaleResponse."</p>";
                 }
               }
             }
