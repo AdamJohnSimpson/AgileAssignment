@@ -55,10 +55,10 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
           $questionnaireID = $row['questionnaireID'];
           $questionnaireName = $row['questionnaireName'];
            echo "<div class='row'>
-             <div class='card-body'>
-              <h5 class='card-text mt-2'>".$questionnaireName."</h5>";
-              $questionnaireURL = $tempURL.$questionnaireID;
-              echo " <p>".$questionnaireURL."</p>
+             <div class='card-body'>";
+             $questionnaireURL = $tempURL.$questionnaireID;
+             echo "<h5 class='card-text mt-2'>".$questionnaireName." <button class='btn btn-success' onclick='myFunction(\"".$tempURL.$questionnaireID."\")'>Copy Link</button></h5>
+              
               <br>
               <a href='https://agile-assignment-group-4.azurewebsites.net/viewQuestionnaireResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>View Results</button> </a>
               <a href='https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
@@ -98,6 +98,18 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
 
         </div>
       </div>
+
+      <script>
+        function myFunction(str) {
+          // https://www.30secondsofcode.org/blog/s/copy-text-to-clipboard-with-javascript
+          const el = document.createElement('textarea');
+          el.value = str;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+        }
+      </script>
       <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
       </footer>

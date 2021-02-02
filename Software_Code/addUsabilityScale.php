@@ -15,23 +15,50 @@
 
   include "Includes/db.inc.php";
   $questionnaireID = $_SESSION['questionnaireID'];
+  $extraOptions = $_GET['on'];
+
+    if(isset($_POST['addsubQ'])){
+      echo "extra options= ".$extraOptions."<br><br>";
+      $extraOptions= $extraOptions + 1;
+      echo "extra options + 1= ".$extraOptions."<br><br>";
+      header("location: https://agile-assignment-group-4.azurewebsites.net/addUsabilityScale.php?on={$extraOptions}");
+      exit;
+    }
 
   if(isset($_POST['addQ'])){
-      $questiontext = $_POST['questionText'];
+    $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
       echo "The question must have text!";
     }
     else {
-    //send to db sql here
+      $success = true;
+      //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
-      // echo "<p> Question: ".$questionID."<br> Question Text: ".$questiontext."<br> QuestionnaireID: ".$questionnaireID."</p>";
-
-      $questionType = 1;
-
+      $questionType = 2;
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        //header("location: addQuestions.php");
+        for ($i=1; $i < $extraOptions+2; $i++) {
+          $variablename = "subQ".$i."";
+          $subQtext = $_POST[$variablename];
+          if (empty($subQtext)) {
+            echo "The sub question must have text!";
+          }
+          else {
+            $sql = "INSERT INTO usabilityquestions(uqText, questionID) VALUES ('$subQtext', '$questionID')";
+            if ($conn->query($sql) === TRUE) {
+              echo "New record created successfully";
+            }
+            else {
+              $success = false;
+              echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+          }
+        }
+        if ($success){
+          echo "It was a success!";
+          header("location: addUsabilityScale.php");
+        }
       }
       else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -49,25 +76,9 @@
   }
 
   if(isset($_POST['quit'])) {
-    $questiontext = $_POST['questionText'];
-    if (empty($questiontext)) {
-      header("location: questionnaireList.php");
-      exit;
-    }
-    else {
-      $questionID = uniqid($prefix="", $more_entropy=false);
-      $questionType = 1;
-      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
-      if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-      }
-      else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-      }
-    }
-      header("location: questionnaireList.php");
-      exit;
-    }
+    header("location: questionnaireList.php");
+    exit;
+  }
 
   if(isset($_POST['cancel'])) {
     $sql = "DELETE FROM questions WHERE questionnaireID = '$questionnaireID'";
@@ -87,6 +98,7 @@
     header("location: experimentList.php");
     exit;
   }
+
   ?>
 
 
@@ -156,7 +168,7 @@
       </header>
 
         <div class="jumbotron text-center">
-          <h1 class="text-center">Add a Question</h1>
+          <h1 class="text-center">Add a Usability Scale Question</h1>
         </div>
       <div class="container-fluid" style="padding:0">
         <div class="jumbotron" style="margin-bottom:1px;">
@@ -166,16 +178,30 @@
           <div class="dropdown">
             <button class="dropbtn">Change question type</button>
             <div class="dropdown-content">
+              <a href="addQuestions.php">Text Answer</a>
               <a href="addMultipleChoice.php">Multiple Choice</a>
               <a href="addSingleChoice.php">Single Choice</a>
-              <a href="addUSabilityScale.php">Scale question</a>
             </div>
           </div>
           <br>
             <form method="POST">
               <div class="form-group">
-                <label>Please enter the question: </label>
+                <label>Please enter the Question: </label>
                 <input type="text" name="questionText"><br><br>
+                <label>Please enter a sub question: </label>
+                <input type="text" name="subQ1"><br><br>
+                <?php
+                for ($i=0; $i < $extraOptions; $i++) {
+                  $tempNo = $extraOptions + 1;
+                  $subQname = "subQ" . $tempNo;
+                  echo "<label>Please enter a sub question: </label>
+                  <input type='text' name=".$subQname."><br><br>";
+                }
+                ?>
+                <form method="post">
+                  <input type="submit" name="addsubQ" value="+ Add a sub question" class='btn btn-outline-success'>
+
+                </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
                 <input type="submit" value="Save and quit" name="quit" class='btn btn-outline-success'>
                 <input type="submit" value="Cancel questionnaire" name="cancel" class='btn btn-outline-success'>
