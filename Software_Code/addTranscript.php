@@ -2,13 +2,13 @@
 
  $transcript = $_POST['transcript'];
 
-//if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] === "POST"){
 
   if(isset($_POST['addT']))
     {
-      echo "Transcript: <input type='text' value='$transcript'/>";
+      echo "Transcript:  '$transcript'/>";
     }
-//}
+}
 ?>
 
 
