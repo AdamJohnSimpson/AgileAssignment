@@ -1,4 +1,6 @@
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php';
+      include "Includes/db.inc.php";
+      ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -68,7 +70,14 @@
               else
               {
                   move_uploaded_file(($_FILES["file"]["tmp_name"]),"videos/". $experimentid . "/" . $_FILES['file']['name']);
-                  echo "<br><br><h3>Your upload was successful</h3>";
+                  echo "<br><br><h3>Your upload was successful.</h3>";
+                  $sql = "INSERT INTO videos(videoDescription, experimentID) VALUES ('Default video description', '$experimentid')";
+                  if ($conn->query($sql) === TRUE) {
+                    echo "Successfully added to database";
+                  }
+                  else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                  }
               }
           }
           else
