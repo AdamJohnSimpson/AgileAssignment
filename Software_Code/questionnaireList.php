@@ -37,6 +37,11 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
 
         <?php
         include "Includes/db.inc.php";
+        echo "<div class='row'>
+                <div class='card-body'>
+                  <a href='makeQuestionnaires.php'> <button class='btn btn-outline-success' type='button'>Create new questionnaire</button> </a>
+                </div>
+              </div>";
 
         //displays an error if user cannot connect to database
          if (!$conn) {
@@ -46,7 +51,7 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
         //retrieve all experiments tied to the user
         // $sql = "SELECT * FROM experiments WHERE primaryresearcher = ".$_SESSION['id'];
         $experimentid = $_SESSION['experimentID'];
-        $sql = "SELECT * FROM questionnaires WHERE experimentID = '$experimentid'";
+        $sql = "SELECT * FROM questionnaires WHERE experimentID = '$experimentid' ORDER BY questionnaireID DESC";
         $result = mysqli_query($conn, $sql);
 
         //displays all experiments fetched along with an option to create a questionnaire
@@ -58,7 +63,7 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
              <div class='card-body'>";
              $questionnaireURL = $tempURL.$questionnaireID;
              echo "<h5 class='card-text mt-2'>".$questionnaireName." <button class='btn btn-success' onclick='myFunction(\"".$tempURL.$questionnaireID."\")'>Copy Link</button></h5>
-              
+
               <br>
               <a href='https://agile-assignment-group-4.azurewebsites.net/viewQuestionnaireResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>View Results</button> </a>
               <a href='https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
