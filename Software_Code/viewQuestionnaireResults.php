@@ -91,8 +91,6 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
             }
             else
             {
-              echo "<h3>{$listOfQuestionType[$x]}</h3>";
-
               $countOfValues = array_count_values($allResults[$x]);
 
               $values = array_keys($countOfValues);
