@@ -1,12 +1,12 @@
 <?php
 
- $transcript = $_GET['transcript'];
+ $transcript = $_POST['transcript'];
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
   if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
     {
-      echo "Transcript:  '$transcript'/>";
+      echo "Transcript:  '$transcript'";
     }
 }
 ?>
@@ -45,14 +45,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
           <label>Please enter the transcript below.</label>
           </form>
 
-        <form>
+
           <textarea name="transcript" cols="40" rows="5"></textarea>
-        </form>
+
         <br></br>
 
-        <form>
+
             <input type="submit" value="Submit" name="addT" class='btn btn-outline-success'>
-        </form>
 
     </form>
     </div>
