@@ -4,7 +4,7 @@
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-  if(isset($_POST['addT']))
+  if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
     {
       echo "Transcript:  '$transcript'/>";
     }
