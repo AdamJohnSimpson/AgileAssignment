@@ -184,10 +184,7 @@
                 $newResult = mysqli_query($conn, $newQuery);
 
                 // Store all the options inside an array
-                $valueArray = array();
-                while ($newRow = mysqli_fetch_array($newResult)) {
-                  $valueArray[] = $newRow['optionText'];
-                }
+                $valueArray = array("Strongly Disagree", "Somewhat Disagree", "Neutral", "Somewhat Agree", "Strongly Agree");
 
                 // Find all the sub questions inside this usability question
                 $newQuery = "SELECT * FROM UsabilityQuestions WHERE questionID = '$questionID'";
