@@ -51,15 +51,51 @@ $responseID = $_GET['rid']; //get responseID
       while($row = mysqli_fetch_array($resultQuestion)){
         $questionTxt = $row['questionText'];
         $questionID = $row['questionID'];
+        $questionType = $row['questionType'];
+        /*
+        Question type
+        1 - text-based
+        2 - single choice
+        3 - checkbox/multi choice
+        4 - scale
+        */
          echo "<div class='row'>
-           <div class='card-body'>
-            <h5 class='card-text mt-2'>".$questionTxt."</h5>";
-            $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
-            $resultResponse = mysqli_query($conn, $stmt);
-            while($row = mysqli_fetch_array($resultResponse)){
-              $response = $row['response'];
-              echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
+           <div class='card-body'>";
+            if($questionType!="4"){ //if the question is text based or multiple choice or single choice
+              echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
+              $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
+              $resultResponse = mysqli_query($conn, $stmt);
+              if($questionType==3){ //if the question is a checkbox question
+                echo "<p><strong>Participent Response(s): </strong></p>";
+                while($row = mysqli_fetch_array($resultResponse)){//display the answers from the response
+                  $response = $row['response'];
+                  echo "<p> - ".$response."</p>";
+                }
+              }
+                else{ // if the question is textbased or single choice
+                  while($row = mysqli_fetch_array($resultResponse)){
+                    $response = $row['response'];
+                    echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
+                }
+              }
             }
+              else{ //question to display is a usabiltiy scale question
+                echo"yay i got here";
+                echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
+                $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
+                $resultResponse = mysqli_query($conn, $stmt);
+                while($row = mysqli_fetch_array($resultResponse)){
+                  $scaleResponse = $row['reponse']; //gets answer
+                  $scaleQID = $row['uqid']; //gets question id for scale question
+                  $stmt = "SELECT * FROM usabilityquestions WHERE uqID = $scaleQID"; //gets the question attached to the scale
+                  $scaleNameQ = mysqli_query($conn, $stmt);
+                  while($row = mysqli_fetch_array($scaleNameQ)){
+                    $scaleName = $row['uqText'];
+                    echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
+                  }
+                  echo "<p><strong>Participent Response: </strong>".$scaleResponse."</p>";
+                }
+              }
         echo "</div>
          </div>";
       }
