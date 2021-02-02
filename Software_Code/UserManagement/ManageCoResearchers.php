@@ -8,15 +8,13 @@
 		 exit();
 	}
 
-	// If no questionnaire ID was present, redirect the user
+	// If no experiment ID was present, redirect the user
 	if(!ISSET($_GET['eid'])){
 		header('Location:../Includes/error.inc.php');
 		exit();
 	}
 	
 	$eID = $_GET['eid'];
-
-	$link = "ManageCoResearchers.php?eid=".$eID;
 
 ?>
 
@@ -69,7 +67,38 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\''.$link.'&rid=' .$row['UserID'] .'\';" type="button" class="btn btn-secondary">Remove</button> </td>';
+							echo '<td> <button onclick="location.href=\'Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\'" type="button" class="btn btn-danger">Remove</button> </td>';
+
+							echo "</tr>";
+
+						}
+
+					?>
+				</table>
+
+				<div style="margin-bottom:1%">
+					<h2>Other Users</h2>
+				</div>
+
+				<table class="table">
+					<tr>
+						<th scope="col">Username</th>
+						<th scope="col">First name</th>
+						<th scope="col">Surname</th>
+					</tr>
+					<?php
+
+						$query = "SELECT UserName, Firstname, Surname, UserID FROM User WHERE Role = 'Co-Researcher' AND UserID NOT IN (SELECT UserID FROM coexperiments WHERE experimentid = $eID)";
+						$result = mysqli_query($conn, $query);
+
+						while($row = mysqli_fetch_array($result)){
+
+							echo "<tr>";
+
+							echo "<td>" . $row['UserName'] . "</td>";
+							echo "<td>" . $row['Firstname'] . "</td>";
+							echo "<td>" . $row['Surname'] . "</td>";
+							echo '<td> <button onclick="location.href=\''.$link.'&aid=' .$row['UserID'] .'\';" type="button" class="btn btn-secondary">Add</button> </td>';
 
 							echo "</tr>";
 
