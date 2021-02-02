@@ -63,7 +63,7 @@ n/a
 - Adam Si/Beth: add being able to create usability scale questions
 - Craig: allow primary researchers to add and remove coresearchers on their experiments
 - Euan: add being able to add transcripts along with videos and have them displayed with the video
-- Holly: work on being able to play videos in sync with each other
+- Holly: add being able to show individual responses for a usability scale question, work on being able to play videos in sync with each other
 - Scott: continue work on adding timestamps and adding notes to time stamps
 
 
