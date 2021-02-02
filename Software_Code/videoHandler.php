@@ -1,4 +1,6 @@
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php';
+      include "Includes/db.inc.php";
+      ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -69,8 +71,8 @@
               {
                   move_uploaded_file(($_FILES["file"]["tmp_name"]),"videos/". $experimentid . "/" . $_FILES['file']['name']);
                   echo "<br><br><h3>Your upload was successful.</h3>";
-                  echo "Now running the sql: <br> INSERT INTO videos(videoDescription, experimentID) VALUES ('', '".$experimentid."')"
-                  $sql = "INSERT INTO videos(videoDescription, experimentID) VALUES ('', '$experimentid')";
+                  $filepath = "videos/". $experimentid . "/" . $_FILES['file']['name'];
+                  $sql = "INSERT INTO videos(videoDescription, experimentID, videoAddress) VALUES ('Default video description', '$experimentid', '$filepath')";
                   if ($conn->query($sql) === TRUE) {
                     echo "Successfully added to database";
                   }
