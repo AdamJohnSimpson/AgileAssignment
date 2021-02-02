@@ -85,13 +85,17 @@ $responseID = $_GET['rid']; //get responseID
                 $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
                 $resultResponse = mysqli_query($conn, $stmt);
                 while($row = mysqli_fetch_array($resultResponse)){
-                  $scaleResponse = $row['reponse']; //gets answer
                   $scaleQID = $row['uqid']; //gets question id for scale question
                   $stmt = "SELECT * FROM usabilityquestions WHERE questionID = $questionID"; //gets the question attached to the scale
                   $scaleQ = mysqli_query($conn, $stmt);
                   while($row = mysqli_fetch_array($scaleQ)){
                     $scaleName = $row['uqText'];
                     echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
+                    $stmt = "SELECT * FROM usabilityresults WHERE uqID = $scaleQID";
+                    $query = mysqli_query($conn, $stmt);
+                    while($row = mysqli_fetch_array($scaleQ)){
+                      $scaleResponse = row['response'];
+                    }
                   }
                   echo "<p><strong>Participent Response: </strong>".$scaleResponse."</p>";
                 }
