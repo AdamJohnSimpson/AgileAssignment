@@ -168,7 +168,7 @@
       </header>
 
         <div class="jumbotron text-center">
-          <h1 class="text-center">Add a Question</h1>
+          <h1 class="text-center">Add a Multiple Choice Question</h1>
         </div>
       <div class="container-fluid" style="padding:0">
         <div class="jumbotron" style="margin-bottom:1px;">
@@ -180,7 +180,7 @@
             <div class="dropdown-content">
               <a href="addQuestions.php">Text Answer</a>
               <a href="addSingleChoice.php">Single Choice</a>
-              <a href="#">Scale question</a>
+              <a href="addUsabilityScale.php">Scale question</a>
             </div>
           </div>
           <br>
