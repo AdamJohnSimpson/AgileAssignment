@@ -78,32 +78,40 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       <?php
       if (count($listOfQuestionID) > 0) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
+
             echo "<br><h2><u><strong>{$listOfQuestionText[$x]}</strong></u></h2>";
             echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
-            if ($listOfQuestionType[$x] == 1) {
-              for ($y=0; $y < count($allResults[$x]); $y++) {
+
+            if ($listOfQuestionType[$x] == 1)
+            {
+              for ($y=0; $y < count($allResults[$x]); $y++)
+              {
                 echo "<h3> - {$allResults[$x][$y]} </h3>";
               }
-            } else {
+            }
+            else
+            {
               echo "<h3>{$listOfQuestionType[$x]}</h3>";
 
               $countOfValues = array_count_values($allResults[$x]);
 
               $values = array_keys($countOfValues);
 
-
               echo '<div class="chart-wrap vertical">
               <h2 class="title">Test Title</h2>
 
               <div class="grid">';
-              for ($x=0; $x < count($values); $x++) {
-                echo '<div class="bar" style="--bar-value:85%;" data-name="{$values[$x]}" title="{$values[$x]} ' . $countOfValues[$values[$x]] . '"></div>';
+              for ($x=0; $x < count($values); $x++)
+              {
+                echo '<div class="bar" style="--bar-value:85%;" data-name="'. $values[$x] . '" title="' . $values[$x] . ' ' . $countOfValues[$values[$x]] . '"></div>';
               }
               echo '</div>
             </div>';
             }
           }
-        } else {
+        }
+        else
+        {
           echo "<h2> No results yet... </h2>";
         }
 
