@@ -103,7 +103,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
               <div class="grid">';
               for ($x=0; $x < count($values); $x++)
               {
-                echo '<div class="bar" style="--bar-value:85%;" data-name="'. {$values[$x]} . '" title="' . {$values[$x]} . ' ' . $countOfValues[$values[$x]] . '"></div>';
+                echo '<div class="bar" style="--bar-value:85%;" data-name="'. $values[$x] . '" title="' . $values[$x] . ' ' . $countOfValues[$values[$x]] . '"></div>';
               }
               echo '</div>
             </div>';
