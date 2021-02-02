@@ -70,7 +70,7 @@ if(isset($_POST['logout'])) {
        <script>
        function playAll(){
          var i;
-         for (i=0; i < count(".$allVideos."); i++) {
+         for (i=0; i < count('".$allVideos."'); i++) {
            var videoID = videos/".$experimentID."/".$allVideos."[i];
            var vid = document.getElementById('".$videoID."');
            vid.play();
