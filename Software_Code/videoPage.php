@@ -56,15 +56,28 @@ if(isset($_POST['logout'])) {
             </video>
             <br><br>";
         }
-
         /*
         Php which takes user to the Timestamp
         use post method to connect php to button?
 
 
         */
-
        ?>
+       <!-- PLAY/PAUSE VIDEOS IN SYNC -->
+       <button onclick="playAll()" type="button">Play All</button>
+       <button onclick="pauseAll()" type="button">Pause All</button><br>
+
+       <script>
+       function playAll(){
+
+       }
+
+       function pauseAll(){
+
+       }
+       </script>
+
+
        <div class="jumbotron text-center">
          <h2 class="text-centre">Timestamp 1</h2>
          <p>This is the description for timestamp 1</p>
