@@ -65,13 +65,13 @@ if(isset($_POST['logout'])) {
        <?php
        echo "
        <script>
-       var videoArray = ".$allVideos.";
+       var videoArray = ".json_encode($allVideos).";
        var videoCount = videoArray.length;
        function playAll() {
          var i;
          for (i=0; i < videoCount; i++) {
            var videoID = 'videoArray[i]';
-           var vid = document.getElementById('".$videoID."');
+           var vid = document.getElementById('".json_encode($videoID)."');
            vid.play();
          }
        }
