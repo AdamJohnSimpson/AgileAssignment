@@ -96,7 +96,7 @@ $responseID = $_GET['rid']; //get responseID
                   $scaleQ = mysqli_query($conn, $stmt);
                   while($row = mysqli_fetch_array($scaleQ)){
                     $scaleName = $row['uqText']; //get the text for the scale question
-                    $echo "scale name".$scaleName;
+                    echo "scale name".$scaleName;
                     echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
 
                     $stmt = "SELECT * FROM usabilityresults WHERE uqID = $scaleQID"; //get result for the question
