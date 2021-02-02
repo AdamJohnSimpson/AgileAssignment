@@ -51,7 +51,7 @@ if(isset($_POST['logout'])) {
           echo "<h3>" . $allVideos[$x] . "</h3>";
             echo "
             <br>
-            <video id='".$path."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
+            <video id='".$allVideos[$x]."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
             </video>
             <br><br>";
@@ -62,17 +62,15 @@ if(isset($_POST['logout'])) {
         */
        ?>
        <!-- PLAY/PAUSE VIDEOS IN SYNC -->
-       <button onclick="playAll()" type="button">Play All</button>
-       <button onclick="pauseAll()" type="button">Pause All</button><br>
        <?php
        echo "
        <script>
        var videoArray = ".$allVideos.";
-       var videoCount = videoArry.length;
-       function playAll(){
+       var videoCount = videoArray.length;
+       function playAll() {
          var i;
-         for (i=0; i < videoCount i++) {
-           var videoID = videos/".$experimentID."/videoArray[i];
+         for (i=0; i < videoCount; i++) {
+           var videoID = 'videoArray[i]';
            var vid = document.getElementById('".$videoID."');
            vid.play();
          }
@@ -82,6 +80,8 @@ if(isset($_POST['logout'])) {
        }
        </script>";
        ?>
+       <button onclick="playAll()" type="button">Play All</button>
+       <button onclick="pauseAll()" type="button">Pause All</button><br>
 
        <div class="jumbotron text-center">
          <h2 class="text-centre">Timestamp 1</h2>

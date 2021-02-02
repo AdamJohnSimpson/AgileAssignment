@@ -80,6 +80,11 @@ if(isset($_POST['edit'])){
           <br><br>
             <a href="videoPage.php"> <button class='btn btn-outline-success' type='button'>View Videos</button> </a>
             <a href="questionnaireList.php"> <button class='btn btn-outline-success' type='button'>View Questionnaires</button> </a>
+            <?php
+              if(ISSET($_SESSION['experimentID']) && ISSET($_SESSION['USER_role']) && $_SESSION['USER_role'] == 'Principal Researcher'){
+                echo "<button class='btn btn-outline-success' type='button' onclick='location.href=\"UserManagement/ManageCoResearchers.php?eid=".$experimentID."\"'>Manage Co-Researchers</button>";
+              }
+            ?>
             <br><br>
             <p> <b> Update experiment information: </b> </p>
         <form method="POST">
