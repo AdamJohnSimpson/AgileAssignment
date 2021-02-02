@@ -1,4 +1,6 @@
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php';
+      include "Includes/db.inc.php";
+      ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
