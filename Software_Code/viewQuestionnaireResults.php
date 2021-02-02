@@ -96,13 +96,10 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
               $countOfValues = array_count_values($allResults[$x]);
 
               $values = array_keys($countOfValues);
-              echo count($values);
-              print_r($values);
 
               echo '<div class="chart-wrap vertical">
-              <h2 class="title">Test Title</h2>
-
               <div class="grid">';
+
               for ($a=0; $a < count($values); $a++) {
                 $noOfResponses += $countOfValues[$values[$a]];
               }
