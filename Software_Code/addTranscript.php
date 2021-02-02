@@ -1,6 +1,6 @@
 <?php
 
-$_SESSION['transcript'] = $transcript;
+ $transcript = $_POST['transcript'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
