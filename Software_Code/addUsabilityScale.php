@@ -17,11 +17,11 @@
   $questionnaireID = $_SESSION['questionnaireID'];
   $extraOptions = $_GET['on'];
 
-    if(isset($_POST['addOption'])){
+    if(isset($_POST['addsubQ'])){
       echo "extra options= ".$extraOptions."<br><br>";
       $extraOptions= $extraOptions + 1;
       echo "extra options + 1= ".$extraOptions."<br><br>";
-      header("location: https://agile-assignment-group-4.azurewebsites.net/addSingleChoice.php?on={$extraOptions}");
+      header("location: https://agile-assignment-group-4.azurewebsites.net/addUsabilityScale.php?on={$extraOptions}");
       exit;
     }
 
@@ -38,15 +38,14 @@
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        for ($i=1; $i < $extraOptions+3; $i++) {
-          echo "i= ".$i." <br> is less than ".$extraOptions." +3 <br>";
-          $variablename = "answerOption".$i."";
-          $questionoptiontext = $_POST[$variablename];
-          if (empty($questionoptiontext)) {
-            echo "The answer option must have text!";
+        for ($i=1; $i < $extraOptions+2; $i++) {
+          $variablename = "subQ".$i."";
+          $subQtext = $_POST[$variablename];
+          if (empty($subQtext)) {
+            echo "The sub question must have text!";
           }
           else {
-            $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
+            $sql = "INSERT INTO usabilityquestions(uqText, questionID) VALUES ('$subQtext', '$questionID')";
             if ($conn->query($sql) === TRUE) {
               echo "New record created successfully";
             }
@@ -57,7 +56,8 @@
           }
         }
         if ($success){
-          header("location: addSingleChoice.php");
+          echo "It was a success!";
+          header("location: addUsabilityScale.php");
         }
       }
       else {
@@ -168,7 +168,7 @@
       </header>
 
         <div class="jumbotron text-center">
-          <h1 class="text-center">Add a Scale Question</h1>
+          <h1 class="text-center">Add a Usability Scale Question</h1>
         </div>
       <div class="container-fluid" style="padding:0">
         <div class="jumbotron" style="margin-bottom:1px;">
@@ -180,7 +180,7 @@
             <div class="dropdown-content">
               <a href="addQuestions.php">Text Answer</a>
               <a href="addMultipleChoice.php">Multiple Choice</a>
-              <a href="addSingleChoice.php">Single Choice question</a>
+              <a href="addSingleChoice.php">Single Choice</a>
             </div>
           </div>
           <br>
@@ -188,20 +188,18 @@
               <div class="form-group">
                 <label>Please enter the Question: </label>
                 <input type="text" name="questionText"><br><br>
-                <label>Please enter an answer option: </label>
-                <input type="text" name="answerOption1"><br><br>
-                <label>Please enter an answer option: </label>
-                <input type="text" name="answerOption2"><br><br>
+                <label>Please enter a sub question: </label>
+                <input type="text" name="subQ1"><br><br>
                 <?php
                 for ($i=0; $i < $extraOptions; $i++) {
-                  $tempNo = $extraOptions + 2;
-                  $optionNoName = "answerOption" . $tempNo;
-                  echo "<label>Please enter an answer option: </label>
-                  <input type='text' name=".$optionNoName."><br><br>";
+                  $tempNo = $extraOptions + 1;
+                  $subQname = "subQ" . $tempNo;
+                  echo "<label>Please enter a sub question: </label>
+                  <input type='text' name=".$subQname."><br><br>";
                 }
                 ?>
                 <form method="post">
-                  <input type="submit" name="addOption" value="+ Add another option" class='btn btn-outline-success'>
+                  <input type="submit" name="addsubQ" value="+ Add a sub question" class='btn btn-outline-success'>
 
                 </form>
                 <input type="submit" value="Add question" name="addQ" class='btn btn-outline-success'>
