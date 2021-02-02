@@ -61,7 +61,7 @@ $responseID = $_GET['rid']; //get responseID
         */
          echo "<div class='row'>
            <div class='card-body'>";
-            if($questionType!=4){ //if the question is text based or multiple choice or single choice
+            if($questionType!="4"){ //if the question is text based or multiple choice or single choice
               echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
               $stmt = "SELECT * FROM results WHERE questionID = '{$questionID}' AND responseID = '{$responseID}'"; //get the response for the question it is on
               $resultResponse = mysqli_query($conn, $stmt);
@@ -80,6 +80,7 @@ $responseID = $_GET['rid']; //get responseID
               }
             }
               else{ //question to display is a usabiltiy scale question
+                echo"yay i got here";
                 echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
                 $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
                 $resultResponse = mysqli_query($conn, $stmt);
