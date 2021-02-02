@@ -48,10 +48,10 @@ if(isset($_POST['logout'])) {
 
         for ($x=0; $x < count($allVideos); $x++) {
           $path = "videos/" . $experimentID . "/" . $allVideos[$x];
-          echo "<h3>" . $allVideos[$x] . "</h3>";
+          echo "<h3>" .  . "</h3>";
             echo "
             <br>
-            <video id='".$path."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
+            <video id='".$allVideos[$x]."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
             </video>
             <br><br>";
@@ -70,7 +70,7 @@ if(isset($_POST['logout'])) {
        function playAll() {
          var i;
          for (i=0; i < videoCount; i++) {
-           var videoID = videos/".$experimentID."/videoArray[i];
+           var videoID = videoArray[i];
            var vid = document.getElementById('".$videoID."');
            vid.play();
          }
