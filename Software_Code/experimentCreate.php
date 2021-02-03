@@ -1,5 +1,5 @@
 <!-- <?php
-// 
+//
 // include 'Includes/header.php';
 // require_once "Includes/db.inc.php";
 //
@@ -89,7 +89,7 @@
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center" style="float: center ">Create Experiment</h1>
+    <h1 class="text-center" style="float: center ">Create Expleriment</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">

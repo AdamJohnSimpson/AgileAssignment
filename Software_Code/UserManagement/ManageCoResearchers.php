@@ -16,6 +16,13 @@
 	
 	$eID = $_GET['eid'];
 
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		if(ISSET($_POST['rem'])){
+			header('Location: ../Includes/remco.inc.php?eid='.$eid.'&rid='.$row['UserID']);
+			exit();
+		}
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +75,12 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\'" type="button" class="btn btn-danger">Remove</button> </td>';
+
+							echo '<form method=POST action="Questionnaire.php?qid='.$qID.'">';
+
+							echo '<td><input type="submit" value="Remove" class="btn btn-danger"></td>';
+
+							echo '</form>';
 
 							echo "</tr>";
 
