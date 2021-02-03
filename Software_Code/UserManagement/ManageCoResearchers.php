@@ -49,9 +49,6 @@
 					<h2>Current Co-Researchers</h2>
 				</div>
 
-				<?php echo '<h2>AHHHHHH</h2>'; ?>
-
-
 				<table class="table">
 					<tr>
 						<th scope="col">Username</th>
