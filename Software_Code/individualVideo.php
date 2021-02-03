@@ -47,12 +47,15 @@ $videoPath = $_GET['p'];
         while($row = mysqli_fetch_array($result)){
           $vidID = $row['videoID'];
           $vidDesc = $row['videoDescription'];
+          $vidTrans = $row['transcript'];
           echo "<br> I am in the while loop <br>";
         }
-        echo "<video id='".$vidID."' src='".$videoPath."' width='320' height='240' type='video/mp4' controls>
+        echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
               Your browser does not support the video tag.
               </video> <br>
-              <p> <b>Video Description: </b> </p> <br>".$vidDesc."";
+              <p> <b>Video Description: </b> </p> <br>".$vidDesc."<br><br>
+              <p> <b>Video Transription: </b> </p> <br>".$vidTrans." <br> <br>
+              <button class='btn btn-outline-success' type='button'>Edit Video Details</button> <br> ";
        ?>
 
        <div class="jumbotron text-center">
