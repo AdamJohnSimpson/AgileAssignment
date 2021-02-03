@@ -44,6 +44,8 @@
         <?php
         include "Includes/db.inc.php";
 
+        echo '<h1>' . $_SERVER[ 'DOCUMENT_ROOT' ] . '</h1>';
+
         if(ISSET($_SESSION['USER_role']) && $_SESSION['USER_role'] != 'Co-Researcher'){
           echo "<div class='row'>
                   <div class='card-body'>
