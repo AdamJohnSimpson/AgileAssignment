@@ -4,6 +4,14 @@ include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
 
+// if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
+//   {
+//     $transcript = nl2br($transcript);
+//     echo "Transcript: <br>";
+//     echo $transcript;
+//     $_SESSION['transcript'] = $transcript;
+//   }
+
   if(isset($_POST['editTrans']))
     {
       $newtrans = $_POST['transinfo'];
@@ -13,7 +21,7 @@ $videoPath = $_GET['id'];
       }
       else {
      //send to db sql here
-     $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress={$videoPath}";
+     $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
      if ($conn->query($sql) === TRUE) {
        echo "New transcript added successfully!";
      }
@@ -31,7 +39,7 @@ if(isset($_POST['editDesc'])){
 
   } else {
   //send to db sql here
-  $sql = "UPDATE videos SET videoDescription='{$newInfo}' WHERE videoAddress={$videoPath}";
+  $sql = "UPDATE videos SET videoDescription='{$newInfo}' WHERE videoAddress='{$videoPath}'";
   if ($conn->query($sql) === TRUE) {
     echo "New description added successfully!";
   }
@@ -68,6 +76,9 @@ if(isset($_POST['editDesc'])){
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
+      <form>
+      <label>Please enter the description below.</label>
+      </form>
       <form method="POST">
           <input type="text" value "Add a new description here" name="descinfo">
           <input type="submit" class='btn btn-outline-success' value="Update Description" name="editDesc">
@@ -76,9 +87,9 @@ if(isset($_POST['editDesc'])){
         <form>
         <label>Please enter the transcript below.</label>
         </form>
-        <br></br>
-        <form method="POST">
-          <textarea name="transinfo" value= "Add a new transcript here" cols="40" rows="5"></textarea>
+        <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
+        <br>
+        <form method="POST" id="transform">
           <input type="submit" class='btn btn-outline-success' value="Update Transcript" name="editTrans">
         </form>
         <?php
