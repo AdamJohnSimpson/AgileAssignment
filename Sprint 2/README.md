@@ -69,6 +69,40 @@ n/a
 
 ---
 
+## Day [3] - Scrum Meeting summary
+The Scrum Master for this meeting was **Holly Groves**
+
+### Members Present:
+Adam Shepherd, Adam Simpson, Beth Ogilvy, Craig Ritchie, Euan Taylor, Holly Groves and Scott Fulton
+
+### Members Not Present:
+n/a
+
+### Apologies:
+n/a
+
+### Summary of Conversation:
+**Yesterday's Tasks**
+- Adam Sh: started work on adding bar graphs to visualise all responses for a questionnaire (including usability scale)
+- Adam Si/Beth: finished being able to do usability scale question (pair programming video)
+- Craig: added ability to let principle researchers add/remove coresearchers from their experiment
+- Euan: can add transcript to the database, needs to be linked to videos
+- Holly: started work on being able to display individal usability scale questions results and started trying to get playing in sync videos to work
+- Scott: working on being able to add timestamps to videos and comments along with the time stamps
+
+**Issues**
+- We had a big issue yesterday that meant our website would stop updating, which occured around 3:00pm so no one could continue any work after this time. Yesterday we tried many solutions, such as redeploying, commenting out code, relinking the github to azure and deleting files. However we eventually realised before this meeting that somehow the build type on azure had switched so instead of carrying out the build in azure it was trying to do it on github, which wasn't working and hence not updating. We have hopefully solved this now.
+
+**Today's Tasks**
+- Adam Sh: continue trying to get bar graphs on the website to visualise data
+- Adam Si/Beth/Scott: rearranging the way videos and timestamps/transcipts are stored and working on getting time stamps working
+- Craig: working on letting coresearchers see the experiments the have been added to but not allow them to add/remove coreseachers
+- Euan: working on adding transcripts to a database so it links to the videos
+- Holly: continue working on syncing videos and getting usability responses to display no that has finished
+
+
+---
+
 ## Day [X] - Scrum Meeting summary
 The Scrum Master for this meeting was **Holly Groves**
 
