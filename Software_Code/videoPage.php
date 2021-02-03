@@ -70,13 +70,16 @@ if(isset($_POST['logout'])) {
        function playAll() {
          var i;
          for (i=0; i < videoCount; i++) {
-           let videoID = videoArray[i];
-           let vid = document.getElementById('videoID');
+           let vid = document.getElementById(videoArray[i]);
            vid.play();
          }
        }
        function pauseAll(){
-         vid.pause();
+         var i;
+         for (i=0; i < videoCount; i++) {
+           let vid = document.getElementById(videoArray[i]);
+           vid.pause();
+         }
        }
        </script>";
        ?>
