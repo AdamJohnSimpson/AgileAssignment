@@ -30,6 +30,7 @@
 
     <header style="height:150px;">
       <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
+      
       <form method="POST">
         <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
       </form>
@@ -43,8 +44,6 @@
 
         <?php
         include "Includes/db.inc.php";
-
-        echo '<h1>' . $_SERVER[ 'DOCUMENT_ROOT' ] . '</h1>';
 
         if(ISSET($_SESSION['USER_role']) && $_SESSION['USER_role'] != 'Co-Researcher'){
           echo "<div class='row'>
