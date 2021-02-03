@@ -32,8 +32,8 @@
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
-		<button onclick="location.href='ViewUsers.php'" type='button' class='btn btn-primary'>Manage Users</button>
-		<button onclick="location.href='../experimentList.php'" type='button' class='btn btn-primary'>View Experiments</button>
+		<button onclick="location.href='ViewUsers.php';" type='button' class='btn btn-primary'>Manage Users</button>
+		<button onclick="location.href='../experimentList.php';" type='button' class='btn btn-primary'>View Experiments</button>
     </div>
   </div>
 

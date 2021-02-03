@@ -46,7 +46,7 @@
 			<div class="jumbotron" style="margin-bottom:1px;">
 
 				<div style="margin-bottom:2%">
-                    <button onclick="location.href='../experimentList.php'" class='btn btn-outline-success' type='button'>Back to experiment</button>
+                    <button onclick="location.href='../experimentList.php';" class='btn btn-outline-success' type='button'>Back to experiment</button>
                 </div>
 
 
