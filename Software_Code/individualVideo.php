@@ -40,17 +40,19 @@ $videoPath = $_GET['p'];
 
       <?php
         //get information from experiment list page to display the selected experiment
-        $query = "SELECT * FROM videos WHERE videoAddress={$videoPath}";
+        $query = "SELECT * FROM videos WHERE videoAddress= '$videoPath'";
         echo "sql = SELECT * FROM videos WHERE videoAddress= {$videoPath}";
         $result = mysqli_query($conn, $query);
-
         // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
-          echo "<video id='".$row['videoID']."' src='".$row['videoAddress']."' width='320' height='240' type='video/mp4' controls>
-                Your browser does not support the video tag.
-                </video> <br>
-                <p> <b>Video Description: </b> </p> <br>".$row['videoDescription']."";
+          $vidID = $row['videoID'];
+          $vidDesc = $row['videoDescription'];
+          echo "<br> I am in the while loop <br>";
         }
+        echo "<video id='".$vidID."' src='".$videoPath."' width='320' height='240' type='video/mp4' controls>
+              Your browser does not support the video tag.
+              </video> <br>
+              <p> <b>Video Description: </b> </p> <br>".$vidDesc."";
        ?>
 
        <div class="jumbotron text-center">
