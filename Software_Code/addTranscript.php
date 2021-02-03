@@ -1,6 +1,8 @@
 <?php
+session_start();
+$transcript = $_POST['transcript'];
 
- $transcript = $_POST['transcript'];
+
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
@@ -9,6 +11,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
       $transcript = nl2br($transcript);
       echo "Transcript: <br>";
       echo $transcript;
+      $_SESSION['transcript'] = $transcript;
     }
 }
 ?>
@@ -36,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Add a transcript</h1>
+    <h1 class="text-center">Add a transcript here</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
