@@ -68,7 +68,7 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\'" type="button" class="btn btn-danger">Remove</button> </td>';
+							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\';" type="button" class="btn btn-danger">Remove</button> </td>';
 
 							echo "</tr>";
 
