@@ -49,6 +49,8 @@
 					<h2>Current Co-Researchers</h2>
 				</div>
 
+				<?php echo '<h2>AHHHHHH</h2>'; ?>
+
 
 				<table class="table">
 					<tr>
@@ -68,7 +70,7 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\'" type="button" class="btn btn-danger">Remove</button> </td>';
+							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\';" type="button" class="btn btn-danger">Remove</button> </td>';
 							echo '<td> <button onclick="TestMe()" type="button" class="btn btn-danger">Test</button> </td>';
 
 							echo "</tr>";
