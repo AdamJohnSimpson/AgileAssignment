@@ -1,71 +1,71 @@
-<?php
+<!-- <?php
+// 
+// include 'Includes/header.php';
+// require_once "Includes/db.inc.php";
+//
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+//   header("location: login.php");
+//   exit;
+// }
+//
+// $userID= $_SESSION['id'];
+//
+// if(isset($_POST['logout'])) {
+//   unset($_SESSION['loggedin']);
+//   header("location: login.php");
+// }
+//
+//  if(isset($_POST['submit'])){
+//    $experimentName = $_POST['experimentName'];
+//    $_SESSION['experimentName'] = $experimentName;
+//
+//    $experimentInfo = $_POST['experimentInfo'];
+//    $_SESSION['experimentInfo'] = $experimentInfo;
+//
+//  if (empty($experimentName)) {
+//      echo "The experiment must have a name!";
+//  }
+//  if (empty($experimentInfo)) {
+//      echo "The experiment must have information!";
+//  }
+//  else {
+//    //send to db sql here
+//    $_SESSION['experimentID'] = $experimentID;
+//    $primaryresearcher = $userID;
+//
+//    $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
+//    $checkResult = mysqli_query($conn, $testsql);
+//
+//    if(mysqli_num_rows($checkResult) == 0) { //check if the name of experiment already exists
+//      //the experiment name doesn't already exist
+//      $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
+//      if ($conn->query($sql) === TRUE) {
+//        $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'"
+//        $result = mysqli_query($conn, $sql);
+//        $row = mysqli_fetch_array($result);
+//        $experimentid = $row['experimentid'];
+//        echo $experimentid;
+//        $videoPath = "videos/".$experimentid."";
+//        if (!mkdir($videoPath, 0700)) {
+//          echo $videoPath;
+//          die('Failed to create folder');
+//        }
+//
+//        echo "New record created successfully";
+//        header("location: experimentList.php");
+//      }
+//      else {
+//        echo "Error: " . $sql . "<br>" . $conn->error;
+//      }
+// } else {
+//     // the experiment name already exists
+//     echo "That experiment already exists";
+// }
+// }
+//  }
+//
 
-include 'Includes/header.php';
-require_once "Includes/db.inc.php";
-
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  header("location: login.php");
-  exit;
-}
-
-$userID= $_SESSION['id'];
-
-if(isset($_POST['logout'])) {
-  unset($_SESSION['loggedin']);
-  header("location: login.php");
-}
-
- if(isset($_POST['submit'])){
-   $experimentName = $_POST['experimentName'];
-   $_SESSION['experimentName'] = $experimentName;
-
-   $experimentInfo = $_POST['experimentInfo'];
-   $_SESSION['experimentInfo'] = $experimentInfo;
-
- if (empty($experimentName)) {
-     echo "The experiment must have a name!";
- }
- if (empty($experimentInfo)) {
-     echo "The experiment must have information!";
- }
- else {
-   //send to db sql here
-   $_SESSION['experimentID'] = $experimentID;
-   $primaryresearcher = $userID;
-
-   $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
-   $checkResult = mysqli_query($conn, $testsql);
-
-   if(mysqli_num_rows($checkResult) == 0) { //check if the name of experiment already exists
-     //the experiment name doesn't already exist
-     $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
-     if ($conn->query($sql) === TRUE) {
-       $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'"
-       $result = mysqli_query($conn, $sql);
-       $row = mysqli_fetch_array($result);
-       $experimentid = $row['experimentid'];
-       echo $experimentid;
-       $videoPath = "videos/".$experimentid."";
-       if (!mkdir($videoPath, 0700)) {
-         echo $videoPath;
-         die('Failed to create folder');
-       }
-
-       echo "New record created successfully";
-       header("location: experimentList.php");
-     }
-     else {
-       echo "Error: " . $sql . "<br>" . $conn->error;
-     }
-} else {
-    // the experiment name already exists
-    echo "That experiment already exists";
-}
-}
- }
-
-
- ?>
+ ?> -->
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
