@@ -49,7 +49,6 @@
 					<h2>Current Co-Researchers</h2>
 				</div>
 
-
 				<table class="table">
 					<tr>
 						<th scope="col">Username</th>
@@ -68,7 +67,8 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\'" type="button" class="btn btn-danger">Remove</button> </td>';
+							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\';" type="button" class="btn btn-danger">Remove</button> </td>';
+							echo '<td> <button onclick="TestMe()" type="button" class="btn btn-danger">Test</button> </td>';
 
 							echo "</tr>";
 
@@ -113,6 +113,13 @@
 		<footer>
 			<img class="img-fluid mx-auto d-block" src="../University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
 		</footer>
+
+		<script>
+			function TestMe(){
+				alert('ahhhhhhhh');
+				location.reload();
+			}
+		</script>
 
 	</body>
 

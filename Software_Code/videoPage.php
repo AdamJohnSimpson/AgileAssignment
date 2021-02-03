@@ -14,7 +14,7 @@ if(isset($_POST['logout'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>Videos</title> <!-- Bootstrap CSS -->
+  <title>Videos hello?</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -70,13 +70,16 @@ if(isset($_POST['logout'])) {
        function playAll() {
          var i;
          for (i=0; i < videoCount; i++) {
-           var videoID = 'videoArray[i]';
-           var vid = document.getElementById('".json_encode($videoID)."');
+           let vid = document.getElementById(videoArray[i]);
            vid.play();
          }
        }
        function pauseAll(){
-         vid.pause();
+         var i;
+         for (i=0; i < videoCount; i++) {
+           let vid = document.getElementById(videoArray[i]);
+           vid.pause();
+         }
        }
        </script>";
        ?>
