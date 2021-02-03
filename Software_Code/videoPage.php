@@ -71,7 +71,7 @@ if(isset($_POST['logout'])) {
          var i;
          for (i=0; i < videoCount; i++) {
            var videoID = 'videoArray[i]';
-           var vid = document.getElementById(".json_encode($videoID).");
+           var vid = document.getElementById('".json_encode($videoID)."');
            vid.play();
          }
        }

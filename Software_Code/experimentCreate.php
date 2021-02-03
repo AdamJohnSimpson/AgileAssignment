@@ -36,26 +36,22 @@ if(isset($_POST['logout'])) {
    $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
    $checkResult = mysqli_query($conn, $testsql);
 
-   // while ($row = mysqli_fetch_array($variable)) {
-   //   code here...
-   // }
-
    if(mysqli_num_rows($checkResult) == 0) { //check if the name of experiment already exists
      //the experiment name doesn't already exist
      $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
      if ($conn->query($sql) === TRUE) {
-       $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'";
+       $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'"
        $result = mysqli_query($conn, $sql);
-       while ($row = mysqli_fetch_array($result)) {
-         $experimentid = $row['experimentid'];
-         echo "Experiment id:".$experimentid."<br>";
-         $videoPath = "videos/".$experimentid."";
-       }
+       $row = mysqli_fetch_array($result);
+       $experimentid = $row['experimentid'];
+       echo $experimentid;
+       $videoPath = "videos/".$experimentid."";
        if (!mkdir($videoPath, 0700)) {
-        echo "video path: ".$videoPath;
-        die('Failed to create folder');
-      }
-         echo "New record created successfully";
+         echo $videoPath;
+         die('Failed to create folder');
+       }
+
+       echo "New record created successfully";
        header("location: experimentList.php");
      }
      else {
@@ -93,7 +89,7 @@ if(isset($_POST['logout'])) {
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center" style="float: center ">Create Expleriment</h1>
+    <h1 class="text-center" style="float: center ">Create Experiment</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
