@@ -45,6 +45,11 @@
 		<div class="container-fluid" style="padding:0">
 			<div class="jumbotron" style="margin-bottom:1px;">
 
+				<div style="margin-bottom:2px">
+                    <button onclick="location.href='../experimentList.php'" class='btn btn-outline-success' type='button'>Back to experiment</button>
+                </div>
+
+
 				<div style="margin-bottom:1%">
 					<h2>Current Co-Researchers</h2>
 				</div>
@@ -99,7 +104,7 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\'../Includes/addco.inc.php?eid=' .$eID .'&aid='.$row['UserID'].'\'" type="button" class="btn btn-secondary">Add</button> </td>';
+							echo '<td> <button onclick="location.href=\'../Includes/addco.inc.php?eid=' .$eID .'&aid='.$row['UserID'].'\';" type="button" class="btn btn-secondary">Add</button> </td>';
 
 							echo "</tr>";
 
