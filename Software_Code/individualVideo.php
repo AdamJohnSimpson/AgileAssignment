@@ -1,5 +1,6 @@
 <?php
 include 'Includes/header.php';
+include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
 
@@ -41,7 +42,6 @@ $videoPath = $_GET['p'];
       <?php
         //get information from experiment list page to display the selected experiment
         $query = "SELECT * FROM videos WHERE videoAddress= '$videoPath'";
-        echo "sql = SELECT * FROM videos WHERE videoAddress= {$videoPath}";
         $result = mysqli_query($conn, $query);
         // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
