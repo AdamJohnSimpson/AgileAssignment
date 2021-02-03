@@ -75,7 +75,11 @@ if(isset($_POST['logout'])) {
          }
        }
        function pauseAll(){
-         vid.pause();
+         var i;
+         for (i=0; i < videoCount; i++) {
+           let vid = document.getElementById(videoArray[i]);
+           vid.pause();
+         }
        }
        </script>";
        ?>
