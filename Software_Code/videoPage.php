@@ -54,6 +54,8 @@ if(isset($_POST['logout'])) {
             <video id='".$allVideos[$x]."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
             </video>
+            $address = 'https://agile-assignment-group-4.azurewebsites.net/individualVideo.php?p={$path}'
+            <a href='$address'> <button class='btn btn-outline-success' type='button'>View video information</button> </a>
             <br><br>";
         }
         /*
