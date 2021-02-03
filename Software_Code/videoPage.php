@@ -53,9 +53,9 @@ if(isset($_POST['logout'])) {
             <br>
             <video id='".$allVideos[$x]."' src='" . $path . "' width='320' height='240' type='video/mp4' controls>
               Your browser does not support the video tag.
-            </video>
-            $address = 'individualVideo.php?p={$path}'
-            <a href='$address'> <button class='btn btn-outline-success' type='button'>View video information</button> </a>
+            </video>";
+            $address = "individualVideo.php?p={$path}";
+            echo "<a href='{$address}'> <button class='btn btn-outline-success' type='button'>View video information</button> </a>
             <br><br>";
         }
         /*
