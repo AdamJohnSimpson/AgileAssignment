@@ -1,19 +1,19 @@
 <?php
 session_start();
-$transcript = $_POST['transcript'];
-
-
-
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-
-  if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
-    {
-      $transcript = nl2br($transcript);
-      echo "Transcript: <br>";
-      echo $transcript;
-      $_SESSION['transcript'] = $transcript;
-    }
-}
+// $transcript = $_POST['transcript'];
+//
+//
+//
+// if($_SERVER["REQUEST_METHOD"] === "POST"){
+//
+//   if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
+//     {
+//       $transcript = nl2br($transcript);
+//       echo "Transcript: <br>";
+//       echo $transcript;
+//       $_SESSION['transcript'] = $transcript;
+//     }
+// }
 ?>
 
 
