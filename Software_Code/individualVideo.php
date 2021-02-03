@@ -1,5 +1,6 @@
 <?php
 include 'Includes/header.php';
+include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
 
