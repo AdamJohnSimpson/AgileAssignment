@@ -1,14 +1,15 @@
 <?php
-session_start();
-//checks if user logged in, if not returns to login page
-// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//   header("location: login.php");
-//   exit;
-// }
-if(isset($_POST['logout'])) {
-  unset($_SESSION['loggedin']);
-  header("location: login.php");
-}
+  session_start();
+  //checks if user logged in, if not returns to login page
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false){
+    header("location: login.php");
+    exit;
+  }
+
+  if(isset($_POST['logout'])) {
+    unset($_SESSION['loggedin']);
+    header("location: login.php");
+  }
  ?>
 
 <!DOCTYPE html>
@@ -42,11 +43,15 @@ if(isset($_POST['logout'])) {
 
         <?php
         include "Includes/db.inc.php";
-        echo "<div class='row'>
-                <div class='card-body'>
-                  <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
-                </div>
-              </div>";
+
+        if(ISSET($_SESSION['USER_role']) && $_SESSION['USER_role'] != 'Co-Researcher'){
+          echo "<div class='row'>
+                  <div class='card-body'>
+                    <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
+                  </div>
+                </div>";
+        }
+
         if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
           {
             func($_GET['i'], $_GET['n'], $_GET['r']);
