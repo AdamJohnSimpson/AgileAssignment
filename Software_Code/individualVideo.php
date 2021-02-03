@@ -17,7 +17,7 @@ $videoPath = $_GET['p'];
 
 <head>
   <meta charset="utf-8">
-  <title>Videos hello?</title> <!-- Bootstrap CSS -->
+  <title>Video Info</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -48,14 +48,16 @@ $videoPath = $_GET['p'];
           $vidID = $row['videoID'];
           $vidDesc = $row['videoDescription'];
           $vidTrans = $row['transcript'];
+          $transcript = nl2br($vidTrans);
           echo "<br> I am in the while loop <br>";
         }
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
               Your browser does not support the video tag.
               </video> <br>
               <p> <b>Video Description: </b> </p> <br>".$vidDesc."<br><br>
-              <p> <b>Video Transription: </b> </p> <br>".$vidTrans." <br> <br>
-              <button class='btn btn-outline-success' type='button'>Edit Video Details</button> <br> ";
+              <p> <b>Video Transription: </b> </p> <br>".$transcript." <br> <br>";
+              $address = "videoEdit.php?id={$videoPath}";
+              echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Edit Video Details</button> </a> <br>";
        ?>
 
        <div class="jumbotron text-center">
