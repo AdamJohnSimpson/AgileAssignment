@@ -1,4 +1,4 @@
- <?php
+<?php
 include 'Includes/header.php';
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
