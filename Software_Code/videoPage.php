@@ -1,12 +1,12 @@
-<!-- <?php
-// include 'Includes/header.php';
-// $experimentID = $_SESSION['experimentID'];
-// $experimentName = $_SESSION['experimentName'];
-//
-// if(isset($_POST['logout'])) {
-//   unset($_SESSION['loggedin']);
-//   header("location: login.php");
-// }
+ <?php
+include 'Includes/header.php';
+$experimentID = $_SESSION['experimentID'];
+$experimentName = $_SESSION['experimentName'];
+
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -115,4 +115,4 @@
   </footer>
 </body>
 
-</html> -->
+</html>
