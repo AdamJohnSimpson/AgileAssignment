@@ -40,7 +40,7 @@ if(isset($_POST['logout'])) {
      //the experiment name doesn't already exist
      $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
      if ($conn->query($sql) === TRUE) {
-       $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'"
+       $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'";
        $result = mysqli_query($conn, $sql);
        $row = mysqli_fetch_array($result);
        $experimentid = $row['experimentid'];
