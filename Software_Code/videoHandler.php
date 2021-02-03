@@ -72,7 +72,7 @@
                   move_uploaded_file(($_FILES["file"]["tmp_name"]),"videos/". $experimentid . "/" . $_FILES['file']['name']);
                   echo "<br><br><h3>Your upload was successful.</h3>";
                   $filepath = "videos/". $experimentid . "/" . $_FILES['file']['name'];
-                  $sql = "INSERT INTO videos(videoDescription, experimentID, videoAddress) VALUES ('Default video description', '$experimentid', '$filepath')";
+                  $sql = "INSERT INTO videos(videoDescription, experimentID, videoAddress, transcript) VALUES ('Default video description', '$experimentid', '$filepath', 'Default transcript')";
                   if ($conn->query($sql) === TRUE) {
                     echo "Successfully added to database";
                   }
