@@ -62,26 +62,26 @@
         */
        ?>
        <!-- PLAY/PAUSE VIDEOS IN SYNC -->
-       <!-- <?php
-       // echo "
-       // <script>
-       // var videoArray = ".json_encode($allVideos).";
-       // var videoCount = videoArray.length;
-       // function playAll() {
-       //   var i;
-       //   for (i=0; i < videoCount; i++) {
-       //     var videoID = 'videoArray[i]';
-       //     var vid = document.getElementById(".json_encode($videoID).");
-       //     vid.play();
-       //   }
-       // }
-       // function pauseAll(){
-       //   vid.pause();
-       // }
-       // </script>";
-       ?> -->
-       <!-- <button onclick="playAll()" type="button">Play All</button>
-       <button onclick="pauseAll()" type="button">Pause All</button><br> -->
+       <?php
+       echo "
+       <script>
+       var videoArray = ".json_encode($allVideos).";
+       var videoCount = videoArray.length;
+       function playAll() {
+         var i;
+         for (i=0; i < videoCount; i++) {
+           var videoID = 'videoArray[i]';
+           var vid = document.getElementById('".json_encode($videoID)."');
+           vid.play();
+         }
+       }
+       function pauseAll(){
+         vid.pause();
+       }
+       </script>";
+       ?>
+       <button onclick="playAll()" type="button">Play All</button>
+       <button onclick="pauseAll()" type="button">Pause All</button><br>
 
        <div class="jumbotron text-center">
          <h2 class="text-centre">Timestamp 1</h2>
