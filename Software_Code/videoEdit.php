@@ -17,8 +17,8 @@ $newTrans = $_POST['transcript'];
         //send to db sql here
         echo "Transcript: ".$newTrans."<br>";
         echo "Address: ".$videoPath."<br>";
-        $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
-        echo "sql = UPDATE videos SET transcript= ".$newtrans." WHERE videoAddress=".$videoPath."";
+        $sql = "UPDATE videos SET transcript='{$newTrans}' WHERE videoAddress='{$videoPath}'";
+        echo "sql = UPDATE videos SET transcript= ".$newTrans." WHERE videoAddress=".$videoPath."";
         if ($conn->query($sql) === TRUE) {
           echo "New transcript added successfully!";
         }
