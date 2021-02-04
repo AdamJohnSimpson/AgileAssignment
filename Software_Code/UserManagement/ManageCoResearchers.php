@@ -36,7 +36,8 @@
 
 	<body>
 		<header>
-			<img class="img-fluid" src="../University-of-Dundee-logo.png" width="300px" style="padding:20px">
+			<a href="../Includes/redirect.inc.php"><img class="img-fluid" src="../University-of-Dundee-logo.png" width="300px" style="padding:20px"></a>
+			<button onclick="location.href='../Includes/logout.inc.php';" type='button' class='btn btn-secondary' style="float: right; margin:20px">Logout</button>
 		</header>
 
 		<div class="jumbotron text-center">
@@ -44,6 +45,11 @@
 		</div>
 		<div class="container-fluid" style="padding:0">
 			<div class="jumbotron" style="margin-bottom:1px;">
+
+				<div style="margin-bottom:2%">
+                    <button onclick="location.href='../experimentList.php';" class='btn btn-outline-success' type='button'>Back to experiment</button>
+                </div>
+
 
 				<div style="margin-bottom:1%">
 					<h2>Current Co-Researchers</h2>
@@ -68,7 +74,7 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\'" type="button" class="btn btn-danger">Remove</button> </td>';
+							echo '<td> <button onclick="location.href=\'../Includes/remco.inc.php?eid=' .$eID .'&rid='.$row['UserID'].'\';" type="button" class="btn btn-danger">Remove</button> </td>';
 
 							echo "</tr>";
 
@@ -99,7 +105,7 @@
 							echo "<td>" . $row['UserName'] . "</td>";
 							echo "<td>" . $row['Firstname'] . "</td>";
 							echo "<td>" . $row['Surname'] . "</td>";
-							echo '<td> <button onclick="location.href=\'../Includes/addco.inc.php?eid=' .$eID .'&aid='.$row['UserID'].'\'" type="button" class="btn btn-secondary">Add</button> </td>';
+							echo '<td> <button onclick="location.href=\'../Includes/addco.inc.php?eid=' .$eID .'&aid='.$row['UserID'].'\';" type="button" class="btn btn-secondary">Add</button> </td>';
 
 							echo "</tr>";
 

@@ -5,14 +5,14 @@
 //   header("location: login.php");
 //   exit;
 // }
-$tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php?qid=";
+$tempURL = "https://team4agileassignment.azurewebsites.net/Questionnaire.php?qid=";
  ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>List of questionnaires for </title
+    <title>List of questionnaires for </title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -23,10 +23,8 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
 
   <body>
     <header style="height:150px;">
-      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
-      <form method="POST">
-        <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
-      </form>
+      <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
+      <button onclick="location.href='Includes/logout.inc.php';" type='button' class='btn btn-secondary' style="float: right; margin:20px">Logout</button>
     </header>
 
       <div class="jumbotron text-center">
@@ -65,9 +63,9 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
              echo "<h5 class='card-text mt-2'>".$questionnaireName." <button class='btn btn-success' onclick='myFunction(\"".$tempURL.$questionnaireID."\")'>Copy Link</button></h5>
 
               <br>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/viewQuestionnaireResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>View Results</button> </a>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Individual Results</button></a>
+              <a href='https://team4agileassignment.azurewebsites.net/viewQuestionnaireResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>View Results</button> </a>
+              <a href='https://team4agileassignment.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
+              <a href='https://team4agileassignment.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Individual Results</button></a>
              </div>
            </div>";
         }

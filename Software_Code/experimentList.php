@@ -1,15 +1,12 @@
 <?php
-session_start();
-//checks if user logged in, if not returns to login page
-// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//   header("location: login.php");
-//   exit;
-// }
-if(isset($_POST['logout'])) {
-  unset($_SESSION['loggedin']);
-  header("location: login.php");
-}
- ?>
+  session_start();
+  //checks if user logged in, if not returns to login page
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false){
+    header("location: login.php");
+    exit;
+  }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -28,10 +25,9 @@ if(isset($_POST['logout'])) {
   <body>
 
     <header style="height:150px;">
-      <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
-      <form method="POST">
-        <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
-      </form>
+      <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
+      <button onclick="location.href='Includes/logout.inc.php';" type='button' class='btn btn-secondary' style="float: right; margin:20px">Logout</button>
+
     </header>
 
       <div class="jumbotron text-center">
@@ -42,11 +38,15 @@ if(isset($_POST['logout'])) {
 
         <?php
         include "Includes/db.inc.php";
-        echo "<div class='row'>
-                <div class='card-body'>
-                  <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
-                </div>
-              </div>";
+
+        if(ISSET($_SESSION['USER_role']) && $_SESSION['USER_role'] != 'Co-Researcher'){
+          echo "<div class='row'>
+                  <div class='card-body'>
+                    <a href='experimentCreate.php'> <button class='btn btn-outline-success' type='button'>Create new experiment</button> </a>
+                  </div>
+                </div>";
+        }
+
         if(isset($_GET['i']) && isset($_GET['n']) && isset($_GET['r']))
           {
             func($_GET['i'], $_GET['n'], $_GET['r']);
@@ -62,8 +62,11 @@ if(isset($_POST['logout'])) {
             $sql = "SELECT * FROM experiments ORDER BY experimentid DESC";
             $result = mysqli_query($conn, $sql);
           }
-          else if ($_SESSION['USER_role'] != 'Lab Manager'){
+          else if ($_SESSION['USER_role'] == 'Principal Researcher'){
             $sql = "SELECT * FROM experiments WHERE primaryresearcher = {$userID} ORDER BY experimentid DESC";
+            $result = mysqli_query($conn, $sql);
+          }else{
+            $sql = "SELECT * FROM experiments WHERE experimentid IN (SELECT experimentid FROM coexperiments WHERE UserID = {$userID})";
             $result = mysqli_query($conn, $sql);
           }
           //displays all experiments fetched along with an option to create a questionnaire

@@ -122,7 +122,7 @@
 
 <body>
 	<header style="height:150px;">
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
   </header>
 
   <div class="jumbotron text-center">
