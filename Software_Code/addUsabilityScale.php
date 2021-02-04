@@ -182,7 +182,7 @@
                 <input type="text" name="subQ1"><br><br>
                 <?php
                 for ($i=0; $i < $extraOptions; $i++) {
-                  $tempNo = $extraOptions + 1;
+                  $tempNo = $extraOptions + 1 + $i;
                   $subQname = "subQ" . $tempNo;
                   echo "<label>Please enter a sub question: </label>
                   <input type='text' name=".$subQname."><br><br>";
