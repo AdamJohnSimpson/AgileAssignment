@@ -38,8 +38,7 @@
         if (isset($_GET['c'])) {
             echo "<div class='alert alert-success' role='alert'>
               Experiment successfully created.
-            </div>";
-            echo "hey look im here";
+              </div>";
         }
         include "Includes/db.inc.php";
 
