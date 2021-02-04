@@ -3,15 +3,15 @@ include "Includes/db.inc.php";
 include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
-$transcript = $_POST['transcript'];
+$newTrans = $_POST['transcript'];
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
   if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
     {
-      $newtrans = $_POST['transcript'];
+      // $newtrans = $_GET['transcript'];
+      echo "Transcript: ".$newTrans."";
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
-
       }
       else {
      //send to db sql here
@@ -68,9 +68,7 @@ if(isset($_POST['editDesc'])){
 <body>
   <header style="height:150px;">
     <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
-    <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
-    </form>
+    <button onclick="location.href='Includes/logout.inc.php';" type='button' class='btn btn-secondary' style="float: right; margin:20px">Logout</button>
   </header>
 
   <div class="jumbotron text-center">
