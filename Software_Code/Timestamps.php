@@ -57,7 +57,7 @@ if(isset($_POST['logout'])) {
           $timestamptext = $row['timestampText']
           echo "<br> I am in the second while loop <br>";
         }
-        echo "HELLO".$timstamptime."i work ".$timestamptext;
+        echo "HELLO".$timstamptime."i work ".$timestamptext."";
 
        /*
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
