@@ -130,8 +130,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 $tempID = $subQuestionID[$i];
                 $subQuestionResultsQuery = "SELECT response FROM usabilityresults WHERE uqID = '$tempID'";
                 $subQuestionResultsResults = mysqli_query($conn, $subQuestionResultsQuery);
-
-
+                $subQuestionResponses = array();
 
                 if (mysqli_num_rows($subQuestionResultsResults) > 0) {
                     while ($row = mysqli_fetch_array($subQuestionResultsResults)) {
@@ -139,7 +138,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                     }
                 }
 
-                array_push($allSubResults, $subQuestionResponses);
+                $allSubResults[] = $subQuestionResponses;
 
               }
               print_r($allSubResults);
@@ -150,8 +149,6 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
                 $countOfSubValues = array_count_values($allSubResults[$p]);
 
-                print_r($countOfSubValues);
-
                 $subValues = array_keys($countOfSubValues);
                 echo "<h3>" . $subQuestionText[$p] . "</h3> <br>";
                 echo '<div class="chart-wrap vertical">
@@ -159,14 +156,11 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
                 for ($b=0; $b < count($subValues); $b++) {
                   $noOfSubResponses += $countOfSubValues[$subValues[$b]];
-                  echo $noOfSubResponses;
                 }
 
                 for ($c=0; $c < count($subValues); $c++)
                 {
-                  echo "banana" . $countOfSubValues[$subValues[$c]];
                   $percentage = round(($countOfSubValues[$subValues[$c]] / $noOfSubResponses) * 100);
-                  echo "dragon fruit" . $percentage;
                   echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $subValues[$c] . '" title="' . $subValues[$c] . ': ' . $countOfSubValues[$subValues[$c]] . '"></div>';
                 }
                 echo '</div>
