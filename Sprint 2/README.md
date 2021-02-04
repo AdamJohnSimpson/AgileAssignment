@@ -123,7 +123,8 @@ n/a
 - Craig: coreaschers can only see experiments they are linked to
 - Holly: videos can be be played and paused in sync (all videos for an experiment)
 - Scott: n/a
-*for n/a tasks see issues below*
+
+For n/a tasks see issues below for the reason why
 
 
 **Issues**
