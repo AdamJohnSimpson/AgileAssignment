@@ -5,7 +5,7 @@ include 'Includes/header.php';
 $videoPath = $_GET['id'];
 $newTrans = $_POST['transcript'];
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+//if($_SERVER["REQUEST_METHOD"] === "POST"){
   if(isset($_POST['editTrans']) && $_POST['editTrans'] = "Update Transcript")
     {
       // $newtrans = $_GET['transcript'];
@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         }
       }
    }
-}
+//}
 
 // if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
 //   {
