@@ -35,7 +35,7 @@ $tempURL = "https://team4agileassignment.azurewebsites.net/Questionnaire.php?qid
         <?php
         if (isset($_GET['c'])) {
             echo "<div class='alert alert-success' role='alert'>
-              Experiment successfully created.
+              Questionnaire successfully created.
               </div>";
         }
 
