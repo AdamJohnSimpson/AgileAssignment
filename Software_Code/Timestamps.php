@@ -63,11 +63,14 @@ if(isset($_POST['logout'])) {
             //send to db sql here
             $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
             if ($conn->query($sql) === TRUE) {
-              echo "New record created successfully";}}}
-              echo" <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>";
-              
+              echo "New record created successfully";
+            }}
+          }
+
+
 
        ?>
+       <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
        <!--
        <form>
          <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">
