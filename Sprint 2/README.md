@@ -103,6 +103,41 @@ n/a
 
 ---
 
+## Day [4] - Scrum Meeting summary
+The Scrum Master for this meeting was **Holly Groves**
+
+### Members Present:
+Adam Shepherd, Adam Simpson, Beth Ogilvy, Craig Ritchie, Euan Taylor, Holly Groves and Scott Fulton
+
+### Members Not Present:
+n/a
+
+### Apologies:
+n/a
+
+### Summary of Conversation:
+**Yesterday's Tasks**
+- Adam Sh: n/a
+- Adam Si/Euan: changed the way video transcripts and descriptions are done and added edit description and edit transcript functionalities, created an additional page to display a sinlge video and its information
+- Beth: n/a
+- Craig: coreaschers can only see experiments they are linked to
+- Holly: videos can be be played and paused in sync (all videos for an experiment)
+- Scott: n/a
+*for n/a tasks see issues below*
+
+
+**Issues**
+- The problem we had stated yesterday with Azure not updating and our team not being able to use the website was actually **NOT FIXED** yesterday like we thought. The fix yesterday was another problem we accidentally created when repeadtedly redeploying the website to get it to update. We thought it might be the code itself causing the problems, namely it seeemd to break as changes were being made to the same page (videoPage.php) and this happened 3 times in a row. After trying a further variety of possible solutions yesterday we left it over night after we completely lost access to the website and database. This morning before the meeting we tried again to make a new instance  of the webapp on azure (yesterday it was not giving us permission to create a new resource group). After the team member creating the new instance left the old resource group and activiated their student subscription from the university, it allowed us to create a new webapp and connect properly. We had copied the database from the previous site however the database needed relinked, urls in our code needed changed, our old test data needed deleted/recreated and the videos we had uploaded needed reuploaded. This took a lot of time out from our sprint but hopefully this is the permanent solution and we can continue finishing off the tasks we had planned to do. 
+
+**Today's Tasks**
+- Adam Sh: continue working on visualsing all data in graphs
+- Adam Si/Euan: add the functionality to display the description and transcripts of videos 
+- Beth/Scott: work on being able to add timestamps to videos
+- Craig: minor fixes across website, and missing stakeholder requirements
+- Holly: get usability scale responses to display individually
+
+---
+
 ## Day [X] - Scrum Meeting summary
 The Scrum Master for this meeting was **Holly Groves**
 
