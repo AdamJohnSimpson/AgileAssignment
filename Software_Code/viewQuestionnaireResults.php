@@ -77,7 +77,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       if (count($listOfQuestionID) > 0) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
 
-            echo "<br><h2><u><strong>{$X} - {$listOfQuestionText[$x]}</strong></u></h2>";
+            echo "<br><h2><u><strong>{$x} - {$listOfQuestionText[$x]}</strong></u></h2>";
             echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
 
             if ($listOfQuestionType[$x] == 1)
