@@ -36,31 +36,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
+        $sql = "SELECT * FROM User WHERE UserName = '$username'";
+        $result = mysqli_query($conn, $sql);
+        $count = 0;
+        while($row = mysqli_fetch_array($result)){
+            $count=1;
+            $id = $row["UserID"];
+            $username = $row["UserName"];
+            $hashed_password = $row["Password"];
 
-        if($sql = $conn->prepare("SELECT * FROM User WHERE UserName = ?")){
-            $sql->bind_param("s", $username);
-            
-            $result = mysqli_query($conn, $sql);
-            $count = 0;
-            while($row = mysqli_fetch_array($result)){
-                $count=1;
-                $id = $row["UserID"];
-                $username = $row["UserName"];
-                $hashed_password = $row["Password"];
-    
-                if($password == $hashed_password){
-                    // Store data in session variables
-                    $_SESSION["loggedin"] = true;
-                    $_SESSION["id"] = $id;
-                    $_SESSION["username"] = $username;
-                    $_SESSION["USER_role"] = $row["Role"];
-                    // Redirect user to redirection page
-                    header('Location:Includes/redirect.inc.php');
-                    exit();
-                }else{
-                    // Display an error message if password is not valid
-                    $password_err = "The password you entered was not valid.";
-                }
+            if($password == $hashed_password){
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["id"] = $id;
+                $_SESSION["username"] = $username;
+                $_SESSION["USER_role"] = $row["Role"];
+                // Redirect user to redirection page
+                header('Location:Includes/redirect.inc.php');
+				exit();
+            }else{
+                // Display an error message if password is not valid
+                $password_err = "The password you entered was not valid.";
             }
         }
 
