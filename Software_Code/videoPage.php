@@ -79,29 +79,9 @@ $experimentName = $_SESSION['experimentName'];
        }
        </script>";
        ?>
-       <button onclick="playAll()" type="button">Play All</button>
-       <button onclick="pauseAll()" type="button">Pause All</button><br>
+       <button onclick="playAll()" type="button" class='btn btn-outline-success'>Play All</button>
+       <button onclick="pauseAll()" type="button" class='btn btn-outline-success'>Pause All</button><br>
 
-       <div class="jumbotron text-center">
-         <h2 class="text-centre">Timestamp 1</h2>
-         <p>This is the description for timestamp 1</p>
-       </div>
-       <!--
-       <form>
-         <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">
-         <script>
-         var video = document.getElementById('vid');
-         var btn = document.getElementById('btn');
-
-         //might need to put this script in the php stuff to work?
-         //as well as the html associated with this?
-         function timestamp() {
-           //go to 3 seconds in the video -> this would probably need to be in the php
-           video.pause(); //pause the video
-         }
-         </script>
-       </form>
-     -->
        <br><br>
        <form action="experimentInformation.php">
            <input class='btn btn-outline-success' type="submit" value="Return to experiment page" style="float: left; margin:20px"/>
