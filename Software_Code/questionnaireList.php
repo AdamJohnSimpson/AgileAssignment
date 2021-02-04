@@ -5,7 +5,7 @@
 //   header("location: login.php");
 //   exit;
 // }
-$tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php?qid=";
+$tempURL = "https://team4agileassignment.azurewebsites.net/Questionnaire.php?qid=";
  ?>
 
 <!DOCTYPE html>
@@ -65,9 +65,9 @@ $tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php
              echo "<h5 class='card-text mt-2'>".$questionnaireName." <button class='btn btn-success' onclick='myFunction(\"".$tempURL.$questionnaireID."\")'>Copy Link</button></h5>
 
               <br>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/viewQuestionnaireResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>View Results</button> </a>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Individual Results</button></a>
+              <a href='https://team4agileassignment.azurewebsites.net/viewQuestionnaireResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>View Results</button> </a>
+              <a href='https://team4agileassignment.azurewebsites.net/downloadResults.php?qid={$questionnaireID}'> <button class='btn btn-outline-success' type='button'>Dowload Results</button> </a>
+              <a href='https://team4agileassignment.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Individual Results</button></a>
              </div>
            </div>";
         }
