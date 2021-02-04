@@ -145,6 +145,8 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
               for ($p=0; $p < count($subQuestionText); $p++) {
                 $noOfSubResponses = 0;
+                $countOfSubValues = array();
+
                 $countOfSubValues = array_count_values($allSubResults[$p]);
 
                 print_r($countOfSubValues);
@@ -161,9 +163,9 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
                 for ($c=0; $c < count($subValues); $c++)
                 {
-                  echo $countOfSubValues[$subValues[$c]];
+                  echo "banana" . $countOfSubValues[$subValues[$c]];
                   $percentage = round(($countOfSubValues[$subValues[$c]] / $noOfSubResponses) * 100);
-                  echo $percentage;
+                  echo "dragon fruit" . $percentage;
                   echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $subValues[$c] . '" title="' . $subValues[$c] . ': ' . $countOfSubValues[$subValues[$c]] . '"></div>';
                 }
                 echo '</div>
