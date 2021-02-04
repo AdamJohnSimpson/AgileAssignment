@@ -96,7 +96,7 @@ $responseID = $_GET['rid']; //get responseID
 
                   $stmt = "SELECT * FROM usabilityresults WHERE uqID = '$subQuestionID' AND responseID = '$responseID'"; //gets the response for this sub question which is stupid
                   $subQuestionResponseQuery = mysqli_query($conn, $stmt);
-                  while($row = mysqli_fetch_array($subQuestionResponsesQuery)){
+                  while($row = mysqli_fetch_array($subQuestionResponseQuery)){
                     $subQuestionResponse = $row['response'];
                     echo "<p>Response: "."$subQuestionResponse"."</p>";
                   }//close while
