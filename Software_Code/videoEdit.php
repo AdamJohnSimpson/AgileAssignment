@@ -90,7 +90,8 @@ if(isset($_POST['editDesc'])){
         <label>Please enter the transcript below.</label>
         </form>
         <div class="jumbotron" style="margin-bottom:1px;">
-          <!-- <form action="<//?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> -->
+          <!-- action="<//?php// echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" -->
+          <form method="POST">
             <div class="form-group">
               <form>
                 <label>Please enter the transcript below.</label>
@@ -102,7 +103,7 @@ if(isset($_POST['editDesc'])){
               <div class="form-check">
                 <input type="submit" value="Update Transcript" name="editTrans" class='btn btn-outline-success'>
               </div>
-            <!-- </form> -->
+            </form>
           </div>
         </div>
         <!-- <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
