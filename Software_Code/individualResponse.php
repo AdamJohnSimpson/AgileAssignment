@@ -78,12 +78,12 @@ $responseID = $_GET['rid']; //get responseID
               }//close nested else
             } //closes if
               else{ //question to display is a usabiltiy scale question
-                echo"yay i got here";
+                echo"yay i got here edit1";
                 echo $responseID;
 
                 echo "<h5 class='card-text mt-2'>"."Title: ".$questionTxt."</h5>"; //this echos the 'title question' which is stupid
 
-                $stmt = "SELECT * FROM usabilityquestions WHERE uqText = $questionID"; //gets the question id to get all sub questions for the usability scale which is stupid
+                $stmt = "SELECT * FROM usabilityquestions WHERE questionID = $questionID"; //gets the question id to get all sub questions for the usability scale which is stupid
                 $subQuestionsQuery = mysqli_query($conn, $stmt);
                 while($row = mysqli_fetch_array($subQuestionsQuery)){
                   echo "yay i got here too";
