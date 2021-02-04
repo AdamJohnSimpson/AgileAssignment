@@ -82,7 +82,6 @@ $responseID = $_GET['rid']; //get responseID
                 $stmt = "SELECT * FROM usabilityquestions WHERE questionID = '$questionID'"; //gets the question id to get all sub questions for the usability scale
                 $subQuestionsQuery = mysqli_query($conn, $stmt);
                 while($row = mysqli_fetch_array($subQuestionsQuery)){
-                  echo "yay i got here too";
                   $subQuestionText = $row['uqText'];
                   $subQuestionID = $row['uqID'];
                   echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question
