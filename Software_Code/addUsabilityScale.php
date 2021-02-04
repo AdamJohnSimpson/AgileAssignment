@@ -77,7 +77,7 @@
       $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
       if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        for ($i=1; $i < $extraOptions+2; $i++) {
+        for ($i=0; $i < $extraOptions+2; $i++) {
           $variablename = "subQ".$i."";
           $subQtext = $_POST[$variablename];
           if (empty($subQtext)) {
