@@ -1,17 +1,17 @@
 <?php include 'includes/header.php'?>
 <?php
 //ensures user is logged in
-  // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  //   header("location: login.php");
-  //   exit;
-  // }
-  // if(isset($_SESSION["experimentID"])){
-  //   $experimentID = $_SESSION["experimentID"];
-  // } else {
-  //   //If an experiment hasn't been selected redirect to relevant page
-  //   header("location: experimentList.php");
-  //   exit;
-  // }
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false){
+    header("location: login.php");
+    exit;
+  }
+  if(isset($_SESSION["experimentID"])){
+    $experimentID = $_SESSION["experimentID"];
+  } else {
+    //If an experiment hasn't been selected redirect to relevant page
+    header("location: experimentList.php");
+    exit;
+  }
 
   include "Includes/db.inc.php";
   $questionnaireID = $_SESSION['questionnaireID'];
@@ -56,9 +56,10 @@
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
-      header("location: questionnaireList.php");
-      exit;
-    }
+      
+    header("location: questionnaireList.php");
+    exit;
+  }
 
   if(isset($_POST['cancel'])) {
     $sql = "DELETE FROM questions WHERE questionnaireID = '$questionnaireID'";
