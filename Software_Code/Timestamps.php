@@ -3,25 +3,29 @@ include 'Includes/header.php';
 include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
-
+$vidID = $_GET['id'];
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
 }
 if(isset($_POST['addT'])){
+  $vidID = $_GET['id'];
   $timestampT = $_POST['timestampT'];
   $timestampnote = $_POST['note'];
   if (empty($timestampT)) {
     echo "The timestamp must have a time!";
   }
   else {
-
     //send to db sql here
-    $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
+    $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ('$timestampnote', '$vidID', '$timestampT')";
+    echo "query is - ".$sql."";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
-      header("location: Timestamps.php");
+      $success=true;
     }}
+  }
+  if ($success){
+    header("location: Timestamps.php");
   }
 
 ?>
@@ -55,7 +59,7 @@ if(isset($_POST['addT'])){
 
       <?php
 
-        $vidID = $_GET['id'];
+
         $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
         $result = mysqli_query($conn, $query);
 
@@ -67,7 +71,7 @@ if(isset($_POST['addT'])){
         }
 
        ?>
-       <form action="POST">
+       <form method="POST">
          <p> enter a time: </p><input type='text' name="timestampT">
          <p> enter a note: </p><input type='text' name="note">
          <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
@@ -92,7 +96,7 @@ if(isset($_POST['addT'])){
     </div>
   </div>
 
-  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
+  <form action="experimentInformation.php">
       <input type="submit" value="Return to Experiments Information" />
   </form>
   <footer>
