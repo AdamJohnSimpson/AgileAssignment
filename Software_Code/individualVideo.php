@@ -73,7 +73,6 @@ $videoPath = $_GET['p'];
          <script>
          var video = document.getElementById('vid');
          var btn = document.getElementById('btn');
-
          //might need to put this script in the php stuff to work?
          //as well as the html associated with this?
          function timestamp() {
