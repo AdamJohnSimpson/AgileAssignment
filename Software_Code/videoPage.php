@@ -104,7 +104,7 @@ $experimentName = $_SESSION['experimentName'];
      -->
        <br><br>
        <form action="experimentInformation.php">
-           <input class='btn btn-outline-success' type="submit" value="Return to experiment page" />
+           <input class='btn btn-outline-success' type="submit" value="Return to experiment page" style="float: left; margin:20px"/>
        </form>
     </div>
   </div>
