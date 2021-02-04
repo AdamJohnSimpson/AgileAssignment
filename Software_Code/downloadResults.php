@@ -27,9 +27,9 @@ if (mysqli_num_rows($questionResult) > 0) {
         $newQuery = "SELECT * FROM usabilityquestions WHERE questionid = '$questionID'";
         $newResult = mysqli_query($conn, $newQuery);
 
-        while ($row = mysqli_fetch_array($newResult)) {
-          array_push($listOfUsabilityText, $row['uqText']);
-          array_push($listOfUsabilityID, $row['uqID']);
+        while ($newRow = mysqli_fetch_array($newResult)) {
+          array_push($listOfUsabilityText, $newRow['uqText']);
+          array_push($listOfUsabilityID, $newRow['uqID']);
         }
       }
     }
@@ -71,7 +71,7 @@ for ($x=0; $x < count($listOfUsabilityText) ; $x++) {
   }
 
   array_push($listOfQuestionText, $listOfUsabilityText[$x]);
-  array_push($listOfQuestionText, $listOfUsabilityID[$x]);
+  array_push($listOfQuestionID, $listOfUsabilityID[$x]);
   array_push($allResults, $listOfResponses);
   array_push($allResultID, $listOfResultID);
 
