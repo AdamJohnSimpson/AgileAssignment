@@ -137,7 +137,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                     }
                 }
 
-                $allSubResults[] = $subQuestionResponses;
+                $allSubResults[$i][] = $subQuestionResponses;
 
               }
               print_r($allSubResults);
