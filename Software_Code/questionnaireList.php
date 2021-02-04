@@ -5,7 +5,7 @@
 //   header("location: login.php");
 //   exit;
 // }
-$tempURL = "https://agile-assignment-group-4.azurewebsites.net/Questionnaire.php?qid=";
+$tempURL = "https://team4agileassignment.azurewebsites.net/Questionnaire.php?qid=";
  ?>
 
 <!DOCTYPE html>
