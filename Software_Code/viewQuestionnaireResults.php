@@ -57,6 +57,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet/less" type="text/css" href="chartStyles.less" />
+  <link rel="shortcut icon" href="https://www.dundee.ac.uk/themes/custom/uod/assets/favicons/favicon.ico"/>
   <script src="//cdn.jsdelivr.net/npm/less@3.13" ></script>
 </head>
 
