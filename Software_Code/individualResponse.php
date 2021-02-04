@@ -68,51 +68,38 @@ $responseID = $_GET['rid']; //get responseID
                 while($row = mysqli_fetch_array($resultResponse)){//display the answers from the response
                   $response = $row['response'];
                   echo "<p> - ".$response."</p>";
-                }
-              }
+                }//close while
+              }//close nested if
                 else{ // if the question is textbased or single choice
                   while($row = mysqli_fetch_array($resultResponse)){
                     $response = $row['response'];
                     echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
-                }
-              }
-            }
+                }//close while
+              }//close nested else
+            } //closes if
               else{ //question to display is a usabiltiy scale question
                 echo"yay i got here";
-                echo $questionID."   ";
                 echo $responseID;
 
-                echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
+                echo "<h5 class='card-text mt-2'>"."Title: ".$questionTxt."</h5>"; //this echos the 'title question' which is stupid
 
-                $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
-                $resultResponse = mysqli_query($conn, $stmt);
-                while($row = mysqli_fetch_array($resultResponse)){
-                  $scaleQID = $row['uqID']; //gets question id for scale question
-                  $response = $row['response'];
-
-                  echo $response."     ";
-                  echo $scaleQID."     ";
-
-                  $stmt = "SELECT * FROM usabilityquestions WHERE uqID = $scaleQID"; //gets the question attached to the scale
-                  $scaleQ = mysqli_query($conn, $stmt);
-                  while($row = mysqli_fetch_array($scaleQ)){
-                    $scaleName = $row['uqText']; //get the text for the scale question
-                    echo "scale name".$scaleName;
-                    echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
-                    //
-                    // $stmt = "SELECT * FROM usabilityresults WHERE uqID = $scaleQID"; //get result for the question
-                    // $query = mysqli_query($conn, $stmt);
-                    // while($row = mysqli_fetch_array($scaleQ)){
-                    //   $scaleResponse = row['response'];
-                    //   echo "response ".$scaleResponse;
-                    // }
-                  }
-                  echo "<p><strong>Participent Response: </strong>".$response."</p>";
-                }
-              }
+                $stmt = "SELECT * FROM usabilityquestions WHERE questionID = $questionID"; //gets the question id to get all sub questions for the usability scale which is stupid
+                $subQuestionsQuery = mysqli_query($conn, $stmt);
+                while($row = mysqli_fetch_array($subQuestionsQuery)){
+                  $subQuestionText = $row['questionText'];
+                  $subQuestionID = $row['uqID'];
+                  echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question which is stupid
+                  $stmt = "SELECT * FROM usabilityresults WHERE uqID = $subQuestionID AND responseID = $resposneID"; //gets the response for this sub question which is stupid
+                  $subQuestionResponseQuery = mysqli_query($conn, $stmt);
+                  while($row = mysqli_fetch_array($subQuestionsQuery)){
+                    $subQuestionResponse = $row['response'];
+                    echo "<p>Response: "."$subQuestionResponse"."</p>";
+                  }//close while
+                }//close while
+              }//close else
         echo "</div>
          </div>";
-      }
+      } //close first while
       echo "<a href='https://team4agileassignment.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Back To Individual Results</button></a>";
       ?>
     </div>
