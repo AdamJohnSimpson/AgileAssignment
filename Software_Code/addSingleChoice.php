@@ -68,11 +68,7 @@
 
   if(isset($_POST['quit'])) {
     $questiontext = $_POST['questionText'];
-    if (empty($questiontext)) {
-      header("location: questionnaireList.php");
-      exit;
-    }
-    else {
+    if (!empty($questiontext)) {
       $success = true;
       //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
@@ -106,6 +102,9 @@
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
+
+    header("location: questionnaireList.php");
+    exit;
   }
 
   if(isset($_POST['cancel'])) {
