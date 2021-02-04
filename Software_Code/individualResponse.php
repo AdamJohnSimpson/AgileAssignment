@@ -86,7 +86,7 @@ $responseID = $_GET['rid']; //get responseID
                 $stmt = "SELECT * FROM usabilityquestions WHERE questionID = $questionID"; //gets the question id to get all sub questions for the usability scale which is stupid
                 $subQuestionsQuery = mysqli_query($conn, $stmt);
                 while($row = mysqli_fetch_array($subQuestionsQuery)){
-                  $subQuestionText = $row['questionText'];
+                  $subQuestionText = $row['uqText'];
                   $subQuestionID = $row['uqID'];
                   echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question which is stupid
                   $stmt = "SELECT * FROM usabilityresults WHERE uqID = $subQuestionID AND responseID = $resposneID"; //gets the response for this sub question which is stupid
