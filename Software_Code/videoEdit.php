@@ -4,17 +4,21 @@ include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
 
-// if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
-//   {
-//     $transcript = nl2br($transcript);
-//     echo "Transcript: <br>";
-//     echo $transcript;
-//     $_SESSION['transcript'] = $transcript;
-//   }
+// $transcript = $_POST['transcript'];
+//
+// if($_SERVER["REQUEST_METHOD"] === "POST"){
+//
+//  if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
+//    {
+//      $transcript = nl2br($transcript);
+//      echo "Transcript: <br>";
+//      echo $transcript;
+//    }
+// }
 
-  if(isset($_POST['editTrans']))
+  if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
     {
-      $newtrans = $_POST['transinfo'];
+      $newtrans = $_POST['transcript'];
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
 
@@ -87,11 +91,27 @@ if(isset($_POST['editDesc'])){
         <form>
         <label>Please enter the transcript below.</label>
         </form>
-        <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
+        <div class="jumbotron" style="margin-bottom:1px;">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group">
+              <form>
+                <label>Please enter the transcript below.</label>
+              </form>
+              <br></br>
+              <div class="form-check">
+                <textarea name="transcript" cols="40" rows="5"></textarea>
+              </div>
+              <div class="form-check">
+                <input type="submit" value="submitTrans" name="editTrans" class='btn btn-outline-success'>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
         <br>
         <form method="POST" id="transform">
-          <input type="submit" class='btn btn-outline-success' value="Update Transcript" name="editTrans">
-        </form>
+          <input type="submit" class='btn btn-outline-success' value="submitTrans" name="editTrans">
+        </form> -->
         <?php
         $address = "individualVideo.php?p={$videoPath}";
         echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Return to video</button> </a>"
