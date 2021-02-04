@@ -50,28 +50,24 @@ $videoPath = $_GET['p'];
 
 
        echo "<div class='jumbotron text-center'>
-        <h2 class='text-centre'>Timestamps</h2>
-        <p>This is the description for timestamp 1</p>";
-        $addressTime = "Timestamps.php?id={$vidID}";
+        <h2 class='text-centre'>Timestamps</h2>";
+        $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
+        $result = mysqli_query($conn, $query);
+
+        // foreach( $result as $row ) {
+        while($row = mysqli_fetch_array($result)){
+          $timestamptime = $row['timestampTime'];
+          $timestamptext = $row['timestampText'];
+          echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br>";
+        }
         echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
         </div>";
-
-       $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
-       $result = mysqli_query($conn, $query);
-
-       // foreach( $result as $row ) {
-       while($row = mysqli_fetch_array($result)){
-        $timestamptime = $row['timestampTime'];
-        $timestamptext = $row['timestampText'];
-        echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br>";
-      }
       ?>
        <br><br><br>
        <form action="videoPage.php">
-           <input class='btn btn-outline-success' type="submit" value="Return to video page" />
+           <input class='btn btn-outline-success' type="submit" value="Return to video page" style="float: left; margin:20px" />
        </form>
     </div>
-
   </div>
 
 

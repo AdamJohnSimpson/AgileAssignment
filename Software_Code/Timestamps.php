@@ -18,10 +18,14 @@ if(isset($_POST['addT'])){
 
     //send to db sql here
     $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
+    echo "query is - ".$sql."";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
-      header("location: Timestamps.php")
+      $success=true;
     }}
+  }
+  if ($success){
+    header("location: Timestamps.php");
   }
 
 ?>
@@ -68,10 +72,10 @@ if(isset($_POST['addT'])){
 
        ?>
        <form action="POST">
-       <p> enter a time: </p><input type='text' name="timestampT">
-       <p> enter a note: </p><input type='text' name="note">
-       <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
-     </form>
+         <p> enter a time: </p><input type='text' name="timestampT">
+         <p> enter a note: </p><input type='text' name="note">
+         <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
+       </form>
        <!--
        <form>
          <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">
