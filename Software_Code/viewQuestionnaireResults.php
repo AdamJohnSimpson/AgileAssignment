@@ -140,6 +140,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 }
 
                 array_push($allSubResults, $subQuestionResponses);
+                print_r($allSubResults);
               }
 
 
