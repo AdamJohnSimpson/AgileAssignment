@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
       else {
      //send to db sql here
      $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
-     echo "sql = UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
+     echo "sql = UPDATE videos SET transcript= ".$newtrans." WHERE videoAddress=".$videoPath."";
      if ($conn->query($sql) === TRUE) {
        echo "New transcript added successfully!";
      }
