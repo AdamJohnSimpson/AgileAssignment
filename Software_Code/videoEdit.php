@@ -3,19 +3,9 @@ include "Includes/db.inc.php";
 include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
+$transcript = $_POST['transcript'];
 
-// $transcript = $_POST['transcript'];
-//
-// if($_SERVER["REQUEST_METHOD"] === "POST"){
-//
-//  if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
-//    {
-//      $transcript = nl2br($transcript);
-//      echo "Transcript: <br>";
-//      echo $transcript;
-//    }
-// }
-
+if($_SERVER["REQUEST_METHOD"] === "POST"){
   if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
     {
       $newtrans = $_POST['transcript'];
@@ -34,6 +24,14 @@ $videoPath = $_GET['id'];
      }
     }
    }
+}
+
+// if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
+//   {
+//     $transcript = nl2br($transcript);
+//     echo "Transcript: <br>";
+//     echo $transcript;
+//   }
 
 if(isset($_POST['editDesc'])){
 
@@ -74,7 +72,7 @@ if(isset($_POST['editDesc'])){
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Edit video details</h1>
+    <h1 class="text-center">Edit video details hi!</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
