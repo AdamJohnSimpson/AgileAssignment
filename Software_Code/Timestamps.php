@@ -52,6 +52,7 @@ if(isset($_POST['logout'])) {
           echo $row['timestampTime'];
           echo $row['timestampText'];
           echo "<br> I am in the second while loop <br>";}
+
        /*
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
               Your browser does not support the video tag.
