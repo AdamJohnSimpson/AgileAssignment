@@ -27,7 +27,7 @@ $videoPath = $_GET['p'];
 
 <body>
   <header style="height:150px;">
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
@@ -73,7 +73,6 @@ $videoPath = $_GET['p'];
          <script>
          var video = document.getElementById('vid');
          var btn = document.getElementById('btn');
-
          //might need to put this script in the php stuff to work?
          //as well as the html associated with this?
          function timestamp() {
