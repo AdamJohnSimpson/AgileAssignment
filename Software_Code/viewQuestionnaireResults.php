@@ -89,7 +89,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 echo "<h3> - {$allResults[$x][$y]} </h3>";
               }
             }
-            else
+            else if ($listOfQuestionType[$x] == 2 || $listOfQuestionType[$x] == 3)
             {
               $countOfValues = array_count_values($allResults[$x]);
 
@@ -109,6 +109,9 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
               }
               echo '</div>
             </div>';
+            }
+            else {
+              //code for option 4
             }
           }
         }
