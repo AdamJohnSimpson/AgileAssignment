@@ -36,7 +36,7 @@ if(isset($_POST['editDesc'])){
     echo "The video must have a description!";
   } else {
   //send to db sql here
-  $sql = $conn->prepare("UPDATE videos SET videoDescription='{$newInfo}' WHERE videoAddress='{$videoPath}'");
+  $sql = $conn->prepare("UPDATE videos SET videoDescription=? WHERE videoAddress='{$videoPath}'");
   $sql->bind_param('s', $newInfo);
   if ($sql->execute() === TRUE) {
     echo "New description added successfully!";
