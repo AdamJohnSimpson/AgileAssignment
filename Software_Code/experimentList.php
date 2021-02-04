@@ -37,7 +37,7 @@
         <?php
         if (isset($_GET['c'])) {
           if ($_GET['i']=='t') {
-            echo "<div class="alert alert-success" role="alert">
+            echo "<div class='alert alert-success' role='alert'>
               Experiment successfully created.
             </div>";
           }
