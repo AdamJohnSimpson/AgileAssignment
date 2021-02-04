@@ -105,7 +105,7 @@
       }
     }
 
-    header("location: questionnaireList.php");
+    header("location: questionnaireList.php?c=t");
     exit;
   }
 
