@@ -5,7 +5,6 @@
     header("location: login.php");
     exit;
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +34,14 @@
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
-
         <?php
+        if (isset($_GET['c'])) {
+          if ($_GET['i']=='t') {
+            echo "<div class="alert alert-success" role="alert">
+              Experiment successfully created.
+            </div>";
+          }
+        }
         include "Includes/db.inc.php";
 
         if(ISSET($_SESSION['USER_role']) && $_SESSION['USER_role'] != 'Co-Researcher'){
