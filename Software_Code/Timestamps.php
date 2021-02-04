@@ -54,7 +54,7 @@ if(isset($_POST['logout'])) {
           echo $row['timestampTime'];
           echo $row['timestampText'];
           $timestamptime = $row['timestampTime'];
-          $timestamptext = $row['timestampText']
+          $timestamptext = $row['timestampText'];
           echo "<br> I am in the second while loop <br>";
         }
         echo "HELLO".$timstamptime."i work ".$timestamptext."";
