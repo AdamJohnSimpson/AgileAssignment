@@ -11,7 +11,7 @@ Group Members:
 - Euan Taylor: 180007209
 
 **NOTE: From Tuesday 2nd Feburary onwards Azure would not let us update the website from the github. We tried many fixes over a few days and nothing seems to be fixing the issue and we have had to stop our sprint work for a few days to try and solve this. We have emaile Mike Crabb about this issue.
-(04/02/21)
+(04/02/21)**
 
 ## Useful Links:
 Possible mySql Hosting:
