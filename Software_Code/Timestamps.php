@@ -42,18 +42,14 @@ if(isset($_POST['logout'])) {
       <?php
 
         $vidID = $_GET['id'];
-        echo "the video id is".$vidID;
         $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
-        echo "Query: ".$query."";
-
         $result = mysqli_query($conn, $query);
 
-        echo "hi im working2";
         // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
           $timestamptime = $row['timestampTime'];
           $timestamptext = $row['timestampText'];
-          echo "Timestamp time:".$timestamptime."<br>i work ".$timestamptext."";
+          echo "Timestamp time:".$timestamptime."<br>Timestamp text: ".$timestamptext."";
         }
 
 
