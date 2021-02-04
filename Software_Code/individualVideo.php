@@ -30,7 +30,6 @@ $videoPath = $_GET['p'];
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
-
       <?php
         //get information from experiment list page to display the selected experiment
         $query = "SELECT * FROM videos WHERE videoAddress= '$videoPath'";
@@ -44,41 +43,37 @@ $videoPath = $_GET['p'];
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
               Your browser does not support the video tag.
               </video> <br> <br>
-              <h2 class='text-centre'>Video Description: </h2> <br>".$vidDesc."<br><br>
-              <h2 class='text-centre'>Video Transcription: </h2> <br>".$transcript." <br> <br>";
+              <h2 class='text-centre'>Video Description </h2> <br>".$vidDesc."<br><br>
+              <h2 class='text-centre'>Video Transcription </h2> <br>".$transcript." <br> <br>";
               $address = "videoEdit.php?id={$videoPath}";
               echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Edit Video Details</button> </a> <br>";
 
 
        echo "<div class='jumbotron text-center'>
-         <h2 class='text-centre'>Timestamps</h2>
-         <p>This is the description for timestamp 1</p>";
-          $addressTime = "Timestamps.php?id={$vidID}";
-          echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
-       </div>"
-       ?>
-       <!--
-       <form>
-         <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">
-         <script>
-         var video = document.getElementById('vid');
-         var btn = document.getElementById('btn');
-         //might need to put this script in the php stuff to work?
-         //as well as the html associated with this?
-         function timestamp() {
-           //go to 3 seconds in the video -> this would probably need to be in the php
-           video.pause(); //pause the video
-         }
-         </script>
-       </form>
-     -->
-       <br></br>
+        <h2 class='text-centre'>Timestamps</h2>
+        <p>This is the description for timestamp 1</p>";
+        $addressTime = "Timestamps.php?id={$vidID}";
+        echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
+        </div>";
+
+       $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
+       $result = mysqli_query($conn, $query);
+
+       // foreach( $result as $row ) {
+       while($row = mysqli_fetch_array($result)){
+        $timestamptime = $row['timestampTime'];
+        $timestamptext = $row['timestampText'];
+        echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br><br><br>";
+      }
+      ?>
+       <br><br><br>
     </div>
+    <form action="experimentInformation.php">
+        <input class='btn btn-outline-success' type="submit" value="Return to Experiments Information" />
+    </form>
   </div>
 
-  <form action="experimentInformation.php">
-      <input type="submit" value="Return to Experiments Information" />
-  </form>
+
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>

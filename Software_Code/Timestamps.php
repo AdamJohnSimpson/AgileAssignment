@@ -49,28 +49,28 @@ if(isset($_POST['logout'])) {
         while($row = mysqli_fetch_array($result)){
           $timestamptime = $row['timestampTime'];
           $timestamptext = $row['timestampText'];
-          echo "<br> Timestamp time:".$timestamptime."        notes: ".$timestamptext."<br>";
+          echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br><br><br>";
         }
 
+        if(isset($_POST['addT'])){
+          $timestampT = $_POST['timestampT'];
+          $timestampnote = $_POST['note'];
+          if (empty($timestampT)) {
+            echo "The timestamp must have a time!";
+          }
+          else {
 
-       /*
-        echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
-              Your browser does not support the video tag.
-              </video> <br>
-              <p> <b>Video Description: </b> </p> <br>".$vidDesc."<br><br>
-              <p> <b>Video Transription: </b> </p> <br>".$transcript." <br> <br>";
-              $address = "videoEdit.php?id={$videoPath}";
-              echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Edit Video Details</button> </a> <br>";
+            //send to db sql here
+            $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
+            if ($conn->query($sql) === TRUE) {
+              echo "New record created successfully";
+            }}
+          }
 
 
-       echo "<div class='jumbotron text-center'>
-         <h2 class='text-centre'>Timestamps</h2>
-         <p>This is the description for timestamp 1</p>";
-          $addressTime = "timestamps.php?id={$videoPath}";
-          echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
-       </div>"
-       */
+
        ?>
+       <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
        <!--
        <form>
          <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">

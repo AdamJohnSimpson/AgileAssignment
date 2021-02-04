@@ -85,7 +85,7 @@ if(isset($_POST['edit'])){
             <input type="submit" class='btn btn-outline-success' value="Edit Information" name="edit">
         </form>
         <br>
-        <form action="https://agile-assignment-group-4.azurewebsites.net/experimentList.php">
+        <form action="experimentList.php">
             <input type="submit" class='btn btn-outline-success' value="Return to Experiments List" />
     </form>
     </div>
