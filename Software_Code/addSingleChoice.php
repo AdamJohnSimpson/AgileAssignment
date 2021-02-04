@@ -40,7 +40,7 @@
         echo "New record created successfully";
         for ($i=1; $i < $extraOptions+3; $i++) {
           echo "i= ".$i." <br> is less than ".$extraOptions." +3 <br>";
-          $techno = $i + 2;
+          $techno = $i;
           $variablename = "answerOption".$techno."";
           $questionoptiontext = $_POST[$variablename];
           if (empty($questionoptiontext)) {
