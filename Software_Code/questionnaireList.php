@@ -32,8 +32,13 @@ $tempURL = "https://team4agileassignment.azurewebsites.net/Questionnaire.php?qid
       </div>
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
-
         <?php
+        if (isset($_GET['c'])) {
+            echo "<div class='alert alert-success' role='alert'>
+              Experiment successfully created.
+              </div>";
+        }
+
         include "Includes/db.inc.php";
         echo "<div class='row'>
                 <div class='card-body'>
