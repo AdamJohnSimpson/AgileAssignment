@@ -3,26 +3,29 @@ include "Includes/db.inc.php";
 include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
-$transcript = $_POST['transcript'];
+$newTrans = $_POST['transcript'];
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-  if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
+  if(isset($_POST['editTrans']) && $_POST['editTrans'] = "Update Transcript")
     {
-      $newtrans = $_POST['transcript'];
+      // $newtrans = $_GET['transcript'];
+      echo "Transcript: ".$newTrans."<br>";
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
-
       }
       else {
-     //send to db sql here
-     $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
-     if ($conn->query($sql) === TRUE) {
-       echo "New transcript added successfully!";
-     }
-     else {
-       echo "Error: " . $sql . "<br>" . $conn->error;
-     }
-    }
+        //send to db sql here
+        echo "Transcript: ".$newTrans."<br>";
+        echo "Address: ".$videoPath."<br>";
+        $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
+        echo "sql = UPDATE videos SET transcript= ".$newtrans." WHERE videoAddress=".$videoPath."";
+        if ($conn->query($sql) === TRUE) {
+          echo "New transcript added successfully!";
+        }
+        else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+      }
    }
 }
 
@@ -98,7 +101,7 @@ if(isset($_POST['editDesc'])){
                 <textarea name="transcript" cols="40" rows="5"></textarea>
               </div>
               <div class="form-check">
-                <input type="submit" value="submitTrans" name="editTrans" class='btn btn-outline-success'>
+                <input type="submit" value="Update Transcript" name="editTrans" class='btn btn-outline-success'>
               </div>
             </form>
           </div>
