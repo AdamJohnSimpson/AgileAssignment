@@ -69,7 +69,7 @@ if(isset($_POST['editDesc'])){
 
 <body>
   <header style="height:150px;">
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
@@ -84,7 +84,7 @@ if(isset($_POST['editDesc'])){
       <label>Please enter the description below.</label>
       </form>
       <form method="POST">
-          <input type="text" value "Add a new description here" name="descinfo">
+          <input type="text" value="Add a new description here" name="descinfo">
           <input type="submit" class='btn btn-outline-success' value="Update Description" name="editDesc">
       </form>
       <div class="form-group">
