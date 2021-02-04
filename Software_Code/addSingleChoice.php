@@ -35,8 +35,9 @@
       //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
       $questionType = 2;
-      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
-      if ($conn->query($sql) === TRUE) {
+      $sql = $conn->prepare("INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', ?, '$questionnaireID', $questionType)");
+      $sql->bind_param('s', $questiontext);
+      if ($sql->execute() === TRUE) {
         echo "New record created successfully";
         for ($i=0; $i < $extraOptions+3; $i++) {
           echo "i= ".$i." <br> is less than ".$extraOptions." +3 <br>";
@@ -46,8 +47,9 @@
             echo "The answer option must have text!";
           }
           else {
-            $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
-            if ($conn->query($sql) === TRUE) {
+            $newSql = $conn->prepare("INSERT INTO questionoptions(optionText, questionID) VALUES (?, '$questionID')");
+            $newSql->bind_param('s', $questionoptiontext);
+            if ($newSql->execute() === TRUE) {
               echo "New record created successfully";
             }
             else {
@@ -73,8 +75,9 @@
       //send to db sql here
       $questionID = uniqid($prefix="", $more_entropy=false);
       $questionType = 2;
-      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
-      if ($conn->query($sql) === TRUE) {
+      $sql = $conn->prepare("INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', ?, '$questionnaireID', $questionType)");
+      $sql->bind_param('s', $questiontext);
+      if ($sql->execute() === TRUE) {
         echo "New record created successfully";
         for ($i=0; $i < $extraOptions+3; $i++) {
           echo "i= ".$i." <br> is less than ".$extraOptions." +3 <br>";
@@ -84,8 +87,9 @@
             echo "The answer option must have text!";
           }
           else {
-            $sql = "INSERT INTO questionoptions(optionText, questionID) VALUES ('$questionoptiontext', '$questionID')";
-            if ($conn->query($sql) === TRUE) {
+            $newSql = $conn->prepare("INSERT INTO questionoptions(optionText, questionID) VALUES (?, '$questionID')");
+            $newSql->bind_param('s', $questionoptiontext);
+            if ($newSql->execute() === TRUE) {
               echo "New record created successfully";
             }
             else {
