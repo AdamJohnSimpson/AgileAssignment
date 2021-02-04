@@ -3,7 +3,7 @@ include 'Includes/header.php';
 include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
-
+$vidID = $_GET['id'];
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
@@ -58,7 +58,7 @@ if(isset($_POST['addT'])){
 
       <?php
 
-        $vidID = $_GET['id'];
+
         $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
         $result = mysqli_query($conn, $query);
 
