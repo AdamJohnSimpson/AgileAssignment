@@ -18,9 +18,10 @@ if(isset($_POST['addT'])){
   }
   else {
     //send to db sql here
-    $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ('$timestampnote', '$vidID', '$timestampT')";
+    $sql = $conn->prepare("INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ( ?, '$vidID', ?)");
+    $sql->bind_param('ss', $timestampnote, $timestampT);
     echo "query is - ".$sql."";
-    if ($conn->query($sql) === TRUE) {
+    if ($sql->execute() === TRUE) {
       echo "New record created successfully";
       $success=true;
     }}
