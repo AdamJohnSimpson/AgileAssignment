@@ -3,18 +3,12 @@ include "Includes/db.inc.php";
 include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
+$transcript = $_POST['transcript'];
 
-// if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
-//   {
-//     $transcript = nl2br($transcript);
-//     echo "Transcript: <br>";
-//     echo $transcript;
-//     $_SESSION['transcript'] = $transcript;
-//   }
-
-  if(isset($_POST['editTrans']))
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+  if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
     {
-      $newtrans = $_POST['transinfo'];
+      $newtrans = $_POST['transcript'];
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
 
@@ -30,6 +24,14 @@ $videoPath = $_GET['id'];
      }
     }
    }
+}
+
+// if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
+//   {
+//     $transcript = nl2br($transcript);
+//     echo "Transcript: <br>";
+//     echo $transcript;
+//   }
 
 if(isset($_POST['editDesc'])){
 
@@ -65,14 +67,14 @@ if(isset($_POST['editDesc'])){
 
 <body>
   <header style="height:150px;">
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Edit video details</h1>
+    <h1 class="text-center">Edit video details hi!</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
@@ -80,18 +82,34 @@ if(isset($_POST['editDesc'])){
       <label>Please enter the description below.</label>
       </form>
       <form method="POST">
-          <input type="text" value "Add a new description here" name="descinfo">
+          <input type="text" value="Add a new description here" name="descinfo">
           <input type="submit" class='btn btn-outline-success' value="Update Description" name="editDesc">
       </form>
       <div class="form-group">
         <form>
         <label>Please enter the transcript below.</label>
         </form>
-        <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
+        <div class="jumbotron" style="margin-bottom:1px;">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group">
+              <form>
+                <label>Please enter the transcript below.</label>
+              </form>
+              <br></br>
+              <div class="form-check">
+                <textarea name="transcript" cols="40" rows="5"></textarea>
+              </div>
+              <div class="form-check">
+                <input type="submit" value="submitTrans" name="editTrans" class='btn btn-outline-success'>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
         <br>
         <form method="POST" id="transform">
-          <input type="submit" class='btn btn-outline-success' value="Update Transcript" name="editTrans">
-        </form>
+          <input type="submit" class='btn btn-outline-success' value="submitTrans" name="editTrans">
+        </form> -->
         <?php
         $address = "individualVideo.php?p={$videoPath}";
         echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Return to video</button> </a>"
