@@ -70,7 +70,7 @@
   if(isset($_POST['quit'])) {
     $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
-      header("location: questionnaireList.php");
+      header("location: questionnaireList.php?c=t");
       exit;
     }
     else {

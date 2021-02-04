@@ -42,7 +42,7 @@
   if(isset($_POST['quit'])) {
     $questiontext = $_POST['questionText'];
     if (empty($questiontext)) {
-      header("location: questionnaireList.php");
+      header("location: questionnaireList.php?c=t");
       exit;
     }
     else {
@@ -56,7 +56,7 @@
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
-      
+
     header("location: questionnaireList.php");
     exit;
   }
