@@ -3,12 +3,12 @@ include "Includes/db.inc.php";
 include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
-// $transcript = $_GET['transcript'];
+$newTrans = $_POST['transcript'];
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
   if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
     {
-      $newtrans = $_GET['transcript'];
+      // $newtrans = $_GET['transcript'];
       echo "Transcript: ".$newTrans."";
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
