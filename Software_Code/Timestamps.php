@@ -70,8 +70,8 @@ if(isset($_POST['logout'])) {
 
 
        ?>
-       <p> enter a time: </p><input type='text' name="timestampT.">";
-       <p> enter a note: </p><input type='text' name="note">";
+       <p> enter a time: </p><input type='text' name="timestampT.">
+       <p> enter a note: </p><input type='text' name="note">
        <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
        <!--
        <form>
