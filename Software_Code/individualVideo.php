@@ -56,7 +56,7 @@ $videoPath = $_GET['p'];
        echo "<div class='jumbotron text-center'>
          <h2 class='text-centre'>Timestamps</h2>
          <p>This is the description for timestamp 1</p>";
-          $addressTime = "timestamps.php?id={$videoPath}";
+          $addressTime = "Timestamps.php?id={$vidID}";
           echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
        </div>"
        ?>

@@ -9,7 +9,7 @@ if(isset($_POST['logout'])) {
   header("location: login.php");
 }
 
-$videoPath = $_GET['id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -41,23 +41,19 @@ $videoPath = $_GET['id'];
 
       <?php
 
-        //get information from experiment list page to display the selected experiment
-        $query = "SELECT videoID FROM videos WHERE videoAddress= '$videoPath'";
+        $vidID = $_GET['id'];
+        echo "the video id is".$vidID;
+        $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
+        echo "Query: ".$query."";
         $result = mysqli_query($conn, $query);
         echo $result;
+        echo "hi im working";
         // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
-          $vidID = $row['videoID'];
-          echo "<br> I am in the while loop <br>";
-        }
-        $query2 = "SELECT * FROM timestamps WHERE videoID = $vidID";
-        $result2 = mysqli_query($conn, $query);
-        echo $result2;
-        // foreach( $result as $row ) {
-        while($row = mysqli_fetch_array($result2)){
           echo $row['timestampTime'];
           echo $row['timestampText'];
           echo "<br> I am in the second while loop <br>";}
+
        /*
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
               Your browser does not support the video tag.

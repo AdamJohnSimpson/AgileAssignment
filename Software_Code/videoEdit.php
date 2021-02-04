@@ -5,26 +5,29 @@ include 'Includes/header.php';
 $videoPath = $_GET['id'];
 $newTrans = $_POST['transcript'];
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-  if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
+//if($_SERVER["REQUEST_METHOD"] === "POST"){
+  if(isset($_POST['editTrans']) && $_POST['editTrans'] = "Update Transcript")
     {
       // $newtrans = $_GET['transcript'];
-      echo "Transcript: ".$newTrans."";
+      echo "Transcript: ".$newTrans."<br>";
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
       }
       else {
-     //send to db sql here
-     $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
-     if ($conn->query($sql) === TRUE) {
-       echo "New transcript added successfully!";
-     }
-     else {
-       echo "Error: " . $sql . "<br>" . $conn->error;
-     }
-    }
+        //send to db sql here
+        echo "Transcript: ".$newTrans."<br>";
+        echo "Address: ".$videoPath."<br>";
+        $sql = "UPDATE videos SET transcript='{$newTrans}' WHERE videoAddress='{$videoPath}'";
+        echo "sql = UPDATE videos SET transcript= ".$newTrans." WHERE videoAddress=".$videoPath."";
+        if ($conn->query($sql) === TRUE) {
+          echo "New transcript added successfully!";
+        }
+        else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+      }
    }
-}
+//}
 
 // if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
 //   {
@@ -72,7 +75,7 @@ if(isset($_POST['editDesc'])){
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Edit video details hi!</h1>
+    <h1 class="text-center">Edit video details hi hi hi!</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
@@ -98,7 +101,7 @@ if(isset($_POST['editDesc'])){
                 <textarea name="transcript" cols="40" rows="5"></textarea>
               </div>
               <div class="form-check">
-                <input type="submit" value="submitTrans" name="editTrans" class='btn btn-outline-success'>
+                <input type="submit" value="Update Transcript" name="editTrans" class='btn btn-outline-success'>
               </div>
             </form>
           </div>

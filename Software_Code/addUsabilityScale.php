@@ -45,7 +45,8 @@
             echo "The sub question must have text!";
           }
           else {
-            $sql = "INSERT INTO usabilityquestions(uqText, questionID) VALUES ('$subQtext', '$questionID')";
+            $uqID = uniqid($prefix="", $more_entropy=false);
+            $sql = "INSERT INTO usabilityquestions(uqID, uqText, questionID) VALUES ('$uqID','$subQtext', '$questionID')";
             if ($conn->query($sql) === TRUE) {
               echo "New record created successfully";
             }
