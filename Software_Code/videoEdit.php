@@ -41,7 +41,6 @@ if(isset($_POST['editDesc'])){
   $newInfo = $_POST['descinfo'];
   if (empty($newInfo)) {
     echo "The video must have a description!";
-
   } else {
   //send to db sql here
   $sql = "UPDATE videos SET videoDescription='{$newInfo}' WHERE videoAddress='{$videoPath}'";
@@ -75,7 +74,7 @@ if(isset($_POST['editDesc'])){
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Edit video details hi hi hi!</h1>
+    <h1 class="text-center">Edit video details hi hi!</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
@@ -91,7 +90,7 @@ if(isset($_POST['editDesc'])){
         <label>Please enter the transcript below.</label>
         </form>
         <div class="jumbotron" style="margin-bottom:1px;">
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+          <!-- <form action="<//?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> -->
             <div class="form-group">
               <form>
                 <label>Please enter the transcript below.</label>
@@ -103,7 +102,7 @@ if(isset($_POST['editDesc'])){
               <div class="form-check">
                 <input type="submit" value="Update Transcript" name="editTrans" class='btn btn-outline-success'>
               </div>
-            </form>
+            <!-- </form> -->
           </div>
         </div>
         <!-- <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
