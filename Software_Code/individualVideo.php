@@ -58,10 +58,10 @@ $videoPath = $_GET['p'];
               <p> <b>Video Transription: </b> </p> <br>".$transcript." <br> <br>";
               $address = "videoEdit.php?id={$videoPath}";
               echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Edit Video Details</button> </a> <br>";
-      
 
-       echo "<div class="jumbotron text-center">
-         <h2 class="text-centre">Timestamps</h2>
+
+       echo "<div class='jumbotron text-center'>
+         <h2 class='text-centre'>Timestamps</h2>
          <p>This is the description for timestamp 1</p>";
           $addressTime = "timestamps.php?id={$videoPath}";
           echo "<br><br> <a href= {$addressTime}  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
