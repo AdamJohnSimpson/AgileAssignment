@@ -36,8 +36,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT * FROM User WHERE UserName = '$username'";
-        $result = mysqli_query($conn, $sql);
+
+        $sql = mysqli_stmt_init($conn);
+        mysqli_stmt_prepare($sql, "SELECT * FROM User WHERE UserName = ?");
+        mysqli_stmt_bind_param($sql, 's', $username);
+   
+        mysqli_stmt_execute($sql);
+        $result = mysqli_stmt_get_result($sql);
+
         $count = 0;
         while($row = mysqli_fetch_array($result)){
             $count=1;
@@ -60,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
 
-        if($count!=1){
+        if($count==0){
             // Display an error message if username doesn't exist
             $username_err = "No account found with that username.";
         }
