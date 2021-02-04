@@ -3,6 +3,7 @@ include 'Includes/header.php';
 include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
+
 $vidID = $_GET['id'];
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
@@ -25,7 +26,7 @@ if(isset($_POST['addT'])){
     }}
   }
   if ($success){
-    header("location: Timestamps.php");
+    header('location: Timestamps.php?id='.$vidID);
   }
 
 ?>
@@ -72,8 +73,8 @@ if(isset($_POST['addT'])){
 
        ?>
        <form method="POST">
-         <p> enter a time: </p><input type='text' name="timestampT">
-         <p> enter a note: </p><input type='text' name="note">
+         <p> Enter a time, in format HH:MM:SS: </p><input type='text' name="timestampT">
+         <p> Enter a note: </p><input type='text' name="note">
          <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
        </form>
        <!--
@@ -93,12 +94,16 @@ if(isset($_POST['addT'])){
        </form>
      -->
        <br></br>
+       <form action="videoPage.php">
+           <input class='btn btn-outline-success' type="submit" value="Return to video page" style="float: left; margin:20px" />
+       </form>
+
+
     </div>
+
   </div>
 
-  <form action="experimentInformation.php">
-      <input type="submit" value="Return to Experiments Information" />
-  </form>
+
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
