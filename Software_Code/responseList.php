@@ -24,9 +24,7 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
 <body>
   <header style="height:150px;">
     <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
-    <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
-    </form>
+    <button onclick="location.href='Includes/logout.inc.php';" type='button' class='btn btn-secondary' style="float: right; margin:20px">Logout</button>
   </header>
   <div class="jumbotron text-center">
     <h1 class="text-center">List of Responses</h1>
@@ -48,7 +46,7 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/individualResponse.php?rid={$responseID}&qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
+              <a href='https://team4agileassignment.azurewebsites.net/individualResponse.php?rid={$responseID}&qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
               </div>
            </div>";
            $previousResponseID = $responseID;
@@ -57,7 +55,7 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
       }
       echo "<p>Total Responses: ".$count."</p>";
 
-      echo "<a href='https://agile-assignment-group-4.azurewebsites.net/questionnaireList.php'><button class='btn btn-outline-success' type='button'>Back To Questionnaie List</button></a>";
+      echo "<a href='https://team4agileassignment.azurewebsites.net/questionnaireList.php'><button class='btn btn-outline-success' type='button'>Back To Questionnaie List</button></a>";
       ?>
     </div>
   </div>

@@ -4,6 +4,11 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
 
+if(isset($_POST['logout'])) {
+  unset($_SESSION['loggedin']);
+  header("location: login.php");
+}
+
 $videoPath = $_GET['p'];
 ?>
 
@@ -22,8 +27,10 @@ $videoPath = $_GET['p'];
 
 <body>
   <header style="height:150px;">
-    <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
-    <button onclick="location.href='Includes/logout.inc.php';" type='button' class='btn btn-secondary' style="float: right; margin:20px">Logout</button>
+    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <form method="POST">
+      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
+    </form>
   </header>
 
   <div class="jumbotron text-center">
@@ -33,17 +40,25 @@ $videoPath = $_GET['p'];
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
       <?php
+      $videoPath = $_GET['id'];
         //get information from experiment list page to display the selected experiment
-        $query = "SELECT * FROM videos WHERE videoAddress= '$videoPath'";
+        $query = "SELECT videoID FROM videos WHERE videoAddress= '$videoPath'";
         $result = mysqli_query($conn, $query);
+        echo $result;
         // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
           $vidID = $row['videoID'];
-          $vidDesc = $row['videoDescription'];
-          $vidTrans = $row['transcript'];
-          $transcript = nl2br($vidTrans);
           echo "<br> I am in the while loop <br>";
         }
+        $query2 = "SELECT * FROM timestamps WHERE vidID = $vidID";
+        $result2 = mysqli_query($conn, $query);
+        echo $result2;
+        // foreach( $result as $row ) {
+        while($row = mysqli_fetch_array($result2)){
+          echo $row['timestampTime'];
+          echo $row['timestampText'];
+          echo "<br> I am in the second while loop <br>";}
+       /*
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
               Your browser does not support the video tag.
               </video> <br>
@@ -59,6 +74,7 @@ $videoPath = $_GET['p'];
           $addressTime = "timestamps.php?id={$videoPath}";
           echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
        </div>"
+       */
        ?>
        <!--
        <form>
@@ -66,6 +82,7 @@ $videoPath = $_GET['p'];
          <script>
          var video = document.getElementById('vid');
          var btn = document.getElementById('btn');
+
          //might need to put this script in the php stuff to work?
          //as well as the html associated with this?
          function timestamp() {
