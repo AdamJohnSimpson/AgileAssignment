@@ -21,7 +21,7 @@
       echo "extra options= ".$extraOptions."<br><br>";
       $extraOptions= $extraOptions + 1;
       echo "extra options + 1= ".$extraOptions."<br><br>";
-      header("location: https://agile-assignment-group-4.azurewebsites.net/addUsabilityScale.php?on={$extraOptions}");
+      header("location: https://team4agileassignment.azurewebsites.net/addUsabilityScale.php?on={$extraOptions}");
       exit;
     }
 
