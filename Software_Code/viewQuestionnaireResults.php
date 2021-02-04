@@ -143,12 +143,10 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
 
               for ($p=0; $p < count($subQuestionText); $p++) {
-
-
-                $countOfSubValues = array_count_values($allResults[$p]);
+                $countOfSubValues = array_count_values($allSubResults[$p]);
 
                 $subValues = array_keys($countOfSubValues);
-                echo "<h3>" . $subQuestionText . "</h3>";
+                echo "<h3>" . $subQuestionText[$p] . "</h3>";
                 echo '<div class="chart-wrap vertical">
                 <div class="grid">';
 
