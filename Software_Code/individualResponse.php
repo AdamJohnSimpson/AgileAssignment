@@ -92,7 +92,7 @@ $responseID = $_GET['rid']; //get responseID
                   echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question which is stupid
 
                   echo "subQidCheck ".$subQuestionID;
-                  echo "responseidCheck ".$repsoneID;
+                  echo "responseidCheck ".$responseID;
 
                   $stmt = "SELECT * FROM usabilityresults WHERE uqID = '$subQuestionID' AND responseID = '$responseID'"; //gets the response for this sub question which is stupid
                   $subQuestionResponseQuery = mysqli_query($conn, $stmt);
