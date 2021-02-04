@@ -46,28 +46,15 @@ if(isset($_POST['logout'])) {
         $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
         echo "Query: ".$query."";
 
-<<<<<<< HEAD
         $result = mysqli_query($conn, $query);
 
-=======
-          if ($conn->query($query) === TRUE) {
-        $result = mysqli_query($conn, $query);
-        echo $result;
-        echo "hi im working";
-      }
-        echo $result;
->>>>>>> master
         echo "hi im working2";
         // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
           echo $row['timestampTime'];
           echo $row['timestampText'];
-<<<<<<< HEAD
           echo "<br> I am in the second while loop <br>";
         }
-=======
-          echo "<br> I am in the second while loop <br>";}
->>>>>>> master
 
        /*
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
