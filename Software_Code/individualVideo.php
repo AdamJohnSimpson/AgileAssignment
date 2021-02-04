@@ -27,7 +27,7 @@ $videoPath = $_GET['p'];
 
 <body>
   <header style="height:150px;">
-    <img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left">
+    <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
     <form method="POST">
       <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
     </form>
@@ -58,12 +58,15 @@ $videoPath = $_GET['p'];
               <p> <b>Video Transription: </b> </p> <br>".$transcript." <br> <br>";
               $address = "videoEdit.php?id={$videoPath}";
               echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Edit Video Details</button> </a> <br>";
-       ?>
+      
 
-       <div class="jumbotron text-center">
-         <h2 class="text-centre">Timestamp 1</h2>
-         <p>This is the description for timestamp 1</p>
-       </div>
+       echo "<div class="jumbotron text-center">
+         <h2 class="text-centre">Timestamps</h2>
+         <p>This is the description for timestamp 1</p>";
+          $addressTime = "timestamps.php?id={$videoPath}";
+          echo "<br><br> <a href= {$addressTime}  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
+       </div>"
+       ?>
        <!--
        <form>
          <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">
