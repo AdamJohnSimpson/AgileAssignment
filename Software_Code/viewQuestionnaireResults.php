@@ -77,7 +77,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       if (count($listOfQuestionID) > 0) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
 
-            echo "<br><h2><u><strong>{$listOfQuestionText[$x]}</strong></u></h2>";
+            echo "<br><h2><u><strong>{$X} - {$listOfQuestionText[$x]}</strong></u></h2>";
             echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
 
             if ($listOfQuestionType[$x] == 1)
@@ -109,7 +109,46 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
             </div>';
             }
             else {
-              //code for option 4
+              $tempID = $listOfQuestionID[$x];
+              $subQuestionQuery = "SELECT uqID, uqText FROM usabilityquestions WHERE questionID = '$tempID'";
+              $subQuestionResults = mysqli_query($conn, $subQuestionQuery);
+
+              $subQuestionID = array();
+              $subQuestionText = array();
+              $subQuestionResponses = array();
+              $allSubResults = array();
+
+              if (mysqli_num_rows($subQuestionResults) > 0) {
+                  while ($row = mysqli_fetch_array($subQuestionResults)) {
+                    array_push($subQuestionID, $row['uqID']);
+                    array_push($subQuestionText, $row['uqText']);
+                  }
+              }
+
+              for ($i=0; $i < count($subQuestionID); $i++) {
+                $tempID = $subQuestionID[$i];
+                $subQuestionResultsQuery = "SELECT response FROM usabilityrseults WHERE uqID = '$tempID'";
+                $subQuestionResultsResults = mysqli_query($conn, $subQuestionResultsQuery);
+
+
+
+                if (mysqli_num_rows($subQuestionResultsResults) > 0) {
+                    while ($row = mysqli_fetch_array($subQuestionResultsResults)) {
+                      array_push($subQuestionResponses, $row['response']);
+                    }
+                }
+
+                array_push($allSubResults, $subQuestionResponses);
+              }
+
+
+              for ($p=0; $p < count($subQuestionText); $p++) {
+                echo "<h1> {$subQuestionText[$p]} </h1><br>";
+                print_r($allSubResults[$p]);
+              }
+
+
+
             }
           }
         }
