@@ -9,6 +9,7 @@ if(isset($_POST['logout'])) {
   header("location: login.php");
 }
 if(isset($_POST['addT'])){
+  $vidID = $_GET['id'];
   $timestampT = $_POST['timestampT'];
   $timestampnote = $_POST['note'];
   if (empty($timestampT)) {
@@ -16,7 +17,7 @@ if(isset($_POST['addT'])){
   }
   else {
     //send to db sql here
-    $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
+    $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ('$timestampnote', '$vidID', '$timestampT')";
     echo "query is - ".$sql."";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
