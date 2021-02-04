@@ -13,11 +13,6 @@ include "Includes/db.inc.php";
 $experimentID = $_SESSION["experimentID"];
 $experimentName = $_SESSION["experimentName"];
 
-if(isset($_POST['logout'])) {
-  unset($_SESSION['loggedin']);
-  header("location: login.php");
-}
-
 if(isset($_POST['edit'])){
 
   $newInfo = $_POST['addedinfo'];
@@ -54,9 +49,7 @@ if(isset($_POST['edit'])){
 <body>
   <header style="height:150px;">
     <a href="Includes/redirect.inc.php"><img class="img-fluid" src="University-of-Dundee-logo.png" width="300px" style="padding:20px; float: left"></a>
-    <form method="POST">
-      <input type="submit" value="Log Out" name="logout" style="float: right; margin:20px">
-    </form>
+    <button onclick="location.href='Includes/logout.inc.php';" type='button' class='btn btn-secondary' style="float: right; margin:20px">Logout</button>
   </header>
 
   <div class="jumbotron text-center">

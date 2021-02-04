@@ -40,18 +40,21 @@ $videoPath = $_GET['p'];
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
       <?php
+      $videoPath = $_GET['id'];
         //get information from experiment list page to display the selected experiment
         $query = "SELECT videoID FROM videos WHERE videoAddress= '$videoPath'";
         $result = mysqli_query($conn, $query);
+        echo $result;
         // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
           $vidID = $row['videoID'];
           echo "<br> I am in the while loop <br>";
         }
-        $query2 = "SELECT * FROM timestamps WHERE vidID = '$vidID'";
-        $result = mysqli_query($conn, $query);
+        $query2 = "SELECT * FROM timestamps WHERE vidID = $vidID";
+        $result2 = mysqli_query($conn, $query);
+        echo $result2;
         // foreach( $result as $row ) {
-        while($row = mysqli_fetch_array($result)){
+        while($row = mysqli_fetch_array($result2)){
           echo $row['timestampTime'];
           echo $row['timestampText'];
           echo "<br> I am in the second while loop <br>";}
