@@ -78,36 +78,19 @@ $responseID = $_GET['rid']; //get responseID
               }
             }
               else{ //question to display is a usabiltiy scale question
-                echo"yay i got here";
-                echo $questionID."   ";
-                echo $responseID;
-
-                echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
-
-                $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
-                $resultResponse = mysqli_query($conn, $stmt);
-                while($row = mysqli_fetch_array($resultResponse)){
-                  $scaleQID = $row['uqID']; //gets question id for scale question
-                  $response = $row['response'];
-
-                  echo $response."     ";
-                  echo $scaleQID."     ";
-
-                  $stmt = "SELECT * FROM usabilityquestions WHERE uqID = $scaleQID"; //gets the question attached to the scale
-                  $scaleQ = mysqli_query($conn, $stmt);
-                  while($row = mysqli_fetch_array($scaleQ)){
-                    $scaleName = $row['uqText']; //get the text for the scale question
-                    echo "scale name".$scaleName;
-                    echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
-                    //
-                    // $stmt = "SELECT * FROM usabilityresults WHERE uqID = $scaleQID"; //get result for the question
-                    // $query = mysqli_query($conn, $stmt);
-                    // while($row = mysqli_fetch_array($scaleQ)){
-                    //   $scaleResponse = row['response'];
-                    //   echo "response ".$scaleResponse;
-                    // }
+                echo "<h5 class='card-text mt-2'>"."Title: ".$questionTxt."</h5>"; //this echos the 'title question'
+                $stmt = "SELECT * FROM usabilityquestions WHERE questionID = '$questionID'"; //gets the question id to get all sub questions for the usability scale
+                $subQuestionsQuery = mysqli_query($conn, $stmt);
+                while($row = mysqli_fetch_array($subQuestionsQuery)){
+                  $subQuestionText = $row['uqText'];
+                  $subQuestionID = $row['uqID'];
+                  echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question
+                  $stmt = "SELECT * FROM usabilityresults WHERE uqID = '$subQuestionID' AND responseID = '$responseID'"; //gets the response for this sub question
+                  $subQuestionResponseQuery = mysqli_query($conn, $stmt);
+                  while($row = mysqli_fetch_array($subQuestionResponseQuery)){
+                    $subQuestionResponse = $row['response'];
+                    echo "<p>Response: "."$subQuestionResponse"."</p>";
                   }
-                  echo "<p><strong>Participent Response: </strong>".$response."</p>";
                 }
               }
         echo "</div>

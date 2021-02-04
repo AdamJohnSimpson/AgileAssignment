@@ -77,7 +77,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       if (count($listOfQuestionID) > 0) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
 
-            echo "<br><h2><u><strong>{$X} - {$listOfQuestionText[$x]}</strong></u></h2>";
+            echo "<br><h2><u><strong>{$x} - {$listOfQuestionText[$x]}</strong></u></h2>";
             echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
 
             if ($listOfQuestionType[$x] == 1)
@@ -130,8 +130,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 $tempID = $subQuestionID[$i];
                 $subQuestionResultsQuery = "SELECT response FROM usabilityresults WHERE uqID = '$tempID'";
                 $subQuestionResultsResults = mysqli_query($conn, $subQuestionResultsQuery);
-
-
+                $subQuestionResponses = array();
 
                 if (mysqli_num_rows($subQuestionResultsResults) > 0) {
                     while ($row = mysqli_fetch_array($subQuestionResultsResults)) {
@@ -139,17 +138,15 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                     }
                 }
 
-                array_push($allSubResults, $subQuestionResponses);
-              }
+                $allSubResults[] = $subQuestionResponses;
 
+              }
 
               for ($p=0; $p < count($subQuestionText); $p++) {
                 $noOfSubResponses = 0;
                 $countOfSubValues = array();
 
                 $countOfSubValues = array_count_values($allSubResults[$p]);
-
-                print_r($countOfSubValues);
 
                 $subValues = array_keys($countOfSubValues);
                 echo "<h3>" . $subQuestionText[$p] . "</h3> <br>";
@@ -158,23 +155,16 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
                 for ($b=0; $b < count($subValues); $b++) {
                   $noOfSubResponses += $countOfSubValues[$subValues[$b]];
-                  echo $noOfSubResponses;
                 }
 
                 for ($c=0; $c < count($subValues); $c++)
                 {
-                  echo "banana" . $countOfSubValues[$subValues[$c]];
                   $percentage = round(($countOfSubValues[$subValues[$c]] / $noOfSubResponses) * 100);
-                  echo "dragon fruit" . $percentage;
                   echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $subValues[$c] . '" title="' . $subValues[$c] . ': ' . $countOfSubValues[$subValues[$c]] . '"></div>';
                 }
                 echo '</div>
               </div>';
-
               }
-
-
-
             }
           }
         }
