@@ -68,15 +68,15 @@ $responseID = $_GET['rid']; //get responseID
                 while($row = mysqli_fetch_array($resultResponse)){//display the answers from the response
                   $response = $row['response'];
                   echo "<p> - ".$response."</p>";
-                }
-              }
+                }//close while
+              }//close nested if
                 else{ // if the question is textbased or single choice
                   while($row = mysqli_fetch_array($resultResponse)){
                     $response = $row['response'];
                     echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
-                }
-              }
-            }
+                }//close while
+              }//close nested else
+            } //closes if
               else{ //question to display is a usabiltiy scale question
                 echo"yay i got here";
                 echo $responseID;
@@ -94,41 +94,12 @@ $responseID = $_GET['rid']; //get responseID
                   while($row = mysqli_fetch_array($subQuestionsQuery)){
                     $subQuestionResponse = $row['response'];
                     echo "<p>Response: "."$subQuestionResponse"."</p>";
-                  }
-                }
-
-                ///////////////////////////////////////////
-
-
-                // $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
-                // $resultResponse = mysqli_query($conn, $stmt);
-                // while($row = mysqli_fetch_array($resultResponse)){
-                //   $scaleQID = $row['uqID']; //gets question id for scale question
-                //   $response = $row['response'];
-                //
-                //   echo $response."     ";
-                //   echo $scaleQID."     ";
-                //
-                //   $stmt = "SELECT * FROM usabilityquestions WHERE uqID = $scaleQID"; //gets the question attached to the scale
-                //   $scaleQ = mysqli_query($conn, $stmt);
-                //   while($row = mysqli_fetch_array($scaleQ)){
-                //     $scaleName = $row['uqText']; //get the text for the scale question
-                //     echo "scale name".$scaleName;
-                //     echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
-                //     //
-                //     // $stmt = "SELECT * FROM usabilityresults WHERE uqID = $scaleQID"; //get result for the question
-                //     // $query = mysqli_query($conn, $stmt);
-                //     // while($row = mysqli_fetch_array($scaleQ)){
-                //     //   $scaleResponse = row['response'];
-                //     //   echo "response ".$scaleResponse;
-                //     // }
-                //   }
-                //   // echo "<p><strong>Participent Response: </strong>".$response."</p>";
-                }
-              }
+                  }//close while
+                }//close while
+              }//close else
         echo "</div>
          </div>";
-      }
+      } //close first while
       echo "<a href='https://team4agileassignment.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Back To Individual Results</button></a>";
       ?>
     </div>
