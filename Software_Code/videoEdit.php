@@ -5,20 +5,19 @@ include 'Includes/header.php';
 $videoPath = $_GET['id'];
 $newTrans = $_POST['transcript'];
 
-//if($_SERVER["REQUEST_METHOD"] === "POST"){
+  //checks if button has been submitted
   if(isset($_POST['editTrans']) && $_POST['editTrans'] = "Update Transcript")
     {
-      // $newtrans = $_GET['transcript'];
+
       echo "Transcript: ".$newTrans."<br>";
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
       }
       else {
         //send to db sql here
-        echo "Transcript: ".$newTrans."<br>";
-        echo "Address: ".$videoPath."<br>";
+        //echo "Transcript: ".$newTrans."<br>";
+        //echo "Address: ".$videoPath."<br>";
         $sql = "UPDATE videos SET transcript='{$newTrans}' WHERE videoAddress='{$videoPath}'";
-        echo "sql = UPDATE videos SET transcript= ".$newTrans." WHERE videoAddress=".$videoPath."";
         if ($conn->query($sql) === TRUE) {
           echo "New transcript added successfully!";
         }
@@ -27,14 +26,7 @@ $newTrans = $_POST['transcript'];
         }
       }
    }
-//}
 
-// if(isset($_POST['addT']) && $_POST['addT'] = "Submit")
-//   {
-//     $transcript = nl2br($transcript);
-//     echo "Transcript: <br>";
-//     echo $transcript;
-//   }
 
 if(isset($_POST['editDesc'])){
 
@@ -74,7 +66,7 @@ if(isset($_POST['editDesc'])){
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Edit video details hi hi!</h1>
+    <h1 class="text-center">Edit Video</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron" style="margin-bottom:1px;">
@@ -82,35 +74,21 @@ if(isset($_POST['editDesc'])){
       <label>Please enter the description below.</label>
       </form>
       <form method="POST">
-          <input type="text" value="Add a new description here" name="descinfo">
+          <input type="text" name="descinfo">
           <input type="submit" class='btn btn-outline-success' value="Update Description" name="editDesc">
       </form>
       <div class="form-group">
-        <form>
-        <label>Please enter the transcript below.</label>
-        </form>
-        <div class="jumbotron" style="margin-bottom:1px;">
-          <!-- action="<//?php// echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" -->
-          <form method="POST">
-            <div class="form-group">
-              <form>
-                <label>Please enter the transcript below.</label>
-              </form>
-              <br></br>
-              <div class="form-check">
-                <textarea name="transcript" cols="40" rows="5"></textarea>
-              </div>
-              <div class="form-check">
-                <input type="submit" value="Update Transcript" name="editTrans" class='btn btn-outline-success'>
-              </div>
+        <form method="POST">
+          <div class="form-group">
+            <form>
+              <label>Please enter the transcript below.</label>
             </form>
-          </div>
+            <br></br>
+            <textarea name="transcript" cols="40" rows="5"></textarea>
+            <br>
+            <input type="submit" value="Update Transcript" name="editTrans" class='btn btn-outline-success'>
+          </form>
         </div>
-        <!-- <textarea name="transinfo" form ="transform" cols="40" rows="5"></textarea>
-        <br>
-        <form method="POST" id="transform">
-          <input type="submit" class='btn btn-outline-success' value="submitTrans" name="editTrans">
-        </form> -->
         <?php
         $address = "individualVideo.php?p={$videoPath}";
         echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Return to video</button> </a>"
