@@ -39,7 +39,7 @@
       $sql = $conn->prepare("INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', ?, '$questionnaireID', $questionType)");
       $sql->bind_param('s', $questionText);
 
-      if ($sql->execute(); === TRUE) {
+      if ($sql->execute() === TRUE) {
         echo "New record created successfully";
         for ($i=0; $i < $extraOptions+3; $i++) {
           echo "i= ".$i." <br> is less than ".$extraOptions." +3 <br>";
@@ -79,7 +79,7 @@
       $questionType = 3;
       $sql = $conn->prepare("INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', ?, '$questionnaireID', $questionType)");
       $sql->bind_param('s', $questiontext);
-      if ($sql->execute(); === TRUE) {
+      if ($sql->execute() === TRUE) {
         echo "New record created successfully";
         for ($i=0; $i < $extraOptions+3; $i++) {
           echo "i= ".$i." <br> is less than ".$extraOptions." +3 <br>";

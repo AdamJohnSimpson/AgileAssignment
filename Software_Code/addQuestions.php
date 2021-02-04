@@ -28,8 +28,9 @@
 
       $questionType = 1;
 
-      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
-      if ($conn->query($sql) === TRUE) {
+      $sql = $conn->prepare("INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', ?, '$questionnaireID', $questionType)");
+      $sql->bind_param('s', $questiontext);
+      if ($sql->execute() === TRUE) {
         echo "New record created successfully";
         //header("location: addQuestions.php");
       }
@@ -48,8 +49,9 @@
     else {
       $questionID = uniqid($prefix="", $more_entropy=false);
       $questionType = 1;
-      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
-      if ($conn->query($sql) === TRUE) {
+      $sql = $conn->prepare("INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', ?, '$questionnaireID', $questionType)");
+      $sql->bind_param('s', $questiontext);
+      if ($sql->execute() === TRUE) {
         echo "New record created successfully";
       }
       else {
