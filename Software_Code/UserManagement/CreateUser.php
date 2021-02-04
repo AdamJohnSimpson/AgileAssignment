@@ -99,10 +99,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //if both passwords are the same and username is not used and role is not empty
     if($password === $confirm_password && $userNameResult == FALSE && $roleEmpty == FALSE) {
       // Prepare an insert statement
-       $sql = "INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES ('$firstname', '$surname', '$email', '$role', '$username', '$password')";
+       $sql = ;
 
+       $sql = $conn->prepare("INSERT INTO User (FirstName, Surname, EmailAddress, Role, UserName, Password) VALUES (?, ?, ?, ?, ?, ?)");
+       $sql->bind_param('ssssss', $firstname, $surname, $email, $role, $username, $password);
        // if query works
-       if ($conn->query($sql) === TRUE) {
+       if ($sql->execute() === TRUE) {
          echo "New user created successfully.";
 
          sleep(1);
