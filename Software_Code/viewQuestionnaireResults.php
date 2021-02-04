@@ -159,6 +159,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
                 for ($c=0; $c < count($subValues); $c++)
                 {
+                  echo $countOfSubValues[$subValues[$c]];
                   $percentage = round(($countOfSubValues[$subValues[$c]] / $noOfResponses) * 100);
                   echo $percentage;
                   echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $subValues[$c] . '" title="' . $subValues[$c] . ': ' . $countOfSubValues[$subValues[$c]] . '"></div>';
