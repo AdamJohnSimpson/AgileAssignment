@@ -95,7 +95,7 @@ $responseID = $_GET['rid']; //get responseID
                   echo $response."     ";
                   echo $scaleQID."     ";
 
-                  $stmt = "SELECT * FROM usabilityquestions WHERE questionID = $questionID"; //gets the question attached to the scale
+                  $stmt = "SELECT * FROM usabilityquestions WHERE uqID = $scaleQID"; //gets the question attached to the scale
                   $scaleQ = mysqli_query($conn, $stmt);
                   while($row = mysqli_fetch_array($scaleQ)){
                     $scaleName = $row['uqText']; //get the text for the scale question
