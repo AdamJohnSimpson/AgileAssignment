@@ -63,14 +63,15 @@ $videoPath = $_GET['p'];
        while($row = mysqli_fetch_array($result)){
         $timestamptime = $row['timestampTime'];
         $timestamptext = $row['timestampText'];
-        echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br><br><br>";
+        echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br>";
       }
       ?>
        <br><br><br>
+       <form action="videoPage.php">
+           <input class='btn btn-outline-success' type="submit" value="Return to video page" />
+       </form>
     </div>
-    <form action="experimentInformation.php">
-        <input class='btn btn-outline-success' type="submit" value="Return to Experiments Information" />
-    </form>
+
   </div>
 
 

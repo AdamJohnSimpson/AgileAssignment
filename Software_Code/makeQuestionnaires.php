@@ -75,7 +75,7 @@
     <div class="container-fluid" style="padding:0">
       <div class="jumbotron" style="margin-bottom:1px;">
         <h2 class="text-center">You are creating a questionnaire for experiment:
-        <?php echo $_SESSION['experimentName']; ?></h2>
+        <?php echo $_SESSION['experimentName']; ?></h2> <br>
           <form method="POST">
             <div class="form-group">
               <label>Please enter the name of the questionnaire you are creating : </label>

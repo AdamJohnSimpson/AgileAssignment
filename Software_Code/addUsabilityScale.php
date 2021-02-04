@@ -1,17 +1,17 @@
 <?php include 'includes/header.php'?>
 <?php
 //ensures user is logged in
-  // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  //   header("location: login.php");
-  //   exit;
-  // }
-  // if(isset($_SESSION["experimentID"])){
-  //   $experimentID = $_SESSION["experimentID"];
-  // } else {
-  //   //If an experiment hasn't been selected redirect to relevant page
-  //   header("location: experimentList.php");
-  //   exit;
-  // }
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false){
+    header("location: login.php");
+    exit;
+  }
+  if(isset($_SESSION["experimentID"])){
+    $experimentID = $_SESSION["experimentID"];
+  } else {
+    //If an experiment hasn't been selected redirect to relevant page
+    header("location: experimentList.php");
+    exit;
+  }
 
   include "Includes/db.inc.php";
   $questionnaireID = $_SESSION['questionnaireID'];
@@ -21,7 +21,7 @@
       echo "extra options= ".$extraOptions."<br><br>";
       $extraOptions= $extraOptions + 1;
       echo "extra options + 1= ".$extraOptions."<br><br>";
-      header("location: https://team4agileassignment.azurewebsites.net/addUsabilityScale.php?on={$extraOptions}");
+      header("location: addUsabilityScale.php?on={$extraOptions}");
       exit;
     }
 
@@ -166,7 +166,7 @@
           <?php echo $_SESSION['questionnaireName']; ?></h2>
           <br>
           <div class="dropdown">
-            <button class="dropbtn">Change question type</button>
+            <button class="dropbtn">Change question type</button> <br>
             <div class="dropdown-content">
               <a href="addQuestions.php">Text Answer</a>
               <a href="addMultipleChoice.php">Multiple Choice</a>

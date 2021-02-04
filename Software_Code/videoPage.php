@@ -102,13 +102,14 @@ $experimentName = $_SESSION['experimentName'];
          </script>
        </form>
      -->
-       <br></br>
+       <br><br>
+       <form action="experimentInformation.php">
+           <input class='btn btn-outline-success' type="submit" value="Return to experiment page" />
+       </form>
     </div>
   </div>
 
-  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
-      <input type="submit" value="Return to Experiments Information" />
-  </form>
+
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
