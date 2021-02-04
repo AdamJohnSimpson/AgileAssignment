@@ -68,43 +68,35 @@ $responseID = $_GET['rid']; //get responseID
                 while($row = mysqli_fetch_array($resultResponse)){//display the answers from the response
                   $response = $row['response'];
                   echo "<p> - ".$response."</p>";
-                }//close while
-              }//close nested if
+                }
+              }
                 else{ // if the question is textbased or single choice
                   while($row = mysqli_fetch_array($resultResponse)){
                     $response = $row['response'];
                     echo "<p><strong>Participent Response: </strong>".$response."</p>"; //display result
-                }//close while
-              }//close nested else
-            } //closes if
+                }
+              }
+            }
               else{ //question to display is a usabiltiy scale question
-                echo"yay i got here edit2           ";
-                echo $questionID;
-
-                echo "<h5 class='card-text mt-2'>"."Title: ".$questionTxt."</h5>"; //this echos the 'title question' which is stupid
-
-                $stmt = "SELECT * FROM usabilityquestions WHERE questionID = '$questionID'"; //gets the question id to get all sub questions for the usability scale which is stupid
+                echo "<h5 class='card-text mt-2'>"."Title: ".$questionTxt."</h5>"; //this echos the 'title question'
+                $stmt = "SELECT * FROM usabilityquestions WHERE questionID = '$questionID'"; //gets the question id to get all sub questions for the usability scale
                 $subQuestionsQuery = mysqli_query($conn, $stmt);
                 while($row = mysqli_fetch_array($subQuestionsQuery)){
                   echo "yay i got here too";
                   $subQuestionText = $row['uqText'];
                   $subQuestionID = $row['uqID'];
-                  echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question which is stupid
-
-                  echo "subQidCheck ".$subQuestionID;
-                  echo "responseidCheck ".$responseID;
-
-                  $stmt = "SELECT * FROM usabilityresults WHERE uqID = '$subQuestionID' AND responseID = '$responseID'"; //gets the response for this sub question which is stupid
+                  echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question
+                  $stmt = "SELECT * FROM usabilityresults WHERE uqID = '$subQuestionID' AND responseID = '$responseID'"; //gets the response for this sub question
                   $subQuestionResponseQuery = mysqli_query($conn, $stmt);
                   while($row = mysqli_fetch_array($subQuestionResponseQuery)){
                     $subQuestionResponse = $row['response'];
                     echo "<p>Response: "."$subQuestionResponse"."</p>";
-                  }//close while
-                }//close while
-              }//close else
+                  }
+                }
+              }
         echo "</div>
          </div>";
-      } //close first while
+      }
       echo "<a href='https://team4agileassignment.azurewebsites.net/responseList.php?qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>Back To Individual Results</button></a>";
       ?>
     </div>
