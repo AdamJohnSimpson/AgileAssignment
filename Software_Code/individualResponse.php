@@ -81,7 +81,16 @@ $responseID = $_GET['rid']; //get responseID
                 echo"yay i got here";
                 echo $responseID;
 
-                echo "<h5 class='card-text mt-2'>"."this is the question text variable".$questionTxt."</h5>";
+                echo "<h5 class='card-text mt-2'>"."Title: ".$questionTxt."</h5>"; //this echos the 'title question' which is stupid
+
+                $stmt = "SELECT * FROM usabilityquestions WHERE questionID = $questionID"; //gets the question id to get all sub questions for the usability scale which is stupid
+                $subQuestionsQuery = mysqli_query($conn, $stmt);
+                while($row = mysqli_fetch_array($subQuestionsQuery)){
+                  $subQuestion = $row['questionText'];
+                  echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestion."</h5>"; //displays the sub question which is stupid
+
+                }
+
 
                 $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
                 $resultResponse = mysqli_query($conn, $stmt);
