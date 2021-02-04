@@ -68,8 +68,46 @@
   }
 
   if(isset($_POST['quit'])) {
-    header("location: questionnaireList.php");
-    exit;
+    $questiontext = $_POST['questionText'];
+    if (empty($questiontext)) {
+      header("location: questionnaireList.php");
+      exit;
+    }
+    else {
+      $success = true;
+      //send to db sql here
+      $questionID = uniqid($prefix="", $more_entropy=false);
+      $questionType = 4;
+      $sql = "INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', '$questiontext', '$questionnaireID', $questionType)";
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        for ($i=1; $i < $extraOptions+2; $i++) {
+          $variablename = "subQ".$i."";
+          $subQtext = $_POST[$variablename];
+          if (empty($subQtext)) {
+            echo "The sub question must have text!";
+          }
+          else {
+            $uqID = uniqid($prefix="", $more_entropy=false);
+            $sql = "INSERT INTO usabilityquestions(uqID, uqText, questionID) VALUES ('$uqID','$subQtext', '$questionID')";
+            if ($conn->query($sql) === TRUE) {
+              echo "New record created successfully";
+            }
+            else {
+              $success = false;
+              echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+          }
+        }
+        if ($success){
+          echo "It was a success!";
+          header("location: addUsabilityScale.php");
+        }
+      }
+      else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
   }
 
   if(isset($_POST['cancel'])) {
