@@ -6,7 +6,7 @@ $videoPath = $_GET['id'];
 $newTrans = $_POST['transcript'];
 
   //checks if button has been submitted
-  if(isset($_POST['editTrans']) && $_POST['editTrans'] = "Update Transcript")
+  if(isset($_POST['editTrans']) && $_POST['editTrans'] == "Update Transcript")
     {
 
       echo "Transcript: ".$newTrans."<br>";
@@ -17,8 +17,9 @@ $newTrans = $_POST['transcript'];
         //send to db sql here
         //echo "Transcript: ".$newTrans."<br>";
         //echo "Address: ".$videoPath."<br>";
-        $sql = "UPDATE videos SET transcript='{$newTrans}' WHERE videoAddress='{$videoPath}'";
-        if ($conn->query($sql) === TRUE) {
+        $sql = $conn->prepare("UPDATE videos SET transcript=? WHERE videoAddress='{$videoPath}'");
+        $sql->bind_param('s', $newTrans);
+        if ($sql->execute() === TRUE) {
           echo "New transcript added successfully!";
         }
         else {
@@ -35,8 +36,9 @@ if(isset($_POST['editDesc'])){
     echo "The video must have a description!";
   } else {
   //send to db sql here
-  $sql = "UPDATE videos SET videoDescription='{$newInfo}' WHERE videoAddress='{$videoPath}'";
-  if ($conn->query($sql) === TRUE) {
+  $sql = $conn->prepare("UPDATE videos SET videoDescription='{$newInfo}' WHERE videoAddress='{$videoPath}'");
+  $sql->bind_param('s', $newInfo);
+  if ($sql->execute() === TRUE) {
     echo "New description added successfully!";
   }
   else {
