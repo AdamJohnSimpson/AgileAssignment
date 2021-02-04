@@ -18,10 +18,14 @@ if(isset($_POST['addT'])){
 
     //send to db sql here
     $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
+    echo "query is - ".$sql."";
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
-      header("location: Timestamps.php");
+      $success=true;
     }}
+  }
+  if ($success){
+    header("location: Timestamps.php");
   }
 
 ?>
