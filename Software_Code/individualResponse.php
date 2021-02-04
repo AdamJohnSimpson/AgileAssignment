@@ -90,7 +90,7 @@ $responseID = $_GET['rid']; //get responseID
                   $subQuestionText = $row['uqText'];
                   $subQuestionID = $row['uqID'];
                   echo "<h5 class='card-text mt-2'>"."Sub Question: ".$subQuestionText."</h5>"; //displays the sub question which is stupid
-                  $stmt = "SELECT * FROM usabilityresults WHERE uqID = '$subQuestionID' AND responseID = '$resposneID'"; //gets the response for this sub question which is stupid
+                  $stmt = "SELECT * FROM usabilityresults WHERE uqID = '$subQuestionID' AND responseID = '$responseID'"; //gets the response for this sub question which is stupid
                   $subQuestionResponseQuery = mysqli_query($conn, $stmt);
                   while($row = mysqli_fetch_array($subQuestionsQuery)){
                     $subQuestionResponse = $row['response'];
