@@ -141,7 +141,6 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 $allSubResults[] = $subQuestionResponses;
 
               }
-              print_r($allSubResults);
 
               for ($p=0; $p < count($subQuestionText); $p++) {
                 $noOfSubResponses = 0;
@@ -165,11 +164,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 }
                 echo '</div>
               </div>';
-
               }
-
-
-
             }
           }
         }
