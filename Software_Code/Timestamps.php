@@ -3,6 +3,7 @@ include 'Includes/header.php';
 include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
+
 $vidID = $_GET['id'];
 if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
@@ -25,7 +26,7 @@ if(isset($_POST['addT'])){
     }}
   }
   if ($success){
-    header("location: Timestamps.php");
+    header('location: Timestamps.php?id='.$vidID);
   }
 
 ?>
@@ -93,12 +94,16 @@ if(isset($_POST['addT'])){
        </form>
      -->
        <br></br>
+       <form action="videoPage.php">
+           <input class='btn btn-outline-success' type="submit" value="Return to video page" style="float: left; margin:20px" />
+       </form>
+
+
     </div>
+
   </div>
 
-  <form action="experimentInformation.php">
-      <input type="submit" value="Return to Experiments Information" />
-  </form>
+
   <footer>
         <img class="img-fluid mx-auto d-block" src="University-of-Dundee-logo-small.png" width="100px" style="padding:20px">
   </footer>
