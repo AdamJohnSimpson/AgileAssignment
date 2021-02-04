@@ -73,8 +73,8 @@ if(isset($_POST['addT'])){
 
        ?>
        <form method="POST">
-         <p> enter a time: </p><input type='text' name="timestampT">
-         <p> enter a note: </p><input type='text' name="note">
+         <p> Enter a time, in format HH:MM:SS: </p><input type='text' name="timestampT">
+         <p> Enter a note: </p><input type='text' name="note">
          <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
        </form>
        <!--
