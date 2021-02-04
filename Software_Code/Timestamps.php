@@ -8,7 +8,21 @@ if(isset($_POST['logout'])) {
   unset($_SESSION['loggedin']);
   header("location: login.php");
 }
+if(isset($_POST['addT'])){
+  $timestampT = $_POST['timestampT'];
+  $timestampnote = $_POST['note'];
+  if (empty($timestampT)) {
+    echo "The timestamp must have a time!";
+  }
+  else {
 
+    //send to db sql here
+    $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
+    if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+      header("location: Timestamps.php")
+    }}
+  }
 
 ?>
 
@@ -52,27 +66,12 @@ if(isset($_POST['logout'])) {
           echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br><br><br>";
         }
 
-        if(isset($_POST['addT'])){
-          $timestampT = $_POST['timestampT'];
-          $timestampnote = $_POST['note'];
-          if (empty($timestampT)) {
-            echo "The timestamp must have a time!";
-          }
-          else {
-
-            //send to db sql here
-            $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
-            if ($conn->query($sql) === TRUE) {
-              echo "New record created successfully";
-            }}
-          }
-
-
-
        ?>
-       <p> enter a time: </p><input type='text' name="timestampT.">";
-       <p> enter a note: </p><input type='text' name="note">";
+       <form action="POST">
+       <p> enter a time: </p><input type='text' name="timestampT">
+       <p> enter a note: </p><input type='text' name="note">
        <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
+     </form>
        <!--
        <form>
          <input type="button" class="btn btn-primary" onclick="timestamp()" value="Go to Timestamp 1" name="Timestamp1" id="btn">

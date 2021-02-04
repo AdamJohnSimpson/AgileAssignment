@@ -1,17 +1,17 @@
 <?php include 'includes/header.php'?>
 <?php
 //ensures user is logged in
-  // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
-  //   header("location: login.php");
-  //   exit;
-  // }
-  // if(isset($_SESSION["experimentID"])){
-  //   $experimentID = $_SESSION["experimentID"];
-  // } else {
-  //   //If an experiment hasn't been selected redirect to relevant page
-  //   header("location: experimentList.php");
-  //   exit;
-  // }
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false){
+    header("location: login.php");
+    exit;
+  }
+  if(isset($_SESSION["experimentID"])){
+    $experimentID = $_SESSION["experimentID"];
+  } else {
+    //If an experiment hasn't been selected redirect to relevant page
+    header("location: experimentList.php");
+    exit;
+  }
 
   include "Includes/db.inc.php";
   $questionnaireID = $_SESSION['questionnaireID'];
@@ -21,7 +21,7 @@
       echo "extra options= ".$extraOptions."<br><br>";
       $extraOptions= $extraOptions + 1;
       echo "extra options + 1= ".$extraOptions."<br><br>";
-      header("location: https://agile-assignment-group-4.azurewebsites.net/addSingleChoice.php?on={$extraOptions}");
+      header("location: addSingleChoice.php?on={$extraOptions}");
       exit;
     }
 
