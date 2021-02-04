@@ -15,7 +15,6 @@ if(isset($_POST['addT'])){
     echo "The timestamp must have a time!";
   }
   else {
-
     //send to db sql here
     $sql = "INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ($timestampnote, $vidID, $timestampT)";
     echo "query is - ".$sql."";
@@ -71,7 +70,7 @@ if(isset($_POST['addT'])){
         }
 
        ?>
-       <form action="POST">
+       <form method="POST">
          <p> enter a time: </p><input type='text' name="timestampT">
          <p> enter a note: </p><input type='text' name="note">
          <input type="submit" value="Add timestamp" name="addT" class='btn btn-outline-success'>
@@ -96,7 +95,7 @@ if(isset($_POST['addT'])){
     </div>
   </div>
 
-  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
+  <form action="experimentInformation.php">
       <input type="submit" value="Return to Experiments Information" />
   </form>
   <footer>
