@@ -6,7 +6,7 @@
         unset($_SESSION['USER_role']);
     }
 
-    if(ISSET($_SESSION['loggedin']){
+    if(ISSET($_SESSION['loggedin'])){
         unset($_SESSION['loggedin']);
     }
 
