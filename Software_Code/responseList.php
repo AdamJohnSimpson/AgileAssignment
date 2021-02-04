@@ -48,7 +48,7 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
            echo "<div class='row'>
              <div class='card-body'>
               <h5 class='card-text mt-2'> Response Number: ".$count."</h5>
-              <a href='https://agile-assignment-group-4.azurewebsites.net/individualResponse.php?rid={$responseID}&qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
+              <a href='https://team4agileassignment.azurewebsites.net/individualResponse.php?rid={$responseID}&qid={$questionnaireID}'><button class='btn btn-outline-success' type='button'>View Answers</button></a>
               </div>
            </div>";
            $previousResponseID = $responseID;
@@ -57,7 +57,7 @@ $questionnaireID = $_GET['qid']; //get questionnaireID
       }
       echo "<p>Total Responses: ".$count."</p>";
 
-      echo "<a href='https://agile-assignment-group-4.azurewebsites.net/questionnaireList.php'><button class='btn btn-outline-success' type='button'>Back To Questionnaie List</button></a>";
+      echo "<a href='https://team4agileassignment.azurewebsites.net/questionnaireList.php'><button class='btn btn-outline-success' type='button'>Back To Questionnaie List</button></a>";
       ?>
     </div>
   </div>
