@@ -9,7 +9,7 @@ if(isset($_POST['logout'])) {
   header("location: login.php");
 }
 
-$videoPath = $_GET['p'];
+$videoPath = $_GET['id'];
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $videoPath = $_GET['p'];
 
 <head>
   <meta charset="utf-8">
-  <title>Video Info</title> <!-- Bootstrap CSS -->
+  <title>Timestamps</title> <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -34,13 +34,13 @@ $videoPath = $_GET['p'];
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class='text-center'>Video</h1>
+    <h1 class='text-center'>Timestamps</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
 
       <?php
-      $videoPath = $_GET['id'];
+
         //get information from experiment list page to display the selected experiment
         $query = "SELECT videoID FROM videos WHERE videoAddress= '$videoPath'";
         $result = mysqli_query($conn, $query);
@@ -50,7 +50,7 @@ $videoPath = $_GET['p'];
           $vidID = $row['videoID'];
           echo "<br> I am in the while loop <br>";
         }
-        $query2 = "SELECT * FROM timestamps WHERE vidID = $vidID";
+        $query2 = "SELECT * FROM timestamps WHERE videoID = $vidID";
         $result2 = mysqli_query($conn, $query);
         echo $result2;
         // foreach( $result as $row ) {
