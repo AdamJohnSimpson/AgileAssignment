@@ -81,10 +81,12 @@ if(isset($_POST['editDesc'])){
         <form method="POST">
           <div class="form-group">
             <form>
+              <br>
               <label>Please enter the transcript below.</label>
             </form>
             <br></br>
             <textarea name="transcript" cols="40" rows="5"></textarea>
+            <br>
             <br>
             <input type="submit" value="Update Transcript" name="editTrans" class='btn btn-outline-success'>
           </form>
