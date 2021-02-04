@@ -86,7 +86,7 @@ if(isset($_POST['edit'])){
         </form>
         <br>
         <form action="experimentList.php">
-            <input type="submit" class='btn btn-outline-success' value="Return to Experiments List" style="float: left; margin:20px" />
+            <input type="submit" class='btn btn-outline-success' value="Return to Experiments List" />
     </form>
     </div>
     </div>
