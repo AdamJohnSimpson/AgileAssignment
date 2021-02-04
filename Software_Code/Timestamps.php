@@ -49,7 +49,7 @@ if(isset($_POST['logout'])) {
         while($row = mysqli_fetch_array($result)){
           $timestamptime = $row['timestampTime'];
           $timestamptext = $row['timestampText'];
-          echo "Timestamp time:".$timestamptime."<br>Timestamp text: ".$timestamptext."";
+          echo "<br> Timestamp time:".$timestamptime."        notes: ".$timestamptext."<br>";
         }
 
 
