@@ -89,6 +89,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
             }
             else if ($listOfQuestionType[$x] == 2 || $listOfQuestionType[$x] == 3)
             {
+              $noOfResponses = 0;
               $countOfValues = array_count_values($allResults[$x]);
 
               $values = array_keys($countOfValues);
@@ -143,6 +144,9 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
 
               for ($p=0; $p < count($subQuestionText); $p++) {
+                $noOfSubResponses = 0;
+                $countOfSubValues = array();
+
                 $countOfSubValues = array_count_values($allSubResults[$p]);
 
                 print_r($countOfSubValues);
@@ -153,15 +157,15 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 <div class="grid">';
 
                 for ($b=0; $b < count($subValues); $b++) {
-                  $noOfResponses += $countOfSubValues[$subValues[$b]];
-                  echo $noOfResponses;
+                  $noOfSubResponses += $countOfSubValues[$subValues[$b]];
+                  echo $noOfSubResponses;
                 }
 
                 for ($c=0; $c < count($subValues); $c++)
                 {
-                  echo $countOfSubValues[$subValues[$c]];
-                  $percentage = round(($countOfSubValues[$subValues[$c]] / $noOfResponses) * 100);
-                  echo $percentage;
+                  echo "banana" . $countOfSubValues[$subValues[$c]];
+                  $percentage = round(($countOfSubValues[$subValues[$c]] / $noOfSubResponses) * 100);
+                  echo "dragon fruit" . $percentage;
                   echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $subValues[$c] . '" title="' . $subValues[$c] . ': ' . $countOfSubValues[$subValues[$c]] . '"></div>';
                 }
                 echo '</div>
