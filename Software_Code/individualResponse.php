@@ -79,10 +79,9 @@ $responseID = $_GET['rid']; //get responseID
             }
               else{ //question to display is a usabiltiy scale question
                 echo"yay i got here";
-                echo $questionID."   ";
                 echo $responseID;
 
-                echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
+                echo "<h5 class='card-text mt-2'>"."this is the question text variable".$questionTxt."</h5>";
 
                 $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
                 $resultResponse = mysqli_query($conn, $stmt);
