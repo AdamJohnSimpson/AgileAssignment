@@ -130,6 +130,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 $tempID = $subQuestionID[$i];
                 $subQuestionResultsQuery = "SELECT response FROM usabilityresults WHERE uqID = '$tempID'";
                 $subQuestionResultsResults = mysqli_query($conn, $subQuestionResultsQuery);
+                $subQuestionResponses = array();
 
                 if (mysqli_num_rows($subQuestionResultsResults) > 0) {
                     while ($row = mysqli_fetch_array($subQuestionResultsResults)) {
@@ -137,7 +138,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                     }
                 }
 
-                $allSubResults[$i][] = $subQuestionResponses;
+                $allSubResults[] = $subQuestionResponses;
 
               }
               print_r($allSubResults);
