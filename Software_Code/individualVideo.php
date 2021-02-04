@@ -3,7 +3,6 @@ include 'Includes/header.php';
 include "Includes/db.inc.php";
 $experimentID = $_SESSION['experimentID'];
 $experimentName = $_SESSION['experimentName'];
-
 $videoPath = $_GET['p'];
 ?>
 
@@ -27,7 +26,7 @@ $videoPath = $_GET['p'];
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class='text-center'>Video</h1>
+    <h1 class='text-center'>Video Details</h1>
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
@@ -36,19 +35,17 @@ $videoPath = $_GET['p'];
         //get information from experiment list page to display the selected experiment
         $query = "SELECT * FROM videos WHERE videoAddress= '$videoPath'";
         $result = mysqli_query($conn, $query);
-        // foreach( $result as $row ) {
         while($row = mysqli_fetch_array($result)){
           $vidID = $row['videoID'];
           $vidDesc = $row['videoDescription'];
           $vidTrans = $row['transcript'];
           $transcript = nl2br($vidTrans);
-          echo "<br> I am in the while loop <br>";
         }
         echo "<video id='".$vidID."' src='".$videoPath."' width='750' height='500' type='video/mp4' controls>
               Your browser does not support the video tag.
-              </video> <br>
-              <p> <b>Video Description: </b> </p> <br>".$vidDesc."<br><br>
-              <p> <b>Video Transription: </b> </p> <br>".$transcript." <br> <br>";
+              </video> <br> <br>
+              <h2 class='text-centre'>Video Description: </h2> <br>".$vidDesc."<br><br>
+              <h2 class='text-centre'>Video Transcription: </h2> <br>".$transcript." <br> <br>";
               $address = "videoEdit.php?id={$videoPath}";
               echo "<br><br> <a href='{$address}'> <button class='btn btn-outline-success' type='button'>Edit Video Details</button> </a> <br>";
 
@@ -79,7 +76,7 @@ $videoPath = $_GET['p'];
     </div>
   </div>
 
-  <form action="https://agile-assignment-group-4.azurewebsites.net/experimentInformation.php">
+  <form action="experimentInformation.php">
       <input type="submit" value="Return to Experiments Information" />
   </form>
   <footer>
