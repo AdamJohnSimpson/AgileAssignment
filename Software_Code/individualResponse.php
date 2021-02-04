@@ -81,7 +81,7 @@ $responseID = $_GET['rid']; //get responseID
             }
               else{ //question to display is a usabiltiy scale question
                 echo"yay i got here";
-                echo $questionID;
+                echo $questionID."   ";
                 echo $responseID;
 
                 echo "<h5 class='card-text mt-2'>".$questionTxt."</h5>";
