@@ -10,6 +10,14 @@
         unset($_SESSION['loggedin']);
     }
 
+    if(ISSET($_SESSION['id'])){
+        unset($_SESSION['id']);
+    }
+
+    if(ISSET($_SESSION['username'])){
+        unset($_SESSION['username']);
+    }
+
     header("location: ../login.php");
     exit();
 
