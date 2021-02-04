@@ -89,7 +89,7 @@ $responseID = $_GET['rid']; //get responseID
                   $subQuestionResponseQuery = mysqli_query($conn, $stmt);
                   while($row = mysqli_fetch_array($subQuestionResponseQuery)){
                     $subQuestionResponse = $row['response'];
-                    echo "<p>Response: "."$subQuestionResponse"."</p>";
+                    echo "<p><strong>Response: </strong>"."$subQuestionResponse"."</p>";
                   }
                 }
               }
