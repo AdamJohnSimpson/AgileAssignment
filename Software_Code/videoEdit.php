@@ -3,12 +3,12 @@ include "Includes/db.inc.php";
 include 'Includes/header.php';
 
 $videoPath = $_GET['id'];
-// $transcript = $_GET['transcript'];
+$newTrans = $_POST['transcript'];
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
   if(isset($_POST['editTrans']) && $_POST['editTrans'] = "submitTrans")
     {
-      $newtrans = $_GET['transcript'];
+      // $newtrans = $_GET['transcript'];
       echo "Transcript: ".$newTrans."";
       if (empty($newTrans)) {
         echo "The video must have a transcript!";
@@ -16,6 +16,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
       else {
      //send to db sql here
      $sql = "UPDATE videos SET transcript='{$newtrans}' WHERE videoAddress='{$videoPath}'";
+     echo "sql = UPDATE videos SET transcript= ".$newtrans." WHERE videoAddress=".$videoPath."";
      if ($conn->query($sql) === TRUE) {
        echo "New transcript added successfully!";
      }
