@@ -127,7 +127,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
               for ($i=0; $i < count($subQuestionID); $i++) {
                 $tempID = $subQuestionID[$i];
-                $subQuestionResultsQuery = "SELECT response FROM usabilityrseults WHERE uqID = '$tempID'";
+                $subQuestionResultsQuery = "SELECT response FROM usabilityresults WHERE uqID = '$tempID'";
                 $subQuestionResultsResults = mysqli_query($conn, $subQuestionResultsQuery);
 
 
