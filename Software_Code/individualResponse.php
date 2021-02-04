@@ -78,7 +78,7 @@ $responseID = $_GET['rid']; //get responseID
               }//close nested else
             } //closes if
               else{ //question to display is a usabiltiy scale question
-                echo"yay i got here";
+                echo"yay i got here edit1";
                 echo $responseID;
 
                 echo "<h5 class='card-text mt-2'>"."Title: ".$questionTxt."</h5>"; //this echos the 'title question' which is stupid
