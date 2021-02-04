@@ -151,12 +151,12 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
                 <div class="grid">';
 
                 for ($b=0; $b < count($subValues); $b++) {
-                  $noOfResponses += $countOfSubValues[$subValues[$a]];
+                  $noOfResponses += $countOfSubValues[$subValues[$b]];
                 }
 
                 for ($c=0; $c < count($subValues); $c++)
                 {
-                  $percentage = round(($countOfSubValues[$subValues[$z]] / $noOfResponses) * 100);
+                  $percentage = round(($countOfSubValues[$subValues[$c]] / $noOfResponses) * 100);
                   echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $subValues[$c] . '" title="' . $subValues[$c] . ': ' . $countOfSubValues[$subValues[$c]] . '"></div>';
                 }
                 echo '</div>
