@@ -60,6 +60,7 @@ $videoPath = $_GET['p'];
           $timestamptext = $row['timestampText'];
           echo "<br> Timestamp time:".$timestamptime."<br>notes: ".$timestamptext."<br>";
         }
+        $addressTime = "Timestamps.php?id={$vidID}";
         echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
         </div>";
       ?>
