@@ -184,7 +184,7 @@
                 <input type="text" name="answerOption2"><br><br>
                 <?php
                 for ($i=0; $i < $extraOptions; $i++) {
-                  $tempNo = $extraOptions + 2 + $i;
+                  $tempNo = 2 + $i;
                   $optionNoName = "answerOption" . $tempNo;
                   echo "<label>Please enter an answer option: </label>
                   <input type='text' name=".$optionNoName."><br><br>";
