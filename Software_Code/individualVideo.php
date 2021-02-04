@@ -30,7 +30,6 @@ $videoPath = $_GET['p'];
   </div>
   <div class="container-fluid" style="padding:0">
     <div class="jumbotron text-center" style="margin-bottom:1px;">
-
       <?php
         //get information from experiment list page to display the selected experiment
         $query = "SELECT * FROM videos WHERE videoAddress= '$videoPath'";
@@ -55,7 +54,7 @@ $videoPath = $_GET['p'];
         <p>This is the description for timestamp 1</p>";
         $addressTime = "Timestamps.php?id={$vidID}";
         echo "<br><br> <a href='{$addressTime}'>  <button class='btn btn-outline-success' type='button'>Add Timestamps</button> </a> <br>
-        </div>"
+        </div>";
 
        $query = "SELECT timestampTime, timestampText FROM timestamps WHERE videoID = {$vidID}";
        $result = mysqli_query($conn, $query);
