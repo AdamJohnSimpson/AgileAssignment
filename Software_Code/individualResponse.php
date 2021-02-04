@@ -95,34 +95,35 @@ $responseID = $_GET['rid']; //get responseID
                     $subQuestionResponse = $row['response'];
                     echo "<p>Response: "."$subQuestionResponse"."</p>";
                   }
-
                 }
 
+                ///////////////////////////////////////////
 
-                $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
-                $resultResponse = mysqli_query($conn, $stmt);
-                while($row = mysqli_fetch_array($resultResponse)){
-                  $scaleQID = $row['uqID']; //gets question id for scale question
-                  $response = $row['response'];
 
-                  echo $response."     ";
-                  echo $scaleQID."     ";
-
-                  $stmt = "SELECT * FROM usabilityquestions WHERE uqID = $scaleQID"; //gets the question attached to the scale
-                  $scaleQ = mysqli_query($conn, $stmt);
-                  while($row = mysqli_fetch_array($scaleQ)){
-                    $scaleName = $row['uqText']; //get the text for the scale question
-                    echo "scale name".$scaleName;
-                    echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
-                    //
-                    // $stmt = "SELECT * FROM usabilityresults WHERE uqID = $scaleQID"; //get result for the question
-                    // $query = mysqli_query($conn, $stmt);
-                    // while($row = mysqli_fetch_array($scaleQ)){
-                    //   $scaleResponse = row['response'];
-                    //   echo "response ".$scaleResponse;
-                    // }
-                  }
-                  echo "<p><strong>Participent Response: </strong>".$response."</p>";
+                // $stmt = "SELECT * FROM usabilityresults WHERE responseID = $responseID"; //gets all results for scaled questions in this response
+                // $resultResponse = mysqli_query($conn, $stmt);
+                // while($row = mysqli_fetch_array($resultResponse)){
+                //   $scaleQID = $row['uqID']; //gets question id for scale question
+                //   $response = $row['response'];
+                //
+                //   echo $response."     ";
+                //   echo $scaleQID."     ";
+                //
+                //   $stmt = "SELECT * FROM usabilityquestions WHERE uqID = $scaleQID"; //gets the question attached to the scale
+                //   $scaleQ = mysqli_query($conn, $stmt);
+                //   while($row = mysqli_fetch_array($scaleQ)){
+                //     $scaleName = $row['uqText']; //get the text for the scale question
+                //     echo "scale name".$scaleName;
+                //     echo "<h5 = class'card-text mt-2".$scaleName."</h5>";
+                //     //
+                //     // $stmt = "SELECT * FROM usabilityresults WHERE uqID = $scaleQID"; //get result for the question
+                //     // $query = mysqli_query($conn, $stmt);
+                //     // while($row = mysqli_fetch_array($scaleQ)){
+                //     //   $scaleResponse = row['response'];
+                //     //   echo "response ".$scaleResponse;
+                //     // }
+                //   }
+                //   // echo "<p><strong>Participent Response: </strong>".$response."</p>";
                 }
               }
         echo "</div>
