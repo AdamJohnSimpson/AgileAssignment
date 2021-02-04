@@ -143,8 +143,27 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
 
 
               for ($p=0; $p < count($subQuestionText); $p++) {
-                echo "<h1> {$subQuestionText[$p]} </h1><br>";
-                print_r($allSubResults[$p]);
+
+
+                $countOfSubValues = array_count_values($allResults[$p]);
+
+                $subValues = array_keys($countOfSubValues);
+                echo "<h3>" . $subQuestionText . "</h3>";
+                echo '<div class="chart-wrap vertical">
+                <div class="grid">';
+
+                for ($b=0; $b < count($subValues); $b++) {
+                  $noOfResponses += $countOfSubValues[$subValues[$a]];
+                }
+
+                for ($c=0; $c < count($subValues); $c++)
+                {
+                  $percentage = round(($countOfSubValues[$values[$z]] / $noOfResponses) * 100);
+                  echo '<div class="bar" style="--bar-value:' . $percentage . '%;" data-name="'. $subValues[$c] . '" title="' . $subValues[$c] . ': ' . $countOfSubValues[$subValues[$c]] . '"></div>';
+                }
+                echo '</div>
+              </div>';
+
               }
 
 
