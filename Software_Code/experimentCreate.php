@@ -28,13 +28,18 @@ $userID= $_SESSION['id'];
      $_SESSION['experimentID'] = $experimentID;
      $primaryresearcher = $userID;
 
-     $testsql = "SELECT * FROM experiments WHERE experimentname = '{$experimentName}'";
-     $checkResult = mysqli_query($conn, $testsql);
+     $testsql = mysqli_stmt_init($conn);
+     mysqli_stmt_prepare($testsql, "SELECT * FROM experiments WHERE experimentname = ?");
+     mysqli_stmt_bind_param($testsql, 's', $experimentName);
+
+     mysqli_stmt_execute($testsql);
+     $checkResult = mysqli_stmt_get_result($testsql);
 
      if(mysqli_num_rows($checkResult) == 0) { //check if the name of experiment already exists
        //the experiment name doesn't already exist
-       $sql = "INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES ('$experimentName', '$primaryresearcher', '$experimentInfo')";
-       if ($conn->query($sql) === TRUE) {
+       $sql = $conn->prepare("INSERT INTO experiments(experimentname, primaryresearcher, experimentInformation) VALUES (?, '$primaryresearcher', ?)");
+       $sql->bind_param('ss', $experimentName, $experimentInfo);
+       if ($sql->execute() === TRUE) {
          $sql = "SELECT * FROM experiments WHERE experimentname = '$experimentName'";
          $result = mysqli_query($conn, $sql);
          $row = mysqli_fetch_array($result);
