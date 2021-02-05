@@ -139,7 +139,7 @@ For n/a tasks see issues below for the reason why
 
 ---
 
-## Day [X] - Scrum Meeting summary
+## Day [5] - Scrum Meeting summary
 The Scrum Master for this meeting was **Holly Groves**
 
 ### Members Present:
@@ -153,24 +153,19 @@ n/a
 
 ### Summary of Conversation:
 **Yesterday's Tasks**
-- Adam Sh:
-- Adam Si:
-- Beth:
-- Craig:
-- Euan:
-- Holly:
-- Scott: 
+- Adam Sh: got usability scale results to be visualised
+- Adam Si/Euan: finished being able to display and edit transcripts and description for videos
+- Beth/Scott: added being able to add timestamps and notes to those time stamps for videos
+- Craig: when exporting data to a .csv it will now export usability scale questions as well, added proper links to university logos
+- Holly: usability scale questions responses can now be displayed individually
 
 **Issues**
-- 
+- after switching over the instance of the website we had to reupload our database and delete unusable entries after the move and recreate them
+- azure was running slowly in the morning, just as it was set up
 
 **Today's Tasks**
-- Adam Sh:
-- Adam Si:
-- Beth:
-- Craig:
-- Euan:
-- Holly:
-- Scott: 
+- Team completes final tests on the website
+- Add more videos to the website as they were all lost during the switch
+- Clean up all the database and remove test entries that are broken/no longer required
 
 ---
