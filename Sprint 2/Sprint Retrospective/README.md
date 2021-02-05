@@ -13,3 +13,9 @@ We continued to have code reviews by using atom teletype and having other people
 ---
 
 # Retrospective Sprint 2
+We successfully worked in line with the points of improvement we laid out in week 1’s retrospective meeting. This included improving the clarity of our github pull requests and adjusting our velocity to a more appropriate value since we now have evidence of our team’s weekly capabilities. We’ve found that even just these small changes have allowed us to continue working at a very effective rate as a team and we hope to continue improving on these aspects as we go.
+
+We still believe that it is through our strong teamwork and cooperation that we have managed to progress through this project in such a productive and speedy way. This was particularly shown when we encountered problems outside of our control as a result of Microsoft Azure and how instead of giving up we remained strong as a team and worked together to adapt and overcome this. We eventually managed to get this all sorted as we continued to try and try again together.
+Even though we had such a drastic problem, we still have not experienced any issues in terms of our approach to teamwork. 
+
+Our intentions for sprint 3 are to continue as we are already working, we haven’t noticed any particular points in our teamwork that need notable improvement. 
