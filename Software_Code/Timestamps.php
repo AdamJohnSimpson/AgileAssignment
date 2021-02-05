@@ -18,8 +18,8 @@ if(isset($_POST['addT'])){
   }
   else {
     //send to db sql here
-    $sql = $conn->prepare("INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ( ?, '$vidID', ?)");
-    $sql->bind_param('ss', $timestampnote, $timestampT);
+    $sql = $conn->prepare("INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ( ?, '$vidID', '$timestampT')");
+    $sql->bind_param('s', $timestampnote);
     echo "query is - ".$sql."";
     if ($sql->execute() === TRUE) {
       echo "New record created successfully";
