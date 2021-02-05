@@ -1,3 +1,3 @@
 # Test Driven Development
 
-You should include in this folder any information relating to your usage of test driven development.
+We used test driven development by taking the ‘Tasks’ in the user stories and used them as the tests. In scrum meetings when we would go over the Sprint Backlog, we would go through the tasks we were starting that day and initially test the website based on these to show that it had failed and not already been done. Code would then be written by the team that day and would continue to use the ‘Tasks’ in user stories to test their code. This would be done task by task instead of user story by user story. Once team members have completed the tests, we would refactor our code, making it tidier and removing unnecessary and duplicated code. Evidence of our team using this is in our Sprint 2 Backlog where daily in our scrum meetings we would tick off completed tasks, as well as in our pull requests.
