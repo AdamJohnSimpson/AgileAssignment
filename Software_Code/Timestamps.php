@@ -20,7 +20,6 @@ if(isset($_POST['addT'])){
     //send to db sql here
     $sql = $conn->prepare("INSERT INTO timestamps(timestampText, videoID, timestampTime) VALUES ( ?, '$vidID', '$timestampT')");
     $sql->bind_param('s', $timestampnote);
-    echo "query is - ".$sql."";
     if ($sql->execute() === TRUE) {
       echo "New record created successfully";
       $success=true;
