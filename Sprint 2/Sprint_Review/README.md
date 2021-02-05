@@ -1,4 +1,4 @@
-# Sprint 1 Review
+# Sprint 2 Review
 
 Feedback
 - change layout of buttons and description on the video page to make it less cluttered, be able to easily see multiple videos at one time
