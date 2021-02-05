@@ -40,6 +40,8 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    $_SESSION['ethicsCheck'] = false;
+
     // Generate an ID to uniquely identify the person that sent in these answers
 		$responseID = uniqid($prefix="", $more_entropy=false);
 
