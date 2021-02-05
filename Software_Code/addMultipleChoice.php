@@ -37,7 +37,7 @@
       $questionType = 3;
       
       $sql = $conn->prepare("INSERT INTO questions(questionID, questionText, questionnaireID, questionType) VALUES ('$questionID', ?, '$questionnaireID', $questionType)");
-      $sql->bind_param('s', $questionText);
+      $sql->bind_param('s', $questiontext);
 
       if ($sql->execute() === TRUE) {
         echo "New record created successfully";

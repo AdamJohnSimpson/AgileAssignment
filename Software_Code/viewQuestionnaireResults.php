@@ -68,7 +68,7 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
   </header>
 
   <div class="jumbotron text-center">
-    <h1 class="text-center">Results - test</h1>
+    <h1 class="text-center">Results</h1>
   </div>
   <div class="container-fluid" style="padding:0">
 
@@ -77,8 +77,8 @@ for ($x=0; $x < count($listOfQuestionText) ; $x++) {
       <?php
       if (count($listOfQuestionID) > 0) {
           for ($x=0; $x < count($listOfQuestionID); $x++) {
-
-            echo "<br><h2><u><strong>{$x} - {$listOfQuestionText[$x]}</strong></u></h2>";
+            $number = $x + 1;
+            echo "<br><h2><u><strong>{$number} - {$listOfQuestionText[$x]}</strong></u></h2>";
             echo "<h4><u>ID: {$listOfQuestionID[$x]}</u></h4>";
 
             if ($listOfQuestionType[$x] == 1)

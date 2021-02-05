@@ -33,8 +33,9 @@
     $_SESSION['questionnaireID'] = $questionnaireID;
     $experimentID = $_SESSION['experimentID'];
     $userID= $_SESSION['id'];
-    $sql = "INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', '$questionnaireName', '$userID', '$experimentID')";
-    if ($conn->query($sql) === TRUE) {
+    $sql = $conn->prepare("INSERT INTO questionnaires(questionnaireID, questionnaireName, userID, experimentID) VALUES ('$questionnaireID', ?, '$userID', '$experimentID')");
+    $sql->bind_param('s', $questionnaireName);
+    if ($sql->execute() === TRUE) {
       echo "New record created successfully";
       header("location: addQuestions.php");
     }
