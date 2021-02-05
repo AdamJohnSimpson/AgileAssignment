@@ -12,7 +12,7 @@
   $qID = $_GET['qid'];
   
   // Redirect the user if they haven't agreed to the ethics form
-  if(!ISSET($_SESSION['ethicsCheck'])){
+  if(!ISSET($_SESSION['ethicsCheck']) || $_SESSION['ethicsCheck'] == false){
 		header('Location: ethicsForm.php?qid=' . $qID);
 		exit();
 	}
